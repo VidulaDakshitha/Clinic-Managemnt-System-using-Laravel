@@ -1,0 +1,18 @@
+* {
+    padding: 0;
+    margin: 0;
+    height: 100%;
+    width: 100%;
+}
+
+.container {
+    margin: auto;
+    background-color: aliceblue;
+    position: fixed;
+}
+
+#header-text {
+    text-align: center;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    margin-top: 5%;
+}
