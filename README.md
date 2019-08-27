@@ -10,7 +10,7 @@ Website for the International Homoeopathic Hospital and Research Institute (pvt)
 
 1. First clone the repo using the following git command in your git bash(inside the xampp\htdocs)
 ```
-git clone https://github.com/LakshanPerera/ITP-Project.git
+git clone -b secondary https://github.com/LakshanPerera/ITP-Project.git
 ```
 
 2. CD into the ITP-Project and install the composer dependencies
