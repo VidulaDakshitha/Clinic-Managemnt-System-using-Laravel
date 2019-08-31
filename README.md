@@ -40,7 +40,7 @@ DB_PASSWORD= <-- Add your database password(if there's any)
 php artisan key:generate
 ```
 
-5. Migrate the databases(not required yet)
+5. Migrate the databases
 ```
 php artisan migrate
 ```
