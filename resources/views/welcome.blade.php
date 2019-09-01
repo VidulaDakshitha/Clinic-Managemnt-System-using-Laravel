@@ -81,7 +81,7 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    ITP Project
+                    Welcome Admin
                 </div>
 
                 <div class="links">
