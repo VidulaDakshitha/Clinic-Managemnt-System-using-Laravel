@@ -242,7 +242,7 @@
                     <p>Tempus orci vel consequat. Nullam lorem sem, viverra a rutrum sed, gravida mattis magna.
                         Suspendisse vitae commodo quam. Quisque a enim et ante vulputate finibus.</p>
                     <h6>Jessica Brown</h6>
-                    <span>Pacient</span>
+                    <span>Patient</span>
                 </div>
                 <div class="author-pic set-bg" data-setbg="img/review/1.jpg"></div>
             </div>
@@ -252,7 +252,7 @@
                     <p>Nullam lorem sem, viverra a rutrum sed, gravida mattis magna. Suspendisse vitae commodo quam.
                         Quisque a enim et ante vulputate finibus.</p>
                     <h6>Jessica Brown</h6>
-                    <span>Pacient</span>
+                    <span>Patient</span>
                 </div>
                 <div class="author-pic set-bg" data-setbg="img/review/2.jpg"></div>
             </div>
@@ -263,7 +263,7 @@
                         mattis magna. Suspendisse vitae commodo quam. Quisque a enim et ante vulputate finibus nec
                         laoreet ipsum.</p>
                     <h6>Jessica Brown</h6>
-                    <span>Pacient</span>
+                    <span>Patient</span>
                 </div>
                 <div class="author-pic set-bg" data-setbg="img/review/3.jpg"></div>
             </div>
@@ -273,7 +273,7 @@
                     <p>Tempus orci vel consequat. Nullam lorem sem, viverra a rutrum sed, gravida mattis magna.
                         Suspendisse vitae commodo quam. Quisque a enim et ante vulputate finibus.</p>
                     <h6>Jessica Brown</h6>
-                    <span>Pacient</span>
+                    <span>Patient</span>
                 </div>
                 <div class="author-pic set-bg" data-setbg="img/review/2.jpg"></div>
             </div>
