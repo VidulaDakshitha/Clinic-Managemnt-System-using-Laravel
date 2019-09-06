@@ -17,4 +17,4 @@ Route::view('/contact', 'main.contact');
 Auth::routes();
 
 Route::get('/usermanager', 'UserTypeController@manage');
-Route::resource('supplier', 'SupplierManagerController');
+Route::resource('supplier', 'SupplierManagerController')->middleware('auth_supp');
