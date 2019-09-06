@@ -34,7 +34,7 @@ class CreateUsersTable extends Migration
             )
         );
 
-        // adding dummy entries
+        // supplier manager
         DB::table('users')->insert(
             array(
                 'name' => 'Lakshan Perera',
