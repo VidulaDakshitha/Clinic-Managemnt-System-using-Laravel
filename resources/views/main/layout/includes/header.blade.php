@@ -15,6 +15,18 @@
         <li class="{{ (Request::is('/users') ? 'active' : '') }}"><a href="/contact">Service</a></li>
         <li class="{{ (Request::is('/users') ? 'active' : '') }}"><a href="/contact">Contact</a></li>
         <!-- <li><a href="elements.html"><i class="flaticon-020-decay"></i></a></li> -->
+        @auth
+        <li class="dashboard-style"><a href="/login">Dashboard</a></li>
+        <li class="logout-style"><a class="logout-style" href="{{ route('logout') }}" onclick="event.preventDefault();
+            document.getElementById('logout-form').submit();">
+                {{ __('Logout') }}
+            </a></li>
+
+        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+            @csrf
+        </form>
+        @else
         <li class="login-style"><a href="/login">Sign In</a></li>
+        @endauth
     </ul>
 </div>
