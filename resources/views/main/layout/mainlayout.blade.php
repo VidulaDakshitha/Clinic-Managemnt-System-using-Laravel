@@ -22,6 +22,7 @@
     <link rel="stylesheet" href="{{ asset('css/main/mainlayout/style.css') }}" />
     <link rel="stylesheet" href="{{ asset('css/main/mainlayout/animate.css') }}" />
 
+
     @if (isset($styles))
 
     @foreach ($styles as $style)
