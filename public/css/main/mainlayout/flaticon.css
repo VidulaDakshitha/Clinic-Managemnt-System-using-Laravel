@@ -1,0 +1,59 @@
+	/*
+  	Flaticon icon font: Flaticon
+  	Creation date: 14/05/2018 08:35
+  	*/
+
+@font-face {
+  font-family: "Flaticon";
+  src: url("../icon-fonts/Flaticon.eot");
+  src: url("../icon-fonts/Flaticon.eot?#iefix") format("embedded-opentype"),
+       url("../icon-fonts/Flaticon.woff") format("woff"),
+       url("../icon-fonts/Flaticon.ttf") format("truetype"),
+       url("../icon-fonts/Flaticon.svg#Flaticon") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+  @font-face {
+    font-family: "Flaticon";
+    src: url("../icon-fonts/Flaticon.svg#Flaticon") format("svg");
+  }
+}
+
+[class^="flaticon-"]:before, [class*=" flaticon-"]:before,
+[class^="flaticon-"]:after, [class*=" flaticon-"]:after {   
+  font-family: Flaticon;
+  font-style: normal;
+}
+
+.flaticon-001-tooth-4:before { content: "\f100"; }
+.flaticon-002-toothbrush-1:before { content: "\f101"; }
+.flaticon-003-tooth-3:before { content: "\f102"; }
+.flaticon-004-syringe:before { content: "\f103"; }
+.flaticon-005-tooth-2:before { content: "\f104"; }
+.flaticon-006-dentist-tools-1:before { content: "\f105"; }
+.flaticon-007-computer-1:before { content: "\f106"; }
+.flaticon-008-protection:before { content: "\f107"; }
+.flaticon-009-mouthwash:before { content: "\f108"; }
+.flaticon-010-mirror:before { content: "\f109"; }
+.flaticon-011-implants:before { content: "\f10a"; }
+.flaticon-012-hygiene:before { content: "\f10b"; }
+.flaticon-013-dental-drill:before { content: "\f10c"; }
+.flaticon-014-gum:before { content: "\f10d"; }
+.flaticon-015-floss:before { content: "\f10e"; }
+.flaticon-016-extraction:before { content: "\f10f"; }
+.flaticon-017-pill:before { content: "\f110"; }
+.flaticon-018-dentist-1:before { content: "\f111"; }
+.flaticon-019-dentist:before { content: "\f112"; }
+.flaticon-020-decay:before { content: "\f113"; }
+.flaticon-021-molar-crown:before { content: "\f114"; }
+.flaticon-022-computer:before { content: "\f115"; }
+.flaticon-023-tooth-1:before { content: "\f116"; }
+.flaticon-024-toothbrush:before { content: "\f117"; }
+.flaticon-025-health-report:before { content: "\f118"; }
+.flaticon-026-dentist-chair:before { content: "\f119"; }
+.flaticon-027-caries:before { content: "\f11a"; }
+.flaticon-028-dentist-tools:before { content: "\f11b"; }
+.flaticon-029-braces:before { content: "\f11c"; }
+.flaticon-030-tooth:before { content: "\f11d"; }

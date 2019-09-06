@@ -11,6 +11,10 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::view('/', 'main.index');
+Route::view('/about', 'main.about');
+Route::view('/contact', 'main.contact');
+Auth::routes();
+
+Route::get('/usermanager', 'UserTypeController@manage');
+Route::resource('supplier', 'SupplierManagerController');
