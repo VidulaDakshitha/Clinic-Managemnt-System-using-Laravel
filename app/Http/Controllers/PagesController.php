@@ -17,6 +17,12 @@ class PagesController extends Controller
         return view('AdminHome');
     }
 
+    public function about()
+    {
+        return view('chairman.aboutus');
+    }
+
+
     
 }
 

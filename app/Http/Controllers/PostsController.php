@@ -22,6 +22,13 @@ class PostsController extends Controller
         return view('ServiceAdmin');
     }
 
+    
+    public function serv()
+    {
+        return view('AdminServ');
+    }
+
+
     /**
      * Display a listing of the resource.
      *
@@ -42,6 +49,16 @@ class PostsController extends Controller
     public function create()
     {
         return view('createpost');
+    }
+
+    public function media()
+    {
+        return view('gallery');
+    }
+
+    public function admhome()
+    {
+        return view('Adhome');
     }
 
     /**
@@ -98,7 +115,7 @@ class PostsController extends Controller
      * @param  \App\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)//(Post $post)
+    public function edit($id)
     {
         $post = Post::find($id);
         

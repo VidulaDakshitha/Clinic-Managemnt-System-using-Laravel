@@ -3,7 +3,8 @@
   <head>
     <meta charset="utf-8">
     <title></title>
-    <link rel="stylesheet" href="/css/ServiceAdmin.css">
+    
+    <link href="{{ asset('css/ServiceAdmin.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="/css/button.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -24,7 +25,7 @@
      <link href="{{ asset('css/app.css') }}" rel="stylesheet">
   </head>
   <body>
-
+    
         <div id="app">
                 <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
                     <div class="container">
@@ -79,43 +80,102 @@
                     </div>
                 </nav>
 
+
+                <div class="container">
+                    @if(count($errors)>0)
+                        @foreach ($errors->all() as $error)
+                            <div class="alert alert-danger">
+                                {{ $error }}
+                            </div>
+                        @endforeach
+                    @endif
+            
+                    @if(session('success'))
+                        <div class="alert alert-success">
+                            {{ session('success') }}
+                        </div>
+                    @endif
+            
+                    @if(session('error'))
+                        <div class="alert alert-danger">
+                            {{ session('error') }}
+                        </div>
+                    @endif
+                 </div>
+
 <div class="services">
-	
-    <a class="btn btn-primary" href="/ServiceAdmin/create">
-      Create Posts
-  </a>
-  <h1>Our Services</h1>
-  @if (count($posts)>0)
-  @foreach ($posts as $post)
-    
-    
-    <div class="left">
-      <div class="service">
-          
-       <img src="/storage/images/{{$post->image}}" >
-        <h2>{{ $post->title }}</h2>
-        <p>{{ $post->description }}</p>
-        @if(!auth::guest())
-        @if(auth::user()->id == $post->user_id)
-        <a class="btn btn-primary" href="/ServiceTest/{id}/edit">Edit</a>
-        <form class="form" action="/ServiceTest/{{ $post->id }}" method="POST">
-            {{ csrf_field() }}
-            {{ method_field('DELETE') }}
-            <input type="submit" class="btn btn-danger" value="Remove">
-        </form>
+    @if(!auth::guest())
+        <a class="btn btn-primary" href="/ServiceTest/create">
+            Add new services
+    </a>
     @endif
- @endif
-      
-      
-      </div>
+    <h1>Our Services</h1>
+</div>  
 
-      @endforeach
-      @else
-          <p>No posts to show</p>
-      @endif
+<div class="services">
+<div class="container">
+    @if (count($posts)>0)
+    @foreach ($posts as $post)
+        <div class="service left col-lg-6 col-md-12 col-sm-12 p-5">
+        <img src="/storage/images/{{$post->image}}" >
+        <h2 class="text-center">{{ $post->title }}</h2>
+        <p>{{ $post->description }}</p>
+            @if(!auth::guest())
+                @if(auth::user()->id == $post->user_id)
+                    <a class="btn btn-primary" href="/ServiceTest/{{ $post->id }}/edit">Edit</a>
+                    <form class="form" action="/ServiceTest/{{ $post->id }}" method="POST">
+                        {{ csrf_field() }}
+                        {{ method_field('DELETE') }}
+                        <input type="submit" class="btn btn-danger" value="Remove">
+                    </form>
+                @endif
+            @endif
+        </div>
+    @endforeach
+    @else
+    <p>No posts to show</p>
+    @endif    
+</div>
 
-    </div>
-  </div>
-      
+@if(!auth::guest())
+    <a class="btn btn-primary" href="/AdHome">Back to Dashboard</a>
+    @endif 
+
+</div>
+
+
   </body>
 </html>
+
+
+
+
+
+{{-- 
+    
+    @if (count($posts)>0)
+  <div >
+    @foreach ($posts as $post)
+        
+        
+        <div class="service left col-6">
+            
+        <img src="/storage/images/{{$post->image}}" >
+            <h2>{{ $post->title }}</h2>
+            <p>{{ $post->description }}</p>
+            @if(!auth::guest())
+            @if(auth::user()->id == $post->user_id)
+        <a class="btn btn-primary" href="/ServiceTest/{{ $post->id }}/edit">Edit</a>
+            <form class="form" action="/ServiceTest/{{ $post->id }}" method="POST">
+                {{ csrf_field() }}
+                {{ method_field('DELETE') }}
+                <input type="submit" class="btn btn-danger" value="Remove">
+            </form>
+        @endif
+    @endif
+   @endforeach
+
+    </div>
+      @else
+          <p>No posts to show</p>
+      @endif--}}

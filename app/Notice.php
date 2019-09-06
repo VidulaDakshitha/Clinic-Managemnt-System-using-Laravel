@@ -11,4 +11,6 @@ class Notice extends Model
     {
         return $this->belongsTo('App\Doctor');
     }
+
+    protected $primaryKey = 'notice_id';
 }

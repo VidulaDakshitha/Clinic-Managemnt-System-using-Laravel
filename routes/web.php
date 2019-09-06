@@ -14,23 +14,36 @@
 Route::get('/', 'PagesController@index');
 
 Route::get('/AdminHome', 'PagesController@adhome');
-
+Route::get('/AdHome', 'PostsController@admhome');
 Route::get('/ServiceTest', 'PostsController@index');
+Route::get('/AdminServ', 'PostsController@serv');
+Route::get('/gallery', 'PostsController@media');
 
-Route::post('/ServiceTest', 'PostsController@store');
 
-Route::put('/ServiceTest/{id}', 'PostsController@update');
+// Route::post('/ServiceTest', 'PostsController@store');
+// Route::put('/ServiceTest/{post}', 'PostsController@update');
+// Route::get('/ServiceTest/create', 'PostsController@create');
+// Route::get('/ServiceTest/{post}/edit', 'PostsController@edit');
+// Route::delete('/ServiceTest/{post}', 'PostsController@destroy');
 
-Route::get('/ServiceAdmin', 'PostsController@adm');
-Route::get('/ServiceAdmin/create', 'PostsController@create');
-Route::get('/ServiceTest/{id}/edit', 'PostsController@edit');
+Route::get('/gallery', 'ArticlesController@index');
+Route::post('/gallery', 'ArticlesController@store');
+Route::put('/gallery/{article}', 'ArticlesController@update');
+Route::get('/gallery/create', 'ArticlesController@create');
+Route::get('/gallery/{article}/edit', 'ArticlesController@edit');
+Route::delete('/gallery/{article}', 'ArticlesController@destroy');
 
-Route::delete('/ServiceTest/{id}', 'PostsController@destroy');
+Route::get('/aboutus', 'NoticesController@index');
+Route::post('/aboutus', 'NoticesController@store');
+Route::put('/aboutus/{article}', 'NoticesController@update');
+Route::get('/aboutus/create', 'NoticesController@create');
+Route::get('/aboutus/{article}/edit', 'NoticesController@edit');
+Route::delete('/aboutus/{article}', 'NoticesController@destroy');
+
+
+Route::resource('ServiceTest', 'PostsController');
 
 Route::get('/Services', 'ServicesController@index')->name('Services');
-
-
-
 
 Auth::routes();
 
