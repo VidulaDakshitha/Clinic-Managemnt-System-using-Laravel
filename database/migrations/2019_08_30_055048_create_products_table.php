@@ -21,6 +21,9 @@ class CreateProductsTable extends Migration
             $table->string('potency');
             $table->string('expiry_date');
             $table->string('type');
+            $table->string('brand');
+            $table->text('description');
+            $table->text('product_image');
         });
     }
 

@@ -4,9 +4,15 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
+
 class Product extends Model
 {
-    // product belongs to many orders
+
+    protected $fillable=['product_id','name','selling_price','quantity','potency','expiry_date','type','brand','description','product_image'];
+    protected $primaryKey = 'product_id';
+
+
+       // product belongs to many orders
     public function orders()
     {
         return $this->belongsToMany('App\Order');
