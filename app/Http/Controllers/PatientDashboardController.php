@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use DB;
+use Illuminate\Support\Facades\Auth;
 
 class PatientDashboardController extends Controller
 {
@@ -13,6 +15,7 @@ class PatientDashboardController extends Controller
      * 
      * 
      */
+    var $fianl;
 
     public function __construct()
     {
@@ -22,7 +25,10 @@ class PatientDashboardController extends Controller
 
     public function index()
     {
-        return view('PatientManagement.patientDashboard');
+        $final=Auth::user();
+
+        $research = DB::table('patients')->where('email', $final->email)->first();
+        return view('PatientManagement.patientDashboard',compact('research'));
         //
     }
 

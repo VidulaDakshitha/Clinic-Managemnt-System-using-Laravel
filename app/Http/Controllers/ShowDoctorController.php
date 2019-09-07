@@ -4,31 +4,18 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use DB;
-use Illuminate\Support\Facades\Auth;
-use App\Patient;
-use App\User;
+use App\Doctor;
 
-class UserProfileController extends Controller
+class ShowDoctorController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    
-
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
     public function index()
     {
-        $final=Auth::user();
-        
-        $result = DB::table('patients')->where('email', $final->email)->first();
-        return view('PatientManagement.userProfile',compact('result'));
-        
+        //
     }
 
     /**
@@ -94,11 +81,46 @@ class UserProfileController extends Controller
      */
     public function destroy($id)
     {
-        $post = User::find($id);
-        $post->delete();
-        return redirect('/');
         //
     }
 
+    public function search(Request $request)
+    {
+ 
+        $search1=$request->get('doctor');
+        $search2=$request->get('specialization');
 
+        if($search1=='any doctor' && $search2=='any specialization')
+        {
+            $posts = Doctor::all();
+             return view('patientManagement.showDoc', compact('posts'));
+        }
+        else if($search1=='any doctor'){
+
+            $posts=DB::table('doctors')->where('type',$search2)->get();
+        return view('patientManagement.showDoc',compact('posts'));
+
+        }
+        else if($search2=='any specialization')
+        {
+            $posts=DB::table('doctors')->where('fullname',$search1)->get();
+        return view('patientManagement.showDoc',compact('posts'));
+
+        }
+        else if($search1!='any doctor' && $search2!='any specialization')
+        {
+            $posts=DB::table('doctors')->where([['fullname',$search1],['type',$search2]])->get();
+        return view('patientManagement.showDoc',compact('posts'));
+
+        }
+
+        else
+        {
+            
+            return view('patientManagement.showDoc')->with('error','Invalid search results');
+        }
+      
+
+
+    }
 }

@@ -12,7 +12,7 @@
             <div class="col-md-7 col-sm-12 col-xs-12"><h1 style="font-size: 100px; margin-top: 29vh;margin-left: 10%;line-height: 100px;">let's Channel <br />Your Doctor</h1></div>	
             <div class="col-md-5 col-sm-12 col-xs-12 form-top-margin">
             <div class="front-search">
-            <form  action="/check3" method="post">
+            <form  action="/showdoctor" method="post">
               {{ csrf_field() }}
             
                         <input type="text" name="doctor" class=".front-search input" id="doctor" placeholder="Doctor" onblur="checkDoctorId()">
