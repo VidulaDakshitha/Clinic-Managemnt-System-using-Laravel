@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Supplier extends Model
 {
-    // protected $primaryKey = 'supplier_id';
+    protected $primaryKey = 'supplier_id';
 
     protected $guarded = [];
 
@@ -26,6 +26,6 @@ class Supplier extends Model
     // supplier belongs to many products
     public function products()
     {
-        return $this->belongsToMany('App\Product')->withTimestamps();
+        return $this->belongsToMany('App\Product', 'product_supplier', 'supplier_id', 'product_id')->withTimestamps();
     }
 }

@@ -67,18 +67,20 @@ class SupplierManagerController extends Controller
        $supplier = new Supplier();
        $supplier->name =$request->name;                          
        $supplier->location =$request->address. ' '.$request->address2.' '.$request->postal_code.' '.$request->city;                          
-       $product = DB::table('products')->where('type', $request->product)->first();
-       $supplier->save();
-       
-       $supplier->products()->attach($product->id);
+                              
+       if($supplier->save()){
+        $product = DB::table('products')->where('type', $request->product)->first();  
+        $supplier->products()->attach($product->product_id);
+       }
+                   
 
        $sup_contacts = new SupplierContact();
-       $sup_contacts->supplier_id = $supplier->id;
+       $sup_contacts->supplier_id = $supplier->supplier_id;
        $sup_contacts->contact_number = $request->contact_number; 
        $sup_contacts->save();
 
        $sup_emails = new SupplierEmail();
-       $sup_emails->supplier_id = $supplier->id;
+       $sup_emails->supplier_id = $supplier->supplier_id;
        $sup_emails->email = $request->email; 
        $sup_emails->save(); 
 

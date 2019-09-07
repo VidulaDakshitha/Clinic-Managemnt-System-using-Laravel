@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model
 {
+    protected $primaryKey = 'product_id';
+
     protected $guarded = [];
     public $timestamps = false;
     // product belongs to many orders
@@ -17,6 +19,6 @@ class Product extends Model
     // product belongs to many suppliers
     public function suppliers()
     {
-        return $this->belongsToMany('App\Supplier')->withTimestamps();
+        return $this->belongsToMany('App\Supplier', 'product_supplier', 'product_id', 'supplier_id')->withTimestamps();
     }
 }
