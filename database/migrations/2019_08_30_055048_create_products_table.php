@@ -14,7 +14,7 @@ class CreateProductsTable extends Migration
     public function up()
     {
         Schema::create('products', function (Blueprint $table) {
-            $table->bigIncrements('product_id');
+            $table->bigIncrements('id');
             $table->string('name');
             $table->float('selling_price');
             $table->unsignedInteger('quantity');
@@ -22,6 +22,19 @@ class CreateProductsTable extends Migration
             $table->string('expiry_date');
             $table->string('type');
         });
+
+        for($i=0; $i<10; $i++){
+            DB::table('products')->insert(
+                array(
+                    'name' => 'Product '.$i,
+                    'selling_price' => $i*100,
+                    'quantity' => $i*1000,
+                    'potency' => 'Potent',
+                    'expiry_date' => now(),
+                    'type' => 'Product Type '.$i,
+                )
+            );
+        }
     }
 
     /**

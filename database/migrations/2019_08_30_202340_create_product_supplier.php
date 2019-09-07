@@ -14,8 +14,10 @@ class CreateProductSupplier extends Migration
     public function up()
     {
         Schema::create('product_supplier', function (Blueprint $table) {
-            $table->unsignedBigInteger('supplier_id');
+            $table->bigIncrements('id');
             $table->unsignedBigInteger('product_id');
+            $table->unsignedBigInteger('supplier_id');
+            $table->timestamps();
         });
     }
 

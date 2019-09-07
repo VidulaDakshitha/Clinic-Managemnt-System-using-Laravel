@@ -13,7 +13,7 @@
 
 Route::view('/', 'main.index');
 Route::view('/about', 'main.about');
-Route::view('/contact', 'main.contact');
+Route::view('/contact', 'main.about');
 Auth::routes();
 
 Route::get('/usermanager', 'UserTypeController@manage');

@@ -3,7 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Supplier;
+use App\SupplierContact;
+use App\SupplierEmail;
+use App\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class SupplierManagerController extends Controller
 {
@@ -25,7 +29,8 @@ class SupplierManagerController extends Controller
     public function index()
     {
         //
-        return view('backend.supplier.supplierdashboard');
+        $suppliers = Supplier::all();
+        return view('backend.supplier.supplierdashboard', compact('suppliers'));
     }
 
     /**
@@ -35,7 +40,8 @@ class SupplierManagerController extends Controller
      */
     public function create()
     {
-        //
+        $products = Product::all();
+        return view('backend.supplier.create', compact('products'));
     }
 
     /**
@@ -47,6 +53,36 @@ class SupplierManagerController extends Controller
     public function store(Request $request)
     {
         //
+        $data = $request->validate([
+            'name' => 'required|max:255',
+            'email' => 'required|email',
+            'contact_number' => 'required|numeric',
+            'address' => 'required|string',
+            'address2' => 'nullable|string',
+            'city' => 'required|string',
+            'postal_code' => 'required|numeric',
+            'product' => 'required',
+        ]);
+
+       $supplier = new Supplier();
+       $supplier->name =$request->name;                          
+       $supplier->location =$request->address. ' '.$request->address2.' '.$request->postal_code.' '.$request->city;                          
+       $product = DB::table('products')->where('type', $request->product)->first();
+       $supplier->save();
+       
+       $supplier->products()->attach($product->id);
+
+       $sup_contacts = new SupplierContact();
+       $sup_contacts->supplier_id = $supplier->id;
+       $sup_contacts->contact_number = $request->contact_number; 
+       $sup_contacts->save();
+
+       $sup_emails = new SupplierEmail();
+       $sup_emails->supplier_id = $supplier->id;
+       $sup_emails->email = $request->email; 
+       $sup_emails->save(); 
+
+       return redirect('/supplier')->with('success','New Supplier Added');
     }
 
     /**
@@ -69,6 +105,8 @@ class SupplierManagerController extends Controller
     public function edit(Supplier $supplier)
     {
         //
+        $products = Product::all();
+        return view('backend.supplier.edit', compact('supplier', 'products'));
     }
 
     /**
@@ -92,5 +130,7 @@ class SupplierManagerController extends Controller
     public function destroy(Supplier $supplier)
     {
         //
+        $supplier->delete();
+        return redirect('/supplier')->with('success','Successfully deleted supplier');
     }
 }

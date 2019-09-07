@@ -7,4 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class SupplierContact extends Model
 {
     //
+    protected $guarded = [];
+
+    public $timestamps = false;
 }
