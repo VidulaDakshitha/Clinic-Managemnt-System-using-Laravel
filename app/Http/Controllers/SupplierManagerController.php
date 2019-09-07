@@ -72,17 +72,21 @@ class SupplierManagerController extends Controller
         $product = DB::table('products')->where('type', $request->product)->first();  
         $supplier->products()->attach($product->product_id);
        }
-                   
-
        $sup_contacts = new SupplierContact();
        $sup_contacts->supplier_id = $supplier->supplier_id;
        $sup_contacts->contact_number = $request->contact_number; 
-       $sup_contacts->save();
-
+       $supplier->suppliercontacts()->save($sup_contacts);
+       
        $sup_emails = new SupplierEmail();
        $sup_emails->supplier_id = $supplier->supplier_id;
        $sup_emails->email = $request->email; 
-       $sup_emails->save(); 
+       $supplier->supplieremails()->save($sup_emails);
+
+    
+    //    $sup_contacts->save();
+
+  
+    //    $sup_emails->save(); 
 
        return redirect('/supplier')->with('success','New Supplier Added');
     }
@@ -106,7 +110,6 @@ class SupplierManagerController extends Controller
      */
     public function edit(Supplier $supplier)
     {
-        //
         $products = Product::all();
         return view('backend.supplier.edit', compact('supplier', 'products'));
     }
@@ -120,7 +123,31 @@ class SupplierManagerController extends Controller
      */
     public function update(Request $request, Supplier $supplier)
     {
-        //
+        $data = $request->validate([
+            'name' => 'required|max:255',
+            'email' => 'required|email',
+            'contact_number' => 'required|numeric',
+            'address' => 'required|string',
+            'product' => 'required',
+        ]);
+       $supplier->name =$request->name;                          
+       $supplier->location =$request->address;                          
+                              
+       if($supplier->save()){
+        $product = DB::table('products')->where('type', $request->product)->first();  
+        $supplier->products()->attach($product->product_id);
+       }
+       $sup_contacts = $supplier->suppliercontacts->first();
+       $sup_contacts->supplier_id = $supplier->supplier_id;
+       $sup_contacts->contact_number = $request->contact_number; 
+       $supplier->suppliercontacts()->save($sup_contacts);
+       
+       $sup_emails = new SupplierEmail();
+       $sup_emails->supplier_id = $supplier->supplieremails->first();
+       $sup_emails->email = $request->email; 
+       $supplier->supplieremails()->save($sup_emails);
+
+       return redirect('/supplier')->with('success','Supplier updated');
     }
 
     /**

@@ -42,10 +42,9 @@
                     @else
                     <p>Medicine</p>
                     @endif
-
                 </td>
                 <td class="row">
-                    <a href="/supplier/edit/{{ $supplier->supplier_id }}" class="btn btn-primary mr-1">Edit</a>
+                    <a href="/supplier/{{ $supplier->supplier_id }}/edit" class="btn btn-primary mr-1">Edit</a>
                     <form action="/supplier/{{ $supplier->supplier_id }}" method="POST">
                         @csrf
                         @method('DELETE')

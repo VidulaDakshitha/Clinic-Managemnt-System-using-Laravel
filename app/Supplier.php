@@ -14,13 +14,13 @@ class Supplier extends Model
     // a supplier has many emails
     public function supplieremails()
     {
-        return $this->hasMany('App\SupplierEmail');
+        return $this->hasMany('App\SupplierEmail', 'supplier_id');
     }
     
     // a supplier has many contact numbers
     public function suppliercontacts()
     {
-        return $this->hasMany('App\SupplierEmail');
+        return $this->hasMany('App\SupplierContact', 'supplier_id');
     }
 
     // supplier belongs to many products
