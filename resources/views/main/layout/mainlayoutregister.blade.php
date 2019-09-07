@@ -22,7 +22,7 @@
     <link rel="stylesheet" href="{{ asset('css/main/mainlayout/style.css') }}" />
     <link rel="stylesheet" href="{{ asset('css/main/mainlayout/animate.css') }}" />
 
-    {{-- <link href="{{ asset('css/registerCSS/style.css') }}" rel="stylesheet" type="text/css" > --}}
+    <link href="{{ asset('css/registerCSS/style.css') }}" rel="stylesheet" type="text/css" >
 
 
     @if (isset($styles))

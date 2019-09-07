@@ -16,6 +16,7 @@ Route::view('/about', 'main.about');
 Route::view('/contact', 'main.contact');
 Route::view('/login', 'main.login');
 Route::view('/search', 'PatientManagement.search');
+Route::view('/registerp', 'auth.registerp');
 Auth::routes();
 
 Route::get('/usermanager', 'UserTypeController@manage');

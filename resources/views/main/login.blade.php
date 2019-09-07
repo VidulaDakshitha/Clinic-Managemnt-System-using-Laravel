@@ -59,7 +59,7 @@
             <div id="formFooter">
                 <a class="underlineHover" href="/forgot">Forgot Password?</a>
                 <p> Or </p>
-                <a class="underlineHover" href="/register">Haven't created an account yet?</a>
+                <a class="underlineHover" href="/registerp">Haven't created an account yet?</a>
             </div>
 
         </div>
