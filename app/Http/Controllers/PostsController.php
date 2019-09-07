@@ -19,7 +19,7 @@ class PostsController extends Controller
 
     public function adm()
     {
-        return view('ServiceAdmin');
+        return view('chairman.adminpage');
     }
 
     
@@ -37,7 +37,7 @@ class PostsController extends Controller
     public function index()
     {
         $posts = Post::all();
-        return view('ServiceTest', compact('posts'));
+        return view('chairman.ourservice', compact('posts'));
     }
 
 
@@ -48,7 +48,7 @@ class PostsController extends Controller
      */
     public function create()
     {
-        return view('createpost');
+        return view('chairman.createservice');
     }
 
     public function media()
@@ -58,7 +58,7 @@ class PostsController extends Controller
 
     public function admhome()
     {
-        return view('Adhome');
+        return view('chairman.adminpage');
     }
 
     /**
@@ -72,7 +72,7 @@ class PostsController extends Controller
         $this->validate($request, [
             'title' => 'required',
             'description' => 'required',
-            'image' => 'image|nullable|max:1500'
+            'image' => 'image|nullable|max:400|required'
         ]);
 
         if($request->hasFile('image')){
@@ -124,7 +124,7 @@ class PostsController extends Controller
         }
         
 
-        return view('edit', compact('post'));
+        return view('chairman.editservice', compact('post'));
     }
 
     /**
@@ -140,6 +140,7 @@ class PostsController extends Controller
         $this->validate($request, [
             'title' => 'required',
             'description' => 'required',
+            'image' => 'image|nullable|max:400'
         ]);
 
         if($request->hasFile('image')){

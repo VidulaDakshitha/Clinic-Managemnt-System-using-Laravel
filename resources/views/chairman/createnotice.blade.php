@@ -7,12 +7,12 @@
 
         <div class="form-group">
             <label for="title">Title</label>
-            <input name="title" id="title" class="form-control" type="text" placeholder="Title">
+            <input name="title" maxlength="20" id="title" class="form-control" type="text" placeholder="Title">
         </div>
         
         <div class="form-group">
             <label for="description">Description</label>
-            <textarea name="description" id="description" class="form-control" placeholder="Description"></textarea>
+            <textarea name="description" maxlength="250" id="description" class="form-control" placeholder="Description"></textarea>
         </div>
         
         <div class="form-group">

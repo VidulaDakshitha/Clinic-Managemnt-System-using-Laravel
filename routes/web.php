@@ -11,7 +11,7 @@
 |
 */
 
-Route::get('/', 'PagesController@index');
+
 
 Route::get('/AdminHome', 'PagesController@adhome');
 Route::get('/AdHome', 'PostsController@admhome');
@@ -40,6 +40,7 @@ Route::get('/aboutus/create', 'NoticesController@create');
 Route::get('/aboutus/{article}/edit', 'NoticesController@edit');
 Route::delete('/aboutus/{article}', 'NoticesController@destroy');
 
+Route::get('/feedback', 'FeedbackController@fd');
 
 Route::resource('ServiceTest', 'PostsController');
 
@@ -47,7 +48,11 @@ Route::get('/Services', 'ServicesController@index')->name('Services');
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+
+Route::view('/', 'main.index');
+Route::view('/about', 'main.about');
+Route::view('/contact', 'main.contact');
+Route::view('/signin', 'main.login');

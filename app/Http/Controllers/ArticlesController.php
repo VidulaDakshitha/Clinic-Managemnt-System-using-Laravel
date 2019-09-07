@@ -37,7 +37,7 @@ class ArticlesController extends Controller
     public function index()
     {
         $articles = Article::all();
-        return view('gallery', compact('articles'));
+        return view('chairman.gallerypage', compact('articles'));
     }
 
 
@@ -48,7 +48,7 @@ class ArticlesController extends Controller
      */
     public function create()
     {
-        return view('createarticle');
+        return view('chairman.creategallery');
     }
 
     public function media()
@@ -72,7 +72,7 @@ class ArticlesController extends Controller
         $this->validate($request, [
             'title' => 'required',
             'description' => 'required',
-            'image' => 'image|nullable|max:1500'
+            'image' => 'image|nullable|max:500|required'
         ]);
 
         if($request->hasFile('image')){
@@ -124,7 +124,7 @@ class ArticlesController extends Controller
         }
         
 
-        return view('editarticle', compact('article'));
+        return view('chairman.editgallery', compact('article'));
     }
 
     /**
@@ -140,6 +140,7 @@ class ArticlesController extends Controller
         $this->validate($request, [
             'title' => 'required',
             'description' => 'required',
+            'image' => 'image|nullable|max:500'
         ]);
 
         if($request->hasFile('image')){
@@ -173,6 +174,6 @@ class ArticlesController extends Controller
     {
         $article = Article::find($id);
         $article->delete();
-        return redirect('gallery')->with('success','Post Deleted');
+        return redirect('/gallery')->with('success','Post Deleted');
     }
 }

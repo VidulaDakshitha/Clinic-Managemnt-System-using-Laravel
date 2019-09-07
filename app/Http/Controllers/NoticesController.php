@@ -72,7 +72,7 @@ class NoticesController extends Controller
         $this->validate($request, [
             'title' => 'required',
             'description' => 'required',
-            'image' => 'image|nullable|max:1500'
+            'image' => 'image|nullable|max:400|required'
         ]);
 
         if($request->hasFile('image')){
@@ -140,6 +140,7 @@ class NoticesController extends Controller
         $this->validate($request, [
             'title' => 'required',
             'description' => 'required',
+            'image' => 'image|nullable|max:400'
         ]);
 
         if($request->hasFile('image')){

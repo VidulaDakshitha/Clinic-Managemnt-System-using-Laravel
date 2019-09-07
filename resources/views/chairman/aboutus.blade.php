@@ -19,7 +19,7 @@ https://templatemo.com/tm-520-highway
 
         <link href="{{ asset('css/about/aboutusletter.css') }}" rel="stylesheet">
 
-        <script src="{{ asset('js/about/modernizr-2.8.3-respond-1.4.2.min.js') }}"></script>
+        
 	
 
         <link href="https://fonts.googleapis.com/css?family=Kanit:100,200,300,400,500,600,700,800,900" rel="stylesheet">
