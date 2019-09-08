@@ -22,6 +22,7 @@ class CreateProductsTable extends Migration
             $table->string('potency');
             $table->string('expiry_date');
             $table->string('type');
+            $table->string('image');
         });
 
         for($i=0; $i<10; $i++){
@@ -34,6 +35,7 @@ class CreateProductsTable extends Migration
                     'potency' => 'Potent',
                     'expiry_date' => now(),
                     'type' => 'Product Type '.$i,
+                    'image' => 'image_path/goes_here.jpg'
                 )
             );
         }

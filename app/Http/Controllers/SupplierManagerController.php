@@ -82,12 +82,6 @@ class SupplierManagerController extends Controller
        $sup_emails->email = $request->email; 
        $supplier->supplieremails()->save($sup_emails);
 
-    
-    //    $sup_contacts->save();
-
-  
-    //    $sup_emails->save(); 
-
        return redirect('/supplier')->with('success','New Supplier Added');
     }
 
