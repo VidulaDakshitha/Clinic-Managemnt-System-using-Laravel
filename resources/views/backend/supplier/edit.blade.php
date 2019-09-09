@@ -26,7 +26,8 @@
             <div class="form-group col-md-4">
                 <label for="inpuSupContact">Contact Number</label>
                 <input type="text" class="form-control" id="inpuSupContact" placeholder="Contact Number" required
-                    name="contact_number" value="{{ $supplier->suppliercontacts->first()->contact_number }}">
+                    name="contact_number" value="{{ $supplier->suppliercontacts->first()->contact_number }}"
+                    maxlength="10">
             </div>
         </div>
         <div class="form-group">
@@ -34,6 +35,7 @@
             <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St" name="address" required
                 value="{{ $supplier->location }}">
         </div>
+
         {{-- <div class=" form-group">
             <label for="inputAddress2">Address 2</label>
             <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor"
