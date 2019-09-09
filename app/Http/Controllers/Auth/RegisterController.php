@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\User;
+use App\Patient;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -28,7 +29,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/usermanager';
 
     /**
      * Create a new controller instance.
@@ -51,7 +52,11 @@ class RegisterController extends Controller
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'Nic' => ['required', 'string', 'min:10','max:12'],
+            'phone-number' => ['required', 'integer', 'min:10'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
+            
+            
         ]);
     }
 
@@ -63,10 +68,30 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
+        $user1= User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
+            'type' => 'patient',
         ]);
+        $patient=Patient::create([
+
+            'fullname' => $data['name'],
+            'gender'=>$data['Gender'],
+            'dob'=>$data['dob'],
+            'nic'=>$data['Nic'],
+            'address1'=>$data['Address1'],
+            'address2'=>$data['Address2'],
+            'city'=>$data['City'],
+            'phone'=>$data['phone-number'],
+            'email' => $data['email'],
+            'username' => $data['Username'],
+            'password' => Hash::make($data['password']),
+
+            ]);
+
+            return $user1;
     }
+
+
 }

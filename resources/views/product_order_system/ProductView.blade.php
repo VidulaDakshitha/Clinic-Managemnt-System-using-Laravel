@@ -1,4 +1,4 @@
-@extends('master')
+@extends('main.layout.mainlayout')
 @section('content')
 
 @section('title', 'View produt')

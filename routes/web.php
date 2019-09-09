@@ -21,10 +21,10 @@ Route::get('/search', 'ProductSearchController@index');
 Route::get('/viewproduct/{id}', 'ProductSearchController@show');
 Route::get('/productshow','ProductViewController@index');
 Route::post('search','ProductSearchController@search');
-Route::get('/admindash','ProductAdminDashController@index');
+Route::get('/admindash','ProductAdminDashController@index')->middleware('auth');
 Route::post('admindash','ProductAdminDashController@search');
 Route::post('admindash_status','ProductAdminDashController@updatesatus');
-Route::get('/paitientorderdash','PaitientOrderDashController@indexpaitent');
+Route::get('/paitientorderdash','PaitientOrderDashController@indexpaitent')->middleware('auth');
 Route::post('/paitientorderdash/general','PaitientOrderDashController@searchgeneral');
 Route::post('/paitientorderdash/medical','PaitientOrderDashController@searchmedical');
 Route::post('paitientorderdash/edit','PaitientOrderDashController@showedit');
@@ -53,3 +53,32 @@ Route::get('go-to-cart','ShoppingCartController@index');
 
 
 
+Route::view('/', 'main.index');
+Route::view('/about', 'main.about');
+// Route::view('/contact', 'main.about');
+Route::view('/contact', 'main.contact');
+
+// Route::view('/search', 'PatientManagement.search');
+Route::view('/registerp', 'auth.registerp');
+Route::view('/dashboard', 'PatientManagement.patientDashboard');
+//Route::view('/show', 'PatientManagement.showDoc');
+Auth::routes();
+
+Route::get('/usermanager', 'UserTypeController@manage');
+Route::resource('supplier', 'SupplierManagerController')->middleware('auth_supp');
+
+// for patients dashboard
+Route::resource('patient', 'PatientDashboardController');
+// to search doctor
+//Route::resource('search', 'SearchController');
+// to display user profile
+Route::resource('userProfile', 'UserProfileController');
+
+// to display doctor
+Route::post('showdoctor','ShowDoctorController@search');
+
+// to delete a user
+Route::delete('/userdelete/{id}', 'UserProfileController@destroy');
+
+
+;

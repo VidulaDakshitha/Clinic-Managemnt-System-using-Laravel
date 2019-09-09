@@ -1,9 +1,10 @@
-@extends('master')
+@extends('main.layout.mainlayout')
 @section('content')
 
 @section('title', 'Patient Order Dashbord')
 
 <div class="container-fluid">
+
     <br>
     <h3>Order History</h3>
 

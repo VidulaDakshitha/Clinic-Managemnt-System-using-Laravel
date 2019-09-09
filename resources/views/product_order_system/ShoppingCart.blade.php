@@ -1,4 +1,4 @@
-@extends('master')
+@extends('main.layout.mainlayout')
 @section('content')
 
 @section('title', 'Shopping Cart')
@@ -97,7 +97,7 @@
                             <br>
                     </div>
                     <form method="POST" action="">
-                        
+
                     </form>
                       <a href="#" class="btn btn-primary">Check out</a>
                     </div>

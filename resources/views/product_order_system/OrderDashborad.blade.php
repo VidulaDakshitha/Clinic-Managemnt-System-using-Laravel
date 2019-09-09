@@ -1,4 +1,4 @@
-@extends('master')
+@extends('main.layout.mainlayout')
 @section('content')
 
 @section('title', 'Order Dashboard')
@@ -6,6 +6,7 @@
 <div class="container-fluid">
 
 <br>
+
 
 @if(count($errors)>0)
 <div class="alert alert-danger" id="messge_sucess1" role="alert">
