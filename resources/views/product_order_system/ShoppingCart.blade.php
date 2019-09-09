@@ -10,12 +10,12 @@
 
 <div class=" center text-center row d-flex">
 
-    <div class="col-8">
+    <div class="col-8" style="height: 400px;">
             <table class=" table table-hover table-striped" style=" margin-left: 0%">
                     <thead>
                       <tr>
                             <th scope="col">id</th>
-                            <th scope="col">Product</th>
+                            <th scope="col" style="width: 200px;">Product</th>
                             <th scope="col">Unit price</th>
                             <th scope="col">Discription</th>
                             <th scope="col">Brand</th>
@@ -32,7 +32,7 @@
                             <td>{{$product['item']['product_id']}}</td>
                             <td >
 
-                                                        <img  src="../public/product_images/{{$product['item']['product_image']}}" class="product_image" alt="" style="width: 10%;
+                                                        <img  src="../public/product_images/{{$product['item']['image']}}" class="product_image" alt="" style="width: 10%;
                                                         box-shadow: 0px 0px 0 5px #f0f0f0;">
 
 

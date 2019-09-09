@@ -5,11 +5,11 @@
 
         <div class="container-fluid">
         <!-- Search bar -->
-        <a href="search">
+        <a href="search-product">
         <h2 class="display-4 text-center" style="text-decoration: none; color: black;">Search Product</h2>
         </a>
          <div class="searchBar">
-         <form action="search" method="POST">
+         <form action="search-product" method="POST">
                 {{ csrf_field() }}
                     <div class="input-group mb-3" style="box-shadow: 1px 2px 8px silver; ">
                             <input type="text" name="productsearchtxt" class="form-control" placeholder="Search hear..." aria-label="Recipient's username" aria-describedby="basic-addon2" style="
