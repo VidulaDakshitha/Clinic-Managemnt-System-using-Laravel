@@ -37,7 +37,9 @@ class CreateProductsTable extends Migration
                     'potency' => 'Potent',
                     'expiry_date' => now(),
                     'type' => 'Product Type '.$i,
-                    'image' => 'image_path/goes_here.jpg'
+                    'brand'=>'Brand',
+                    'description'=>'Discription',
+                    'image' => 'image'.$i.'.jpg'
                 )
             );
         }

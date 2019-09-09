@@ -8,7 +8,7 @@
             <div class="col-5">
                 <div>
                     <!--Product image-->
-                     <img  src="../product_images/{{$product['product_image']}}" class="product_image" alt="" style="width: 100%;
+                     <img  src="../product_images/{{$product['image']}}" class="product_image" alt="" style="width: 100%;
                      box-shadow: 0px 0px 0 5px #f0f0f0;">
 
                 </div>
@@ -28,7 +28,7 @@
                             </div>
                     </div>
 
-                    <div class="col-5 d-flex" style="padding-left: 0;position: fixed;">
+                    <div class="col-5 d-flex" style="padding-left: 0;">
 
                             <button type="button" class="btn btn-outline-danger" style=" margin-right: 10px; height: fit-content;" onclick="closeWin()">Cancel</button>
                     <a href="{{route('product.addToCart',['id'=>$product['product_id']]) }}" class="btn btn-primary  active" role="button" aria-pressed="true" style=" margin-right: 5px;">Add to Cart</a>

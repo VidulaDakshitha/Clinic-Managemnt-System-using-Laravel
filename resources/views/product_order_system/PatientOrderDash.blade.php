@@ -12,7 +12,7 @@
 <div class="card mb-3" id="tablebackground"style="left: 5%;width: 90%;padding: 10px;margin: 15px;border-radius: 10px;box-shadow: 0 0 9px 0px #b1aeae;">
     <div class="card-header">
           <i class="fas fa-table"></i>
-          <a href="../paitientorderdash">
+          <a href="paitientorderdash">
           <p class="h4"> General Order details </p>
           </a>
     </div>
@@ -28,7 +28,7 @@
                 <div class="col-sm-12 col-md-6">
                     <div id="dataTable_filter" class="dataTables_filter ">
                         <br>
-                            <form action="paitientorderdash/general" method="POST">
+                            <form action="paitientorderdash" method="POST">
                                     {{ csrf_field() }}
                                     <div class="form-row align-items-center">
                                             <div class="col-auto my-1">
@@ -167,7 +167,7 @@
 <!--General item order-->
     <div class="card-header">
           <i class="fas fa-table"></i>
-          <a href="../paitientorderdash">
+          <a href="paitientorderdash">
           <p class="h4"> Medical Item Order details </p>
           </a>
     </div>
@@ -182,7 +182,7 @@
                 <div class="col-sm-12 col-md-6">
                     <div id="dataTable_filter" class="dataTables_filter ">
                         <br>
-                            <form action="paitientorderdash/medical" method="POST">
+                            <form action="paitientorderdash" method="POST">
                                     {{ csrf_field() }}
                                     <div class="form-row align-items-center">
                                             <div class="col-auto my-1">
