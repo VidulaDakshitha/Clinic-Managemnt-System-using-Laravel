@@ -85,6 +85,3 @@ Route::post('showdoctor','ShowDoctorController@search');
 
 // to delete a user
 Route::delete('/userdelete/{id}', 'UserProfileController@destroy');
-
-
-;
