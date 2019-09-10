@@ -31,7 +31,9 @@
 
                             @if(Session::has('cart'))
                                  @foreach ($products as $product )
-                                 <tr>
+
+                     @if($product['qty']!=0)
+                        <tr>
                             <td>{{$product['item']['product_id']}}</td>
                             <td >
 
@@ -56,11 +58,22 @@
                             </td>
                             <td>
                                     <div class="btn-group">
-                                            <a class="btn btn-primary" href="{{route('product.reducedbyone',['id'=>$product['item']['product_id']])}}" role="button">Link</a>
+                                            <a class="btn btn-outline-danger" href="{{route('product.reducedbyone',['id'=>$product['item']['product_id']])}}" role="button">Remove item by 1</a>
                                     </div>
                             </td>
 
                         </tr>
+                    @else
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+
+                    @endif
                                  @endforeach
 
                             @else
