@@ -135,7 +135,14 @@
                                         <form method="POST" action="">
 
                                         </form>
+
+                                        @if($product['qty']!=0)
                                         <a href="{{route('product-chek-out')}}" class="btn btn-primary">Check out</a>
+                                        @else
+                                        <div class="alert alert-warning" role="alert">
+                                            Opps!! You'r cart is empty!
+                                          </div>
+                                        @endif
                                 </div>
                         </div>
 

@@ -52,16 +52,19 @@
                             </div>
                     </div>
 
-                    <div class="col-5 d-flex" style="padding-left: 0;">
+                   @if ($product['quantity']>0)
 
+
+                    <div class="col-5 d-flex" style="padding-left: 0;">
                             <button type="button" class="btn btn-outline-danger" style=" margin-right: 10px; height: fit-content;" onclick="closeWin()">Cancel</button>
                             <a href="{{route('product.addToCart',['id'=>$product['product_id']])}}" class="btn btn-primary  active" role="button" aria-pressed="true" style=" margin-right: 5px;">Add to Cart</a>
-
-
-
                     </div>
+                    @else
+                    <div class="col-5 d-flex " style="padding-left:0;">
+                        <button type="button" class="btn btn-outline-danger" style=" margin-right: 10px; height: fit-content;" onclick="closeWin()">Back to Search</button>
+                   </div>
 
-
+                    @endif
 
             </div>
 
