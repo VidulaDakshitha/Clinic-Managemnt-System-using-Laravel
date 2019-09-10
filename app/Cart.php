@@ -33,4 +33,15 @@ class Cart
         $this->totalQty++;
         $this->totalPrice+=$item->selling_price;
     }
+
+    public function removeitembyone($id){
+        $this->items[$id]['qty']--;
+        $this->items[$id]['price']-= $this->items[$id]['item']['selling_price'];
+        $this->totalQty--;
+        $this->totalPrice-=$this->items[$id]['item']['selling_price'];
+    }
+
+
+
+
 }

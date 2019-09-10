@@ -31,24 +31,30 @@ Route::post('paitientorderdash/edit','PaitientOrderDashController@showedit');
 Route::post('paitientorderdash/updateorder','PaitientOrderDashController@updates');
 Route::resource('paitintorder','PaitientOrderDashController');
 Route::get('/user-prescriptions','PaitientPrescriptionsController@index');
-
-
-
-
 Route::get('/add-to-cart/{id}',[
     'uses'=>'ProductController@getAddToCart',
     'as'=>'product.addToCart'
 ]);
 
-
+Route::get('/reduce-product/{id}',[
+    'uses'=>'ProductController@getReduceByone',
+    'as'=>'product.reducedbyone'
+]);
 //Route::get('show-cart','ProductController@getCart');
-
 Route::get('/show-cart',[
     'uses'=>'ProductController@getCart',
     'as'=>'product.show-cart'
 ]);
-
+Route::get('/getcheckout',[
+    'uses'=>'ProductController@getcheckout',
+    'as'=>'product-chek-out'
+]);
 Route::get('go-to-cart','ShoppingCartController@index');
+
+
+
+
+
 
 
 

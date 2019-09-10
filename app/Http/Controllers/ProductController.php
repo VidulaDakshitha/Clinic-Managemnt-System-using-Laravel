@@ -19,13 +19,14 @@ class ProductController extends Controller
 
         $request->session()->put('cart', $cart);
         //dd( $request->session()->get('cart'));
-        return redirect('/search');
+        return redirect('/search-product');
     }
 
     public function getCart()
     {
         if(!Session::has('cart')){
-            return view('product_order_system.ShoppingCart',['orderlist'=>null]);
+         //  return view('product_order_system.ShoppingCart',['orderlist'=>null]);
+         return redirect('/search-product');
 
         }else{
         $oldCart=Session::get('cart');
@@ -34,8 +35,37 @@ class ProductController extends Controller
        // dd($cart->items);
         return view('product_order_system.ShoppingCart',['products'=>$cart->items,'totalPrice'=>$cart->totalPrice,'totalQuntity'=>$cart->totalQty]);
 
+     }
     }
-}
+
+    public function getReduceByone($id){
+        $oldCart=Session::has('cart')? Session::get('cart'):null;
+        $cart=new Cart($oldCart);
+        $cart->removeitembyone($id);
+        Session::put('cart',$cart);
+        return redirect()->route('product.show-cart');
+
+    }
+
+
+    public function getcheckout(){
+
+        if(!Session::has('cart')){
+           // return view('product_order_system.ShoppingCart',['orderlist'=>null]);
+           return redirect('/search-product');
+
+        }else{
+            $oldCart=Session::get('cart');
+            $cart=new Cart($oldCart);
+          //  $total=$cart->totalPrice;
+           // return view('paymet',['total'=>$total]);
+
+            Session::forget('cart');
+            return redirect('/search-product');
+        }
+
+
+    }
 
 
 }

@@ -69,11 +69,7 @@
     </header>
 
     <main class="py-4">
-        <div class="row" style="right: 100px; position: absolute;">
-            <a href="show-cart" >
-                    <span class="badge"><strong>Cart:</strong> {{Session::has('cart')? Session::get('cart')->totalQty:''}} </span>
-            </a>
-        </div>
+
             {{-- container for showing the error and success messages --}}
             <div class="container">
                 @if(count($errors)>0)

@@ -3,7 +3,16 @@
 
 @section('title', 'Product Search')
 
+
         <div class="container-fluid">
+        <!--cart-->
+        <div class="ordersystem-cart">
+                <a href="show-cart" >
+                    <img src="assets/image/product-cart.png" alt="" style=" width: 26%;">
+                        <span class="badge"><strong style="color: #66bb22;font-size: 16px;" > Cart:</strong><div class="badge badge-primary text-wrap ordersystem-cart-itemnumber"> {{Session::has('cart')? Session::get('cart')->totalQty:''}} </div> </span>
+                </a>
+        </div>
+
         <!-- Search bar -->
         <a href="search-product">
         <h2 class="display-4 text-center" style="text-decoration: none; color: black;">Search Product</h2>

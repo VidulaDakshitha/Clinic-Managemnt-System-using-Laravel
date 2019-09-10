@@ -127,3 +127,16 @@
 .notify_cart_4{
     background-image: linear-gradient(to right top, #00eebb, #00eb9f, #00e77d, #00e255, #00dc13);
 }
+
+.ordersystem-cart{
+
+    margin-left: 90%;
+    padding: 5px;
+    right: 100px;
+}
+
+.ordersystem-cart-itemnumber{
+    font-size: 14px;
+    width: 1rem;
+    background-color: crimson;
+}

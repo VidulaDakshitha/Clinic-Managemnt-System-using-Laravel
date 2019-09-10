@@ -3,8 +3,17 @@
 
 @section('title', 'View produt')
 
+<div class="ordersystem-cart">
+        <a href="../show-cart" >
+            <img src="../assets/image/product-cart.png" alt="" style="width: 45px;margin-left: 90%;padding: 5px;right: 100px;">
+                <span class="badge"><strong style="color: #66bb22;font-size: 16px;" > Cart:</strong><div class="badge badge-primary text-wrap ordersystem-cart-itemnumber" style="
+                    font-size: 14px; width: 1rem;"> {{Session::has('cart')? Session::get('cart')->totalQty:''}} </div> </span>
+        </a>
+</div>
+</div>
 
         <div class="container d-flex product-view-style" style="margin-top: 100px; ">
+
             <div class="col-5">
                 <div>
                     <!--Product image-->

@@ -21,6 +21,7 @@
                             <th scope="col">Brand</th>
                             <th scope="col">Quntity</th>
                             <th scope="col">Price</th>
+                            <th scope="col">Action</th>
 
                       </tr>
                     </thead>
@@ -32,8 +33,7 @@
                             <td>{{$product['item']['product_id']}}</td>
                             <td >
 
-                                                        <img  src="../public/product_images/{{$product['item']['image']}}" class="product_image" alt="" style="width: 10%;
-                                                        box-shadow: 0px 0px 0 5px #f0f0f0;">
+                                                        <img  src="../public/product_images/{{$product['item']['image']}}" class="product_image" alt="" style="width: 50px; height: 80px; box-shadow: 0px 0px 0 5px #f0f0f0;">
 
 
                             </td>
@@ -52,6 +52,12 @@
                             <td>
                                    Rs: {{$product['price']}}
                             </td>
+                            <td>
+                                    <div class="btn-group">
+                                            <a class="btn btn-primary" href="{{route('product.reducedbyone',['id'=>$product['item']['product_id']])}}" role="button">Link</a>
+                                    </div>
+                            </td>
+
                         </tr>
                                  @endforeach
 
@@ -99,7 +105,7 @@
                     <form method="POST" action="">
 
                     </form>
-                      <a href="#" class="btn btn-primary">Check out</a>
+                <a href="{{route('product-chek-out')}}" class="btn btn-primary">Check out</a>
                     </div>
         </div>
 
