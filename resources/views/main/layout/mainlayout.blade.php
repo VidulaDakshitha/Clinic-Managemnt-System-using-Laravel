@@ -27,7 +27,7 @@
 
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
     <!-- Style Sheed-->
-    <link rel="stylesheet" type="text/css" href="css/order_system_css/orderStylesheet.css">
+
     <script type="text/javascript" src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
     <!--char js-->
     <style type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.css "></style>

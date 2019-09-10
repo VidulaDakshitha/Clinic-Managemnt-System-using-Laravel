@@ -1,13 +1,16 @@
-@extends('main.layout.mainlayout')
+{{-- add a custom css file just for this page --}}
+<?php  $styles=['css/order_system_css/orderStylesheet.css']; ?>
+@extends('main.layout.mainlayout', compact('styles'))
+
 @section('content')
 
 @section('title', 'View produt')
 
 <div class="ordersystem-cart">
         <a href="../show-cart" >
-            <img src="../assets/image/product-cart.png" alt="" style="width: 45px;margin-left: 90%;padding: 5px;right: 100px;">
+            <img src="../assets/image/product-cart.png" alt="" style="width: 45px; padding: 5px;right: 100px;">
                 <span class="badge"><strong style="color: #66bb22;font-size: 16px;" > Cart:</strong><div class="badge badge-primary text-wrap ordersystem-cart-itemnumber" style="
-                    font-size: 14px; width: 1rem;"> {{Session::has('cart')? Session::get('cart')->totalQty:''}} </div> </span>
+                    font-size: 14px; width: 1rem;">{{Session::has('cart')? Session::get('cart')->totalQty:''}}</div> </span>
         </a>
 </div>
 </div>
@@ -31,7 +34,8 @@
                     <p>by<strong>{{$product['brand']}}</strong></p>
 
                     <div class="input-group mb-3 quntity_input" >
-                   <input  type="number" min="1" max="{{$product['quantity']}}"  class="form-control" placeholder="enter quntity.." aria-label="Recipient's username" aria-describedby="basic-addon2" >
+                   <input  type="number" min="1" max="{{$product['quantity']}}"  class="form-control" placeholder="enter quntity.." aria-label="Recipient's username" aria-describedby="basic-addon2"style="
+                   width: 85px;" >
                             <div class="input-group-append">
                               <span class="input-group-text" id="basic-addon2">available : {{$product['quantity']}}</span>
                             </div>
@@ -40,8 +44,8 @@
                     <div class="col-5 d-flex" style="padding-left: 0;">
 
                             <button type="button" class="btn btn-outline-danger" style=" margin-right: 10px; height: fit-content;" onclick="closeWin()">Cancel</button>
-                    <a href="{{route('product.addToCart',['id'=>$product['product_id']]) }}" class="btn btn-primary  active" role="button" aria-pressed="true" style=" margin-right: 5px;">Add to Cart</a>
-                            <button type="button" class="btn btn-outline-success" style="margin-right: 10px; height: fit-content;">Buy This   </button>
+                            <a href="{{route('product.addToCart',['id'=>$product['product_id']]) }}" class="btn btn-primary  active" role="button" aria-pressed="true" style=" margin-right: 5px;">Add to Cart</a>
+
 
 
                     </div>

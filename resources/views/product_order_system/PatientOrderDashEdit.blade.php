@@ -1,4 +1,8 @@
-@extends('main.layout.mainlayout')
+{{-- add a custom css file just for this page --}}
+<?php  $styles=['css/order_system_css/orderStylesheet.css']; ?>
+@extends('main.layout.mainlayout', compact('$styles'))
+
+
 @section('content')
 
 @section('title', 'Edit Order')

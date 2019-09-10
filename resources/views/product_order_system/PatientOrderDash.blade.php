@@ -1,7 +1,12 @@
-@extends('main.layout.mainlayout')
-@section('content')
+{{-- add a custom css file just for this page --}}
+<?php  $styles=['css/order_system_css/orderStylesheet.css']; ?>
+
+@extends('main.layout.mainlayout', compact('$styles'));
 
 @section('title', 'Patient Order Dashbord')
+@section('content')
+
+
 
 <div class="container-fluid">
 
