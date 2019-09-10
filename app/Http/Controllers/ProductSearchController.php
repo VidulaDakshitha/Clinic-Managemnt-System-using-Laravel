@@ -74,7 +74,7 @@ class ProductSearchController extends Controller
     public function show($id)
     {
         $product=Product::find($id);
-        return view('product_order_system.ProductView',compact('product','product_id'));
+        return view('product_order_system.ProductView',compact('product'));
     }
 
 
