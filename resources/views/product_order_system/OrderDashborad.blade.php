@@ -1,6 +1,19 @@
+{{-- add a custom javascript file from a CDN --}}
+
+<?php  $javascript_cdn=['https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.bundle.min.js',
+					    'https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js',
+                        'https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js']; ?>
+
+<?php  $css_cdn=['https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.css']; ?>
+{{-- add a custom javascript file from the public folder --}}
+
+<?php  $javascript_local=['js/order_management_script.js']; ?>
+
 {{-- add a custom css file just for this page --}}
 <?php  $styles=['css/order_system_css/orderStylesheet.css']; ?>
-@extends('main.layout.mainlayout', compact('styles'));
+
+
+@extends('main.layout.mainlayout', compact('styles', 'css_cdn', 'javascript_local', 'javascript_cdn'));
 
 @section('title', 'Order Dashboard')
 @section('content')
@@ -110,7 +123,8 @@
             labels: ['shiped', 'waitting','packed' ],
             datasets: [{
                 label: 'Order Shiped Informaintion',
-                data: [shiped, witing,ready],
+              data: [shiped, witing,ready],
+              //  data: [10, 20,30],
                 backgroundColor: [
                     'rgba(255, 99, 132, 0.9)',
                     'rgba(54, 162, 235, 0.9)',
@@ -240,7 +254,7 @@
                         <td> <form action="admindash_status" method="POST" >
                             <div class="input-group">
                             <div class="badge btn-warning text-wrap" style="width: 6rem;">
-                                        Current Status : {{$orderrow->status}}
+                                       <p> {{$orderrow->status}} </p>
                             </div>
                                 {{ csrf_field() }}
                                 <input type="text" name="order_id" value="{{$orderrow->order_id}}" hidden>

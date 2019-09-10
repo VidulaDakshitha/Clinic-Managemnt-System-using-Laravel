@@ -13,6 +13,44 @@
 
 
 
+
+
+
+
+
+
+
+
+
+Route::view('/', 'main.index');
+Route::view('/about', 'main.about');
+Route::view('/contact', 'main.about');
+Route::view('/contact', 'main.contact');
+
+Route::view('/search', 'PatientManagement.search');
+Route::view('/registerp', 'auth.registerp');
+Route::view('/dashboard', 'PatientManagement.patientDashboard');
+Route::view('/show', 'PatientManagement.showDoc');
+Auth::routes();
+
+Route::get('/usermanager', 'UserTypeController@manage');
+Route::resource('supplier', 'SupplierManagerController')->middleware('auth_supp');
+
+// for patients dashboard
+Route::resource('patient', 'PatientDashboardController');
+// to search doctor
+//Route::resource('search', 'SearchController');
+
+// to display doctor
+Route::post('showdoctor','ShowDoctorController@search');
+
+// to delete a user
+Route::delete('/userdelete/{id}', 'UserProfileController@destroy');
+
+
+
+//order managemet system
+
 Route::get('/shoppingcart', function () {
     return view('product_order_system.ShoppingCart');
 });
@@ -49,37 +87,6 @@ Route::get('/getcheckout',[
     'uses'=>'ProductController@getcheckout',
     'as'=>'product-chek-out'
 ]);
+
 Route::get('go-to-cart','ShoppingCartController@index');
 
-
-
-
-
-
-
-
-
-Route::view('/', 'main.index');
-Route::view('/about', 'main.about');
-Route::view('/contact', 'main.about');
-Route::view('/contact', 'main.contact');
-
-Route::view('/search', 'PatientManagement.search');
-Route::view('/registerp', 'auth.registerp');
-Route::view('/dashboard', 'PatientManagement.patientDashboard');
-Route::view('/show', 'PatientManagement.showDoc');
-Auth::routes();
-
-Route::get('/usermanager', 'UserTypeController@manage');
-Route::resource('supplier', 'SupplierManagerController')->middleware('auth_supp');
-
-// for patients dashboard
-Route::resource('patient', 'PatientDashboardController');
-// to search doctor
-//Route::resource('search', 'SearchController');
-
-// to display doctor
-Route::post('showdoctor','ShowDoctorController@search');
-
-// to delete a user
-Route::delete('/userdelete/{id}', 'UserProfileController@destroy');

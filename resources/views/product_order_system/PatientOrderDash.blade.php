@@ -1,7 +1,13 @@
 {{-- add a custom css file just for this page --}}
 <?php  $styles=['css/order_system_css/orderStylesheet.css']; ?>
+{{-- add a custom javascript file from the public folder --}}
+<?php  $javascript_local=['js/order_management_script.js']; ?>
+{{-- CDN Styles and JavaScripts --}}
+<?php  $javascript_cdn=[]; ?>
+{{-- add a custom css file from CDN --}}
+<?php  $css_cdn=[];?>
 
-@extends('main.layout.mainlayout', compact('$styles'));
+@extends('main.layout.mainlayout', compact('styles', 'css_cdn', 'javascript_local', 'javascript_cdn'));
 
 @section('title', 'Patient Order Dashbord')
 @section('content')
@@ -141,7 +147,7 @@
                                       <input type="text" value="{{$orderrow->quantity}}" name="product_quntity_send" hidden>
                                       <input type="text" value="{{$orderrow->total_payment}}" name="order_totapayment_send" hidden>
 
-                                    <input type="text" value="1" name="paitent_id_send" hidden>
+                                <input type="text" value="{{Auth::user()->id}}" name="paitent_id_send" hidden>
 
                                   <button type="button" class="btn btn-warning">Print</button>
                                   <button type="submit" class="btn btn-primary">Edit</button>

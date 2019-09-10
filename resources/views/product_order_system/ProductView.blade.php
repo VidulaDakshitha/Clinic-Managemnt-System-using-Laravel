@@ -1,6 +1,13 @@
 {{-- add a custom css file just for this page --}}
 <?php  $styles=['css/order_system_css/orderStylesheet.css']; ?>
-@extends('main.layout.mainlayout', compact('styles'))
+{{-- add a custom javascript file from the public folder --}}
+<?php  $javascript_local=['js/order_management_script.js','js/jquery-3.4.1.js']; ?>
+{{-- CDN Styles and JavaScripts --}}
+<?php  $javascript_cdn=[]; ?>
+{{-- add a custom css file from CDN --}}
+<?php  $css_cdn=[];?>
+
+@extends('main.layout.mainlayout', compact('styles', 'css_cdn', 'javascript_local', 'javascript_cdn'));
 
 @section('content')
 
@@ -34,8 +41,12 @@
                     <p>by<strong>{{$product['brand']}}</strong></p>
 
                     <div class="input-group mb-3 quntity_input" >
-                   <input  type="number" min="1" max="{{$product['quantity']}}"  class="form-control" placeholder="enter quntity.." aria-label="Recipient's username" aria-describedby="basic-addon2"style="
-                   width: 85px;" >
+
+
+                   <input  type="text" name="quntitytxt" min="1" max="{{$product['quantity']}}" value="item added by 1" class="form-control" placeholder="enter quntity.." aria-label="Recipient's username" aria-describedby="basic-addon2"style="
+                   width: 85px;" readonly >
+
+                   <input name="productidget" type="text" value="{{$product['product_id']}}" hidden>
                             <div class="input-group-append">
                               <span class="input-group-text" id="basic-addon2">available : {{$product['quantity']}}</span>
                             </div>
@@ -44,7 +55,7 @@
                     <div class="col-5 d-flex" style="padding-left: 0;">
 
                             <button type="button" class="btn btn-outline-danger" style=" margin-right: 10px; height: fit-content;" onclick="closeWin()">Cancel</button>
-                            <a href="{{route('product.addToCart',['id'=>$product['product_id']]) }}" class="btn btn-primary  active" role="button" aria-pressed="true" style=" margin-right: 5px;">Add to Cart</a>
+                            <a href="{{route('product.addToCart',['id'=>$product['product_id']])}}" class="btn btn-primary  active" role="button" aria-pressed="true" style=" margin-right: 5px;">Add to Cart</a>
 
 
 

@@ -1,6 +1,13 @@
 {{-- add a custom css file just for this page --}}
 <?php  $styles=['css/order_system_css/orderStylesheet.css']; ?>
-@extends('main.layout.mainlayout', compact('$styles'))
+{{-- add a custom javascript file from the public folder --}}
+<?php  $javascript_local=['js/order_management_script.js','js/jquery-3.4.1.js']; ?>
+{{-- CDN Styles and JavaScripts --}}
+<?php  $javascript_cdn=[]; ?>
+{{-- add a custom css file from CDN --}}
+<?php  $css_cdn=['https://fonts.googleapis.com/css?family=Nunito:200,600'];?>
+
+@extends('main.layout.mainlayout', compact('styles', 'css_cdn', 'javascript_local', 'javascript_cdn'));
 
 
 @section('content')

@@ -1,6 +1,13 @@
 {{-- add a custom css file just for this page --}}
 <?php  $styles=['css/order_system_css/orderStylesheet.css']; ?>
-@extends('main.layout.mainlayout', compact('styles'))
+{{-- add a custom javascript file from the public folder --}}
+<?php  $javascript_local=['js/order_management_script.js','js/jquery-3.4.1.js']; ?>
+{{-- CDN Styles and JavaScripts --}}
+<?php  $javascript_cdn=[]; ?>
+{{-- add a custom css file from CDN --}}
+<?php  $css_cdn=[];?>
+
+@extends('main.layout.mainlayout', compact('styles', 'css_cdn', 'javascript_local', 'javascript_cdn'));
 
 @section('content')
 
@@ -81,9 +88,16 @@
           <img src="product_images/{{$productrow->image}}" class="card-img-top" alt="...">
           <div class="card-body" style="color: #302f2f;">
             <h5 class="card-title" id="prodcut-name">{{$productrow->name}}</h5>
-            <h3 class="card-title" id="prodcut-price"><strong> {{$productrow->selling_price}}</strong></h3>
+            <h3 class="card-title" id="prodcut-price">Rs : <strong> {{$productrow->selling_price}}</strong></h3>
             <p class="card-text" id="prodcut-description">{{$productrow->description}}</p>
             <p class="card-text" id="prodcut-brandname">by <strong> {{$productrow->brand}}</strong></p>
+
+            @if ($productrow->quantity==0)
+            <div class="alert alert-warning" role="alert">
+                Product out of stock :(
+              </div>
+
+            @endif
 
           </div>
         </div>

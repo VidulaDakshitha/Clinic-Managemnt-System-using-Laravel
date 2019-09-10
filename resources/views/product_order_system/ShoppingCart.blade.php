@@ -1,6 +1,15 @@
 {{-- add a custom css file just for this page --}}
 <?php  $styles=['css/order_system_css/orderStylesheet.css']; ?>
-@extends('main.layout.mainlayout', compact('styles'));
+{{-- add a custom javascript file from the public folder --}}
+<?php  $javascript_local=['js/order_management_script.js','js/jquery-3.4.1.js']; ?>
+
+{{-- CDN Styles and JavaScripts --}}
+{{-- add a custom css file from CDN --}}
+<?php  $css_cdn=['https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css']; ?>
+{{-- add a custom javascript file from a CDN --}}
+<?php  $javascript_cdn=['http://code.jquery.com/jquery-1.8.3.min.js','https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js']; ?>
+
+@extends('main.layout.mainlayout', compact('styles', 'css_cdn', 'javascript_local', 'javascript_cdn'));
 @section('content')
 
 @section('title', 'Shopping Cart')
@@ -12,8 +21,8 @@
 
         <div class=" center text-center row d-flex">
 
-                <div class="col-8" style="height: 400px;">
-                        <table class=" table table-hover table-striped" style=" margin-left: 0%">
+                <div class="col-8" style="height: 400px; overflow-x:auto;  ">
+                        <table class=" table table-hover table-striped" style=" margin-left: 0% overflow-x:auto;">
                                 <thead>
                                         <tr>
                                                 <th scope="col">id</th>
@@ -40,7 +49,7 @@
                                                         <img src="{{ asset('product_images/'.$product['item']['image']) }}"
                                                                 class="product_image" alt=""
                                                                 style="width: 50px; height: 80px; box-shadow: 0px 0px 0 5px #f0f0f0;">
-
+                                                        <h6>{{$product['item']['name']}}</h6>
 
                                                 </td>
                                                 <td>
