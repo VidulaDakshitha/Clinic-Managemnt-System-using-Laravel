@@ -12,7 +12,7 @@
     <ul class="main-menu">
         <li class="{{ (Request::is('/') ? 'active' : '') }}"><a href="/">Home</a></li>
         <li class="{{ (Request::is('/about') ? 'active' : '') }}"><a href="/about">About</a></li>
-        <li class="{{ (Request::is('/users') ? 'active' : '') }}"><a href="/contact">Service</a></li>
+        <li class="{{ (Request::is('/search-product') ? 'active' : '') }}"><a href="/search-product">Shop</a></li>
         <li class="{{ (Request::is('/users') ? 'active' : '') }}"><a href="/contact">Contact</a></li>
         <!-- <li><a href="elements.html"><i class="flaticon-020-decay"></i></a></li> -->
         @auth
