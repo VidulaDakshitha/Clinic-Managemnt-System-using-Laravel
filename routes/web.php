@@ -77,8 +77,6 @@ Route::resource('supplier', 'SupplierManagerController')->middleware('auth_supp'
 Route::resource('patient', 'PatientDashboardController');
 // to search doctor
 //Route::resource('search', 'SearchController');
-// to display user profile
-Route::resource('userProfile', 'UserProfileController');
 
 // to display doctor
 Route::post('showdoctor','ShowDoctorController@search');

@@ -24,7 +24,7 @@
             </a>
           </li>
           <li class="nav-item ">
-          <a class="nav-link" href="/userProfile/{{ Auth::user()->id }}/edit">
+          <a class="nav-link" href="/patient/{{ $research->patient_id }}/edit">
               <i class="material-icons">person</i>
               <p>User Profile</p>
             </a>
