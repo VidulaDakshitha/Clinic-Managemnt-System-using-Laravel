@@ -1,7 +1,17 @@
-{{-- add a custom css file just for this page --}}
+{{-- Styles and JavaScripts from the public folder --}}
+{{-- add a custom css file from the public folder, just for this page --}}
 <?php  $styles=['css/main/login/login.css']; ?>
+{{-- add a custom javascript file from the public folder --}}
+<?php  $javascript_local=[]; ?>
 
-@extends('main.layout.mainlayout', compact('styles'));
+
+{{-- CDN Styles and JavaScripts --}}
+{{-- add a custom css file from CDN --}}
+<?php  $css_cdn=[]; ?>
+{{-- add a custom javascript file from a CDN --}}
+<?php  $javascript_cdn=[]; ?>
+
+@extends('main.layout.mainlayout', compact('styles', 'css_cdn', 'javascript_local', 'javascript_cdn'));
 
 @section('title', 'Login')
 
