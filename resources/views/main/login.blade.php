@@ -1,17 +1,14 @@
-{{-- Styles and JavaScripts from the public folder --}}
-{{-- add a custom css file from the public folder, just for this page --}}
-<?php  $styles=['css/main/login/login.css']; ?>
-{{-- add a custom javascript file from the public folder --}}
-<?php  $javascript_local=[]; ?>
+@extends('main.layout.mainlayout');
 
+{{-- all your css styles go in here --}}
+@section('styles')
+<link rel="stylesheet" href="{{ asset('css/main/login/login.css') }}">
+@endsection
 
-{{-- CDN Styles and JavaScripts --}}
-{{-- add a custom css file from CDN --}}
-<?php  $css_cdn=[]; ?>
-{{-- add a custom javascript file from a CDN --}}
-<?php  $javascript_cdn=[]; ?>
-
-@extends('main.layout.mainlayout', compact('styles', 'css_cdn', 'javascript_local', 'javascript_cdn'));
+{{-- all your js scripts go in here --}}
+@section('js')
+<script src="{{ asset('js/main/login/test.js') }}"></script>
+@endsection
 
 @section('title', 'Login')
 

@@ -22,26 +22,7 @@
     <link rel="stylesheet" href="{{ asset('css/main/mainlayout/style.css') }}" />
     <link rel="stylesheet" href="{{ asset('css/main/mainlayout/animate.css') }}" />
 
-    {{-- <link href="{{ asset('css/registerCSS/style.css') }}" rel="stylesheet" type="text/css" > --}}
-    <!-- Fonts -->
-
-
-
-
-
-    @if (isset($styles) && count($styles)>0)
-    <!-- adding styles from the local public folder -->
-    @foreach ($styles as $style)
-    <link rel="stylesheet" href='{{ asset("$style") }}' />
-    @endforeach
-    @endif
-
-    @if (isset($css_cdn) && count($css_cdn)>0)
-    <!-- adding styles from a CDN -->
-    @foreach ($css_cdn as $style_cdn)
-    <link rel="stylesheet" href='{{ $style_cdn }}' />
-    @endforeach
-    @endif
+    @yield('styles')
 
 </head>
 
@@ -97,8 +78,7 @@
     <script defer src="{{ asset('js/main/mainlayout/main.js') }}"></script>
 
     <!--selector bootstrap javascript-->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.9/dist/js/bootstrap-select.min.js"></script>
-    {{-- <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.9/dist/js/i18n/defaults-*.min.js"></script> --}}
+    {{-- <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.9/dist/js/bootstrap-select.min.js"></script> --}}
 
     <!--bootstrap javascript-->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
@@ -111,19 +91,8 @@
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
     </script>
 
-    @if (isset($javascript_local) && count($javascript_local)>0)
-    <!-- adding local js script of the current page -->
-    @foreach ($javascript_local as $js_local)
-    <script defer src="{{ asset($js_local) }}"></script>
-    @endforeach
-    @endif
+    @yield('js')
 
-    @if (isset($javascript_cdn) && count($javascript_cdn)>0)
-    <!-- adding js from a cdn script of the current page -->
-    @foreach ($javascript_cdn as $js_cdn)
-    <script src="{{ asset($js_cdn) }}"></script>
-    @endforeach
-    @endif
 </body>
 
 </html>
