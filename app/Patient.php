@@ -49,4 +49,7 @@ class Patient extends Authenticatable
     {
         return $this->hasOne('App\PersonalRecord');
     }
+
+
+
 }

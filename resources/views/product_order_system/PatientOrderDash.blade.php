@@ -1,13 +1,18 @@
-{{-- add a custom css file just for this page --}}
-<?php  $styles=['css/order_system_css/orderStylesheet.css']; ?>
-{{-- add a custom javascript file from the public folder --}}
-<?php  $javascript_local=['js/order_management_script.js']; ?>
-{{-- CDN Styles and JavaScripts --}}
-<?php  $javascript_cdn=[]; ?>
-{{-- add a custom css file from CDN --}}
-<?php  $css_cdn=[];?>
 
-@extends('main.layout.mainlayout', compact('styles', 'css_cdn', 'javascript_local', 'javascript_cdn'));
+
+@extends('main.layout.mainlayout');
+
+@section('styles')
+<style type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.css "></style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
+
+<link rel="stylesheet" href="{{ asset('css/order_system_css/orderStylesheet.css') }}">
+@endsection
+
+@section('js')
+<script src="{{ asset('js/order_management_script.js') }}"></script>
+@endsection
 
 @section('title', 'Patient Order Dashbord')
 @section('content')

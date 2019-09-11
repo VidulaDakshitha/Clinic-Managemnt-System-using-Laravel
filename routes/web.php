@@ -82,11 +82,12 @@ Route::get('/reduce-product/{id}',[
 Route::get('/show-cart',[
     'uses'=>'ProductController@getCart',
     'as'=>'product.show-cart'
-]);
+])->middleware('auth');
 Route::get('/getcheckout',[
     'uses'=>'ProductController@getcheckout',
     'as'=>'product-chek-out'
 ]);
+
 
 Route::get('go-to-cart','ShoppingCartController@index');
 

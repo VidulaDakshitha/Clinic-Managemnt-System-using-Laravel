@@ -1,59 +1,82 @@
-{{-- add a custom css file just for this page --}}
-<?php  $styles=['css/order_system_css/orderStylesheet.css']; ?>
-{{-- add a custom javascript file from the public folder --}}
-<?php  $javascript_local=['js/order_management_script.js','js/jquery-3.4.1.js']; ?>
-{{-- CDN Styles and JavaScripts --}}
-<?php  $javascript_cdn=[]; ?>
-{{-- add a custom css file from CDN --}}
-<?php  $css_cdn=[];?>
 
-@extends('main.layout.mainlayout', compact('styles', 'css_cdn', 'javascript_local', 'javascript_cdn'));
+@extends('main.layout.mainlayout');
+
+@section('title', 'User Priscription');
+
+@section('styles')
+<style type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.css "></style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
+
+<link rel="stylesheet" href="{{ asset('css/order_system_css/orderStylesheet.css') }}">
+@endsection
+
+@section('js')
+<script src="{{ asset('js/order_management_script.js') }}"></script>
+@endsection
+
 @section('content')
 
-@section('title', 'User Priscription')
-
-<div class="container-fluid">
-    <!-- Search bar -->
-
-    <h2>Responsive Table with DataTables</h2>
-
-    <div class="container">
-      <div class="row">
-        <div class="col-xs-12">
-          <table summary="This table shows how to create responsive tables using Datatables' extended functionality" class="table table-bordered table-hover dt-responsive">
-            <caption class="text-center">An example of a responsive table based on <a href="" target="_blank">DataTables</a>:</caption>
-            <thead>
 
 
+<div class="container-fluid" style="width: 80%;">
+    <div class="p-3 mb-2 bg-primary rounded-top text-white"> <h6>medical item order </div>
+        <!--Search-->
+
+        <form>
+            <div class="form-row align-items-center">
+              <div class="col-sm-3 my-1">
+                <label class="sr-only" for="inlineFormInputName">Name</label>
+                <input type="text" class="form-control" id="inlineFormInputName" placeholder="Jane Doe">
+              </div>
+              <div class="col-sm-3 my-1">
+                <label class="sr-only" for="inlineFormInputGroupUsername">Username</label>
+                <div class="input-group">
+
+                  <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+                    <option selected>Choose...</option>
+                    <option value="1">One</option>
+                    <option value="2">Two</option>
+                    <option value="3">Three</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-auto my-1">
+
+              </div>
+              <div class="col-auto my-1">
+                <button type="submit" class="btn btn-primary">Submit</button>
+              </div>
+            </div>
+          </form>
 
 
-              <tr>
-              <th>Priscription id</th>
-              <th>name</th>
-              <th>description</th>
-              <th>Action</th>
 
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                    <th> </th>
-            </tr>
+          <!--table-->
+        <div class="container-fluid">
+            <table class="table table-sm table-striped table-hover table-dark">
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">First</th>
+                    <th scope="col">Last</th>
+                    <th scope="col">Handle</th>
+                  </tr>
+                </thead>
+                <tbody>
+
+                  <tr>
+                    <th scope="row">1</th>
+                    <td>Mark</td>
+                    <td>Otto</td>
+                    <td>@mdo</td>
+                  </tr>
+
+                </tbody>
+              </table>
+          </div>
 
 
-            </tbody>
-            <tfoot>
-              <tr>
-                <td colspan="5" class="text-center">Data retrieved from <a href="" target="_blank">infoplease</a> and <a href="http://www.worldometers.info/world-population/population-by-country/" target="_blank">worldometers</a>.</td>
-              </tr>
-            </tfoot>
-          </table>
-        </div>
-      </div>
-    </div>
 
 
 

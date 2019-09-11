@@ -11,7 +11,7 @@ class Doctor extends Model
     {
         return $this->hasMany('App\VisitingDay');
     }
-    
+
     // a doctor has many contact numbers
     public function doctorcontacts()
     {
@@ -23,7 +23,7 @@ class Doctor extends Model
     {
         return $this->hasMany('App\Appointment');
     }
-    
+
     // a doctor has many notices
     public function notices()
     {
@@ -35,4 +35,7 @@ class Doctor extends Model
     {
         return $this->hasMany('App\Article');
     }
+
+
+
 }
