@@ -23,4 +23,9 @@ class Product extends Model
     {
         return $this->belongsToMany('App\Supplier', 'product_supplier', 'product_id', 'supplier_id')->withTimestamps();
     }
+
+    public function prescription()
+    {
+        return $this->belongsTo(Prescription::class);
+    }
 }
