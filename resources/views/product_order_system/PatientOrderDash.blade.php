@@ -66,7 +66,7 @@
                                               </select>
                                             </div>
                                             <!--need to add user id-->
-                                             <input type="text" name="paitent_id" value="1" hidden>
+                                             <input type="text" name="paitent_id" value="{{Auth::id()}} " hidden>
                                             <div class="col-auto my-1">
                                               <button type="submit" class="btn btn-primary">Submit</button>
                                             </div>
@@ -97,7 +97,7 @@
 
               <tbody>
                 <!--loop is start-->
-             @if (count($orderDetail)<1)
+             @if (count($orderDetail)==0)
                       <td class="sorting_1">Nothing to show</td>
                          <td >Nothing to show</td>
                          <td >Nothing to show</td>
@@ -105,7 +105,7 @@
                          <td >Nothing to show</td>
                          <td >Nothing to show</td>
                          <td >Nothing to show</td>
-                         <td >Nothing to show</td>
+                         <td > </td>
              @else
                    @foreach ($orderDetail as $key=> $orderrow)-
 
@@ -152,7 +152,8 @@
                                       <input type="text" value="{{$orderrow->quantity}}" name="product_quntity_send" hidden>
                                       <input type="text" value="{{$orderrow->total_payment}}" name="order_totapayment_send" hidden>
 
-                                <input type="text" value="{{Auth::user()->id}}" name="paitent_id_send" hidden>
+                                <input type="text" value="{{Auth::id()}}" name="paitent_id_send" hidden>
+
 
                                   <button type="button" class="btn btn-warning">Print</button>
                                   <button type="submit" class="btn btn-primary">Edit</button>

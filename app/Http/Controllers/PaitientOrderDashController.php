@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Order;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class PaitientOrderDashController extends Controller
@@ -18,11 +19,12 @@ class PaitientOrderDashController extends Controller
 
     }
 
-
+//sathira
 
     public function indexpaitent(Request $request){
        // $paitent_id=$request->get('user_id);
-        $paitent_id=1;
+        $paitent_id=Auth::id();
+
         $orderDetail=DB::table('orders')
                      ->join('order_product','order_product.order_id','=','orders.order_id')
                      ->join('products','products.product_id','=','order_product.product_id')
