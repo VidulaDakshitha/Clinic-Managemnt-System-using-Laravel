@@ -90,3 +90,8 @@ Route::get('/getcheckout',[
 
 Route::get('go-to-cart','ShoppingCartController@index');
 
+
+
+//Product Management
+
+Route::get('/product', 'ProductManagementController@index');
