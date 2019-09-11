@@ -57,10 +57,10 @@
             <table class="table table-sm table-striped table-hover table-dark">
                 <thead>
                   <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">First</th>
-                    <th scope="col">Last</th>
-                    <th scope="col">Handle</th>
+                    <th scope="col">Priscription Id</th>
+                    <th scope="col">Doctorid</th>
+                    <th scope="col">Product name</th>
+                    <th scope="col">Action</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -69,7 +69,9 @@
                     <th scope="row">1</th>
                     <td>Mark</td>
                     <td>Otto</td>
-                    <td>@mdo</td>
+                    <td>
+                            <button type="button" class="rounded-pill btn btn-success ">Buy</button>
+                    </td>
                   </tr>
 
                 </tbody>
