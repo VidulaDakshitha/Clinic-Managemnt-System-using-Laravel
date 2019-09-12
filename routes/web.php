@@ -68,7 +68,9 @@ Route::post('/paitientorderdash','PaitientOrderDashController@searchmedical');
 Route::post('paitientorderdash/edit','PaitientOrderDashController@showedit');
 Route::post('paitientorderdash/updateorder','PaitientOrderDashController@updates');
 Route::resource('paitintorder','PaitientOrderDashController');
-Route::get('/user-prescriptions','PaitientPrescriptionsController@index');
+
+Route::get('/user-prescriptions','PatientPriscriptionOrderController@show')->middleware('auth');
+Route::post('/user-prescriptions','PatientPriscriptionOrderController@search');
 Route::get('/add-to-cart/{id}',[
     'uses'=>'ProductController@getAddToCart',
     'as'=>'product.addToCart'

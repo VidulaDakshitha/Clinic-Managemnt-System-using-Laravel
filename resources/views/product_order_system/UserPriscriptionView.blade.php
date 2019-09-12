@@ -20,30 +20,35 @@
 
 
 <div class="container-fluid" style="width: 80%;">
-    <div class="p-3 mb-2 bg-primary rounded-top text-white"> <h6>medical item order
+    <div class="p-3 mb-2 bg-primary rounded-top text-white"> <h6>{{auth()->user()->name}} 's medical priscriptions</h6>
    </div>
         <!--Search-->
 
-        <form>
+        <form method="POST" action="user-prescriptions">
+                {{ csrf_field() }}
             <div class="form-row align-items-center">
               <div class="col-sm-3 my-1">
-                <label class="sr-only" for="inlineFormInputName">Name</label>
-                <input type="text" class="form-control" id="inlineFormInputName" placeholder="Jane Doe">
+
+                <input type="text" class="form-control" name="searchtext" placeholder="Jane Doe">
+
               </div>
+
+              <div class="col-sm-3 my-1">
+
+                    <input type="date" class="form-control" name="searchtext" placeholder="Jane Doe">
+
+                  </div>
               <div class="col-sm-3 my-1">
                 <label class="sr-only" for="inlineFormInputGroupUsername">Username</label>
                 <div class="input-group">
-
-                  <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
-                    <option selected>Choose...</option>
-                    <option value="1">One</option>
-                    <option value="2">Two</option>
-                    <option value="3">Three</option>
+                  <select class="custom-select mr-sm-2" name="searchtype">
+                    <option value="prescriptions.id">id</option>
+                    <option value="products.name">Two</option>
+                    <option value="date">Three</option>
                   </select>
                 </div>
               </div>
               <div class="col-auto my-1">
-
               </div>
               <div class="col-auto my-1">
                 <button type="submit" class="btn btn-primary">Submit</button>
@@ -59,21 +64,25 @@
                 <thead>
                   <tr>
                     <th scope="col">Priscription Id</th>
-                    <th scope="col">Doctorid</th>
-                    <th scope="col">Product name</th>
+                    <th scope="col">Medical item name</th>
+                    <th scope="col">Unit price</th>
                     <th scope="col">Action</th>
                   </tr>
                 </thead>
                 <tbody>
 
-                  <tr>
-                    <th scope="row">1</th>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>
-                            <button type="button" class="rounded-pill btn btn-success ">Buy</button>
-                    </td>
-                  </tr>
+                        @foreach ($userspricriptions as $userspricription)
+
+
+                        <tr>
+                          <th scope="row" >{{$userspricription->id}}</th>
+                          <td>{{$userspricription->name}}</td>
+                          <td>{{$userspricription->selling_price}}</td>
+                          <td>
+                                  <button type="button" class="rounded-pill btn btn-success ">Buy</button>
+                          </td>
+                        </tr>
+                  @endforeach
 
                 </tbody>
               </table>
