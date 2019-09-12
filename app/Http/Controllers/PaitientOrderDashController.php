@@ -205,9 +205,12 @@ class PaitientOrderDashController extends Controller
 
         $order_id=$request->get('orderid');
         $product_id=$request->get('product_id');
-        $newQuntity=$request->get('quntity');
+        $newQuntity=$request->get('newquntity');
+        $oldQuntity=$request->get('oldquntity');
 
-
+        //need to update paymet informaion for new quntity
+        //need to send order id,new and old quntity deference
+        //heare...
 
 
         DB::table('order_product')
@@ -228,11 +231,20 @@ class PaitientOrderDashController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request, $id)
     {
+       $deleteQuntity =$request->get('deleteqty');
+
+
+       DB::table('products')
+       ->where('product_id',$id)
+       ->increment('quantity', $deleteQuntity );
+
        $paitent_order=Order::find($id);
        $paitent_order->delete();
-       return redirect('paitientorderdash');
+       return redirect('paitientorderdash')->with('delete_product','Order deleted successfully');
+
+       //need to send
 
     }
 }

@@ -55,7 +55,7 @@
                             @if (($paitint_order[6])=='waiting')
 
                                   <label for="inputZip">Quntity</label>
-                          <input type="number" class="form-control"  min="1" value="{{$paitint_order[7]}}" name="quntity"  >
+                          <input type="number" class="form-control"  min="1" value="{{$paitint_order[7]}}" name="newquntity"  >
 
 
                             @else
@@ -74,7 +74,8 @@
                             <label for="inputZip">Total Pyament</label>
                             <input type="text" class="form-control" value="{{$paitint_order[8]}}" name="totalpaymet" disabled>
                           </div>
-
+                          <!--pass old--qunrirt-->
+                          <input type="text" name="oldquntity" value="{{$paitint_order[7]}}" hidden>
 
                         </div>
 

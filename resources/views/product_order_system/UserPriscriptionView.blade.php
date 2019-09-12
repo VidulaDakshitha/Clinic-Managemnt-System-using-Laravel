@@ -20,7 +20,8 @@
 
 
 <div class="container-fluid" style="width: 80%;">
-    <div class="p-3 mb-2 bg-primary rounded-top text-white"> <h6>medical item order </div>
+    <div class="p-3 mb-2 bg-primary rounded-top text-white"> <h6>medical item order
+   </div>
         <!--Search-->
 
         <form>

@@ -30,6 +30,31 @@
     </a>
   </div>
 
+<!--show error and sucessfull msg-->
+@if(count($errors)>0)
+<div class="alert alert-danger" role="alert">
+    <ul>
+       @foreach ($errors->all as $errors)
+        <li><p>{{$errors}}</p></li>
+        @endforeach
+    </ul>
+    </div>
+@endif
+
+@if (\Session::has('success'))
+<div class="alert alert-success" role="alert">
+        <p>{{\Session::get('success')}} </p>
+      </div>
+@endif
+
+@if (\Session::has('order_placed'))
+<div class="alert alert-success" role="alert">
+        <p>{{\Session::get('order_placed')}} </p>
+      </div>
+@endif
+
+
+
   <!-- Search bar -->
   <a href="search-product">
     <h2 class="display-4 text-center" style="text-decoration: none; color: black;">Search Product</h2>

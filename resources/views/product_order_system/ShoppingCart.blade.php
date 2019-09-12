@@ -122,7 +122,7 @@
                                                         <h6>Delevery to</h6>
                                                 </div>
                                                 <div class="col">
-                                                        <h6>This is address to Colombo </h6>
+                                                        <h6>{{ Auth::user()->name}} address </h6>
                                                 </div>
                                         </div>
                                         <br>

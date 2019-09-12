@@ -17,12 +17,46 @@
 @section('title', 'Patient Order Dashbord')
 @section('content')
 
+<script>
+    function conformfunction() {
+      confirm("Are you sure ...Want to cancel order");
+    }
+    </script>
 
 
 <div class="container-fluid">
 
+        @if(count($errors)>0)
+        <div class="alert alert-danger" role="alert">
+            <ul>
+               @foreach ($errors->all as $errors)
+                <li><p>{{$errors}}</p></li>
+                @endforeach
+            </ul>
+            </div>
+        @endif
+
+        @if (\Session::has('success'))
+        <div class="alert alert-success" role="alert">
+                <p>{{\Session::get('success')}} </p>
+              </div>
+        @endif
+
+        @if (\Session::has('delete_product'))
+        <div class="alert alert-success" role="alert">
+                <p>{{\Session::get('delete_product')}} </p>
+              </div>
+        @endif
+
+
+
+
+
+
     <br>
-    <h3>Order History</h3>
+    <div class="p-3 mb-2 bg-success rounded-top text-white"> <h5>Patient Oder Managemet</h5>
+    </div>
+    <label for="staticEmail" class="col-sm-2 col-form-label">{{ Auth::user()->name}}</label>
 
     <!--Table and operation field -->
 <div class="card mb-3" id="tablebackground"style="left: 5%;width: 90%;padding: 10px;margin: 15px;border-radius: 10px;box-shadow: 0 0 9px 0px #b1aeae;">
@@ -105,7 +139,7 @@
                          <td >Nothing to show</td>
                          <td >Nothing to show</td>
                          <td >Nothing to show</td>
-                         <td > </td>
+                         <td >Nothing to show </td>
              @else
                    @foreach ($orderDetail as $key=> $orderrow)-
 
@@ -162,13 +196,17 @@
 
                                             @if (($orderrow->status)=='waiting')
                                                  <form action="{{route('paitintorder.destroy',$orderrow->order_id)}}" method="post">
+
                                                      @csrf
                                                      @method('DELETE')
-                                                       <button class="btn btn-danger" type = "submit" style="margin-left: 4px;">Delete</button>
+                                                       <input type="text" value="{{$orderrow->quantity}}" name="deleteqty" hidden>
+                                                       <button class="btn btn-danger btn-round" type = "submit" style="margin-left: 4px;" onclick="conformfunction()">Cancel Order</button>
+
+
 
                                                  </form>
                                               @else
-                                              <button class="btn btn-danger" type = "submit" style="margin-left: 4px; height: 38px;" disabled>Delete</button>
+                                              <button class="btn btn-danger" type = "submit" style="margin-left: 4px; height: 38px;" disabled>Cancel order</button>
                                             @endif
                           </td>
                         </tr>
@@ -319,7 +357,9 @@
                               <form action="{{route('paitintorder.destroy',$medicalitemrow->order_id)}}" method="post">
                                     @csrf
                                     @method('DELETE')
-                                    <button class="btn btn-danger btn-round" type = "submit" style="margin-left: 4px;">Delete</button>
+                                    <input type="text" value="{{$medicalitemrow->quantity}}" name="deleteqty" hidden>
+                                    <button class="btn btn-danger btn-round" type = "submit" style="margin-left: 4px;" onclick="conformfunction()">Cancel Order</button>
+
                               </form>
 
                         @else
