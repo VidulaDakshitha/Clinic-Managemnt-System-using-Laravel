@@ -6,12 +6,12 @@
 <style type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.css "></style>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.bundle.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
-
+<script src="{{ asset('js/order_management_script.js') }}"></script>
 <link rel="stylesheet" href="{{ asset('css/order_system_css/orderStylesheet.css') }}">
 @endsection
 
 @section('js')
-<script src="{{ asset('js/order_management_script.js') }}"></script>
+
 @endsection
 
 @section('title', 'Patient Order Dashbord')
@@ -58,10 +58,41 @@
     </div>
     <label for="staticEmail" class="col-sm-2 col-form-label">{{ Auth::user()->name}}</label>
 
-    <!--Table and operation field -->
-<div class="card mb-3" id="tablebackground"style="left: 5%;width: 90%;padding: 10px;margin: 15px;border-radius: 10px;box-shadow: 0 0 9px 0px #b1aeae;">
-    <div class="card-header">
-          <i class="fas fa-table"></i>
+<!--general item chart-->
+
+<div class="  card-group " style="left: 6%;width: 90%;position: relative;">
+
+<div class="card">
+    <canvas id="myChartmedical" style="width:380 height:400"></canvas>
+</div>
+<div class="card">
+    <canvas id="myChartgeneral" style="width:380 height:400"></canvas>
+</div>
+</div>
+    <script>
+        var mnum1={{$generalorder_rady}};
+        var mnum2={{$generalorder_shiped}};
+        var mnum3={{$generalorder_waiting}};
+        console.log(mnum3);
+
+        var gnum1={{$medicalorder_rady}};
+        var gnum2={{$medicalorder_shiped}};
+        var gnum3={{$medicalorder_waiting}};
+
+    window.onload = function(){
+        generalItemChart(gnum1,gnum2,gnum3);
+        medicalItemChart(mnum1,mnum2,mnum3);
+    }
+
+    </script>
+
+
+<!--Table and operation field -->
+    <div class="card mb-3" id="tablebackground"style="left: 5%;width: 90%;padding: 10px;margin: 15px;border-radius: 10px;box-shadow: 0 0 9px 0px #b1aeae;">
+            <div class="p-3 mb-2 paitent_titebar rounded-top text-white">
+            </div>
+        <div class="card-header">
+
           <a href="paitientorderdash">
           <p class="h4"> General Order details </p>
           </a>
@@ -221,8 +252,10 @@
 
 <br>
 <!--General item order-->
+
+<div class="p-3 mb-2 bg-success rounded-top text-white paitent_titebar" > <h6> </h6></div>
     <div class="card-header">
-          <i class="fas fa-table"></i>
+
           <a href="paitientorderdash">
           <p class="h4"> Medical Item Order details </p>
           </a>
@@ -384,6 +417,9 @@
 
 
 
+
+
     </div>
+
 
 @endsection
