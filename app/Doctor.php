@@ -7,6 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 class Doctor extends Model
 {
     // a doctor visits patient many days
+    protected $fillable=['doctor_id','fullname','nic','type'];
+    protected $primaryKey = 'doctor_id';
+
+
     public function visitingdays()
     {
         return $this->hasMany('App\VisitingDay');

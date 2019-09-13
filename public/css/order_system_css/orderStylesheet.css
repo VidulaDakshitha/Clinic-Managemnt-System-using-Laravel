@@ -140,3 +140,10 @@
     width: 1rem;
     background-color: crimson;
 }
+
+.toggleButton {
+    float: right;
+  }
+  .hiddenRow {
+    display: none;
+  }

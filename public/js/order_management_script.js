@@ -46,3 +46,64 @@ function closeWin() {
 }
 
 
+
+function groupByFirst(table) {
+
+    // Add expand/collapse button
+    function addButton(cell) {
+      var button = cell.appendChild(document.createElement('button'));
+      button.className = 'toggleButton';
+      button.textContent = '+';
+      button.addEventListener('click', toggleHidden, false);
+      return button;
+    }
+
+    // Expand/collapse all rows below this one until next header reached
+    function toggleHidden(evt) {
+      var row = this.parentNode.parentNode.nextSibling;
+
+      while (row && !row.classList.contains('groupHeader')) {
+        row.classList.toggle('hiddenRow');
+        row = row.nextSibling;
+      }
+    }
+
+    // Use tBody to avoid Safari bug (appends rows to table outside tbody)
+    var tbody = table.tBodies[0];
+
+    // Get rows as an array, exclude first row
+    var rows = Array.from(tbody.rows).slice(0);
+
+    // Group rows in object using first cell value
+    var groups = rows.reduce(function(groups, row) {
+      var val = row.cells[0].textContent;
+
+      if (!groups[val]) groups[val] = [];
+
+      groups[val].push(row);
+      return groups;
+    }, Object.create(null));
+
+    // Put rows in table with extra header row for each group
+    Object.keys(groups).forEach(function(value, i) {
+
+      // Add header row
+      var row = tbody.insertRow();
+      row.className = 'groupHeader';
+      var cell = row.appendChild(document.createElement('td'));
+      cell.colSpan = groups[value][0].cells.length;
+      cell.appendChild(
+        document.createTextNode(
+          'Grouped by ' + table.rows[0].cells[0].textContent +
+          ' (' + value + ') Number of product '+ groups[value].length
+        )
+      );
+      var button = addButton(cell);
+
+      // Put the group's rows in tbody after header
+      groups[value].forEach(function(row){tbody.appendChild(row)});
+
+      // Call listener to collapse group
+      button.click();
+    });
+  }
