@@ -67,10 +67,10 @@
           </a>
     </div>
     <div class="card-body">
-          <div class="table-responsive" id="tableplane" style="border-radius: 10px;">
+          <div class="table-responsive" id="tableplane" style="border-radius: 10px; background: url('assets/image/order_back.jpg');" >
             <div id="dataTable_wrapper" class="dataTables_wrapper dt-bootstrap4">
 
-                <div class="row">
+                <div class="row" >
                     <div class="col-sm-12 col-md-6">
                        <!--Add button -->
                     </div>
@@ -109,9 +109,10 @@
                                 </form>
                     </div>
                 </div>
+
             </div>
             <br>
-            <div class="row">
+            <div class="row" style=" background: white;">
                 <div class="col-sm-12">
                     <table class="table table-bordered table-hover table-striped dataTable table-sm " id="dataTable" width="100%" cellspacing="0" role="grid" aria-describedby="dataTable_info" style="width: 100%;">
               <thead>
@@ -226,10 +227,10 @@
           <p class="h4"> Medical Item Order details </p>
           </a>
     </div>
-    <div class="card-body">
-          <div class="table-responsive" id="tableplane" style="border-radius: 10px;">
+    <div class="card-body" >
+          <div class="table-responsive" id="tableplane" style="border-radius: 10px;  background: url('assets/image/order_back.jpg');">
             <div id="dataTable_wrapper" class="dataTables_wrapper dt-bootstrap4">
-                <div class="row">
+                <div class="row" >
                     <div class="col-sm-12 col-md-6">
                        <!--Add button -->
                     </div>
@@ -270,7 +271,7 @@
                 </div>
             </div>
             <br>
-            <div class="row">
+            <div class="row" style=" background: white;">
                 <div class="col-sm-12">
                     <table class="table table-bordered table-sm dataTable" id="dataTable" width="100%" cellspacing="0" role="grid" aria-describedby="dataTable_info" style="width: 100%;">
               <thead>
