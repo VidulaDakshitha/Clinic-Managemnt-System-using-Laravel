@@ -132,11 +132,13 @@
                 <div class="card-footer">
                   <div class="stats">
                     <i class="material-icons">date_range</i>
-                  Make more appointments</a>
+                  Make more appointments
                   </div>
-                </div>
+                </div></a>
               </div>
             </div>
+
+            <a href="#">
             <div class="col-lg-3 col-md-6 col-sm-6">
               <div class="card card-stats">
                 <div class="card-header card-header-success card-header-icon">
@@ -150,10 +152,11 @@
                   <div class="stats">
                     <i class="material-icons">date_range</i> Click to check details
                   </div>
-                </div>
+                </div></a>
               </div>
             </div>
-
+            
+            <a href="#">
             <div class="col-lg-3 col-md-6 col-sm-6">
               <div class="card card-stats">
                 <div class="card-header card-header-danger card-header-icon">
@@ -167,7 +170,7 @@
                   <div class="stats">
                     <i class="material-icons">local_offer</i> Click to view them
                   </div>
-                </div>
+                </div></a>
               </div>
             </div>
 
@@ -214,6 +217,10 @@
                 </div></a>
               </div>
             </div>
+            
+            {{-- Add payment details --}}
+
+            <a href="#">
             <div class="col-lg-3 col-md-6 col-sm-6">
               <div class="card card-stats">
                 <div class="card-header card-header-success card-header-icon">
@@ -227,25 +234,27 @@
                   <div class="stats">
                     <i class="material-icons">date_range</i> Last 24 Hours
                   </div>
-                </div>
+                </div></a>
               </div>
             </div>
+            <a href="http://www.instagram.com">
             <div class="col-lg-3 col-md-6 col-sm-6">
               <div class="card card-stats">
                 <div class="card-header card-header-danger card-header-icon">
                   <div class="card-icon">
-                    <i class="material-icons">info_outline</i>
+                    <i class="material-icons">face</i>
                   </div>
-                  <p class="card-category">Fixed Issues</p>
-                  <h3 class="card-title">75</h3>
+                  <p class="card-category">Follow us on instagram</p>
+                  {{-- <h3 class="card-title">75</h3> --}}
                 </div>
                 <div class="card-footer">
-                  <div class="stats">
+                  {{-- <div class="stats">
                     <i class="material-icons">local_offer</i> Tracked from Github
-                  </div>
+                  </div> --}}
                 </div>
-              </div>
+              </div></a>
             </div>
+            <a href="https://twitter.com/shantha35775683?lang=en">
             <div class="col-lg-3 col-md-6 col-sm-6">
               <div class="card card-stats">
                 <div class="card-header card-header-info card-header-icon">
@@ -257,9 +266,9 @@
                 </div>
                 <div class="card-footer">
                   <div class="stats">
-                  <a href="https://twitter.com/shantha35775683?lang=en"><i class="material-icons">update</i> Just Updated..Click to follow</a>
+                  <i class="material-icons">update</i> Just Updated..Click to follow
                   </div>
-                </div>
+                </div></a>
               </div>
             </div>
           </div>
