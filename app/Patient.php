@@ -9,6 +9,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class Patient extends Authenticatable
 {
+    protected $primaryKey = 'patient_id';
     protected $fillable = [
         'fullname','gender','dob','nic','address1','address2','city','phone', 'email','username', 'password',
     ];
@@ -48,4 +49,10 @@ class Patient extends Authenticatable
     {
         return $this->hasOne('App\PersonalRecord');
     }
+
+    public function prescriptions(){
+        return $this->hasMany('App\Prescription');
+    }
+
+
 }

@@ -4,13 +4,15 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
+
 class Product extends Model
 {
+
+    protected $fillable=['product_id','name','selling_price','quantity','potency','expiry_date','type','brand','description','product_image'];
     protected $primaryKey = 'product_id';
 
-    protected $guarded = [];
-    public $timestamps = false;
-    // product belongs to many orders
+
+       // product belongs to many orders
     public function orders()
     {
         return $this->belongsToMany('App\Order');
@@ -20,5 +22,10 @@ class Product extends Model
     public function suppliers()
     {
         return $this->belongsToMany('App\Supplier', 'product_supplier', 'product_id', 'supplier_id')->withTimestamps();
+    }
+
+    public function prescription()
+    {
+        return $this->belongsTo(Prescription::class);
     }
 }

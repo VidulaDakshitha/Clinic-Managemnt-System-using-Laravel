@@ -19,7 +19,7 @@ class UserTypeController extends Controller
     //
     public function manage()
     {
-        $viewName = '';
+        $viewName = '/login';
         if(Auth::user()->type === 'patient'){
             // here goes the patient dashbaord route
             $viewName = '/patient';

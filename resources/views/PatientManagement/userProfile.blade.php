@@ -17,7 +17,7 @@
     <div class="sidebar-wrapper">
       <ul class="nav">
         <li class="nav-item  ">
-          <a class="nav-link" href="{{'/dashboard'}}">
+          <a class="nav-link" href="{{'/patient'}}">
             <i class="material-icons">dashboard</i>
             <p>Dashboard</p>
           </a>
@@ -123,7 +123,7 @@
                 <p class="card-category">Complete your profile</p>
               </div>
               <div class="card-body">
-                <form action="" method="POST">
+                <form action="/patient/{{ $result->patient_id }}" method="POST">
                   {{ csrf_field() }}
                   @method('PUT')
                   {{-- /about/{{ $result->id  }} --}}
@@ -153,7 +153,8 @@
                     <div class="col-md-12">
                       <div class="form-group">
                         <label class="bmd-label-floating">Full Name</label>
-                        <input type="text" name="fullname" class="form-control" value="{{$result->fullname}}">
+                        <input name="fullname" type="text" name="fullname" class="form-control"
+                          value="{{$result->fullname}}">
                       </div>
                     </div>
                   </div>
@@ -201,7 +202,7 @@
                     <div class="col-md-12">
                       <div class="form-group">
                         <label class="bmd-label-floating">Email Address</label>
-                        <input type="email" name="Email" class="form-control" value="{{$result->email}}">
+                        <input name="email" type="email" class="form-control" value="{{$result->email}}">
                       </div>
                     </div>
                   </div>

@@ -44,7 +44,7 @@ class CreateUsersTable extends Migration
             )
         );
 
-        // adding dummy entries
+        // adding dummy entrie
         DB::table('users')->insert(
             array(
                 'name' => 'Lakshan Perera',

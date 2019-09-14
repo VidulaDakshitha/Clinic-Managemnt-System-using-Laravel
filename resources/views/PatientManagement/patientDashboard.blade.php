@@ -24,7 +24,7 @@
             </a>
           </li>
           <li class="nav-item ">
-          <a class="nav-link" href="/userProfile">
+          <a class="nav-link" href="/patient/{{ $research->patient_id }}/edit">
               <i class="material-icons">person</i>
               <p>User Profile</p>
             </a>
@@ -95,8 +95,10 @@
                   <a class="dropdown-item" href="#">{{ $research->fullname }}</a>
                   {{-- <a class="dropdown-item" href="#">Delete Account</a> --}}
                   <div class="dropdown-divider"></div>
-                  <a class="dropdown-item" href="{{ Auth::logout()}}">Log out</a>
-
+                  <form action="{{ route('logout') }}" method="post">
+                    @csrf
+                    <input class="dropdown-item" type="submit" class="dropdown-item" value="Logout">
+                  </form>
                   <form action="/userdelete/{{ $research->patient_id }}" method="POST">
                     {{ csrf_field() }}
                     {{ method_field('DELETE') }}
@@ -153,7 +155,6 @@
               </div>
             </div>
 
-            <a href="{{ Auth::logout()}}">
             <div class="col-lg-3 col-md-6 col-sm-6">
               <div class="card card-stats">
                 <div class="card-header card-header-danger card-header-icon">
@@ -167,7 +168,7 @@
                   <div class="stats">
                     <i class="material-icons">local_offer</i> Click to view them
                   </div>
-                </div> </a>
+                </div>
               </div>
             </div>
 

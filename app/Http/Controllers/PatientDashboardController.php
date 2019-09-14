@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use DB;
 use Illuminate\Support\Facades\Auth;
+use App\Patient;
+use App\User;
 
 class PatientDashboardController extends Controller
 {
@@ -20,6 +22,7 @@ class PatientDashboardController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+        $this->middleware('auth_patient');
     }
 
 
@@ -73,6 +76,8 @@ class PatientDashboardController extends Controller
     public function edit($id)
     {
         //
+        $result = Patient::findOrFail($id);
+        return view('PatientManagement.userProfile',compact('result'));
     }
 
     /**
@@ -84,7 +89,33 @@ class PatientDashboardController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+
+        $request->validate(['fullname' => 'required|string|max:255',
+                            'address1' => 'required|string|max:255',
+                            'address2' => 'required|string|max:255',
+                            'city' => 'required|string|max:255',
+                            'nic' => 'required|string|min:10|max:12',
+                            'phone' => 'required|integer|min:10',
+                            'email' => 'required|string|email|min:10',
+        ]);
+
+        // find the patient
+        $curr_patient = Patient::findOrFail($id);
+        $auth_user = User::where('email', $curr_patient->email)->first();
+        
+        $curr_patient->fullname = $request->fullname;
+        $curr_patient->address1 = $request->address1;
+        $curr_patient->address2 = $request->address2;
+        $curr_patient->city = $request->city;
+        $curr_patient->nic = $request->nic;
+        $curr_patient->phone = $request->phone;
+        $curr_patient->email = $request->email;
+        $auth_user->email = $request->email;
+        
+        $curr_patient->save();
+        $auth_user->save();
+        
+        return redirect('/patient/'.$id.'/edit')->with('success','Patient details has been updated!');
     }
 
     /**
