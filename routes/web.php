@@ -14,7 +14,7 @@
 
 
 Route::get('/AdminHome', 'PagesController@adhome');
-Route::get('/AdHome', 'PostsController@admhome');
+Route::get('/admin', 'PostsController@admhome');
 Route::get('/ServiceTest', 'PostsController@index');
 Route::get('/AdminServ', 'PostsController@serv');
 Route::get('/gallery', 'PostsController@media');
@@ -52,9 +52,6 @@ Route::get('/Services', 'ServicesController@index')->name('Services');
 Auth::routes();
 
 
-Auth::routes();
-
-
 Route::view('/', 'main.index');
 Route::get('/about', 'NoticesController@index');
 Route::get('/ServiceTest', 'PostsController@index');
@@ -67,7 +64,7 @@ Route::view('/signin', 'main.login');
 Route::view('/search', 'PatientManagement.search');
 Route::view('/registerp', 'auth.registerp');
 Route::view('/dashboard', 'PatientManagement.patientDashboard');
-Route::view('/admin', 'Admin');
+
 Route::view('/show', 'PatientManagement.showDoc');
 Auth::routes();
 
@@ -164,3 +161,9 @@ Route::get('go-to-cart','ShoppingCartController@index');
 //Product Management
 
 Route::get('/product', 'ProductManagementController@index');
+
+Route::resource('product', 'ProductManagementController');
+
+Route::delete('/productdelete/{id}', 'ProductManagementController@destroy');
+
+Route::post('/store', 'ProductManagementController@store');

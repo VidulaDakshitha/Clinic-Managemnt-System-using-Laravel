@@ -64,6 +64,8 @@ class ProductManagementController extends Controller
         $addItem->quantity      = $request->input('quantity');
         $addItem->potency       = $request->input('potency');
         $addItem->expiry_date   = $request->input('expiry_date');
+        $addItem->brand         = $request->input('brand');
+        $addItem->description   = $request->input('description');
         $addItem->type          = $request->input('type');
         
         $addItem->save();
@@ -113,6 +115,8 @@ class ProductManagementController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $product = Product::findOrFail($id);
+        $product->delete();
+        return redirect('/product')->with('success','Product deleted Successfully!');
     }
 }

@@ -5,6 +5,9 @@
 
 @section('title', 'Supplier Manager')
 
+@include('backend.supplier.nav')
+
+
 @section('content')
 <div class="container">
     <h1>Supplier Dashboard(Protected Area)</h1>
