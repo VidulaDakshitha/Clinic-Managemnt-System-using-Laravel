@@ -3,10 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use DB;
+use App\Doctor;
 
-use App\bankslip;
-
-class BankSlipController extends Controller
+class ShowDoctorController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +15,7 @@ class BankSlipController extends Controller
      */
     public function index()
     {
-        return view('payment.paymentSlip');
+        //
     }
 
     /**
@@ -36,18 +36,7 @@ class BankSlipController extends Controller
      */
     public function store(Request $request)
     {
-        $request -> validate([
-            'patientID' => 'required',
-            'orderID' => 'required',
-            'bankName' => 'required',
-            'bankBranch' => 'required',
-            'date' => 'required'
-            
-        ]);
-
-        bankslip::create($request->all());
-
-        return view('payment.paymentConfirm');
+        //
     }
 
     /**
@@ -93,5 +82,45 @@ class BankSlipController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function search(Request $request)
+    {
+ 
+        $search1=$request->get('doctor');
+        $search2=$request->get('specialization');
+
+        if($search1=='any doctor' && $search2=='any specialization')
+        {
+            $posts = Doctor::all();
+             return view('patientManagement.showDoc', compact('posts'));
+        }
+        else if($search1=='any doctor'){
+
+            $posts=DB::table('doctors')->where('type',$search2)->get();
+        return view('patientManagement.showDoc',compact('posts'));
+
+        }
+        else if($search2=='any specialization')
+        {
+            $posts=DB::table('doctors')->where('fullname',$search1)->get();
+        return view('patientManagement.showDoc',compact('posts'));
+
+        }
+        else if($search1!='any doctor' && $search2!='any specialization')
+        {
+            $posts=DB::table('doctors')->where([['fullname',$search1],['type',$search2]])->get();
+        return view('patientManagement.showDoc',compact('posts'));
+
+        }
+
+        else
+        {
+            
+            return view('patientManagement.showDoc')->with('error','Invalid search results');
+        }
+      
+
+
     }
 }

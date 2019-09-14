@@ -6,5 +6,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class card extends Model
 {
-    protected $fillable = ['cardNum', 'bank', 'serialNum', 'cardType'];
+    protected $fillable = ['patientID', 'orderID', 'cardNum', 'bank', 'serialNum', 'cardType'];
 }

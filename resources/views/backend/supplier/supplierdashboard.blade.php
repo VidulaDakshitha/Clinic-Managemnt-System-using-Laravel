@@ -29,7 +29,7 @@
             @if(count($suppliers)>0)
             @foreach ($suppliers as $supplier)
             <tr>
-                <th scope="row"> {{ $supplier->id }}</th>
+                <th scope="row"> {{ $supplier->supplier_id }}</th>
                 <td>{{ $supplier->name }}</td>
                 <td><?php $city = preg_split('/\s+/', $supplier->location); echo $city[max(count($city)-1, 0)]; ?></td>
                 <td>
@@ -42,11 +42,10 @@
                     @else
                     <p>Medicine</p>
                     @endif
-
                 </td>
                 <td class="row">
-                    <a href="/supplier/edit/{{ $supplier->id }}" class="btn btn-primary mr-1">Edit</a>
-                    <form action="/supplier/{{ $supplier->id }}" method="POST">
+                    <a href="/supplier/{{ $supplier->supplier_id }}/edit" class="btn btn-primary mr-1">Edit</a>
+                    <form action="/supplier/{{ $supplier->supplier_id }}" method="POST">
                         @csrf
                         @method('DELETE')
                         <button type="submit" href="" class="btn btn-danger">Remove</button>

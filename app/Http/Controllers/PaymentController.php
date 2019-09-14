@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 
 use App\payment;
 
+use App\card;
+
 class PaymentController extends Controller
 {
     /**
@@ -16,7 +18,8 @@ class PaymentController extends Controller
     public function index()
     {
         $payments = payment::latest()->paginate(10);
-        return view('payment.index', compact('payments'))
+        $cards = card::latest()->paginate(10);
+        return view('payment.index', compact('payments', 'cards'))
                  ->with('i', (request() -> input ('page', 1)-1)*10);
     }
     

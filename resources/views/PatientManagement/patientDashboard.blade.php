@@ -24,7 +24,7 @@
             </a>
           </li>
           <li class="nav-item ">
-          <a class="nav-link" href="{{'check.search'}}">
+          <a class="nav-link" href="/userProfile">
               <i class="material-icons">person</i>
               <p>User Profile</p>
             </a>
@@ -92,11 +92,20 @@
                   </p>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownProfile">
-                  <a class="dropdown-item" href="#">{{ Auth::user()->fullname }}</a>
+                  <a class="dropdown-item" href="#">{{ $research->fullname }}</a>
                   {{-- <a class="dropdown-item" href="#">Delete Account</a> --}}
                   <div class="dropdown-divider"></div>
                   <a class="dropdown-item" href="{{ Auth::logout()}}">Log out</a>
+
+                  <form action="/userdelete/{{ $research->patient_id }}" method="POST">
+                    {{ csrf_field() }}
+                    {{ method_field('DELETE') }}
+                    <input type="submit" class="dropdown-item" value="Delete Account" />
+  
+  
+                  </form>
                 </div>
+                
               </li>
             </ul>
           </div>

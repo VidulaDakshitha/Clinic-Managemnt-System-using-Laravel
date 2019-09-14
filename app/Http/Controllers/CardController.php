@@ -37,6 +37,8 @@ class CardController extends Controller
     public function store(Request $request)
     {
         $request -> validate([
+            'patientID' => 'required',
+            'orderID' => 'required',
             'cardNum' => 'required',
             'bank' => 'required',
             'serialNum' => 'required',
@@ -57,7 +59,8 @@ class CardController extends Controller
      */
     public function show($id)
     {
-        //
+        $payments = card::find($id);
+        return view('payment.paymentDetails', compact('payments'));
     }
 
     /**

@@ -44,10 +44,7 @@
                                 <div class="menu">
                                     <ul class="nav navbar-nav">
                                         <li class="active"><a href="{{ url('/')}}">HOME</a></li>
-                                        <li><a href="#">Features</a></li>
-                                        <li><a href="#">Pricing</a></li>
-                                        <li><a href="#">Team</a></li>
-                                        <li><a href="#">Contact</a></li>
+                                        
                                     </ul>
                                 </div>
                             </div>
@@ -140,23 +137,54 @@
                             <div class="col-md-8 col-sm-12">
                                 <div class="contact-form" style = "margin-top:10px";>   
 
-                                        <form action="/search" method="GET">
+                                        <form action="/search1" method="GET">
                                                 @csrf
                                                     <input type="text" name="patientID" placeholder="Patient ID">
 
                                                     <div class = "submit">
                                                         <input type="submit" value="Search">
                                                     </div>
-                                                    <br>
-                                                    <br>
-                                                    <br>
-                                                    <br>
                                                 </form>
                                             </div>
                                         </div>
                                     </div>
                     </section>
                 
+                    <section class="contact">
+                        <div class="container">
+                                <div class="another-text">
+                                        <h3>CARD PAYMENTS</h3>
+                                </div>
+                            
+                                <table>
+                                        <tr>
+                                            <th width = "50px"><b>No.</b></th>
+                                            <th width = "300px">Patient ID</th>
+                                            <th width = "300px">Order or Appointment ID</th>
+                                            <th width = "300px">Card Number</th>
+                                            <th width = "300px">Bank</th>
+                                            <th width = "300px">Card Type</th>
+                                        </tr>
+                            
+                                        @foreach ($cards as $card) 
+                                            <tr>
+                                            <td><b>{{$card -> id}}</b></td>
+                                            <td>{{$card->patientID}}</td>
+                                            <td>{{$card->orderID}}</td>
+                                            <td>{{$card->cardNum}}</td>
+                                            <td>{{$card->bank}}</td>
+                                            <td>{{$card->cardType}}</td>
+                                            
+                                            </tr>
+                                        @endforeach
+                                    </table>
+                            {!! $cards->links()!!}
+
+
+                        </div>
+                    </section>
+
+
 
 
     

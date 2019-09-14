@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateBankslipTable extends Migration
+class CreateCardTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,14 @@ class CreateBankslipTable extends Migration
      */
     public function up()
     {
-        Schema::create('bankslips', function (Blueprint $table) {
+        Schema::create('cards', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->text('bankName');
-            $table->text('bankBranch');
-            $table->date('date');
+            $table->text('patientID');
+            $table->text('orderID');
+            $table->bigInteger('cardNum');
+            $table->text('bank');
+            $table->integer('serialNum');
+            $table->text('cardType');
             $table->timestamps();
         });
     }

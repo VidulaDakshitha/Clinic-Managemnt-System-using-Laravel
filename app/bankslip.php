@@ -6,5 +6,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class bankslip extends Model
 {
-    protected $fillable = ['bankName', 'bankBranch', 'date'];
+    protected $fillable = ['patientID', 'orderID', 'bankName', 'bankBranch', 'date'];
 }

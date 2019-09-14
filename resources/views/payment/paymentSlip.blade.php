@@ -93,6 +93,12 @@
                                     <form action="{{ route('slip.store')}}" method="post">
                                         @csrf
                                         <div class="first">
+                                            <input type="text" name="patientID" placeholder="Patient ID" pattern="(P)[0-9]{3}" title = "Patient id should start from P and with 3 digits number" required >
+                                        </div>
+                                        <div class="last">
+                                            <input type="text" name="orderID" placeholder="Order or Appointment ID" required>
+                                        </div>
+                                        <div class="first">
                                             <input type="text" name="bankName" placeholder="Bank Name" required>
                                         </div>
                                         <div class="last">

@@ -14,7 +14,8 @@ class CreateProductsTable extends Migration
     public function up()
     {
         Schema::create('products', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->bigIncrements('product_id');
+            // $table->unsignedBigInteger('supplier_id');
             $table->string('name');
             $table->float('selling_price');
             $table->unsignedInteger('quantity');
@@ -26,6 +27,7 @@ class CreateProductsTable extends Migration
         for($i=0; $i<10; $i++){
             DB::table('products')->insert(
                 array(
+                    // 'supplier_id' => $i+1,
                     'name' => 'Product '.$i,
                     'selling_price' => $i*100,
                     'quantity' => $i*1000,

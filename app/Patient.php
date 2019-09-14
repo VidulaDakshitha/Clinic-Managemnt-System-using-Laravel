@@ -17,6 +17,7 @@ class Patient extends Authenticatable
         'password', 'remember_token',
     ];
 
+    public $timestamps = false;
 
     // A patient has many phone numbers
     public function patientcontacts()
