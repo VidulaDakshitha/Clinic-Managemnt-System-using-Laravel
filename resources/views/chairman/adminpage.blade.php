@@ -213,7 +213,7 @@ use App\Patient;
             <div class="widget-content">
               <div class="shortcuts"> <a href="/aboutus" class="shortcut"><img src="img/about-us.png"></i><span
                                         class="shortcut-label">About Us</span> </a><a href="/gallery" class="shortcut"><img src="img/gallery.png">
-                                             <span class="shortcut-label">Gallery</span> </a><a href="javascript:;" class="shortcut"><img src="img/newspaper.png"> <span class="shortcut-label">Reports</span> </a><a href="/adminfeedback" class="shortcut"><img src="img/opinion.png"><span class="shortcut-label">Feedbacks</span> </a><a href="/ServiceTest" class="shortcut"><img src="img/24-hours.png"><span
+                                             <span class="shortcut-label">Gallery</span> </a><a href="/order-admindash" class="shortcut"><img src="img/newspaper.png"> <span class="shortcut-label">Orders</span> </a><a href="/adminfeedback" class="shortcut"><img src="img/opinion.png"><span class="shortcut-label">Feedbacks</span> </a><a href="/ServiceTest" class="shortcut"><img src="img/24-hours.png"><span
                                                 class="shortcut-label">Services</span> </a> </div>
               <!-- /shortcuts --> 
             </div>
