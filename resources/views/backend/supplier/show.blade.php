@@ -43,6 +43,20 @@
             <h4>{{ $supplier->location }}</h4>
         </div>
     </div>
+    <hr>
+    <div class="row mt-5">
+        <div class="col-md-3">
+            <h4>Supplier Products:</h4>
+        </div>
+        <div class="col-md-9">
+            @foreach ($supplier->products as $product)
+
+            <h4>{{ $product->name }}</h4>
+
+            @endforeach
+        </div>
+
+    </div>
 
 </div>
 @endsection

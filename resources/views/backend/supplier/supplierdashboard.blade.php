@@ -56,8 +56,11 @@
                 </td>
             </tr>
             @endforeach
+            @else
+            <p><i>No suppliers available, please add new one</i></p>
             @endif
         </tbody>
     </table>
+    {{ $suppliers->links() }}
 </div>
 @endsection
