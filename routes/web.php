@@ -56,7 +56,7 @@ Auth::routes();
 
 
 Route::view('/', 'main.index');
-Route::view('/about', 'main.about');
+Route::get('/about', 'NoticesController@index');
 Route::view('/contact', 'main.about');
 Route::view('/contact', 'main.contact');
 Route::view('/signin', 'main.login');
