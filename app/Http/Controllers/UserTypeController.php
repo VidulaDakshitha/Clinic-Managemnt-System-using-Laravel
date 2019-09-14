@@ -27,6 +27,9 @@ class UserTypeController extends Controller
         else if(Auth::user()->type === 'supplier_manager'){
             $viewName = '/supplier';
         }
+        else if(Auth::user()->type === 'inventory_manager'){
+            $viewName = '/product';
+        }
         else if(Auth::user()->type === 'admin'){
             $viewName = '/admin';
         }
