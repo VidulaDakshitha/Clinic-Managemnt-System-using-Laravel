@@ -45,15 +45,16 @@ class ProductManagementController extends Controller
      */
     public function store(Request $request)
     {
+        $timestamps = false;
 
-        if($request->hasFile('image')){
+        if($request->hasFile('product_image')){
             $fullFileName = $request->image->getClientOriginalName();
             $file = pathinfo($fullFileName, PATHINFO_FILENAME);
             $ext = $request->image->getClientOriginalExtension();
 
             $fileName = $file.'_'.time().'_'.$ext;
 
-            $path = $request->image->storeAs('public/images', $fileName);
+            $path = $request->image->storeAs('public/product_images', $fileName);
         }
         else{
             $fileName = "noimage.jpg";
