@@ -33,7 +33,7 @@
             @foreach ($suppliers as $supplier)
             <tr>
                 <th scope="row"> {{ $supplier->supplier_id }}</th>
-                <td>{{ $supplier->name }}</td>
+                <td><a href="/supplier/{{ $supplier->supplier_id }}">{{ $supplier->name }}</a></td>
                 <td><?php $city = preg_split('/\s+/', $supplier->location); echo $city[max(count($city)-1, 0)]; ?></td>
                 <td>
                     @if (count($supplier->products)>0)

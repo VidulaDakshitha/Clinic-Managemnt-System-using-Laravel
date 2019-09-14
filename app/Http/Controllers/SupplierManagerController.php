@@ -69,8 +69,10 @@ class SupplierManagerController extends Controller
        $supplier->location =$request->address. ' '.$request->address2.' '.$request->postal_code.' '.$request->city;                          
                               
        if($supplier->save()){
-        $product = DB::table('products')->where('type', $request->product)->first();  
-        $supplier->products()->attach($product->product_id);
+           foreach($request->product as $prod){
+            $product = DB::table('products')->where('type', $prod)->first();  
+            $supplier->products()->attach($product->product_id);
+           }
        }
        $sup_contacts = new SupplierContact();
        $sup_contacts->supplier_id = $supplier->supplier_id;
@@ -93,7 +95,7 @@ class SupplierManagerController extends Controller
      */
     public function show(Supplier $supplier)
     {
-        //
+        return view('backend.supplier.show', compact('supplier'));
     }
 
     /**
@@ -104,7 +106,17 @@ class SupplierManagerController extends Controller
      */
     public function edit(Supplier $supplier)
     {
+        $selected=$supplier->products;
         $products = Product::all();
+
+        foreach ($supplier->products as $selected_key => $selected_product) {
+            
+            foreach ($products as $key => $product) {
+                if($selected_product->type == $product->type){
+                    unset($products[$key]);
+                }
+            }
+        }
         return view('backend.supplier.edit', compact('supplier', 'products'));
     }
 
@@ -124,12 +136,19 @@ class SupplierManagerController extends Controller
             'address' => 'required|string',
             'product' => 'required',
         ]);
+        if(count($request->product)<=0) {
+            return redirect()->back()->with(['error'=>'No products selected']);
+        }
        $supplier->name =$request->name;                          
        $supplier->location =$request->address;                          
                               
        if($supplier->save()){
-        $product = DB::table('products')->where('type', $request->product)->first();  
-        $supplier->products()->attach($product->product_id);
+        $supplier->products()->detach();
+        
+        foreach($request->product as $prod){
+            $product = DB::table('products')->where('type', $prod)->first();  
+            $supplier->products()->attach($product->product_id);
+        }
        }
        $sup_contacts = $supplier->suppliercontacts->first();
        $sup_contacts->supplier_id = $supplier->supplier_id;
