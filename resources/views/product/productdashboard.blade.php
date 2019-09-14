@@ -63,8 +63,8 @@
                         </div>
                     </div>
                     <div class="form-group">
-                            <label>Image</label>
-                            <input type="file" name="image" id="image">
+                        <label for="image">Image</label>
+                        <input type="file" class="form-control-file" name="image" id="image">
                     </div>
 
                     <div class="modal-footer">

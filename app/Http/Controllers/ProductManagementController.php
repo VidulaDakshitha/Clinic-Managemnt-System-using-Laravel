@@ -44,20 +44,21 @@ class ProductManagementController extends Controller
      */
     public function store(Request $request)
     {
-        
-        $data = $request->validate([
-            'name' => 'required|max:30',
-            'selling_price' => 'required',
-            'quantity' => 'required|numeric',
-            'potency' => 'required|numeric',
-            'expiry_date' => 'required',
-            'type' => 'required|string',
-            'brand' => 'required|string',
-            'description' => 'required|string',
-            'image' => 'required',
-        ]);
 
-        $addItem = new Product;
+        if($request->hasFile('image')){
+            $fullFileName = $request->image->getClientOriginalName();
+            $file = pathinfo($fullFileName, PATHINFO_FILENAME);
+            $ext = $request->image->getClientOriginalExtension();
+
+            $fileName = $file.'_'.time().'_'.$ext;
+
+            $path = $request->image->storeAs('public/images', $fileName);
+        }
+        else{
+            $fileName = "noimage.jpg";
+        }
+
+        $addItem = new Product();
 
         $addItem->name          = $request->input('name');
         $addItem->selling_price = $request->input('selling_price');
@@ -67,6 +68,7 @@ class ProductManagementController extends Controller
         $addItem->brand         = $request->input('brand');
         $addItem->description   = $request->input('description');
         $addItem->type          = $request->input('type');
+        $addItem->image         = $fileName;
         
         $addItem->save();
 
