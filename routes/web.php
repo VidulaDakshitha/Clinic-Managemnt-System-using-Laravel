@@ -52,9 +52,6 @@ Route::get('/Services', 'ServicesController@index')->name('Services');
 Auth::routes();
 
 
-Auth::routes();
-
-
 Route::view('/', 'main.index');
 Route::get('/about', 'NoticesController@index');
 Route::get('/ServiceTest', 'PostsController@index');
