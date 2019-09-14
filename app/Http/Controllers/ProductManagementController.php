@@ -45,7 +45,7 @@ class ProductManagementController extends Controller
      */
     public function store(Request $request)
     {
-        
+
         if($request->hasFile('image')){
             $fullFileName = $request->image->getClientOriginalName();
             $file = pathinfo($fullFileName, PATHINFO_FILENAME);
@@ -70,7 +70,7 @@ class ProductManagementController extends Controller
         $addItem->description   = $request->input('description');
         $addItem->type          = $request->input('type');
         $addItem->image         = $fileName;
-        
+
         $addItem->save();
 
         return redirect('/product')->with('success', 'Product added Successfully!' );
