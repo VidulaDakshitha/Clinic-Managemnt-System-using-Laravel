@@ -1,3 +1,7 @@
+<?php
+use App\Patient;
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,12 +20,18 @@
 <!--[if lt IE 9]>
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
+
+   
     
 
 </head>
 
 
 <body>
+
+   
+
+
 <!-- /navbar -->
 <div class="subnavbar">
   <div class="subnavbar-inner">
@@ -30,6 +40,7 @@
         <li class="active"><a href="/AdHome"><img src="img/adhome.png"/><span>Dashboard</span> </a> </li>
         <li><a href=""><img src="img/newspaper.png"/><span>Reports</span> </a> </li>
         <li><a href="/gallery"><img src="img/gallery.png"/><span>Gallery</span> </a> </li>
+       
         
           </ul>
         </li>
@@ -39,6 +50,35 @@
   </div>
   <!-- /subnavbar-inner --> 
 </div>
+
+<div class="container">
+    <!-- Site Logo -->
+    
+    <!-- responsive -->
+    <div class="nav-switch">
+      <i class="fa fa-bars"></i>
+    </div>
+    {{-- <h1>{{ Request::is('/')? "Home":"Not Home" }}</h1> --}}
+    <!-- Main Menu -->
+    <ul class="main-menu">
+    
+      <!-- <li><a href="elements.html"><i class="flaticon-020-decay"></i></a></li> -->
+      @auth
+      
+      <li class="logout-style"><a class="logout-style" href="{{ route('logout') }}" onclick="event.preventDefault();
+        document.getElementById('logout-form').submit();">
+          {{ __('Logout') }}
+        </a></li>
+  
+      <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+        @csrf
+      </form>
+      @else
+      <li class="login-style"><a href="/login">Sign In</a></li>
+      @endauth
+    </ul>
+  </div> 
+
 <!-- /subnavbar -->
 <div class="main">
   <div class="main-inner">
@@ -55,7 +95,7 @@
                 <div class="widget-content">
                   <h6 class="bigstats">Weclome Admin</h6>
                   <div id="big_stats" class="cf">
-                    <div class="stat"> <h6>Total Users</h6></i> <span class="value">851</span> </div>
+                    <div class="stat"> <h6>Total Users</h6></i> <span class="value">{{ Patient::count() }}</span> </div>
                     <!-- .stat -->
                     
                     <div class="stat"><h6>Website visits</h6> <span class="value">423</span> </div>
@@ -173,7 +213,7 @@
             <div class="widget-content">
               <div class="shortcuts"> <a href="/aboutus" class="shortcut"><img src="img/about-us.png"></i><span
                                         class="shortcut-label">About Us</span> </a><a href="/gallery" class="shortcut"><img src="img/gallery.png">
-                                             <span class="shortcut-label">Gallery</span> </a><a href="javascript:;" class="shortcut"><img src="img/newspaper.png"> <span class="shortcut-label">Reports</span> </a><a href="javascript:;" class="shortcut"><img src="img/opinion.png"><span class="shortcut-label">Feedbacks</span> </a><a href="/ServiceTest" class="shortcut"><img src="img/24-hours.png"><span
+                                             <span class="shortcut-label">Gallery</span> </a><a href="javascript:;" class="shortcut"><img src="img/newspaper.png"> <span class="shortcut-label">Reports</span> </a><a href="/adminfeedback" class="shortcut"><img src="img/opinion.png"><span class="shortcut-label">Feedbacks</span> </a><a href="/ServiceTest" class="shortcut"><img src="img/24-hours.png"><span
                                                 class="shortcut-label">Services</span> </a> </div>
               <!-- /shortcuts --> 
             </div>
@@ -401,6 +441,7 @@
       });
     </script><!-- /Calendar -->
 
+   
 
 </body>
 </html>

@@ -6,6 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Supplier extends Model
 {
+    // protected $primaryKey = 'supplier_id';
+
+    protected $guarded = [];
+
+    public $timestamps = false;
     // a supplier has many emails
     public function supplieremails()
     {
@@ -21,6 +26,6 @@ class Supplier extends Model
     // supplier belongs to many products
     public function products()
     {
-        return $this->belongsToMany('App\Product');
+        return $this->belongsToMany('App\Product')->withTimestamps();
     }
 }

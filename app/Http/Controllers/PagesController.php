@@ -22,6 +22,11 @@ class PagesController extends Controller
         return view('chairman.aboutus');
     }
 
+    public function fed()
+    {
+        return view('feedbackform.feed');
+    }
+
 
     
 }

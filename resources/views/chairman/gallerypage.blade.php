@@ -5,6 +5,32 @@
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
+        <link href="img/favicon.ico" rel="shortcut icon" />
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,400i,500,500i,600,600i,700,700i"
+        rel="stylesheet">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="{{ asset('css/main/mainlayout/bootstrap.min.css') }}" />
+    <link rel="stylesheet" href="{{ asset('css/main/mainlayout/font-awesome.min.css') }}" />
+    <link rel="stylesheet" href="{{ asset('css/main/mainlayout/flaticon.css') }}" />
+    <link rel="stylesheet" href="{{ asset('css/main/mainlayout/owl.carousel.css') }}" />
+    <link rel="stylesheet" href="{{ asset('css/main/mainlayout/style.css') }}" />
+    <link rel="stylesheet" href="{{ asset('css/main/mainlayout/animate.css') }}" />
+
+    {{-- <link href="{{ asset('css/registerCSS/style.css') }}" rel="stylesheet" type="text/css" > --}}
+
+
+    @if (isset($styles))
+
+    @foreach ($styles as $style)
+    <link rel="stylesheet" href='{{ asset("$style") }}' />
+    @endforeach
+
+    @endif
+
+
         <link href="{{ asset('css/media/stylegallery.css') }}" rel="stylesheet">
         
 	<link rel="stylesheet" href="css/media/bootstrapp.min.css">
@@ -22,6 +48,39 @@
     </head>
 
 <body>
+
+        <div class="container">
+				<!-- Site Logo -->
+				<a href="/" class="site-logo">
+					<img src="{{ asset('images/main/mainlayout/logo_dark_long.png') }}" alt="">
+				</a>
+				<!-- responsive -->
+				<div class="nav-switch">
+					<i class="fa fa-bars"></i>
+				</div>
+				{{-- <h1>{{ Request::is('/')? "Home":"Not Home" }}</h1> --}}
+				<!-- Main Menu -->
+				<ul class="main-menu">
+					<li class="{{ (Request::is('/') ? 'active' : '') }}"><a href="/">Home</a></li>
+					<li class="{{ (Request::is('/about') ? 'active' : '') }}"><a href="/aboutus">About</a></li>
+					<li class="{{ (Request::is('/users') ? 'active' : '') }}"><a href="/ServiceTest">Services</a></li>
+					<li class="{{ (Request::is('/users') ? 'active' : '') }}"><a href="/gallery">Gallery</a></li>
+					<!-- <li><a href="elements.html"><i class="flaticon-020-decay"></i></a></li> -->
+					@auth
+					<li class="dashboard-style"><a href="/login">Dashboard</a></li>
+					<li class="logout-style"><a class="logout-style" href="{{ route('logout') }}" onclick="event.preventDefault();
+						document.getElementById('logout-form').submit();">
+							{{ __('Logout') }}
+						</a></li>
+			
+					<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+						@csrf
+					</form>
+					@else
+					<li class="login-style"><a href="/login">Sign In</a></li>
+					@endauth
+				</ul>
+			</div>
 
         <div class="container">
                 @if(count($errors)>0)
@@ -114,6 +173,7 @@
     
     <script src="js/media/pluginss.js"></script>
     <script src="js/media/mainn.js"></script>
+
 
 </body>
 </html>

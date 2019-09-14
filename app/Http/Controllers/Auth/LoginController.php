@@ -25,7 +25,8 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/AdHome';
+    // protected $redirectTo = '/AdHome';
+    protected $redirectTo = '/usermanager';
 
     /**
      * Create a new controller instance.
@@ -35,5 +36,10 @@ class LoginController extends Controller
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
+    }
+
+    public function showLoginForm()
+    {
+        return view('main.login');
     }
 }

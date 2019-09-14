@@ -22,6 +22,9 @@
     <link rel="stylesheet" href="{{ asset('css/main/mainlayout/style.css') }}" />
     <link rel="stylesheet" href="{{ asset('css/main/mainlayout/animate.css') }}" />
 
+    {{-- <link href="{{ asset('css/registerCSS/style.css') }}" rel="stylesheet" type="text/css" > --}}
+
+
     @if (isset($styles))
 
     @foreach ($styles as $style)
@@ -44,9 +47,33 @@
         @include('main.layout.includes.header')
     </header>
 
+    <main class="py-4">
+            {{-- container for showing the error and success messages --}}
+            <div class="container">
+                @if(count($errors)>0)
+                    @foreach ($errors->all() as $error)
+                        <div class="alert alert-danger">
+                            {{ $error }}
+                        </div>
+                    @endforeach
+                @endif
+    
+                @if(session('success'))
+                    <div class="alert alert-success">
+                        {{ session('success') }}
+                    </div>
+                @endif
+    
+                @if(session('error'))
+                    <div class="alert alert-danger">
+                        {{ session('error') }}
+                    </div>
+                @endif
+             </div>
     {{-- main content --}}
     @yield('content')
 
+    </main>
     {{-- footer --}}
     @include('main.layout.includes.footer')
 

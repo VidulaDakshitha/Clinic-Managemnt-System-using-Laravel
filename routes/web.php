@@ -40,7 +40,10 @@ Route::get('/aboutus/create', 'NoticesController@create');
 Route::get('/aboutus/{article}/edit', 'NoticesController@edit');
 Route::delete('/aboutus/{article}', 'NoticesController@destroy');
 
-Route::get('/feedback', 'FeedbackController@fd');
+Route::get('/adminfeedback', 'FeedbackController@index');
+
+Route::get('/feedback', 'FeedbackController@fed');
+Route::post('/feedbacktest','FeedbackController@store');
 
 Route::resource('ServiceTest', 'PostsController');
 
@@ -54,5 +57,21 @@ Auth::routes();
 
 Route::view('/', 'main.index');
 Route::view('/about', 'main.about');
+// Route::view('/contact', 'main.about');
 Route::view('/contact', 'main.contact');
 Route::view('/signin', 'main.login');
+
+// Route::view('/search', 'PatientManagement.search');
+Route::view('/registerp', 'auth.registerp');
+Route::view('/dashboard', 'PatientManagement.patientDashboard');
+Route::view('/admin', 'Admin');
+Auth::routes();
+
+Route::get('/usermanager', 'UserTypeController@manage');
+Route::resource('supplier', 'SupplierManagerController');
+Route::resource('supplier', 'SupplierManagerController')->middleware('auth_supp');
+
+
+Route::resource('patient', 'PatientDashboardController');
+Route::resource('search', 'SearchController');
+
