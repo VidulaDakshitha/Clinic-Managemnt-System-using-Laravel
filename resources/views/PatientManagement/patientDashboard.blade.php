@@ -22,7 +22,6 @@
               <i class="material-icons">dashboard</i>
               <p>Dashboard</p>
             </a>
-            <a href="/feedback">Feedback</a>
           </li>
           <li class="nav-item ">
           <a class="nav-link" href="/patient/{{ $research->patient_id }}/edit">
@@ -43,9 +42,9 @@
             </a>
           </li> --}}
           <li class="nav-item ">
-            <a class="nav-link" href="./notifications.html">
+            <a class="nav-link" href="/feedback">
               <i class="material-icons">notifications</i>
-              <p>Notifications</p>
+              <p>Feedback</p>
             </a>
           </li>
 
@@ -172,7 +171,7 @@
               </div>
             </div>
 
-            <a href="">
+            <a href="{{'/user-prescriptions'}}">
             <div class="col-lg-3 col-md-6 col-sm-6">
               <div class="card card-stats">
                 <div class="card-header card-header-info card-header-icon">
@@ -184,7 +183,7 @@
                 </div>
                 <div class="card-footer">
                   <div class="stats">
-                  <i class="material-icons">update</i>Click to order Items
+                  <i class="material-icons">update</i>proceed to order dashboard
                   </div>
                 </div></a>
               </div>
@@ -194,7 +193,7 @@
 
 
           <div class="row">
-              <a href="/search">
+          <a href="{{'/paitientorderdash'}}">
             <div class="col-lg-3 col-md-6 col-sm-6">
                 
               <div class="card card-stats">

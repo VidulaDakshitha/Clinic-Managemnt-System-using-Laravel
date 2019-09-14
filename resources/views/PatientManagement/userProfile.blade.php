@@ -28,7 +28,7 @@
             <p>User Profile</p>
           </a>
         </li>
-        <li class="nav-item ">
+        {{-- <li class="nav-item ">
           <a class="nav-link" href="./tables.html">
             <i class="material-icons">content_paste</i>
             <p>Table List</p>
@@ -40,11 +40,11 @@
             <i class="material-icons">location_ons</i>
             <p>Maps</p>
           </a>
-        </li>
+        </li> --}}
         <li class="nav-item ">
-          <a class="nav-link" href="./notifications.html">
+          <a class="nav-link" href="/feedback">
             <i class="material-icons">notifications</i>
-            <p>Notifications</p>
+            <p>Feedback</p>
           </a>
         </li>
 
@@ -97,9 +97,9 @@
                 <a class="dropdown-item" href="#">Profile</a>
 
            
-                <div class="dropdown-divider"></div>
+                {{-- <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="#">Log out</a>
-              </div>
+              </div> --}}
             </li>
           </ul>
         </div>
