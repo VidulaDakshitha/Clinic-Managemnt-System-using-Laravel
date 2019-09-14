@@ -424,7 +424,7 @@ class PaitientOrderDashController extends Controller
        $paitent_order->delete();
        return redirect('paitientorderdash')->with('delete_product','Order deleted successfully');
 
-       //need to send
+       //need to return money and need to send order id to kvin
 
     }
 }
