@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use DB;
+use Illuminate\Support\Facades\Auth;
+use App\Patient;
+use App\User;
 
 class UserProfileController extends Controller
 {
@@ -11,9 +15,20 @@ class UserProfileController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index()
     {
-        //
+        $final=Auth::user();
+        
+        $result = DB::table('patients')->where('email', $final->email)->first();
+        return view('PatientManagement.userProfile',compact('result'));
+        
     }
 
     /**
@@ -79,6 +94,11 @@ class UserProfileController extends Controller
      */
     public function destroy($id)
     {
+        $post = User::find($id);
+        $post->delete();
+        return redirect('/');
         //
     }
+
+
 }

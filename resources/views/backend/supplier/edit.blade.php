@@ -9,7 +9,7 @@
 <div class="container">
     <h3>Edit Supplier: {{ $supplier->name }}</h3>
 
-    <form action="/supplier/{{ $supplier->id }}" method="POST">
+    <form action="/supplier/{{ $supplier->supplier_id }}" method="POST">
         @csrf
         @method('PUT')
         <div class="form-row">
@@ -21,19 +21,21 @@
             <div class="form-group col-md-4">
                 <label for="inpuSupEmail">Supplier Email</label>
                 <input type="email" class="form-control" id="inpuSupEmail" placeholder="Supplier Email" required
-                    name="email" value="{{ $supplier->email }}">
+                    name="email" value="{{ $supplier->supplieremails->first()->email }}">
             </div>
             <div class="form-group col-md-4">
                 <label for="inpuSupContact">Contact Number</label>
                 <input type="text" class="form-control" id="inpuSupContact" placeholder="Contact Number" required
-                    name="contact_number" value="{{ $supplier->suppliercontacts()->first() }}">
+                    name="contact_number" value="{{ $supplier->suppliercontacts->first()->contact_number }}"
+                    maxlength="10">
             </div>
         </div>
         <div class="form-group">
             <label for="inputAddress">Address</label>
             <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St" name="address" required
-                value="{{ $supplier->address }}">
+                value="{{ $supplier->location }}">
         </div>
+
         {{-- <div class=" form-group">
             <label for="inputAddress2">Address 2</label>
             <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor"
@@ -58,7 +60,8 @@
                 <select id="inputProduct" class="form-control" name="product" required>
                     @if (count($products)>0)
                     @foreach ($products as $product)
-                    <option>{{ $product->type }}</option>
+                    <option {{ $supplier->products->first()->type === $product->type? 'selected':''  }}>
+                        {{ $product->type }}</option>
                     @endforeach
                     @else
                     <option>No Product Types</option>

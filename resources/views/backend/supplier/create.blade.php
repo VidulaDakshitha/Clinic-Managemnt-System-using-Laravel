@@ -25,7 +25,7 @@
             <div class="form-group col-md-4">
                 <label for="inpuSupContact">Contact Number</label>
                 <input type="text" class="form-control" id="inpuSupContact" placeholder="Contact Number" required
-                    name="contact_number">
+                    name="contact_number" maxlength="10">
             </div>
         </div>
         <div class="form-group">

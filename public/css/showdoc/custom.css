@@ -1,0 +1,95 @@
+
+.table tr td {
+	font-size: 12px;
+}
+
+/* ul.tick {
+	list-style-image: url('../images/tick-icon.png');
+	-webkit-column-count: 2; /* Chrome, Safari, Opera */
+	/* -moz-column-count: 2; /* Firefox */
+   /* column-count: 2; 
+} */
+
+/* START table hemodialysis
+------------------------------------
+*/
+
+/* table.table-custom td p {
+	line-height: 40px;
+	color: #737373;
+	display: block;
+    max-width: 100%;
+    height: 100%;
+    padding-left: 90px;
+} */
+
+/* table.table-custom td a {
+	color: #737373;
+	display: block;
+    max-width: 100%;
+    line-height: 3;
+    padding-left: 9px;
+    cursor: pointer;
+    text-decoration: none;
+} */
+
+/* .col-bg-primary {
+	background-color: #DFF0D8;
+}
+.col-bg-warning {
+	background-color: #FCF8E3;
+}
+.col-bg-danger {
+	background-color: #FFE5E5;
+}
+.col-bg-info {
+	background-color: #EDEDED;
+} */
+/* END table hemodialysis
+------------------------------------
+
+
+
+/* ------------waiting div style------------- */
+
+/* #loading-div-background{
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: #F2F2F2;
+    width: 100%;
+    height: 100%;
+    /*opacity: 0.6;
+
+} */
+
+/* #loading-div{
+    width: 300px;
+    height: 150px;
+    background-color: #F2F2F2;
+    border: 5px solid #1468b3;
+    text-align: center;
+    color: #202020;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-left: -150px;
+    margin-top: -100px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+
+
+
+} */
+/* loading gif*/
+/* #load-img{
+    height:50px;
+    width:50px;
+    margin:30px;
+} */
+
+
+
+/* ------------waiting div style END------------- */
