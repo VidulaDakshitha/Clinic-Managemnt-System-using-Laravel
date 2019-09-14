@@ -95,7 +95,9 @@ class ProductManagementController extends Controller
      */
     public function edit($id)
     {
-        //
+        $product = Product::findOrFail($id);
+
+        return view('product.update', compact('products'));
     }
 
     /**
@@ -105,9 +107,22 @@ class ProductManagementController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Product $product)
     {
-        //
+        $product->name            = $request->name;
+        $product->selling_price   = $request->selling_price;
+        $product->quantity        = $request->quantity;
+        $product->potency         = $request->potency;
+        $product->expiry_date     = $request->expiry_date;
+        $product->brand           = $request->brand;
+        $product->description     = $request->description;
+        $product->type            = $request->type;
+        $product->image           = $request->image;
+
+        $product->save();
+
+        return redirect('/product')->with('success', 'Product updated Successfully!' );
+
     }
 
     /**

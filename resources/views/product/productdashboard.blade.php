@@ -138,7 +138,11 @@
 
                                                 
                                                 <td>
-                                                    <a href="" class="btn btn-primary mr-1">Edit</a>
+                                                    <form action="/update/{{$product->product_id}}" method="PUT">
+                                                    @csrf
+                                                        @method('UPDATE')    
+                                                         <button type="submit" href="" class="btn btn-primary mr-1">Edit</button>
+                                                    </form>
                                                 </td>
                                                 <td>
                                                    <form action="/productdelete/{{$product->product_id}}" method="POST">
