@@ -44,6 +44,7 @@ Route::get('/adminfeedback', 'FeedbackController@index');
 
 Route::get('/feedback', 'FeedbackController@fed');
 Route::post('/feedbacktest','FeedbackController@store');
+Route::delete('/feedback/{feedback}', 'FeedbackController@destroy');
 
 Route::resource('ServiceTest', 'PostsController');
 

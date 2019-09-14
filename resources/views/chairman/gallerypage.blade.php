@@ -152,7 +152,7 @@
         @endif    
     </div>
     @if(!auth::guest())
-    <a class="btn btn-primary" href="/AdHome">Back to Dashboard</a>
+    <a class="btn btn-primary" href="/admin">Back to Dashboard</a>
     @endif 
     </div>
    
