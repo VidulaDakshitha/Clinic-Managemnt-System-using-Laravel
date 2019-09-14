@@ -14,6 +14,7 @@ class PaitientOrderDashController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
     public function index()
     {
 
@@ -33,6 +34,35 @@ class PaitientOrderDashController extends Controller
                      ->select('orders.order_id','products.product_id','products.name','products.type','orders.date','orders.status','orders.total_payment','order_product.product_id','order_product.product_id','order_product.quantity')
                      ->get();
 
+                             $generalorder_waiting= DB::table('orders')
+                             ->join('order_product','order_product.order_id','=','orders.order_id')
+                             ->join('products','products.product_id','=','order_product.product_id')
+                             ->where('orders.patient_id',$paitent_id)
+                             ->Where('products.type','general')
+                             ->where('orders.status','waiting')
+                             ->count('orders.status');
+
+                             $generalorder_rady= DB::table('orders')
+                             ->join('order_product','order_product.order_id','=','orders.order_id')
+                             ->join('products','products.product_id','=','order_product.product_id')
+                             ->where('orders.patient_id',$paitent_id)
+                             ->Where('products.type','general')
+                             ->where('orders.status','ready')
+                             ->count('orders.status');
+
+                             $generalorder_shiped= DB::table('orders')
+                             ->join('order_product','order_product.order_id','=','orders.order_id')
+                             ->join('products','products.product_id','=','order_product.product_id')
+                             ->where('orders.patient_id',$paitent_id)
+                             ->Where('products.type','general')
+                             ->where('orders.status','shiped')
+                             ->count('orders.status');
+
+
+
+
+
+
         $medicalorder=DB::table('orders')
                      ->join('order_product','order_product.order_id','=','orders.order_id')
                      ->join('products','products.product_id','=','order_product.product_id')
@@ -42,9 +72,43 @@ class PaitientOrderDashController extends Controller
                      ->get();
 
 
+                     $medicalrder_waiting= DB::table('orders')
+                     ->join('order_product','order_product.order_id','=','orders.order_id')
+                     ->join('products','products.product_id','=','order_product.product_id')
+                     ->where('orders.patient_id',$paitent_id)
+                     ->Where('products.type','medical')
+                     ->where('orders.status','waiting')
+                     ->count('orders.status');
+
+                     $medicalorder_rady= DB::table('orders')
+                     ->join('order_product','order_product.order_id','=','orders.order_id')
+                     ->join('products','products.product_id','=','order_product.product_id')
+                     ->where('orders.patient_id',$paitent_id)
+                     ->Where('products.type','medical')
+                     ->where('orders.status','ready')
+                     ->count('orders.status');
+
+                     $medicalorder_shiped= DB::table('orders')
+                     ->join('order_product','order_product.order_id','=','orders.order_id')
+                     ->join('products','products.product_id','=','order_product.product_id')
+                     ->where('orders.patient_id',$paitent_id)
+                     ->Where('products.type','medical')
+                     ->where('orders.status','shiped')
+                     ->count('orders.status');
+
+
+
       //dd($orderDetail);
-      //dd($medicalorder);
-        return view('product_order_system.PatientOrderDash',['orderDetail'=>$orderDetail],['medicalorder'=>$medicalorder]);
+      //dd($medicalorder_shiped);
+        return view('product_order_system.PatientOrderDash',
+        ['orderDetail'=>$orderDetail],
+        ['medicalorder'=>$medicalorder])
+       ->with('generalorder_rady',$generalorder_rady)
+       ->with('generalorder_shiped', $generalorder_shiped)
+       ->with('generalorder_waiting', $generalorder_waiting)
+       ->with('medicalorder_rady', $medicalorder_rady)
+       ->with('medicalorder_shiped', $medicalorder_shiped)
+       ->with('medicalorder_waiting', $medicalrder_waiting);
     }
 
     /**
@@ -76,8 +140,64 @@ class PaitientOrderDashController extends Controller
                      ->Where('products.type','medical')
                      ->select('orders.order_id','products.product_id','products.name','products.type','orders.date','orders.status','orders.total_payment','order_product.product_id','order_product.product_id','order_product.quantity')
                      ->get();
+
+                     $generalorder_waiting= DB::table('orders')
+                     ->join('order_product','order_product.order_id','=','orders.order_id')
+                     ->join('products','products.product_id','=','order_product.product_id')
+                     ->where('orders.patient_id',$paitent_id)
+                     ->Where('products.type','general')
+                     ->where('orders.status','waiting')
+                     ->count('orders.status');
+
+                     $generalorder_rady= DB::table('orders')
+                     ->join('order_product','order_product.order_id','=','orders.order_id')
+                     ->join('products','products.product_id','=','order_product.product_id')
+                     ->where('orders.patient_id',$paitent_id)
+                     ->Where('products.type','general')
+                     ->where('orders.status','ready')
+                     ->count('orders.status');
+
+                     $generalorder_shiped= DB::table('orders')
+                     ->join('order_product','order_product.order_id','=','orders.order_id')
+                     ->join('products','products.product_id','=','order_product.product_id')
+                     ->where('orders.patient_id',$paitent_id)
+                     ->Where('products.type','general')
+                     ->where('orders.status','shiped')
+                     ->count('orders.status');
+
+
+                     $medicalrder_waiting= DB::table('orders')
+                     ->join('order_product','order_product.order_id','=','orders.order_id')
+                     ->join('products','products.product_id','=','order_product.product_id')
+                     ->where('orders.patient_id',$paitent_id)
+                     ->Where('products.type','medical')
+                     ->where('orders.status','waiting')
+                     ->count('orders.status');
+
+                     $medicalorder_rady= DB::table('orders')
+                     ->join('order_product','order_product.order_id','=','orders.order_id')
+                     ->join('products','products.product_id','=','order_product.product_id')
+                     ->where('orders.patient_id',$paitent_id)
+                     ->Where('products.type','medical')
+                     ->where('orders.status','ready')
+                     ->count('orders.status');
+
+                     $medicalorder_shiped= DB::table('orders')
+                     ->join('order_product','order_product.order_id','=','orders.order_id')
+                     ->join('products','products.product_id','=','order_product.product_id')
+                     ->where('orders.patient_id',$paitent_id)
+                     ->Where('products.type','medical')
+                     ->where('orders.status','shiped')
+                     ->count('orders.status');
+
                       // dd( $orderDetail);
-                     return view('product_order_system.PatientOrderDash',['orderDetail'=>$orderDetail],['medicalorder'=>$medicalorder]);
+                     return view('product_order_system.PatientOrderDash',['orderDetail'=>$orderDetail],['medicalorder'=>$medicalorder])
+                     ->with('generalorder_rady',$generalorder_rady)
+                     ->with('generalorder_shiped', $generalorder_shiped)
+                     ->with('generalorder_waiting', $generalorder_waiting)
+                     ->with('medicalorder_rady', $medicalorder_rady)
+                     ->with('medicalorder_shiped', $medicalorder_shiped)
+                     ->with('medicalorder_waiting', $medicalrder_waiting);
 
     }
     /**
@@ -143,7 +263,65 @@ class PaitientOrderDashController extends Controller
                      ->select('orders.order_id','products.product_id','products.name','products.type','orders.date','orders.status','orders.total_payment','order_product.product_id','order_product.product_id','order_product.quantity')
                      ->get();
 
-                     return view('product_order_system.PatientOrderDash',['orderDetail'=>$orderDetail],['medicalorder'=>$medicalorder]);
+
+
+                     $generalorder_waiting= DB::table('orders')
+                     ->join('order_product','order_product.order_id','=','orders.order_id')
+                     ->join('products','products.product_id','=','order_product.product_id')
+                     ->where('orders.patient_id',$paitent_id)
+                     ->Where('products.type','general')
+                     ->where('orders.status','waiting')
+                     ->count('orders.status');
+
+                     $generalorder_rady= DB::table('orders')
+                     ->join('order_product','order_product.order_id','=','orders.order_id')
+                     ->join('products','products.product_id','=','order_product.product_id')
+                     ->where('orders.patient_id',$paitent_id)
+                     ->Where('products.type','general')
+                     ->where('orders.status','ready')
+                     ->count('orders.status');
+
+                     $generalorder_shiped= DB::table('orders')
+                     ->join('order_product','order_product.order_id','=','orders.order_id')
+                     ->join('products','products.product_id','=','order_product.product_id')
+                     ->where('orders.patient_id',$paitent_id)
+                     ->Where('products.type','general')
+                     ->where('orders.status','shiped')
+                     ->count('orders.status');
+
+
+                     $medicalrder_waiting= DB::table('orders')
+                     ->join('order_product','order_product.order_id','=','orders.order_id')
+                     ->join('products','products.product_id','=','order_product.product_id')
+                     ->where('orders.patient_id',$paitent_id)
+                     ->Where('products.type','medical')
+                     ->where('orders.status','waiting')
+                     ->count('orders.status');
+
+                     $medicalorder_rady= DB::table('orders')
+                     ->join('order_product','order_product.order_id','=','orders.order_id')
+                     ->join('products','products.product_id','=','order_product.product_id')
+                     ->where('orders.patient_id',$paitent_id)
+                     ->Where('products.type','medical')
+                     ->where('orders.status','ready')
+                     ->count('orders.status');
+
+                     $medicalorder_shiped= DB::table('orders')
+                     ->join('order_product','order_product.order_id','=','orders.order_id')
+                     ->join('products','products.product_id','=','order_product.product_id')
+                     ->where('orders.patient_id',$paitent_id)
+                     ->Where('products.type','medical')
+                     ->where('orders.status','shiped')
+                     ->count('orders.status');
+
+
+                     return view('product_order_system.PatientOrderDash',['orderDetail'=>$orderDetail],['medicalorder'=>$medicalorder])
+                     ->with('generalorder_rady',$generalorder_rady)
+                     ->with('generalorder_shiped', $generalorder_shiped)
+                     ->with('generalorder_waiting', $generalorder_waiting)
+                     ->with('medicalorder_rady', $medicalorder_rady)
+                     ->with('medicalorder_shiped', $medicalorder_shiped)
+                     ->with('medicalorder_waiting', $medicalrder_waiting);
 
 
                     }
@@ -158,6 +336,8 @@ class PaitientOrderDashController extends Controller
     {
         //
     }
+
+
 
     /**
      * Store a newly created resource in storage.

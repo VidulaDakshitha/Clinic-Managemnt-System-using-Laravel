@@ -83,9 +83,9 @@
     <div class="container">
         <ul class="footer-menu">
             <li><a href="">Home</a></li>
-            <li><a href="">About us</a></li>
-            <li><a href="">Services</a></li>
-            <li><a href="">Contact</a></li>
+            <li><a href="/aboutus">About us</a></li>
+            <li><a href="/ServiceTest">Services</a></li>
+            <li><a href="/feedback">Feedback</a></li>
         </ul>
         <div class="copyright">
             Copyright &copy;<script>

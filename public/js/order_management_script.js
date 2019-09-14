@@ -107,3 +107,82 @@ function groupByFirst(table) {
       button.click();
     });
   }
+
+
+
+function generalItemChart(generalorder_rady,generalorder_shiped,generalorder_waiting){
+
+    var ctx = document.getElementById('myChartmedical');
+    var myChartmedical = new Chart(ctx, {
+    type: 'horizontalBar',
+    data: {
+        labels: ['Ready', 'Shiped', 'Waiting'],
+        datasets: [{
+            label: 'General order Details',
+            data: [generalorder_rady,generalorder_shiped ,generalorder_waiting],
+            backgroundColor: [
+                'rgba(57, 153, 248, 0.68)',
+                'rgba(8, 221, 8, 0.68)',
+                'rgba(234, 200, 66, 0.69)'
+            ],
+            borderColor: [
+                'rgba(57, 153, 248, 0.88)',
+                'rgba(8, 221, 8, 0.88)',
+                'rgba(234, 200, 66, 0.9)'
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero: true
+                }
+            }]
+        }
+    }
+});
+
+
+
+
+  }
+
+  function medicalItemChart(medical_rady,medical_shiped,medical_waiting){
+    var ctx = document.getElementById('myChartgeneral');
+    var myChartgeneral = new Chart(ctx, {
+    type: 'horizontalBar',
+    data: {
+        labels: ['Ready', 'Shiped', 'Waiting'],
+        datasets: [{
+            label: 'Medical Order Details',
+            data: [medical_rady, medical_shiped,medical_waiting],
+            backgroundColor: [
+                'rgba(57, 153, 248, 0.68)',
+                'rgba(8, 221, 8, 0.68)',
+                'rgba(234, 200, 66, 0.68)'
+            ],
+            borderColor: [
+                'rgba(57, 153, 248, 0.88)',
+                 'rgba(8, 221, 8, 0.88)',
+                'rgba(234, 200, 66, 0.9)'
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero: true
+                }
+            }]
+        }
+    }
+});
+
+
+
+
+  }

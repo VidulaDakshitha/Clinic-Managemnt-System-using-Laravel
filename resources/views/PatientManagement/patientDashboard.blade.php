@@ -22,6 +22,7 @@
               <i class="material-icons">dashboard</i>
               <p>Dashboard</p>
             </a>
+            <a href="/feedback">Feedback</a>
           </li>
           <li class="nav-item ">
           <a class="nav-link" href="/patient/{{ $research->patient_id }}/edit">
