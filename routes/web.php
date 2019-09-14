@@ -52,9 +52,6 @@ Route::get('/Services', 'ServicesController@index')->name('Services');
 Auth::routes();
 
 
-Auth::routes();
-
-
 Route::view('/', 'main.index');
 Route::get('/about', 'NoticesController@index');
 Route::get('/ServiceTest', 'PostsController@index');
@@ -164,3 +161,9 @@ Route::get('go-to-cart','ShoppingCartController@index');
 //Product Management
 
 Route::get('/product', 'ProductManagementController@index');
+
+Route::resource('product', 'ProductManagementController');
+
+Route::delete('/productdelete/{id}', 'ProductManagementController@destroy');
+
+Route::post('/store', 'ProductManagementController@store');
