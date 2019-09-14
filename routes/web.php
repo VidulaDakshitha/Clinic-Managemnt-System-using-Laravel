@@ -14,7 +14,7 @@
 
 
 Route::get('/AdminHome', 'PagesController@adhome');
-Route::get('/AdHome', 'PostsController@admhome');
+Route::get('/admin', 'PostsController@admhome');
 Route::get('/ServiceTest', 'PostsController@index');
 Route::get('/AdminServ', 'PostsController@serv');
 Route::get('/gallery', 'PostsController@media');
@@ -67,7 +67,7 @@ Route::view('/signin', 'main.login');
 Route::view('/search', 'PatientManagement.search');
 Route::view('/registerp', 'auth.registerp');
 Route::view('/dashboard', 'PatientManagement.patientDashboard');
-Route::view('/admin', 'Admin');
+
 Route::view('/show', 'PatientManagement.showDoc');
 Auth::routes();
 

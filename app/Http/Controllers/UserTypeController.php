@@ -28,7 +28,7 @@ class UserTypeController extends Controller
             $viewName = '/supplier';
         }
         else if(Auth::user()->type === 'admin'){
-            $viewName = '/AdHome';
+            $viewName = '/admin';
         }
 
         return redirect($viewName);
