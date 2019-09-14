@@ -64,6 +64,7 @@ class Kernel extends HttpKernel
         'auth_patient' => \App\Http\Middleware\CheckIfPatientLogged::class,
         'auth_admin' => \App\Http\Middleware\CheckIfAdminLogged::class,
         'auth_inventory' => \App\Http\Middleware\CheckIfInventoryManagerLogged::class,
+        'auth_cashier' => \App\Http\Middleware\CheckIfCashierLogged::class,
     ];
 
     /**
