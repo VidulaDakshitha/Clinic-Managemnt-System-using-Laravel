@@ -168,3 +168,5 @@ Route::resource('product', 'ProductManagementController');
 Route::delete('/productdelete/{id}', 'ProductManagementController@destroy');
 
 Route::post('/store', 'ProductManagementController@store');
+
+Route::put('/update/{id}', 'ProductManagementController@update');

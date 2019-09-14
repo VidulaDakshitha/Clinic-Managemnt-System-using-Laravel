@@ -15,7 +15,7 @@ class CreateProductsTable extends Migration
     {
         Schema::create('products', function (Blueprint $table) {
             $table->bigIncrements('product_id');
-            $table->unsignedBigInteger('prescription_id');
+            //$table->unsignedBigInteger('prescription_id');
             // $table->unsignedBigInteger('supplier_id');
             $table->string('name');
             $table->float('selling_price');
@@ -33,7 +33,7 @@ class CreateProductsTable extends Migration
                 array(
                     // 'supplier_id' => $i+1,
                     'name' => 'Product '.$i,
-                    'prescription_id' => ($i+1),
+                    //'prescription_id' => ($i+1),
                     'selling_price' => $i*100,
                     'quantity' => $i*1000,
                     'potency' => 'Potent',
