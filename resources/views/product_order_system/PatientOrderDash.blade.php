@@ -1,37 +1,107 @@
-{{-- add a custom css file just for this page --}}
-<?php  $styles=['css/order_system_css/orderStylesheet.css']; ?>
-{{-- add a custom javascript file from the public folder --}}
-<?php  $javascript_local=['js/order_management_script.js']; ?>
-{{-- CDN Styles and JavaScripts --}}
-<?php  $javascript_cdn=[]; ?>
-{{-- add a custom css file from CDN --}}
-<?php  $css_cdn=[];?>
 
-@extends('main.layout.mainlayout', compact('styles', 'css_cdn', 'javascript_local', 'javascript_cdn'));
+
+@extends('main.layout.mainlayout');
+
+@section('styles')
+<style type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.css "></style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
+<script src="{{ asset('js/order_management_script.js') }}"></script>
+<link rel="stylesheet" href="{{ asset('css/order_system_css/orderStylesheet.css') }}">
+@endsection
+
+@section('js')
+
+@endsection
 
 @section('title', 'Patient Order Dashbord')
 @section('content')
 
+<script>
+    function conformfunction() {
+      confirm("Are you sure ...Want to cancel order");
+    }
+    </script>
 
 
 <div class="container-fluid">
 
-    <br>
-    <h3>Order History</h3>
+        @if(count($errors)>0)
+        <div class="alert alert-danger" role="alert">
+            <ul>
+               @foreach ($errors->all as $errors)
+                <li><p>{{$errors}}</p></li>
+                @endforeach
+            </ul>
+            </div>
+        @endif
 
-    <!--Table and operation field -->
-<div class="card mb-3" id="tablebackground"style="left: 5%;width: 90%;padding: 10px;margin: 15px;border-radius: 10px;box-shadow: 0 0 9px 0px #b1aeae;">
-    <div class="card-header">
-          <i class="fas fa-table"></i>
+        @if (\Session::has('success'))
+        <div class="alert alert-success" role="alert">
+                <p>{{\Session::get('success')}} </p>
+              </div>
+        @endif
+
+        @if (\Session::has('delete_product'))
+        <div class="alert alert-success" role="alert">
+                <p>{{\Session::get('delete_product')}} </p>
+              </div>
+        @endif
+
+
+
+
+
+
+    <br>
+    <div class="p-3 mb-2 bg-success rounded-top text-white"> <h5>Patient Oder Managemet</h5>
+    </div>
+    <label for="staticEmail" class="col-sm-2 col-form-label">{{ Auth::user()->name}}</label>
+
+<!--general item chart-->
+
+<div class="  card-group " style="left: 6%;width: 90%;position: relative;">
+
+<div class="card">
+    <canvas id="myChartmedical" style="width:380 height:400"></canvas>
+</div>
+<div class="card">
+    <canvas id="myChartgeneral" style="width:380 height:400"></canvas>
+</div>
+</div>
+    <script>
+        var mnum1={{$generalorder_rady}};
+        var mnum2={{$generalorder_shiped}};
+        var mnum3={{$generalorder_waiting}};
+        console.log(mnum3);
+
+        var gnum1={{$medicalorder_rady}};
+        var gnum2={{$medicalorder_shiped}};
+        var gnum3={{$medicalorder_waiting}};
+
+    window.onload = function(){
+        generalItemChart(gnum1,gnum2,gnum3);
+        medicalItemChart(mnum1,mnum2,mnum3);
+    }
+
+    </script>
+
+
+<!--Table and operation field -->
+    <div class="card mb-3" id="tablebackground"style="left: 5%;width: 90%;padding: 10px;margin: 15px;border-radius: 10px;box-shadow: 0 0 9px 0px #b1aeae;">
+            <div class="p-3 mb-2 paitent_titebar rounded-top text-white">
+            </div>
+        <div class="card-header">
+
           <a href="paitientorderdash">
           <p class="h4"> General Order details </p>
           </a>
     </div>
     <div class="card-body">
-          <div class="table-responsive" id="tableplane" style="border-radius: 10px;">
+          <div class="table-responsive" id="tableplane" style="border-radius: 10px; background: url('assets/image/order_back.jpg');" >
             <div id="dataTable_wrapper" class="dataTables_wrapper dt-bootstrap4">
 
-                <div class="row">
+                <div class="row" >
                     <div class="col-sm-12 col-md-6">
                        <!--Add button -->
                     </div>
@@ -61,7 +131,7 @@
                                               </select>
                                             </div>
                                             <!--need to add user id-->
-                                             <input type="text" name="paitent_id" value="1" hidden>
+                                             <input type="text" name="paitent_id" value="{{Auth::id()}} " hidden>
                                             <div class="col-auto my-1">
                                               <button type="submit" class="btn btn-primary">Submit</button>
                                             </div>
@@ -70,9 +140,10 @@
                                 </form>
                     </div>
                 </div>
+
             </div>
             <br>
-            <div class="row">
+            <div class="row" style=" background: white;">
                 <div class="col-sm-12">
                     <table class="table table-bordered table-hover table-striped dataTable table-sm " id="dataTable" width="100%" cellspacing="0" role="grid" aria-describedby="dataTable_info" style="width: 100%;">
               <thead>
@@ -92,7 +163,7 @@
 
               <tbody>
                 <!--loop is start-->
-             @if (count($orderDetail)<1)
+             @if (count($orderDetail)==0)
                       <td class="sorting_1">Nothing to show</td>
                          <td >Nothing to show</td>
                          <td >Nothing to show</td>
@@ -100,7 +171,7 @@
                          <td >Nothing to show</td>
                          <td >Nothing to show</td>
                          <td >Nothing to show</td>
-                         <td >Nothing to show</td>
+                         <td >Nothing to show </td>
              @else
                    @foreach ($orderDetail as $key=> $orderrow)-
 
@@ -147,7 +218,8 @@
                                       <input type="text" value="{{$orderrow->quantity}}" name="product_quntity_send" hidden>
                                       <input type="text" value="{{$orderrow->total_payment}}" name="order_totapayment_send" hidden>
 
-                                <input type="text" value="{{Auth::user()->id}}" name="paitent_id_send" hidden>
+                                <input type="text" value="{{Auth::id()}}" name="paitent_id_send" hidden>
+
 
                                   <button type="button" class="btn btn-warning">Print</button>
                                   <button type="submit" class="btn btn-primary">Edit</button>
@@ -156,13 +228,17 @@
 
                                             @if (($orderrow->status)=='waiting')
                                                  <form action="{{route('paitintorder.destroy',$orderrow->order_id)}}" method="post">
+
                                                      @csrf
                                                      @method('DELETE')
-                                                       <button class="btn btn-danger" type = "submit" style="margin-left: 4px;">Delete</button>
+                                                       <input type="text" value="{{$orderrow->quantity}}" name="deleteqty" hidden>
+                                                       <button class="btn btn-danger btn-round" type = "submit" style="margin-left: 4px;" onclick="conformfunction()">Cancel Order</button>
+
+
 
                                                  </form>
                                               @else
-                                              <button class="btn btn-danger" type = "submit" style="margin-left: 4px; height: 38px;" disabled>Delete</button>
+                                              <button class="btn btn-danger" type = "submit" style="margin-left: 4px; height: 38px;" disabled>Cancel order</button>
                                             @endif
                           </td>
                         </tr>
@@ -176,16 +252,18 @@
 
 <br>
 <!--General item order-->
+
+<div class="p-3 mb-2 bg-success rounded-top text-white paitent_titebar" > <h6> </h6></div>
     <div class="card-header">
-          <i class="fas fa-table"></i>
+
           <a href="paitientorderdash">
           <p class="h4"> Medical Item Order details </p>
           </a>
     </div>
-    <div class="card-body">
-          <div class="table-responsive" id="tableplane" style="border-radius: 10px;">
+    <div class="card-body" >
+          <div class="table-responsive" id="tableplane" style="border-radius: 10px;  background: url('assets/image/order_back.jpg');">
             <div id="dataTable_wrapper" class="dataTables_wrapper dt-bootstrap4">
-                <div class="row">
+                <div class="row" >
                     <div class="col-sm-12 col-md-6">
                        <!--Add button -->
                     </div>
@@ -226,7 +304,7 @@
                 </div>
             </div>
             <br>
-            <div class="row">
+            <div class="row" style=" background: white;">
                 <div class="col-sm-12">
                     <table class="table table-bordered table-sm dataTable" id="dataTable" width="100%" cellspacing="0" role="grid" aria-describedby="dataTable_info" style="width: 100%;">
               <thead>
@@ -313,7 +391,9 @@
                               <form action="{{route('paitintorder.destroy',$medicalitemrow->order_id)}}" method="post">
                                     @csrf
                                     @method('DELETE')
-                                    <button class="btn btn-danger btn-round" type = "submit" style="margin-left: 4px;">Delete</button>
+                                    <input type="text" value="{{$medicalitemrow->quantity}}" name="deleteqty" hidden>
+                                    <button class="btn btn-danger btn-round" type = "submit" style="margin-left: 4px;" onclick="conformfunction()">Cancel Order</button>
+
                               </form>
 
                         @else
@@ -337,6 +417,9 @@
 
 
 
+
+
     </div>
+
 
 @endsection

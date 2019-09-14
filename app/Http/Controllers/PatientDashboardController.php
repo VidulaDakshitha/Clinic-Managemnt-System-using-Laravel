@@ -115,7 +115,7 @@ class PatientDashboardController extends Controller
         $curr_patient->save();
         $auth_user->save();
         
-        return redirect('/patient/'.$id.'/edit')->with('success','Patient details has been updated!');
+        return redirect('/patient/'.$id.'/edit')->with('success','ddfdfdfdfdfdfdfdfg Patient details has been updated!');
     }
 
     /**
@@ -126,6 +126,13 @@ class PatientDashboardController extends Controller
      */
     public function destroy($id)
     {
+       
+        // $post = User::find(Auth::id());
+        $post2=Patient::find($id);
+        // $post->delete();
+        $post2->delete();
+
+        return redirect('/');
         //
     }
 }

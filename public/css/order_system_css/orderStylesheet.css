@@ -140,3 +140,15 @@
     width: 1rem;
     background-color: crimson;
 }
+
+.toggleButton {
+    float: right;
+  }
+  .hiddenRow {
+    display: none;
+  }
+
+.paitent_titebar{
+    background: rgb(0,255,124);
+background: linear-gradient(90deg, rgba(0,255,124,1) 0%, rgba(140,255,198,1) 44%, rgba(0,210,254,1) 100%);
+}

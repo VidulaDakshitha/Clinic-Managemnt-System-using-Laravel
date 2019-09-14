@@ -49,4 +49,10 @@ class Patient extends Authenticatable
     {
         return $this->hasOne('App\PersonalRecord');
     }
+
+    public function prescriptions(){
+        return $this->hasMany('App\Prescription');
+    }
+
+
 }

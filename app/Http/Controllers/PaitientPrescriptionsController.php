@@ -14,10 +14,8 @@ class PaitientPrescriptionsController extends Controller
      */
     public function index()
     {
-        /*$priscriptions=DB::table('prescriptions')
-                            ->join('prescriptions','prescriptions.product_id','=','products.product_id')
-                            ->join()
-                            ->select('prescriptions.product_id','')*/
+
+
         return view('product_order_system.UserPriscriptionView');
     }
 

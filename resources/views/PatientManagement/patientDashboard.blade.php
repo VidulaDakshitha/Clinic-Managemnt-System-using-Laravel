@@ -4,7 +4,7 @@
 
 
 <div class="wrapper ">
-    <div class="sidebar" data-color="purple" data-background-color="white" data-image="../assets/img/sidebar-1.jpg">
+    <div class="sidebar" data-color="purple" data-background-color="white" data-image='../../images/dashboardIMG/sidebar-1.jpg' >
       <!--
         Tip 1: You can change the color of the sidebar using: data-color="purple | azure | green | orange | danger"
 
@@ -29,7 +29,7 @@
               <p>User Profile</p>
             </a>
           </li>
-          <li class="nav-item ">
+          {{-- <li class="nav-item ">
             <a class="nav-link" href="./tables.html">
               <i class="material-icons">content_paste</i>
               <p>Table List</p>
@@ -40,11 +40,11 @@
               <i class="material-icons">location_ons</i>
               <p>Maps</p>
             </a>
-          </li>
+          </li> --}}
           <li class="nav-item ">
-            <a class="nav-link" href="./notifications.html">
+            <a class="nav-link" href="/feedback">
               <i class="material-icons">notifications</i>
-              <p>Notifications</p>
+              <p>Feedback</p>
             </a>
           </li>
 
@@ -125,19 +125,20 @@
                   <div class="card-icon">
                     <i class="material-icons">event_available</i>
                   </div>
-                  <p class="card-category">Appointments Made a day</p>
-                  <h3 class="card-title">20
-                    <small>total</small>
+                  <p class="card-category">Click To Make Appointment</p>
+                  
                   </h3>
                 </div>
                 <div class="card-footer">
                   <div class="stats">
                     <i class="material-icons">date_range</i>
-                  Make more appointments</a>
+                  Make more appointments
                   </div>
-                </div>
+                </div></a>
               </div>
             </div>
+
+            <a href="#">
             <div class="col-lg-3 col-md-6 col-sm-6">
               <div class="card card-stats">
                 <div class="card-header card-header-success card-header-icon">
@@ -151,10 +152,11 @@
                   <div class="stats">
                     <i class="material-icons">date_range</i> Click to check details
                   </div>
-                </div>
+                </div></a>
               </div>
             </div>
-
+            
+            <a href="#">
             <div class="col-lg-3 col-md-6 col-sm-6">
               <div class="card card-stats">
                 <div class="card-header card-header-danger card-header-icon">
@@ -168,11 +170,11 @@
                   <div class="stats">
                     <i class="material-icons">local_offer</i> Click to view them
                   </div>
-                </div>
+                </div></a>
               </div>
             </div>
 
-            <a href="">
+            <a href="{{'/user-prescriptions'}}">
             <div class="col-lg-3 col-md-6 col-sm-6">
               <div class="card card-stats">
                 <div class="card-header card-header-info card-header-icon">
@@ -184,7 +186,7 @@
                 </div>
                 <div class="card-footer">
                   <div class="stats">
-                  <i class="material-icons">update</i>Click to order Items
+                  <i class="material-icons">update</i>proceed to order dashboard
                   </div>
                 </div></a>
               </div>
@@ -194,59 +196,65 @@
 
 
           <div class="row">
-              <a href="/search">
+          <a href="{{'/paitientorderdash'}}">
             <div class="col-lg-3 col-md-6 col-sm-6">
                 
               <div class="card card-stats">
                 <div class="card-header card-header-warning card-header-icon">
                   <div class="card-icon">
-                    <i class="material-icons">event_available</i>
+                    <i class="material-icons">local_convenience_store</i>
                   </div>
-                  <p class="card-category">Appointments Made a day</p>
-                  <h3 class="card-title">20
-                    <small>total</small>
+                  <p class="card-category">Order Items</p>
+                  <h3 class="card-title"> 24 / 7
+                    
                   </h3>
                 </div>
                 <div class="card-footer">
                   <div class="stats">
                     <i class="material-icons">date_range</i>
-                  Make more appointments</a>
+                  Make more orders for you prescription
                   </div>
-                </div>
+                </div></a>
               </div>
             </div>
+            
+            {{-- Add payment details --}}
+
+            <a href="#">
             <div class="col-lg-3 col-md-6 col-sm-6">
               <div class="card card-stats">
                 <div class="card-header card-header-success card-header-icon">
                   <div class="card-icon">
-                    <i class="material-icons">store</i>
+                    <i class="material-icons">payment</i>
                   </div>
-                  <p class="card-category">Your Personal medical records</p>
+                  <p class="card-category">Click To View Payment Details</p>
                   {{-- <h3 class="card-title">$34,245</h3> --}}
                 </div>
                 <div class="card-footer">
                   <div class="stats">
                     <i class="material-icons">date_range</i> Last 24 Hours
                   </div>
-                </div>
+                </div></a>
               </div>
             </div>
+            <a href="http://www.instagram.com">
             <div class="col-lg-3 col-md-6 col-sm-6">
               <div class="card card-stats">
                 <div class="card-header card-header-danger card-header-icon">
                   <div class="card-icon">
-                    <i class="material-icons">info_outline</i>
+                    <i class="material-icons">face</i>
                   </div>
-                  <p class="card-category">Fixed Issues</p>
-                  <h3 class="card-title">75</h3>
+                  <p class="card-category">Follow us on instagram</p>
+                  {{-- <h3 class="card-title">75</h3> --}}
                 </div>
                 <div class="card-footer">
-                  <div class="stats">
+                  {{-- <div class="stats">
                     <i class="material-icons">local_offer</i> Tracked from Github
-                  </div>
+                  </div> --}}
                 </div>
-              </div>
+              </div></a>
             </div>
+            <a href="https://twitter.com/shantha35775683?lang=en">
             <div class="col-lg-3 col-md-6 col-sm-6">
               <div class="card card-stats">
                 <div class="card-header card-header-info card-header-icon">
@@ -258,9 +266,9 @@
                 </div>
                 <div class="card-footer">
                   <div class="stats">
-                  <a href="https://twitter.com/shantha35775683?lang=en"><i class="material-icons">update</i> Just Updated..Click to follow</a>
+                  <i class="material-icons">update</i> Just Updated..Click to follow
                   </div>
-                </div>
+                </div></a>
               </div>
             </div>
           </div>
