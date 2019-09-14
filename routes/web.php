@@ -75,6 +75,34 @@ Route::resource('supplier', 'SupplierManagerController')->middleware('auth_supp'
 Route::resource('patient', 'PatientDashboardController');
 Route::resource('search', 'SearchController');
 
+//payment routes
+Route::get('/paymentHome', function () {
+    return view('payment.paymentHome');
+});
+
+Route::get('/paymentCard', function () {
+    return view('payment.paymentCard');
+});
+
+Route::get('/paymentSlip', function () {
+    return view('payment.paymentSlip');
+});
+
+Route::get('/paymentRefund', function () {
+    return view('payment.paymentRefund');
+});
+
+Route::get('/paymentSearch', function () {
+    return view('payment.paymentSearch');
+});
+// Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/detail', 'CardController@show');
+Route::get('/search1', 'PaymentController@search');
+Route::resource('payment', 'PaymentController');
+Route::get('/card', 'CardController@index');
+Route::resource('card', 'CardController');
+Route::get('/slip', 'BankSlipController@index');
+Route::resource('slip', 'BankSlipController');
 // to search doctor
 //Route::resource('search', 'SearchController');
 
