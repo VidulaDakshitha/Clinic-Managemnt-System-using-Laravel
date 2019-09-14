@@ -1,0 +1,501 @@
+    @media (min-width: 1440px) and (max-width: 1745px) {
+        .wrapper header.header .white {
+            bottom: -110px;
+        }
+        .wrapper header.header .blue {
+            bottom: -80px;
+        }
+        .wrapper header.header .another-text {
+            margin-left: 100px;
+        }
+        .wrapper section.contact .white {
+            bottom: 40px;
+        }
+        .wrapper section.contact .blue {
+            bottom: 40px;
+        }
+    }
+    
+    @media (min-width: 1200px) and (max-width: 1439px) {
+        .wrapper header.header {
+            background-size: 100% auto;
+            height: auto;
+        }
+        .wrapper header.header .header-text {
+            padding-top: 45px;
+        }
+        .wrapper header.header .blue {
+            bottom: -178px;
+        }
+        .wrapper header.header .white {
+            bottom: -205px;
+        }
+        .wrapper header.header .header-text button {
+            margin-bottom: 80px;
+        }
+        .wrapper section.development {
+            padding-bottom: 205px;
+        }
+        .wrapper section.development .white {
+            bottom: -83px;
+        }
+        .wrapper section.development .blue {
+            bottom: -60px;
+        }
+        .wrapper section.development {
+            height: 600px;
+            overflow: hidden;
+        }
+        .wrapper section.portfolia .portfolio-part .overlay-slide h2 {
+            margin-top: 75px;
+        }
+        .wrapper section.portfolia .portfolio-part .overlay-slide h2::before {
+            width: 265px;
+        }
+        .wrapper section.portfolia .portfolio-part .overlay-slide {
+            height: 281px;
+        }
+        .wrapper section.contact .blue {
+            bottom: -20px;
+        }
+        .wrapper section.contact .white {
+            bottom: -16px;
+        }
+        .wrapper section.contact {
+            height: 590px;
+            padding: 50px 0;
+        }
+        .wrapper footer.footer {
+            margin-top: 50px;
+        }
+    }
+    
+    @media (min-width: 992px) and (max-width: 1199px) {
+        .wrapper header.header {
+            height: auto;
+        }
+        .wrapper header.header .blue {
+            height: 365px;
+        }
+        .wrapper header.header .white {
+            bottom: 0;
+            height: 275px;
+        }
+        .wrapper header.header .header-text {
+            margin: 0 auto;
+            padding-top: 20px;
+        }
+        .wrapper header.header .another-text {
+            margin-top: 150px;
+        }
+        .wrapper header.header .header-text h1 {
+            font-size: 40px;
+            margin-bottom: 8px;
+            padding-bottom: 10px;
+        }
+        .wrapper header.header .header-text p {
+            line-height: 25px;
+            margin-bottom: 20px;
+        }
+        .wrapper header.header .header-text button {
+            margin-bottom: -15px;
+        }
+        .wrapper section.development {
+            height: auto;
+            overflow: hidden;
+        }
+        .wrapper section.development .white {
+            bottom: -100px;
+        }
+        .wrapper section.development .blue {
+            bottom: -80px;
+        }
+        .wrapper section.works .work-text {
+            margin-left: 20px;
+        }
+        .wrapper section.portfolia .portfolio-part .overlay-slide {
+            padding: 15px;
+        }
+        .wrapper section.portfolia .portfolio-part .overlay-slide h2 {
+            font-size: 32px;
+            margin-top: 35px;
+        }
+        .wrapper section.portfolia .portfolio-part .overlay-slide h2::before {
+            width: 240px;
+        }
+        .wrapper section.portfolia .portfolio-part {
+            height: 225px;
+        }
+        .wrapper section.portfolia .portfolio-part .overlay-slide p {
+            line-height: 18px;
+        }
+        .wrapper section.contact {
+            height: 600px;
+            padding: 50px 0;
+        }
+        .wrapper section.contact .blue {
+            bottom: -75px;
+        }
+        .wrapper section.contact .white {
+            bottom: -70px;
+        }
+        .wrapper footer.footer {
+            margin-top: 50px;
+        }
+        .wrapper footer.footer .footer-text .footer-text-single p a {
+            font-size: 13px;
+        }
+        .wrapper footer.footer .footer-icon i {
+            padding: 0 30px 0 0;
+        }
+    }
+    
+    @media (min-width: 768px) and (max-width: 991px) {
+        .wrapper header.header .header-text {
+            width: 100%;
+            padding-top: 20px;
+        }
+        .wrapper header.header .header-text h1 {
+            font-size: 40px;
+            margin-bottom: 10px;
+            padding-bottom: 10px;
+            margin-top: 0;
+        }
+        .wrapper header.header .header-text p {
+            font-size: 18px;
+            line-height: 25px;
+            margin-bottom: 15px;
+        }
+        .wrapper header.header .header-text p br {
+            display: none;
+        }
+        .wrapper header.header {
+            height: auto;
+        }
+        .wrapper header.header .blue {
+            bottom: -285px;
+        }
+        .wrapper header.header .white {
+            bottom: -305px;
+        }
+        .wrapper header.header .another-text h3 {
+            font-size: 33px;
+            padding-bottom: 3px;
+        }
+        .wrapper header.header .another-text p {
+            line-height: 20px;
+            margin-top: 4px;
+        }
+        .wrapper header.header .header-text button {
+            margin-bottom: 62px;
+            font-size: 16px;
+            padding: 10px 35px;
+        }
+        .wrapper section.development {
+            margin-top: 30px;
+        }
+        .wrapper section.development {
+            height: auto;
+            overflow: hidden;
+        }
+        .wrapper section.development .white {
+            bottom: -100px;
+        }
+        .wrapper section.development .blue {
+            bottom: -90px;
+        }
+        .wrapper section.works .work-text {
+            margin-left: 0px;
+        }
+        .wrapper section.portfolia .portfolio-part {
+            height: 260px;
+        }
+        .wrapper section.portfolia .portfolio-part .overlay-slide {
+            padding: 15px;
+        }
+        .wrapper section.portfolia .portfolio-part .overlay-slide h2 {
+            margin-top: 65px;
+        }
+        .wrapper section.portfolia .portfolio-part .overlay-slide h2::before {
+            width: 270px;
+        }
+        .wrapper section.contact {
+            height: auto;
+            overflow: hidden;
+            padding: 50px 0;
+        }
+        .wrapper section.contact .contact-form {
+            margin-left: 0;
+        }
+        .wrapper section.contact .contact-text {
+            margin-top: 0px;
+        }
+        .wrapper section.contact .blue {
+            bottom: -155px;
+        }
+        .wrapper section.contact .white {
+            bottom: -135px;
+        }
+        .wrapper footer.footer {
+            height: auto;
+        }
+        .wrapper footer.footer .footer-icon {}
+    }
+    
+    @media (min-width: 550px) and (max-width: 767px) {
+        .wrapper header.header .logo {
+            text-align: center;
+        }
+        .wrapper header.header ul.nav.navbar-nav {
+            height: 90px;
+            width: 100%;
+            text-align: center;
+        }
+        .wrapper header.header ul.nav.navbar-nav>li {
+            display: inline-block;
+        }
+        .wrapper header.header .header-text {
+            width: 100%;
+        }
+        .wrapper header.header .header-text h1 {
+            font-size: 40px;
+        }
+        .wrapper header.header .header-text h1::before {
+            left: 0;
+            width: 100%;
+        }
+        .wrapper header.header .header-text p br {
+            display: none;
+        }
+        .wrapper header.header {
+            height: auto;
+            background-size: 100% auto;
+        }
+        .wrapper header.header .blue {
+            bottom: -45px;
+            height: 210px;
+        }
+        .wrapper header.header .white {
+            bottom: -40px;
+            height: 192px;
+        }
+        .wrapper header.header .header-text {
+            padding-top: 50px;
+        }
+        .wrapper header.header .header-text button {
+            margin-bottom: 0;
+        }
+        .wrapper header.header .another-text {
+            margin-bottom: 200px;
+        }
+        .wrapper header.header .another-text p br {
+            display: none;
+        }
+        .wrapper section.development {
+            padding-bottom: 100px;
+            height: auto;
+        }
+        .wrapper section.works .work-text {
+            margin-left: 0px;
+        }
+        .wrapper section.development .blue {
+            height: 65px;
+        }
+        .wrapper section.development .white {
+            bottom: 0;
+            height: 57px;
+        }
+        .wrapper section.portfolia .portfolio-part {
+            margin: 55px auto 0;
+            width: 500px;
+        }
+        .wrapper section.portfolia .port-text {
+            margin: 0 auto;
+            width: -moz-fit-content;
+        }
+        .wrapper section.contact {
+            height: auto;
+        }
+        .wrapper section.contact .contact-form {
+            margin-left: 0;
+        }
+        .wrapper footer.footer {
+            background-size: 100% auto;
+            height: auto;
+            padding-top: 50px;
+            padding-bottom: 50px;
+        }
+        .wrapper section.contact .contact-form {
+            width: 525px;
+            margin: 70px auto 0;
+        }
+        .wrapper section.contact .contact-text {
+            width: 525px;
+            margin: 100px auto 0;
+        }
+    }
+    
+    @media only screen and (max-width: 549px) {
+        .wrapper header.header .white,
+        .wrapper header.header .blue,
+        .wrapper section .blue,
+        .wrapper section .white {
+            display: none;
+        }
+        .wrapper header.header .header-text {
+            padding-top: 0;
+            width: 100%;
+        }
+        .wrapper header.header .header-text h1::before {
+            display: none;
+        }
+        .wrapper header.header .header-text h1 {
+            font-size: 22px;
+            margin-bottom: 0;
+        }
+        .wrapper header.header .header-text p br {
+            display: none;
+        }
+        .wrapper header.header .header-text p {
+            font-size: 15px;
+            line-height: 20px;
+            margin-bottom: 23px;
+        }
+        .wrapper header.header .header-text button {
+            display: block;
+            font-size: 18px;
+            margin: 20px auto 0;
+            padding: 14px 50px;
+            width: auto;
+        }
+        .wrapper section.development {
+            padding-bottom: 50px;
+            padding-top: 50px;
+        }
+        .wrapper section.works .work-text {
+            margin-left: 0px;
+        }
+        .wrapper section.works .work-text h2 {
+            font-size: 30px;
+        }
+        .wrapper section.portfolia .port-text h2 {
+            font-size: 30px;
+        }
+        .wrapper section.portfolia .portfolio-part {
+            height: auto;
+        }
+        .wrapper section.portfolia .portfolio-part .overlay-slide {
+            padding: 5px;
+        }
+        .wrapper section.portfolia .portfolio-part .overlay-slide h2 {
+            font-size: 30px;
+            margin-bottom: 20px;
+            margin-top: 20px;
+        }
+        .wrapper section.portfolia .portfolio-part .overlay-slide h2::before {
+            display: none;
+        }
+        div.wrapper section.portfolia div.penination p {
+            font-size: 15px;
+            padding: 8px 19px;
+        }
+        div.wrapper section.portfolia div.penination p::before {
+            font-size: 14px;
+            height: 35px;
+            left: -48px;
+            line-height: 35px;
+            top: 3px;
+            width: 35px;
+        }
+        div.wrapper section.portfolia div.penination p::after {
+            font-size: 14px;
+            height: 35px;
+            right: -48px;
+            line-height: 35px;
+            top: 3px;
+            width: 35px;
+        }
+        .wrapper section.our-team .team-text p br {
+            display: none;
+        }
+        .wrapper section.our-team .my-claint .item img {
+            width: 90px;
+        }
+        .wrapper section.our-team .my-claint .item:hover>img {
+            width: 110px;
+        }
+        .wrapper section.our-team .owl-prev,
+        .wrapper section.our-team .owl-next {
+            display: none;
+        }
+        .wrapper section.our-team .my-claint .item .item-text h3 {
+            font-size: 20px;
+        }
+        .wrapper section.our-team .my-claint .item .item-text h4 {
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+        .wrapper section.our-team .my-claint .item .item-text i {
+            font-size: 15px;
+            padding: 0 3px;
+        }
+        .wrapper section.our-team .my-claint {
+            height: 200px;
+        }
+        .wrapper section.contact .contact-text {
+            margin-top: 0;
+        }
+        .wrapper section.contact .contact-form {
+            margin-left: 0;
+        }
+        .wrapper section.contact .contact-form .first,
+        .wrapper section.contact .contact-form .last {
+            width: 100%;
+        }
+        .wrapper section.contact .contact-form input[type="email"] {
+            padding-top: 10px;
+        }
+        .wrapper section.contact .contact-form .message textarea {
+            height: 100px;
+            padding-top: 10px;
+        }
+        .wrapper section.contact .contact-form .checkbox {
+            float: none;
+            padding-top: 10px;
+            width: 100%;
+        }
+        .wrapper section.contact .contact-form .submit {
+            float: none;
+            padding-top: 5px;
+        }
+        .wrapper section.contact .contact-form .checkbox-submit {
+            padding-bottom: 0;
+        }
+        .wrapper footer.footer {
+            height: auto;
+            margin-top: 0;
+        }
+        .wrapper footer.footer .footer-icon h2::before {
+            width: 100px;
+        }
+        .wrapper footer.footer .footer-icon i {
+            font-size: 22px;
+            padding: 0 20px 0 0;
+        }
+        .wrapper section.works .work-images {
+            height: 300px;
+        }
+        .wrapper section.works .work-images .overlay-text {
+            padding-top: 108px;
+        }
+        .wrapper header.header ul.nav.navbar-nav {
+            width: 200px;
+        }
+    }
+    
+    @media only screen and (max-width: 365px) {
+        .wrapper footer.footer .footer-text .footer-text-single p a {
+            font-size: 10px;
+            font-weight: 800;
+        }
+    }

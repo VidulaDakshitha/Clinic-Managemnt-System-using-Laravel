@@ -1,7 +1,14 @@
-{{-- add a custom css file just for this page --}}
-<?php  $styles=['css/main/login/login.css']; ?>
+@extends('main.layout.mainlayout');
 
-@extends('main.layout.mainlayout', compact('styles'));
+{{-- all your css styles go in here --}}
+@section('styles')
+<link rel="stylesheet" href="{{ asset('css/main/login/login.css') }}">
+@endsection
+
+{{-- all your js scripts go in here --}}
+@section('js')
+<script src="{{ asset('js/main/login/test.js') }}"></script>
+@endsection
 
 @section('title', 'Login')
 
@@ -59,7 +66,7 @@
             <div id="formFooter">
                 <a class="underlineHover" href="/forgot">Forgot Password?</a>
                 <p> Or </p>
-                <a class="underlineHover" href="/register">Haven't created an account yet?</a>
+                <a class="underlineHover" href="/registerp">Haven't created an account yet?</a>
             </div>
 
         </div>

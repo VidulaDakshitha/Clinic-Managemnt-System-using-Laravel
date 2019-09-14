@@ -244,7 +244,7 @@
                     <h6>Jessica Brown</h6>
                     <span>Patient</span>
                 </div>
-                <div class="author-pic set-bg" data-setbg="img/review/1.jpg"></div>
+                {{-- <div class="author-pic set-bg" data-setbg="img/review/1.jpg"></div> --}}
             </div>
             <div class="testimonial-item">
                 <div class="ts-content">
@@ -254,7 +254,7 @@
                     <h6>Jessica Brown</h6>
                     <span>Patient</span>
                 </div>
-                <div class="author-pic set-bg" data-setbg="img/review/2.jpg"></div>
+                {{-- <div class="author-pic set-bg" data-setbg="img/review/2.jpg"></div> --}}
             </div>
             <div class="testimonial-item">
                 <div class="ts-content">
@@ -265,7 +265,7 @@
                     <h6>Jessica Brown</h6>
                     <span>Patient</span>
                 </div>
-                <div class="author-pic set-bg" data-setbg="img/review/3.jpg"></div>
+                {{-- <div class="author-pic set-bg" data-setbg="img/review/3.jpg"></div> --}}
             </div>
             <div class="testimonial-item">
                 <div class="ts-content">
@@ -275,7 +275,7 @@
                     <h6>Jessica Brown</h6>
                     <span>Patient</span>
                 </div>
-                <div class="author-pic set-bg" data-setbg="img/review/2.jpg"></div>
+                {{-- <div class="author-pic set-bg" data-setbg="img/review/2.jpg"></div> --}}
             </div>
         </div>
     </div>
