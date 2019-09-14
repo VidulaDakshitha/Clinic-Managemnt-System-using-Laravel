@@ -37,7 +37,7 @@ class ArticlesController extends Controller
     public function index()
     {
         $articles = Article::all();
-        return view('chairman.gallerypage', compact('articles'));
+        return view('main.media', compact('articles'));
     }
 
 

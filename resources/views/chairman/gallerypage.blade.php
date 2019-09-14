@@ -22,13 +22,7 @@
     {{-- <link href="{{ asset('css/registerCSS/style.css') }}" rel="stylesheet" type="text/css" > --}}
 
 
-    @if (isset($styles))
-
-    @foreach ($styles as $style)
-    <link rel="stylesheet" href='{{ asset("$style") }}' />
-    @endforeach
-
-    @endif
+    
 
 
         <link href="{{ asset('css/media/stylegallery.css') }}" rel="stylesheet">

@@ -57,6 +57,9 @@ Auth::routes();
 
 Route::view('/', 'main.index');
 Route::get('/about', 'NoticesController@index');
+Route::get('/ServiceTest', 'PostsController@index');
+Route::get('/gallery', 'ArticlesController@index');
+Route::get('/feedback', 'FeedbackController@fed');
 Route::view('/contact', 'main.about');
 Route::view('/contact', 'main.contact');
 Route::view('/signin', 'main.login');
