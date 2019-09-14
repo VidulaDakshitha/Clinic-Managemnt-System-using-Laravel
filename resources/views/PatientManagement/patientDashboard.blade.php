@@ -4,7 +4,7 @@
 
 
 <div class="wrapper ">
-    <div class="sidebar" data-color="purple" data-background-color="white" data-image="../assets/img/sidebar-1.jpg">
+    <div class="sidebar" data-color="purple" data-background-color="white" data-image='../../images/dashboardIMG/sidebar-1.jpg' >
       <!--
         Tip 1: You can change the color of the sidebar using: data-color="purple | azure | green | orange | danger"
 
@@ -29,7 +29,7 @@
               <p>User Profile</p>
             </a>
           </li>
-          <li class="nav-item ">
+          {{-- <li class="nav-item ">
             <a class="nav-link" href="./tables.html">
               <i class="material-icons">content_paste</i>
               <p>Table List</p>
@@ -40,7 +40,7 @@
               <i class="material-icons">location_ons</i>
               <p>Maps</p>
             </a>
-          </li>
+          </li> --}}
           <li class="nav-item ">
             <a class="nav-link" href="./notifications.html">
               <i class="material-icons">notifications</i>
@@ -125,9 +125,8 @@
                   <div class="card-icon">
                     <i class="material-icons">event_available</i>
                   </div>
-                  <p class="card-category">Appointments Made a day</p>
-                  <h3 class="card-title">20
-                    <small>total</small>
+                  <p class="card-category">Click To Make Appointment</p>
+                  
                   </h3>
                 </div>
                 <div class="card-footer">
@@ -200,28 +199,28 @@
               <div class="card card-stats">
                 <div class="card-header card-header-warning card-header-icon">
                   <div class="card-icon">
-                    <i class="material-icons">event_available</i>
+                    <i class="material-icons">local_convenience_store</i>
                   </div>
-                  <p class="card-category">Appointments Made a day</p>
-                  <h3 class="card-title">20
-                    <small>total</small>
+                  <p class="card-category">Order Items</p>
+                  <h3 class="card-title"> 24 / 7
+                    
                   </h3>
                 </div>
                 <div class="card-footer">
                   <div class="stats">
                     <i class="material-icons">date_range</i>
-                  Make more appointments</a>
+                  Make more orders for you prescription
                   </div>
-                </div>
+                </div></a>
               </div>
             </div>
             <div class="col-lg-3 col-md-6 col-sm-6">
               <div class="card card-stats">
                 <div class="card-header card-header-success card-header-icon">
                   <div class="card-icon">
-                    <i class="material-icons">store</i>
+                    <i class="material-icons">payment</i>
                   </div>
-                  <p class="card-category">Your Personal medical records</p>
+                  <p class="card-category">Click To View Payment Details</p>
                   {{-- <h3 class="card-title">$34,245</h3> --}}
                 </div>
                 <div class="card-footer">

@@ -95,15 +95,8 @@
               </a>
               <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownProfile">
                 <a class="dropdown-item" href="#">Profile</a>
-                <form action="" method="POST">
-                  {{ csrf_field() }}
-                  {{ method_field('DELETE') }}
 
-                  {{-- /about2/{{ $result->id } --}}
-                  <input type="submit" class="dropdown-item" value="Delete Account" />
-
-
-                </form>
+           
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="#">Log out</a>
               </div>
@@ -144,7 +137,7 @@
                     <div class="col-md-4">
                       <div class="form-group">
                         <label class="bmd-label-floating">Password</label>
-                        <input type="text" name="password" class="form-control" value="{{$result->nic}}">
+                        <a href="{{'/forgot'}}" ><input type="text" name="password" class="form-control" value="click to change password" disabled style="color: blue"></a>
                       </div>
                     </div>
                   </div>
@@ -202,7 +195,7 @@
                     <div class="col-md-12">
                       <div class="form-group">
                         <label class="bmd-label-floating">Email Address</label>
-                        <input name="email" type="email" class="form-control" value="{{$result->email}}">
+                        <input name="email" type="email" class="form-control" value="{{$result->email}}" disabled >
                       </div>
                     </div>
                   </div>
@@ -217,7 +210,7 @@
             <div class="card card-profile">
               <div class="card-avatar">
                 <a href="#pablo">
-                  <img class="img" src="../../img/dashboardIMG/shantha.jpg" />
+                  <img class="img" src="../../images/dashboardIMG/shantha.jpg" />
                 </a>
               </div>
               <div class="card-body">
