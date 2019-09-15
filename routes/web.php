@@ -18,3 +18,6 @@ Auth::routes();
 
 Route::get('/usermanager', 'UserTypeController@manage');
 Route::resource('supplier', 'SupplierManagerController')->middleware('auth_supp');
+Route::resource('/appointments', 'AppointmentController');
+
+Route::resource('/manage/doctors', 'DoctorManagementController');

@@ -18,6 +18,8 @@ class CreateDoctorsTable extends Migration
             $table->string('fullname');
             $table->string('nic');
             $table->string('type');
+            $table->unique('nic');
+            $table->primary('doctor_id');
         });
     }
 

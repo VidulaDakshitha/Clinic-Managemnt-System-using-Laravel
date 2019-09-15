@@ -16,6 +16,7 @@ class CreateDoctorContactsTable extends Migration
         Schema::create('doctor_contacts', function (Blueprint $table) {
             $table->unsignedBigInteger('doctor_id');
             $table->string('contact_number');
+            $table->unique('contact_number');
         });
     }
 

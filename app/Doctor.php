@@ -6,6 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Doctor extends Model
 {
+    public $timestamps =false;
+    protected $primaryKey = 'doctor_id';
+    
     // a doctor visits patient many days
     public function visitingdays()
     {

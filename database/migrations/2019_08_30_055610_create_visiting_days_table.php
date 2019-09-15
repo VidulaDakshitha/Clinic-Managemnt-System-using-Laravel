@@ -15,7 +15,9 @@ class CreateVisitingDaysTable extends Migration
     {
         Schema::create('visiting_days', function (Blueprint $table) {
             $table->unsignedBigInteger('doctor_id');
-            $table->string('day');
+            $table->date('date');           
+            $table->string('startTime');
+            $table->string('endTime');
         });
     }
 
