@@ -44,7 +44,27 @@ class CreateUsersTable extends Migration
             )
         );
 
-        // adding dummy entries
+        // inventory manager
+        DB::table('users')->insert(
+            array(
+                'name' => 'P. Anoj',
+                'email' => 'inv@inv.com',
+                'password'=> bcrypt('inv'),
+                'type' => 'inventory_manager',
+            )
+        );
+
+        // inventory manager
+        DB::table('users')->insert(
+            array(
+                'name' => 'Kevin Gomez',
+                'email' => 'cash@cash.com',
+                'password'=> bcrypt('cash'),
+                'type' => 'cashier',
+            )
+        );
+
+        // adding dummy entrie
         DB::table('users')->insert(
             array(
                 'name' => 'Lakshan Perera',

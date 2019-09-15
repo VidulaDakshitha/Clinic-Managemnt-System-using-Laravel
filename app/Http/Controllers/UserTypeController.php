@@ -19,13 +19,19 @@ class UserTypeController extends Controller
     //
     public function manage()
     {
-        $viewName = '';
+        $viewName = '/login';
         if(Auth::user()->type === 'patient'){
             // here goes the patient dashbaord route
             $viewName = '/patient';
         }
         else if(Auth::user()->type === 'supplier_manager'){
             $viewName = '/supplier';
+        }
+        else if(Auth::user()->type === 'inventory_manager'){
+            $viewName = '/product';
+        }
+        else if(Auth::user()->type === 'cashier'){
+            $viewName = '/payment';
         }
         else if(Auth::user()->type === 'admin'){
             $viewName = '/admin';

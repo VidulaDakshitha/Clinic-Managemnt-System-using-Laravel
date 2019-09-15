@@ -93,7 +93,7 @@
             <div class="col-lg-7 banner-text text-white">
                 <h4>Register now to make your first appointment.</h4>
                 <!-- <p>*Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec malesuada lorem maximus.</p> -->
-                <a href="/register" class="site-btn sb-light">Register</a>
+                <a href="/registerp" class="site-btn sb-light">Register</a>
             </div>
             <div class="col-lg-5 text-lg-right">
                 <!-- <a href="#" class="site-btn sb-light">Read More</a> -->
@@ -244,7 +244,7 @@
                     <h6>Jessica Brown</h6>
                     <span>Patient</span>
                 </div>
-                <div class="author-pic set-bg" data-setbg="img/review/1.jpg"></div>
+                {{-- <div class="author-pic set-bg" data-setbg="img/review/1.jpg"></div> --}}
             </div>
             <div class="testimonial-item">
                 <div class="ts-content">
@@ -254,7 +254,7 @@
                     <h6>Jessica Brown</h6>
                     <span>Patient</span>
                 </div>
-                <div class="author-pic set-bg" data-setbg="img/review/2.jpg"></div>
+                {{-- <div class="author-pic set-bg" data-setbg="img/review/2.jpg"></div> --}}
             </div>
             <div class="testimonial-item">
                 <div class="ts-content">
@@ -265,7 +265,7 @@
                     <h6>Jessica Brown</h6>
                     <span>Patient</span>
                 </div>
-                <div class="author-pic set-bg" data-setbg="img/review/3.jpg"></div>
+                {{-- <div class="author-pic set-bg" data-setbg="img/review/3.jpg"></div> --}}
             </div>
             <div class="testimonial-item">
                 <div class="ts-content">
@@ -275,7 +275,7 @@
                     <h6>Jessica Brown</h6>
                     <span>Patient</span>
                 </div>
-                <div class="author-pic set-bg" data-setbg="img/review/2.jpg"></div>
+                {{-- <div class="author-pic set-bg" data-setbg="img/review/2.jpg"></div> --}}
             </div>
         </div>
     </div>

@@ -21,6 +21,32 @@ class CreateDoctorsTable extends Migration
             $table->unique('nic');
             $table->primary('doctor_id');
         });
+
+        // adding dummy entries
+        DB::table('doctors')->insert(
+            array(
+                'fullname' => 'DR.Shantha Kumar',
+                'nic' => '199207810318',
+                'type' => 'Asthma Surgeon',
+            )
+        );
+
+
+        DB::table('doctors')->insert(
+            array(
+                'fullname' => 'DR A.K PROBHODANA RANAWEERA',
+                'nic' => '199207810317',
+                'type' => 'Asthma Surgeon',
+            )
+        );
+
+        DB::table('doctors')->insert(
+            array(
+                'fullname' => 'DR A.M. DEEPAL K. ATTANAYAKE',
+                'nic' => '199207810318',
+                'type' => 'Ear Infections Surgeon',
+            )
+        );
     }
 
     /**

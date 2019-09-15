@@ -11,13 +11,167 @@
 |
 */
 
+
+
+Route::get('/AdminHome', 'PagesController@adhome');
+Route::get('/admin', 'PostsController@admhome')->middleware('auth_admin');
+Route::get('/ServiceTest', 'PostsController@index');
+Route::get('/AdminServ', 'PostsController@serv');
+Route::get('/gallery', 'PostsController@media');
+
+
+// Route::post('/ServiceTest', 'PostsController@store');
+// Route::put('/ServiceTest/{post}', 'PostsController@update');
+// Route::get('/ServiceTest/create', 'PostsController@create');
+// Route::get('/ServiceTest/{post}/edit', 'PostsController@edit');
+// Route::delete('/ServiceTest/{post}', 'PostsController@destroy');
+
+Route::get('/gallery', 'ArticlesController@index');
+Route::post('/gallery', 'ArticlesController@store');
+Route::put('/gallery/{article}', 'ArticlesController@update');
+Route::get('/gallery/create', 'ArticlesController@create');
+Route::get('/gallery/{article}/edit', 'ArticlesController@edit');
+Route::delete('/gallery/{article}', 'ArticlesController@destroy');
+
+Route::get('/aboutus', 'NoticesController@index');
+Route::post('/aboutus', 'NoticesController@store');
+Route::put('/aboutus/{article}', 'NoticesController@update');
+Route::get('/aboutus/create', 'NoticesController@create');
+Route::get('/aboutus/{article}/edit', 'NoticesController@edit');
+Route::delete('/aboutus/{article}', 'NoticesController@destroy');
+
+Route::get('/adminfeedback', 'FeedbackController@index');
+
+Route::get('/feedback', 'FeedbackController@fed');
+Route::post('/feedbacktest','FeedbackController@store');
+
+Route::resource('ServiceTest', 'PostsController');
+
+Route::get('/Services', 'ServicesController@index')->name('Services');
+
+Auth::routes();
+
+
 Route::view('/', 'main.index');
-Route::view('/about', 'main.about');
+Route::get('/about', 'NoticesController@index');
+Route::get('/ServiceTest', 'PostsController@index');
+Route::get('/gallery', 'ArticlesController@index');
+Route::get('/feedback', 'FeedbackController@fed');
+Route::view('/contact', 'main.about');
 Route::view('/contact', 'main.contact');
+Route::view('/signin', 'main.login');
+
+Route::view('/search', 'PatientManagement.search');
+Route::view('/registerp', 'auth.registerp');
+Route::view('/dashboard', 'PatientManagement.patientDashboard');
+
+Route::view('/show', 'PatientManagement.showDoc');
 Auth::routes();
 
 Route::get('/usermanager', 'UserTypeController@manage');
 Route::resource('supplier', 'SupplierManagerController')->middleware('auth_supp');
+<<<<<<< HEAD
 Route::resource('/appointments', 'AppointmentController');
 
 Route::resource('/manage/doctors', 'DoctorManagementController');
+=======
+
+// for patients dashboard
+Route::resource('patient', 'PatientDashboardController');
+Route::resource('search', 'SearchController');
+
+//payment routes
+Route::get('/paymentHome', function () {
+    return view('payment.paymentHome');
+});
+
+Route::get('/paymentCard', function () {
+    return view('payment.paymentCard');
+});
+
+Route::get('/paymentSlip', function () {
+    return view('payment.paymentSlip');
+});
+
+Route::get('/paymentRefund', function () {
+    return view('payment.paymentRefund');
+});
+
+Route::get('/paymentSearch', function () {
+    return view('payment.paymentSearch');
+});
+// Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/detail', 'CardController@show');
+Route::get('/search1', 'PaymentController@search');
+Route::resource('payment', 'PaymentController');
+Route::get('/card', 'CardController@index');
+Route::resource('card', 'CardController');
+Route::get('/slip', 'BankSlipController@index');
+Route::resource('slip', 'BankSlipController');
+// to search doctor
+//Route::resource('search', 'SearchController');
+
+// to display doctor
+Route::post('showdoctor','ShowDoctorController@search');
+
+// to delete a user
+Route::delete('/userdelete/{id}', 'UserProfileController@destroy');
+
+
+
+//order managemet system
+
+Route::get('/shoppingcart', function () {
+    return view('product_order_system.ShoppingCart');
+});
+
+Route::get('/search-product', 'ProductSearchController@index');
+Route::get('/viewproduct/{id}', 'ProductSearchController@show');
+Route::get('/productshow','ProductViewController@index');
+Route::post('search-product','ProductSearchController@search');
+Route::get('/order-admindash','ProductAdminDashController@index')->middleware('auth');
+Route::post('order-admindash','ProductAdminDashController@search');
+Route::post('admindash_status','ProductAdminDashController@updatesatus');
+Route::get('/paitientorderdash','PaitientOrderDashController@indexpaitent')->middleware('auth');
+Route::post('/paitientorderdash','PaitientOrderDashController@searchgeneral');
+Route::post('/paitientorderdash','PaitientOrderDashController@searchmedical');
+Route::post('paitientorderdash/edit','PaitientOrderDashController@showedit');
+Route::post('paitientorderdash/updateorder','PaitientOrderDashController@updates');
+Route::resource('paitintorder','PaitientOrderDashController');
+
+Route::get('/user-prescriptions','PatientPriscriptionOrderController@show')->middleware('auth');
+Route::post('/user-prescriptions','PatientPriscriptionOrderController@search');
+Route::get('/add-to-cart/{id}',[
+    'uses'=>'ProductController@getAddToCart',
+    'as'=>'product.addToCart'
+]);
+
+Route::get('/reduce-product/{id}',[
+    'uses'=>'ProductController@getReduceByone',
+    'as'=>'product.reducedbyone'
+]);
+//Route::get('show-cart','ProductController@getCart');
+Route::get('/show-cart',[
+    'uses'=>'ProductController@getCart',
+    'as'=>'product.show-cart'
+])->middleware('auth');
+Route::get('/getcheckout',[
+    'uses'=>'ProductController@getcheckout',
+    'as'=>'product-chek-out'
+]);
+Route::get('go-to-cart','ShoppingCartController@index');
+
+
+
+//Product Management
+
+Route::get('/product', 'ProductManagementController@index');
+
+Route::resource('product', 'ProductManagementController');
+
+Route::delete('/productdelete/{id}', 'ProductManagementController@destroy');
+
+Route::post('/store', 'ProductManagementController@store');
+
+Route::put('/update/{id}', 'ProductManagementController@update');
+>>>>>>> a183616c2289a732bf72ecf05efff6a61c4fa4bf

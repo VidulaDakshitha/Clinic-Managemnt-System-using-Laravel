@@ -6,15 +6,18 @@ use Illuminate\Database\Eloquent\Model;
 
 class Doctor extends Model
 {
-    public $timestamps =false;
-    protected $primaryKey = 'doctor_id';
+    public $timestamps =false;  
     
     // a doctor visits patient many days
+    protected $fillable=['doctor_id','fullname','nic','type'];
+    protected $primaryKey = 'doctor_id';
+
+
     public function visitingdays()
     {
         return $this->hasMany('App\VisitingDay');
     }
-    
+
     // a doctor has many contact numbers
     public function doctorcontacts()
     {
@@ -26,7 +29,7 @@ class Doctor extends Model
     {
         return $this->hasMany('App\Appointment');
     }
-    
+
     // a doctor has many notices
     public function notices()
     {
@@ -38,4 +41,7 @@ class Doctor extends Model
     {
         return $this->hasMany('App\Article');
     }
+
+
+
 }

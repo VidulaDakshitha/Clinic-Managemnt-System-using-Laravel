@@ -1,0 +1,155 @@
+body{
+    margin: 0;
+    padding: 0;
+    font-family: "montserrat",sans-serif;
+   
+    
+  }
+  .services{
+    background: #f1f1f1;
+    text-align: center;
+  }
+  .services h1{
+    display: inline-block;
+    text-transform: uppercase;
+    border-bottom: 4px solid #3498db;
+    font-size: 20px;
+    padding-bottom: 10px;
+    margin-top: 40px;
+  }
+  .cen{
+    max-width: 1200px;
+    margin: auto;
+    overflow: hidden;
+    padding: 20px;
+  }
+  .service{
+    display: inline-block;
+    width: calc(100% / 2);
+    margin: 0 -2px;
+    padding: 20px;
+    box-sizing: border-box;
+    cursor: pointer;
+    transition: 0.4s;
+  }
+  .service:hover{
+    background: #ddd;
+  }
+  .service i{
+    color: #3498db;
+    font-size: 34px;
+    margin-bottom: 30px;
+  }
+  .service h2{
+    font-size: 18px;
+    text-transform: uppercase;
+    font-weight: 500;
+    margin: 0;
+  }
+  .service p{
+    color: gray;
+    font-size: 15px;
+    font-weight: 500;
+  }
+  
+  
+  .about
+  {
+      display : flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      background: #f1f1f1;
+      
+  }
+  
+  .about .box
+  {
+      position: relative;
+      width: 350px;
+      padding: 40px;
+      box-shadow: 0 5px 15px rgba(0,0,0,.1);
+      border-radius: 4px;
+      margin: 20px;
+      box-sizing: border-box;
+      overflow: hidden;
+      text-align:center;
+      background:#fff;
+  }
+  
+  
+  .about .box .icon
+  {
+      position: relative;
+      width: 80px;
+      height: 80px;
+      background: #000;
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items:center;
+      margin: 0 auto;
+      border-radius:50%;
+      font-size: 40px;
+      font-weight: 700;
+      transition: 1s;
+  }
+  
+  .about .box:nth-child(1) .icon
+  {
+      box-shadow: 0 0 0 0 #e91e63;
+      background: #e91e63;
+  }	
+  
+  .about .box:nth-child(1):hover .icon
+  {
+      box-shadow: 0 0 0 400px #e91e63;
+  }
+  
+  .about .box:nth-child(2) .icon
+  {
+      box-shadow: 0 0 0 0 #23e629;
+      background: #23e629;
+  }	
+  
+  .about .box:nth-child(2):hover .icon
+  {
+      box-shadow: 0 0 0 400px #23e629;
+  }
+  
+  .about .box:nth-child(3) .icon
+  {
+      box-shadow: 0 0 0 0 #2196f3;
+      background: #2196f3;
+  }	
+  
+  .about .box:nth-child(3):hover .icon
+  {
+      box-shadow: 0 0 0 400px #2196f3;
+  }
+  
+  
+  .about .box .content
+  {
+      position:relative;
+      z-index:1;
+      transition: 0.5s;
+  }
+  
+  
+  .about .box:hover .content
+  {
+      color: #fff;
+  }
+  
+  
+  @media screen and (max-width: 800px) {
+    .service{
+      width: 50%;
+    }
+  }
+  @media screen and (max-width: 500px) {
+    .service{
+      width: 100%;
+    }
+  }
+  
