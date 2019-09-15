@@ -16,6 +16,7 @@ class ProductManagementController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+        $this->middleware('auth_inventory');
     }
 
 
@@ -45,26 +46,30 @@ class ProductManagementController extends Controller
     public function store(Request $request)
     {
         
-        $data = $request->validate([
-            'name' => 'required|max:30',
-            'selling_price' => 'required',
-            'quantity' => 'required|numeric',
-            'potency' => 'required|numeric',
-            'expiry_date' => 'required',
-            'type' => 'required|string',
-            'brand' => 'required|string',
-            'description' => 'required|string',
-            'image' => 'required',
-        ]);
+        if($request->hasFile('image')){
+            $fullFileName = $request->image->getClientOriginalName();
+            $file = pathinfo($fullFileName, PATHINFO_FILENAME);
+            $ext = $request->image->getClientOriginalExtension();
 
-        $addItem = new Product;
+            $fileName = $file.'_'.time().'_'.$ext;
+
+            $path = $request->image->storeAs('public/product_images', $fileName);
+        }
+        else{
+            $fileName = "noimage.jpg";
+        }
+
+        $addItem = new Product();
 
         $addItem->name          = $request->input('name');
         $addItem->selling_price = $request->input('selling_price');
         $addItem->quantity      = $request->input('quantity');
         $addItem->potency       = $request->input('potency');
         $addItem->expiry_date   = $request->input('expiry_date');
+        $addItem->brand         = $request->input('brand');
+        $addItem->description   = $request->input('description');
         $addItem->type          = $request->input('type');
+        $addItem->image         = $fileName;
         
         $addItem->save();
 
@@ -90,7 +95,9 @@ class ProductManagementController extends Controller
      */
     public function edit($id)
     {
-        //
+        $product = Product::findOrFail($id);
+
+        return view('product.update', compact('products'));
     }
 
     /**
@@ -100,9 +107,22 @@ class ProductManagementController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Product $product)
     {
-        //
+        $product->name            = $request->name;
+        $product->selling_price   = $request->selling_price;
+        $product->quantity        = $request->quantity;
+        $product->potency         = $request->potency;
+        $product->expiry_date     = $request->expiry_date;
+        $product->brand           = $request->brand;
+        $product->description     = $request->description;
+        $product->type            = $request->type;
+        $product->image           = $request->image;
+
+        $product->save();
+
+        return redirect('/product')->with('success', 'Product updated Successfully!' );
+
     }
 
     /**
@@ -113,6 +133,8 @@ class ProductManagementController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $product = Product::findOrFail($id);
+        $product->delete();
+        return redirect('/product')->with('success','Product deleted Successfully!');
     }
 }

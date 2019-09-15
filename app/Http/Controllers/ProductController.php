@@ -120,6 +120,9 @@ class ProductController extends Controller
             ->with('userId',$userId)
             ->with('totalprderprice',$totalprderprice)
             ->with('order_placed','Order placed sucsessfuly');
+          // return redirect('/search-product')->with('order_placed','Order placed sucsessfuly');
+          return view('payment.paymentCard')->with('userId', $userId)
+                                            ->with('latsorderid',$latsorderid);
 
         }
 

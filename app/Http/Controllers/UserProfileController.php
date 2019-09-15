@@ -94,9 +94,11 @@ class UserProfileController extends Controller
      */
     public function destroy($id)
     {
-        $post = User::find($id);
+        $post = User::find(Auth::id());
+        $post2=Patient::find($id);
         $post->delete();
-        return redirect('/');
+        $post2->delete();
+        return redirect('/')->with('success',' You are deleted successfully...Thanks for joining with IHHR');
         //
     }
 

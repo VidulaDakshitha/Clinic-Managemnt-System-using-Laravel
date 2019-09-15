@@ -7,12 +7,14 @@
 <style type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.css "></style>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.bundle.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
+<script src="{{ asset('js/order_management_script.js') }}"></script>
+
 
 <link rel="stylesheet" href="{{ asset('css/order_system_css/orderStylesheet.css') }}">
 @endsection
 
 @section('js')
-<script src="{{ asset('js/order_management_script.js') }}"></script>
+
 @endsection
 
 @section('content')
@@ -57,7 +59,7 @@
   <br>
 
   <!--Notification card-->
-  <div class="d-flex">
+  <div class="d-flex" style="background: #fafafa;">
     <div class="row" style="width: 50%; height: 130px">
       <div class="col-xl-3 col-sm-6 mb-3">
         <div class="card text-white notify_cart_1 o-hidden h-100">
@@ -258,7 +260,7 @@
                   <td>{{$orderrow->total_payment}}</td>
                   @if (($orderrow->status)=='shiped')
                   <td>
-                    <div class="badge badge-primary text-wrap" style="width: 6rem;">
+                    <div class="badge badge-success text-wrap" style="width: 6rem;">
                       {{$orderrow->status}}
                     </div>
                   </td>
@@ -266,9 +268,15 @@
                   <td>
                     <form action="admindash_status" method="POST">
                       <div class="input-group">
-                        <div class="badge btn-warning text-wrap" style="width: 6rem;">
+                            @if (($orderrow->status)=='waiting')
+                        <div class="badge badge-primary text-wrap" style="width: 6rem;">
                           <p> {{$orderrow->status}} </p>
                         </div>
+                            @else
+                            <div class="badge badge-warning text-wrap" style="width: 6rem;">
+                                    <p> {{$orderrow->status}} </p>
+                                  </div>
+                            @endif
                         {{ csrf_field() }}
                         <input type="text" name="order_id" value="{{$orderrow->order_id}}" hidden>
                         <select name="admindash_status" class="custom-select mr-sm-1" style=" width: 29%; ">
@@ -283,7 +291,7 @@
                   @endif
 
 
-                  <td><button type="button" class="btn btn-success">Edit</button>
+                  <td>
                     <button type="button" class="btn btn-warning">Print</button>
 
                   </td>

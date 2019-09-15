@@ -5,6 +5,9 @@
 
 @section('title', 'Supplier Manager')
 
+@include('backend.supplier.nav')
+
+
 @section('content')
 <div class="container">
     <h1>Supplier Dashboard(Protected Area)</h1>
@@ -30,7 +33,7 @@
             @foreach ($suppliers as $supplier)
             <tr>
                 <th scope="row"> {{ $supplier->supplier_id }}</th>
-                <td>{{ $supplier->name }}</td>
+                <td><a href="/supplier/{{ $supplier->supplier_id }}">{{ $supplier->name }}</a></td>
                 <td><?php $city = preg_split('/\s+/', $supplier->location); echo $city[max(count($city)-1, 0)]; ?></td>
                 <td>
                     @if (count($supplier->products)>0)
@@ -53,8 +56,11 @@
                 </td>
             </tr>
             @endforeach
+            @else
+            <p><i>No suppliers available, please add new one</i></p>
             @endif
         </tbody>
     </table>
+    {{ $suppliers->links() }}
 </div>
 @endsection
