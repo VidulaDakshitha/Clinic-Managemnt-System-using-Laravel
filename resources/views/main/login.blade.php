@@ -64,7 +64,7 @@
 
             <!-- Remind Passowrd -->
             <div id="formFooter">
-                <a class="underlineHover" href="/forgot">Forgot Password?</a>
+                <a class="underlineHover" href="{{ route('password.request') }}">Forgot Password?</a>
                 <p> Or </p>
                 <a class="underlineHover" href="/registerp">Haven't created an account yet?</a>
             </div>
