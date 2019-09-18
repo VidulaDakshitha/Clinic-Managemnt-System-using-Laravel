@@ -19,6 +19,10 @@ class ProductManagementController extends Controller
         $this->middleware('auth_inventory');
     }
 
+    public function landpage()
+    {
+        return view('product.landpage');
+    }
 
     public function index()
     {

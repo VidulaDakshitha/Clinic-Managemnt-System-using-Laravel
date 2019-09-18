@@ -160,6 +160,8 @@ Route::get('go-to-cart','ShoppingCartController@index');
 
 //Product Management
 
+Route::get('/landingpage', 'ProductManagementController@landpage');
+
 Route::get('/product', 'ProductManagementController@index');
 
 Route::resource('product', 'ProductManagementController');
