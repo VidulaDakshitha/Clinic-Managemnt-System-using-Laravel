@@ -70,11 +70,9 @@ Auth::routes();
 
 Route::get('/usermanager', 'UserTypeController@manage');
 Route::resource('supplier', 'SupplierManagerController')->middleware('auth_supp');
-<<<<<<< HEAD
-Route::resource('/appointments', 'AppointmentController');
 
+Route::resource('/appointments', 'AppointmentController');
 Route::resource('/manage/doctors', 'DoctorManagementController');
-=======
 
 // for patients dashboard
 Route::resource('patient', 'PatientDashboardController');
@@ -174,4 +172,3 @@ Route::delete('/productdelete/{id}', 'ProductManagementController@destroy');
 Route::post('/store', 'ProductManagementController@store');
 
 Route::put('/update/{id}', 'ProductManagementController@update');
->>>>>>> a183616c2289a732bf72ecf05efff6a61c4fa4bf

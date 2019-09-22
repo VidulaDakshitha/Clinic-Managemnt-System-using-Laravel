@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Doctor;
+use App\DoctorContact;
 use App\DoctorController;
 use Illuminate\Http\Request;
 
@@ -15,7 +16,7 @@ class DoctorManagementController extends Controller
      */
     public function index()
     {
-        //returns all docts in the doctors table.    
+        //returns all doctorss in the doctors table.    
         return view('doctor.manage', ['doctors'=> Doctor::all()]);
     }
 
@@ -72,10 +73,11 @@ class DoctorManagementController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit(Doctor $doctor)
-    {
-        //      
+    {      
         //dd($doctor);
-        return view('doctor.edit', ['doctor' => $doctor]);
+        $contact_set = DoctorContact::where('doctor_id','=', $doctor->doctor_id)->limit(2)->get();       
+        //dd($contact_set[0]);
+        return view('doctor.edit', ['doctor' => $doctor, 'contact' => $contact_set]);
     }
 
     /**
@@ -94,9 +96,14 @@ class DoctorManagementController extends Controller
                 "fullName" => $request->fullname,
                 "nic" => $request->nic,
                 "type" => $request->type
-
             ]
         );
+
+        $contact = new DoctorContact();
+        $contact->doctor_id = $doctor->doctor_id;
+
+        $contact->contact_number = $request->contact1;
+     
     }
 
     /**
