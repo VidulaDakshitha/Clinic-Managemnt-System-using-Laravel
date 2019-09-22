@@ -138,9 +138,8 @@
 
                                                 
                                                 <td>
-                                                    <form action="/update/{{$product->product_id}}" method="PUT">
-                                                    @csrf
-                                                        @method('UPDATE')    
+                                                    <form action="/edit/{{$product->product_id}}" method="POST">
+                                                    @csrf    
                                                          <button type="submit" href="" class="btn btn-primary mr-1">Edit</button>
                                                     </form>
                                                 </td>
