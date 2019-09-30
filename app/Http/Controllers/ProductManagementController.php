@@ -49,7 +49,7 @@ class ProductManagementController extends Controller
      */
     public function store(Request $request)
     {
-
+        // dd($path = $request);
         if($request->hasFile('image')){
             $fullFileName = $request->image->getClientOriginalName();
             $file = pathinfo($fullFileName, PATHINFO_FILENAME);
