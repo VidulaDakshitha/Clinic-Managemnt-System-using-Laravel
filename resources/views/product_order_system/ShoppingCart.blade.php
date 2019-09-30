@@ -122,7 +122,8 @@
                                                         <h6>Delevery to</h6>
                                                 </div>
                                                 <div class="col">
-                                                        <h6>{{ Auth::user()->name}} address </h6>
+                                                        <h6> address </h6>
+
                                                 </div>
                                         </div>
                                         <br>

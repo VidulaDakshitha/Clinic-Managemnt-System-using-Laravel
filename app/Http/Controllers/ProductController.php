@@ -35,10 +35,23 @@ class ProductController extends Controller
          return redirect('/search-product');
 
         }else{
+       // $getuser_id= Auth::user()->id;
+
+       // $user_address= DB::table('patients')
+                 //    ->select('address1')
+
+                 //    ->where('patient_id',$getuser_id)->get();
+
+                    //  dd($getuser_id);
+
+
+
         $oldCart=Session::get('cart');
         $cart=new Cart($oldCart);
          // dd($cart->items);
+
         return view('product_order_system.ShoppingCart',['products'=>$cart->items,'totalPrice'=>$cart->totalPrice,'totalQuntity'=>$cart->totalQty]);
+        //->with('user_address'->$user_address);
 
      }
     }
