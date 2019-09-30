@@ -13,7 +13,7 @@ class ShoppingCartController extends Controller
      */
     public function index()
     {
-       
+
     }
 
     /**
