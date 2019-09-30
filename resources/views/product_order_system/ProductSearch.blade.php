@@ -1,4 +1,3 @@
-
 @extends('main.layout.mainlayout');
 
 @section('styles')
@@ -30,28 +29,30 @@
     </a>
   </div>
 
-<!--show error and sucessfull msg-->
-@if(count($errors)>0)
-<div class="alert alert-danger" role="alert">
+  <!--show error and sucessfull msg-->
+  @if(count($errors)>0)
+  <div class="alert alert-danger" role="alert">
     <ul>
-       @foreach ($errors->all as $errors)
-        <li><p>{{$errors}}</p></li>
-        @endforeach
+      @foreach ($errors->all as $errors)
+      <li>
+        <p>{{$errors}}</p>
+      </li>
+      @endforeach
     </ul>
-    </div>
-@endif
+  </div>
+  @endif
 
-@if (\Session::has('success'))
-<div class="alert alert-success" role="alert">
-        <p>{{\Session::get('success')}} </p>
-      </div>
-@endif
+  @if (\Session::has('success'))
+  <div class="alert alert-success" role="alert">
+    <p>{{\Session::get('success')}} </p>
+  </div>
+  @endif
 
-@if (\Session::has('order_placed'))
-<div class="alert alert-success" role="alert">
-        <p>{{\Session::get('order_placed')}} </p>
-      </div>
-@endif
+  @if (\Session::has('order_placed'))
+  <div class="alert alert-success" role="alert">
+    <p>{{\Session::get('order_placed')}} </p>
+  </div>
+  @endif
 
 
 
@@ -114,7 +115,7 @@
       @foreach ($product as $key=> $productrow)
       <a href="viewproduct/{{$productrow->product_id}}" target="_blank">
         <div class="card">
-          <img src="product_images/{{$productrow->image}}" class="card-img-top" alt="...">
+          <img src="/product_images/{{$productrow->image}}" class="card-img-top" alt="...">
           <div class="card-body" style="color: #302f2f;">
             <h5 class="card-title" id="prodcut-name">{{$productrow->name}}</h5>
             <h3 class="card-title" id="prodcut-price">Rs : <strong> {{$productrow->selling_price}}</strong></h3>
@@ -123,8 +124,8 @@
 
             @if ($productrow->quantity==0)
             <div class="alert alert-warning" role="alert">
-                Product out of stock :(
-              </div>
+              Product out of stock :(
+            </div>
 
             @endif
 
