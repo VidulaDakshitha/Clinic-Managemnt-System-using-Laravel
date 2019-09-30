@@ -10,9 +10,6 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-
-
 Route::get('/AdminHome', 'PagesController@adhome');
 Route::get('/admin', 'PostsController@admhome')->middleware('auth_admin');
 Route::get('/ServiceTest', 'PostsController@index');

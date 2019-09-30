@@ -97,7 +97,7 @@ class ProductManagementController extends Controller
     {
         $product = Product::findOrFail($id);
 
-        return view('product.update', compact('products'));
+        return view('product.update', compact('product'));
     }
 
     /**

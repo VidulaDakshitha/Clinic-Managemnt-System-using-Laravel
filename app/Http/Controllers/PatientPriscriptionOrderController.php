@@ -54,9 +54,10 @@ class PatientPriscriptionOrderController extends Controller
                    ->join('doctors','doctors.doctor_id','prescriptions.doctor_id')
                    ->join('products', 'prescriptions.id', '=', 'products.prescription_id')
                    ->select('products.name','products.product_id','products.selling_price', 'prescriptions.id','doctors.fullname')
-                   ->get();
+                  ->get();
 
-
+        
+        
             return view('product_order_system.UserPriscriptionView',['userspricriptions'=>$userspricriptions]);
     }
 
