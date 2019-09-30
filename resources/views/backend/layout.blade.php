@@ -15,7 +15,7 @@
 
 <body>
     {{-- include the naviagation --}}
-    @include('backend.includes.header')
+    @include('backend.includes.heaer')
 
     <div class="container">
         {{-- errors --}}
