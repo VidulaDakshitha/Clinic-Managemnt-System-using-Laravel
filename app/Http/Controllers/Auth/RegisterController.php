@@ -55,8 +55,8 @@ class RegisterController extends Controller
             'Nic' => ['required', 'string', 'min:10','max:12'],
             'phone-number' => ['required', 'integer', 'min:10'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
-            
-            
+
+
         ]);
     }
 
