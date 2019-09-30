@@ -52,7 +52,8 @@ class PatientPriscriptionOrderController extends Controller
         $userspricriptions = DB::table('prescriptions')
                    ->where('prescriptions.patient_id',$id)
                    ->join('doctors','doctors.doctor_id','prescriptions.doctor_id')
-                   ->join('products', 'prescriptions.id', '=', 'products.prescription_id')
+                  // ->join('products', 'prescriptions.id', '=', 'products.prescription_id')
+                   ->join('products', 'prescriptions.product_id', '=', 'products.product_id')
                    ->select('products.name','products.product_id','products.selling_price', 'prescriptions.id','doctors.fullname')
                   ->get();
 

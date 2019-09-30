@@ -138,9 +138,9 @@
 
                                                 
                                                 <td>
-                                                    <form action="/product/{{$product->product_id}}/edit" method="POST">
-                                                    @csrf
-                                                         <button type="submit" class="btn btn-primary mr-1">Edit</button>
+                                                    <form action="/edit/{{$product->product_id}}" method="POST">
+                                                    @csrf    
+                                                         <button type="submit" href="" class="btn btn-primary mr-1">Edit</button>
                                                     </form>
                                                 </td>
                                                 <td>
