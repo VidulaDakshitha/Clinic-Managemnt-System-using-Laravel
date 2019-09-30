@@ -170,4 +170,66 @@ Route::delete('/productdelete/{id}', 'ProductManagementController@destroy');
 
 Route::post('/store', 'ProductManagementController@store');
 
-Route::put('/update/{id}', 'ProductManagementController@update');
+//Record Management
+
+//1.Personal Record
+Route::get('/home_per', function(){
+    return view('home_per');
+});
+
+Route::get('/home_per', 'PersonalRecordsController@home0');
+
+Route::get('/create_per', function(){
+    return view('create_per');
+});
+
+Route::post('/insert', 'PersonalRecordsController@add0'); 
+
+Route::put('/update_per/{id}', 'PersonalRecordsController@update0');
+Route::post('/edit/{id}', 'PersonalRecordsController@edit0');
+
+Route::get('/read_per/{id}', 'PersonalRecordsController@read0');
+
+Route::get('/delete/{id}', 'PersonalRecordsController@delete0');
+
+
+//2.Treatment Record
+Route::get('/home_treat', function(){
+    return view('home_treat');
+});
+
+Route::get('/home_treat', 'TreatmentController@home1');
+
+Route::get('/create_treat', function(){
+    return view('create_treat');
+});
+
+Route::post('/insert', 'TreatmentController@add1'); 
+
+Route::put('/update_treat/{id}', 'TreatmentController@update1');
+Route::post('/edit/{id}', 'TreatmentController@edit1');
+
+Route::get('/read_treat/{id}', 'TreatmentController@read1');
+
+Route::get('/delete/{id}', 'TreatmentController@delete1');
+
+//3.Prescription
+Route::get('/home_treat', function(){
+    return view('home_prescription');
+});
+
+Route::get('/home_prescription', 'PrescriptionController@home2');
+
+Route::get('/create_prescription', function(){
+    return view('create_prescription');
+});
+
+Route::post('/insert', 'PrescriptionController@add2'); 
+
+Route::put('/update_prescription/{id}', 'PrescriptionController@update2');
+Route::post('/edit/{id}', 'PrescriptionController@edit2');
+
+Route::get('/read_prescription/{id}', 'PrescriptionController@read2');
+
+Route::get('/delete/{id}', 'PrescriptionController@delete2');
+
