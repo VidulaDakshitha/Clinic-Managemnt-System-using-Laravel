@@ -1,4 +1,6 @@
-@extends('layouts.app')
+@extends('backend.layout')
+
+@include('chairman.nav')
 
 @section('content')
 <div class="container">

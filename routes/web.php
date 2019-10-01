@@ -10,9 +10,6 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-
-
 Route::get('/AdminHome', 'PagesController@adhome');
 Route::get('/admin', 'PostsController@admhome')->middleware('auth_admin');
 Route::get('/ServiceTest', 'PostsController@index');
@@ -44,6 +41,7 @@ Route::get('/adminfeedback', 'FeedbackController@index');
 
 Route::get('/feedback', 'FeedbackController@fed');
 Route::post('/feedbacktest','FeedbackController@store');
+Route::delete('/feedback/{feedback}', 'FeedbackController@destroy');
 
 Route::resource('ServiceTest', 'PostsController');
 
