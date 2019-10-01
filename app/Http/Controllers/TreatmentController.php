@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\TreatmentRecord;
-
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
 class TreatmentController extends Controller
@@ -26,30 +26,33 @@ class TreatmentController extends Controller
         return redirect('/home_treat')->with('info','Treatment record saved successfully!');
     }
 
-    public function edit1($id)
+    public function update1(TreatmentRecord $treatment_record)
     {
-        $treatment_records = TreatmentRecord::findOrFail($id);
-
-        return view('update_treat', compact('treatment_records'));
+        return view('update_treat',compact('treatment_record'));
     }
 
-    public function update1(Request $request, TreatmentRecord $treatment_records)
+    public function edit1(Request $request, TreatmentRecord $treatment_record)
     {
-        $treatment_records->date = $request->input('date');
-        $treatment_records->description = $request->input('description');
-    
-        $treatment_records->save();
-        return redirect('/home_treat')->with('info','records updated successfully!');
+        $request->validate([
+            'date' => 'required',
+            'description' => 'required'
+        ]);
+  
+        $$treatment_record->update($request->all());
+  
+        return redirect('home_treat')->with('success','Treatment updated successfully');
     }
 
-    public function read1($id){
-        $treatment_records = TreatmentRecord::find($id);
-        return view('read_treat',['treatment_records'=>$treatment_records]);
+    public function show(TreatmentRecord $treatment_record)
+    {
+        return view('read_treat',compact('treatment_record'));
     }
 
-    public function delete1($id){
-        TreatmentRecord::where('record_id','$id')
-        ->delete();
-        return redirect('/home_treat')->with('info','Record deleted successfully!');
+    public function destroy(TreatmentRecord $treatment_record)
+    {
+        $treatment_record->delete();
+  
+        return redirect('/home_treat')->with('success','Treatment Record deleted successfully');
     }
+
 }

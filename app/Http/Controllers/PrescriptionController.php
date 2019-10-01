@@ -36,7 +36,7 @@ class PrescriptionController extends Controller
     public function edit2(Request $request, Prescription $prescription)
     {
         $request->validate([
-            'doctor_id'=>'required',
+            'doctor_id' => 'required',
             'patient_id' => 'required',
             'description' => 'required'
         ]);
@@ -56,7 +56,7 @@ class PrescriptionController extends Controller
     {
         $prescription->delete();
   
-        return redirect('/home_rescription')->with('success','Prescription deleted successfully');
+        return redirect('/home_prescription')->with('success','Prescription deleted successfully');
     }
 
 }
