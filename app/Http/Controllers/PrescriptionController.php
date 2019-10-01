@@ -28,13 +28,13 @@ class PrescriptionController extends Controller
         return redirect('/home_prescription')->with('info','prescription saved successfully!');
     }
 
-    public function update2($id)
+    public function edit2($id)
     {
         $prescription = Prescription::find($id);
         return view('update_prescription',compact('prescription'));
     }
 
-    public function edit2(Request $request, $id)
+    public function update2(Request $request, $id)
     {
         $request->validate([
             'doctor_id' => 'required',
