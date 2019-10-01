@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 
 class PersonalRecordsController extends Controller
 {
-    public function home0(){
+    public function index(Request $request){
         $personal_records = PersonalRecord::all();
         return view('home_per',['personal_records'=>$personal_records]);
     }
@@ -28,7 +28,7 @@ class PersonalRecordsController extends Controller
         $personal_records->description = $request->input('description');
     
         $personal_records->save();
-        return redirect('/home_per')->with('info','records saved successfully!');
+        return redirect('/home_per')->with('info','Record saved successfully!');
     }
 
     public function edit0($id)

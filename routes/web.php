@@ -10,9 +10,6 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-
-
 Route::get('/AdminHome', 'PagesController@adhome');
 Route::get('/admin', 'PostsController@admhome')->middleware('auth_admin');
 Route::get('/ServiceTest', 'PostsController@index');
@@ -44,6 +41,7 @@ Route::get('/adminfeedback', 'FeedbackController@index');
 
 Route::get('/feedback', 'FeedbackController@fed');
 Route::post('/feedbacktest','FeedbackController@store');
+Route::delete('/feedback/{feedback}', 'FeedbackController@destroy');
 
 Route::resource('ServiceTest', 'PostsController');
 
@@ -177,7 +175,7 @@ Route::get('/home_per', function(){
     return view('home_per');
 });
 
-Route::get('/home_per', 'PersonalRecordsController@home0');
+Route::get('/home_per', 'PersonalRecordsController@index');
 
 Route::get('/create_per', function(){
     return view('create_per');
@@ -204,7 +202,7 @@ Route::get('/create_treat', function(){
     return view('create_treat');
 });
 
-Route::post('/insert', 'TreatmentController@add1'); 
+Route::post('/insert_treatment', 'TreatmentController@add1'); 
 
 Route::put('/update_treat/{id}', 'TreatmentController@update1');
 Route::post('/edit/{id}', 'TreatmentController@edit1');
@@ -224,7 +222,7 @@ Route::get('/create_prescription', function(){
     return view('create_prescription');
 });
 
-Route::post('/insert', 'PrescriptionController@add2'); 
+Route::post('/insert_prescription', 'PrescriptionController@add2'); 
 
 Route::put('/update_prescription/{id}', 'PrescriptionController@update2');
 Route::post('/edit/{id}', 'PrescriptionController@edit2');

@@ -35,9 +35,11 @@
 
 <div class="services">
 @if(!auth::guest())
+    @if(auth::user()->type=="admin")
 <a class="btn btn-primary" href="/ServiceTest/create">
 Add new services
 </a>
+    @endif
 @endif
 <h1>Our Services</h1>
 </div>  
