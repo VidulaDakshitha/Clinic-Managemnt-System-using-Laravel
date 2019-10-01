@@ -119,10 +119,11 @@
                                         <br>
                                         <div class="row">
                                                 <div class="col">
-                                                        <h6>Delevery to</h6>
+                                                        <h6 class="font-weight-bold"> Delevery to : </span></h6>
                                                 </div>
                                                 <div class="col">
-                                                        <h6>{{ Auth::user()->name}} address </h6>
+                                                        <h6>{{$address}} address </h6>
+
                                                 </div>
                                         </div>
                                         <br>

@@ -9,7 +9,7 @@
 
 <div class="container" >
     <div class="row">
-        <legend>Personal Record</legend>
+        <legend>Treatment Record</legend>
         
             @if (session('info'))
               <div class="alert alert-success">
@@ -27,21 +27,18 @@
             </thead>
 
             <tbody>
-                @if(count($treatment_records) > 0)
-                  @foreach($treatment_records->all() as $treatment_record)
-                                      
+                
               <tr class="table-active">
-                <td>{{ $treatment_record->record_id }}</td>
-                <td>{{ $treatment_record->date }}</td>
-                <td>{{ $treatment_record->description }}</td>
+                <td>{{}}</td>
+                <td>{{}}</td>
+                <td>{{}}</td>
                 <td>
-                  <a href='{{ url("/read/{$treatment_records->record_id}") }}' class="label label-primary"> Read </a>|
-                  <a href='{{ url("/update/{$treatment_records->record_id}") }}' class="label label-success"> Update </a>|
-                  <a href='{{ url("/delete/{$treatment_record->record_id}") }}' class="label label-danger"> Delete </a>
+                  <a href='{{ url("/read") }}' class="label label-primary"> Read </a>|
+                  <a href='{{ url("/update") }}' class="label label-success"> Update </a>|
+                  <a href='{{ url("/delete) }}' class="label label-danger"> Delete </a>
                 </td>
               </tr>
-                  @endforeach
-               @endif
+                
             </tbody>
           </table> 
     </div>

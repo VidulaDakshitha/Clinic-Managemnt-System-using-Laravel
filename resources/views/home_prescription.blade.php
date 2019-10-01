@@ -29,22 +29,23 @@
             </thead>
 
             <tbody>
-                @if(count( $prescriptions) > 0)
-                  @foreach( $prescriptions->all() as $prescription )
-                                      
+                     @if (count($prescriptions) > 0)
+                         @foreach ($prescriptions as $prescription)
+                             
+                              
               <tr class="table-active">
-                <td>{{ $prescription->id }}</td>
-                <td>{{ $prescription->doctor_id }}</td>
-                <td>{{ $prescription->patient_id }}</td>
-                <td>{{ $prescription->description }}</td>
+                <td>{{$prescription->id}}</td>
+                <td>{{$prescription->doctor_id}}</td>
+                <td>{{$prescription->patient_id}}</td>
+                <td>{{$prescription->description}}</td>
                 <td>
-                  <a href='{{ url("/read_prescription/{$prescriptions->id}") }}' class="label label-primary"> Read </a>|
-                  <a href='{{ url("/update_rescription/{$prescriptions->id}") }}' class="label label-success"> Update </a>|
-                  <a href='{{ url("/delete/{$prescriptions->id}") }}' class="label label-danger"> Delete </a>
+                  <a href='{{ url("/read_prescription/{$prescription->id}") }}' class="label label-primary"> Read </a>|
+                  <a href='{{ url("/update_prescription/{$prescription->id}") }}' class="label label-success"> Update </a>|
+                  <a href='{{ url("/delete/{$prescription->id}") }}' class="label label-danger"> Delete </a>
                 </td>
               </tr>
-                  @endforeach
-               @endif
+                        @endforeach
+                    @endif 
             </tbody>
           </table> 
     </div>

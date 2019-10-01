@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 
 class PersonalRecordsController extends Controller
 {
-    public function home0(){
+    public function index(Request $request){
         $personal_records = PersonalRecord::all();
         return view('home_per',['personal_records'=>$personal_records]);
     }
@@ -28,29 +28,39 @@ class PersonalRecordsController extends Controller
         $personal_records->description = $request->input('description');
     
         $personal_records->save();
-        return redirect('/home_per')->with('info','records saved successfully!');
+        return redirect('/home_per')->with('info','Record saved successfully!');
     }
 
-    public function edit0($id)
+    public function edit0(Request $request , $record_id)
     {
-        $personal_records = PersonalRecord::findOrFail($id);
+        $this->validate($request,[
+            'patient_id' => 'required',
+            'disease' => 'required',
+            'date' => 'required',
+            'description' => 'required'
+        ]);
 
-        return view('update_per', compact('personal_records'));
+        $data = array(
+            'patient_id' => $request->input('patient_id'),
+            'disease' => $request->input('disease'),
+            'date' => $request->input('date'),
+            'description' => $request->input('description')
+        );
+
+        PersonalRecord::where('record_id',$record_id)
+        ->update($data);
+        return redirect('/home_per')->with('info','Record saved successfully!');
     }
 
-    public function update0(Request $request, PersonalRecord $personal_records)
+    public function update0($record_id)
     {
-        $personal_records->patient_id = $request->input('patient_id');
-        $personal_records->disease = $request->input('disease');
-        $personal_records->date = $request->input('date');
-        $personal_records->description = $request->input('description');
-    
-        $personal_records->save();
-        return redirect('/home_per')->with('info','records updated successfully!');
+        $personal_records = PersonalRecord::where($record_id);
+        return view('update_per',['personal_records'=>$personal_records]);
+        
     }
 
-    public function read0($id){
-        $personal_records = PersonalRecord::find($id);
+    public function read0($record_id){
+        $personal_records = PersonalRecord::where($record_id);
         return view('read_per',['personal_records'=>$personal_records]);
     }
 
