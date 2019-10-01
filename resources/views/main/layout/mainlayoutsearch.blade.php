@@ -21,7 +21,8 @@
     <link rel="stylesheet" href="{{ asset('css/main/mainlayout/owl.carousel.css') }}" />
     <link rel="stylesheet" href="{{ asset('css/main/mainlayout/style.css') }}" />
     <link rel="stylesheet" href="{{ asset('css/main/mainlayout/animate.css') }}" />
-
+   
+    <link href="{{ asset('css/patDashboard/contactus.css') }}" rel="stylesheet" type="text/css" >
 
     <!-- Stylesheets for search page-->
     <link href="{{ asset('css/searchCSS/jquery1.css') }}" rel="stylesheet" type="text/css" >

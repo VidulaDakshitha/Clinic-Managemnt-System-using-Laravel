@@ -11,6 +11,7 @@
                 <img class="booking-img img1" src="images/registerIMG/form-img.jpg" alt="Booking Image">
             </div>
             <div class="booking-form">
+                    
             <form action="{{ route('register') }}" method="POST" id="booking-form" class="forma"  >
                     <h2 style="margin-top: -20%;">Register Yourself for International Homeopathy Clinic</h2>
                     <div class="form-group form-input">
@@ -42,7 +43,9 @@
 
                      <div class="form-group form-input">
                         <input class ="inputa" type="date" name="dob" id="dob" value="" placeholder="" required />
+                        
                         <label for="dob" class="form-label">Birth Date</label>
+                        
                     </div>
 
 

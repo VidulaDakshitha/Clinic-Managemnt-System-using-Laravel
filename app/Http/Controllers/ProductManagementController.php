@@ -49,7 +49,7 @@ class ProductManagementController extends Controller
      */
     public function store(Request $request)
     {
-
+        // dd($path = $request);
         if($request->hasFile('image')){
             $fullFileName = $request->image->getClientOriginalName();
             $file = pathinfo($fullFileName, PATHINFO_FILENAME);
@@ -88,7 +88,9 @@ class ProductManagementController extends Controller
      */
     public function show($id)
     {
-        //
+        $product = Product::findOrFail($id);
+        
+        return view('product.pview', compact('products'));
     }
 
     /**
@@ -101,7 +103,7 @@ class ProductManagementController extends Controller
     {
         $product = Product::findOrFail($id);
 
-        return view('product.update', compact('products'));
+        return view('product.update', compact('product'));
     }
 
     /**

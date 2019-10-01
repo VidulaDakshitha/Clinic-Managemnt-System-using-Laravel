@@ -140,7 +140,12 @@
                                         <form action="/search1" method="GET">
                                                 @csrf
                                                     <input type="text" name="patientID" placeholder="Patient ID">
-
+                                                    <br>
+                                                    <br>
+                                                    <br>
+                                                    <br>
+                                                    <br>
+                                                    <br>
                                                     <div class = "submit">
                                                         <input type="submit" value="Search">
                                                     </div>
