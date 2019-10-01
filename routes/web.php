@@ -181,7 +181,7 @@ Route::get('/create_per', function(){
     return view('create_per');
 });
 
-Route::post('/insert', 'PersonalRecordsController@add0'); 
+Route::post('/insert', 'PersonalRecordsController@add0');
 
 Route::put('/update_per/{id}', 'PersonalRecordsController@update0');
 Route::post('/edit/{id}', 'PersonalRecordsController@edit0');
@@ -202,7 +202,7 @@ Route::get('/create_treat', function(){
     return view('create_treat');
 });
 
-Route::post('/insert_treatment', 'TreatmentController@add1'); 
+Route::post('/insert_treatment', 'TreatmentController@add1');
 
 Route::put('/update_treat/{id}', 'TreatmentController@update1');
 Route::post('/edit/{id}', 'TreatmentController@edit1');
@@ -222,7 +222,7 @@ Route::get('/create_prescription', function(){
     return view('create_prescription');
 });
 
-Route::post('/insert_prescription', 'PrescriptionController@add2'); 
+Route::post('/insert_prescription', 'PrescriptionController@add2');
 
 Route::put('/update_prescription/{id}', 'PrescriptionController@update2');
 Route::post('/edit/{id}', 'PrescriptionController@edit2');
