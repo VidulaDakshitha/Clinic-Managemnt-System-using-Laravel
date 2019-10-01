@@ -170,6 +170,7 @@ Route::delete('/productdelete/{id}', 'ProductManagementController@destroy');
 
 Route::post('/store', 'ProductManagementController@store');
 
+
 //Record Management
 
 //1.Personal Record
