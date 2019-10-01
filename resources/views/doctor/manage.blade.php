@@ -3,14 +3,22 @@
 
 @section('content')
 <div class="container">
-<div >
-   <form>
-        <input placeholder="Name, NIC or License" />
-        <button type="submit"> Search </button>
-   </form>
+<script>
+    function redirect(){
+        window.location.replace("/manage/doctors");
+    }
+</script>
+<div >  
+<form method="POST" action="doctors/search">
+        <input name="search_text" placeholder="Name, NIC or License" />
+        <button type="submit" {{$disabled}}> Search </button>   
+        <button type="button" onclick= "redirect()" > Reset </button>
+</form>
+       
 </div>
  @if(isset($doctors))
-    <table class="table  .table-striped ">
+ No of results returned: {{ $doctors->count()}}
+    <table class="table  .table-striped " id="doctor_table">
     <thead>
         <tr>
             <th> Name </th>
@@ -22,7 +30,7 @@
      </thead>
     <tbody>
         @foreach($doctors as $d )
-        <tr>
+        <tr id= "{{ $d['fullname'] . ' ' . $d['nic'] }}" >
             <td> {{$d['fullname']}} </td>
             <td> {{$d['nic']}} </td>
             <td> 
@@ -49,6 +57,20 @@
         </tr>
         @endforeach
         </tbody>
+        </table>
+
+        <table class="table  .table-striped " id="search_result" style="display:none">
+            <thead>
+            <tr>
+            <th> Name </th>
+            <th> NIC/License </th>
+            <th> Appointments </th>
+            <th> Schedule </th>
+            <th> Details </th>
+            </tr>
+             </thead>
+         <tbody>
+         </tbody>
         </table>
 @else
     <!--Redirect this page to an appropiate error message -->

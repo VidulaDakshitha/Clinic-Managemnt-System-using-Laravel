@@ -55,6 +55,7 @@
     <script defer src="{{ asset('js/main/mainlayout/owl.carousel.min.js') }}"></script>
     <script defer src="{{ asset('js/main/mainlayout/circle-progress.min.js') }}"></script>
     <script defer src="{{ asset('js/main/mainlayout/main.js') }}"></script>
+    <script defer src="{{ asset('js/admin/test.js') }}"></script>
 
 </body>
 

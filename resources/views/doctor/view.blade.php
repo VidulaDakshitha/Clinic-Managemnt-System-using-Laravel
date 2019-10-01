@@ -3,6 +3,11 @@
 
 @section('content')
 <div class="container">
+<script>
+ function search(""){
+
+ }
+</script>
 
 @if( isset($doctor))
 
@@ -24,6 +29,16 @@
                 <td> {{$doctor['fullname']}}; </td>
                 <td> {{$doctor['nic']}} </td>
                 <td> {{$doctor['type']}} </td>
+                @if(isset($contact_set[0]))
+                <td> {{ $contact_set[0]["contact_number"]}} </td>
+                @else
+                <td> Not set. </td>
+                @endif
+                @if(isset($contact_set[1]))
+                <td> {{ $contact_set[1]["contact_number"]}} </td>
+                @else
+                <td> Not set. </td>
+                @endif
             </tbody>
         </table>
         <div>

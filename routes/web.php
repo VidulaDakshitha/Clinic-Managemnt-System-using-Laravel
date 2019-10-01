@@ -72,6 +72,7 @@ Route::get('/usermanager', 'UserTypeController@manage');
 Route::resource('supplier', 'SupplierManagerController')->middleware('auth_supp');
 
 Route::resource('/appointments', 'AppointmentController');
+Route::post('manage/doctors/search', 'DoctorManagementController@searchDoctor');
 Route::resource('/manage/doctors', 'DoctorManagementController');
 
 // for patients dashboard

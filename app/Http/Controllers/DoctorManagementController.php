@@ -17,7 +17,7 @@ class DoctorManagementController extends Controller
     public function index()
     {
         //returns all doctorss in the doctors table.    
-        return view('doctor.manage', ['doctors'=> Doctor::all()]);
+        return view('doctor.manage', ['doctors'=> Doctor::all(), 'disabled'=> '']);
     }
 
     /**
@@ -63,7 +63,8 @@ class DoctorManagementController extends Controller
      */
     public function show(Doctor $doctor)
     {
-        return view('doctor.view', ['doctor' => $doctor]);
+        $contact_set = DoctorContact::where('doctor_id','=', $doctor->doctor_id)->limit(2)->get();
+        return view('doctor.view', ['doctor' => $doctor, 'contact_set' => $contact_set]);
     }
 
     /**
@@ -73,10 +74,9 @@ class DoctorManagementController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit(Doctor $doctor)
-    {      
-        //dd($doctor);
+    {             
         $contact_set = DoctorContact::where('doctor_id','=', $doctor->doctor_id)->limit(2)->get();       
-        //dd($contact_set[0]);
+       
         return view('doctor.edit', ['doctor' => $doctor, 'contact' => $contact_set]);
     }
 
@@ -88,9 +88,7 @@ class DoctorManagementController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Doctor $doctor)
-    {
-        //validate each value in header.
-        //dd($doctor);
+    {        
         $doctor->update(
             [
                 "fullName" => $request->fullname,
@@ -99,12 +97,33 @@ class DoctorManagementController extends Controller
             ]
         );
 
-        $contact = new DoctorContact();
-        $contact->doctor_id = $doctor->doctor_id;
+        //load telephone number 2 too.
+        if(isset($request->telephone1)) {
+            $contact = new DoctorContact();
+            $contact->doctor_id = $doctor->doctor_id;
 
-        $contact->contact_number = $request->contact1;
-     
-    }
+            //check whether the input number already exists in the table.            
+            if(! DoctorContact::where('contact_number', '=', $request->telephone1)->limit(1)->get()->count() )
+            {
+                $contact->contact_number = $request->telephone1;
+                $contact->save();
+            }       
+                
+        }
+
+        if( isset($request->telephone2)){
+            $contact = new DoctorContact();
+            $contact->doctor_id = $doctor->doctor_id;
+            $contact->contact_number = $request->telephone2;
+            $contact->save();
+        }     
+
+       // return view('doctor.edit', ['doctor' => $doctor, 'contact' => $contact]);   
+       return redirect()->action(
+        'DoctorManagementController@edit', ['doctor' => $doctor->fresh()]
+    );        
+
+}
 
     /**
      * Remove the specified resource from storage.
@@ -114,6 +133,14 @@ class DoctorManagementController extends Controller
      */
     public function destroy(Doctor $doctor)
     {
-        //
+    
+    }
+
+    public function searchDoctor(Request $request){
+        $search_query = $request->search_text;
+        $list = Doctor::query()
+            ->where("fullname", "LIKE", "%{$search_query}%")
+                ->orWhere("nic", 'LIKE', "%{$search_query}%")->get();
+        return view('doctor.manage', ['doctors'=> $list, 'disabled'=> 'disabled']);
     }
 }
