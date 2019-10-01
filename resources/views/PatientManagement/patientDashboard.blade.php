@@ -17,8 +17,14 @@
       </div>
       <div class="sidebar-wrapper">
         <ul class="nav">
+            <li class="nav-item  ">
+                <a class="nav-link" href="{{'/'}}">
+                  <i class="material-icons">home</i>
+                  <p>Home</p>
+                </a>
+              </li>
           <li class="nav-item active  ">
-            <a class="nav-link" href="./dashboard.html">
+            <a class="nav-link" href="{{'/patient'}}">
               <i class="material-icons">dashboard</i>
               <p>Dashboard</p>
             </a>
@@ -34,13 +40,13 @@
               <i class="material-icons">content_paste</i>
               <p>Table List</p>
             </a>
-          </li>
-          <li class="nav-item ">
-            <a class="nav-link" href="./map.html">
-              <i class="material-icons">location_ons</i>
-              <p>Maps</p>
-            </a>
           </li> --}}
+          <li class="nav-item ">
+            <a class="nav-link" href="/contact">
+              <i class="material-icons">location_ons</i>
+              <p>Contact Us</p>
+            </a>
+          </li>
           <li class="nav-item ">
             <a class="nav-link" href="/feedback">
               <i class="material-icons">notifications</i>
@@ -220,14 +226,14 @@
             
             {{-- Add payment details --}}
 
-            <a href="#">
+            <a href="/paymentHome">
             <div class="col-lg-3 col-md-6 col-sm-6">
               <div class="card card-stats">
                 <div class="card-header card-header-success card-header-icon">
                   <div class="card-icon">
                     <i class="material-icons">payment</i>
                   </div>
-                  <p class="card-category">Click To View Payment Details</p>
+                  <p class="card-category">Click To View or make Payment</p>
                   {{-- <h3 class="card-title">$34,245</h3> --}}
                 </div>
                 <div class="card-footer">

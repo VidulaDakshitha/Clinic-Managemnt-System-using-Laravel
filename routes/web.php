@@ -14,10 +14,13 @@
 
 
 Route::get('/AdminHome', 'PagesController@adhome');
+Route::get('/contact', 'PagesController@contact');
+Route::post('/contact', 'PagesController@postcontact');
 Route::get('/admin', 'PostsController@admhome')->middleware('auth_admin');
 Route::get('/ServiceTest', 'PostsController@index');
 Route::get('/AdminServ', 'PostsController@serv');
 Route::get('/gallery', 'PostsController@media');
+Route::get('/welcome', 'SweetAlertDemo@index');
 
 
 // Route::post('/ServiceTest', 'PostsController@store');
@@ -57,8 +60,8 @@ Route::get('/about', 'NoticesController@index');
 Route::get('/ServiceTest', 'PostsController@index');
 Route::get('/gallery', 'ArticlesController@index');
 Route::get('/feedback', 'FeedbackController@fed');
-Route::view('/contact', 'main.about');
-Route::view('/contact', 'main.contact');
+//Route::view('/contact', 'main.about');
+//Route::view('/contact', 'main.contact');
 Route::view('/signin', 'main.login');
 
 Route::view('/search', 'PatientManagement.search');
@@ -232,4 +235,6 @@ Route::post('/edit/{id}', 'PrescriptionController@edit2');
 Route::get('/read_prescription/{id}', 'PrescriptionController@read2');
 
 Route::get('/delete/{id}', 'PrescriptionController@delete2');
+
+//Route::get('/Welcome', ['as'=>'Welcome','uses'=>'PagesController@index']);
 
