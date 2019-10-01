@@ -11,10 +11,13 @@
 |
 */
 Route::get('/AdminHome', 'PagesController@adhome');
+Route::get('/contact', 'PagesController@contact');
+Route::post('/contact', 'PagesController@postcontact');
 Route::get('/admin', 'PostsController@admhome')->middleware('auth_admin');
 Route::get('/ServiceTest', 'PostsController@index');
 Route::get('/AdminServ', 'PostsController@serv');
 Route::get('/gallery', 'PostsController@media');
+Route::get('/welcome', 'SweetAlertDemo@index');
 
 
 // Route::post('/ServiceTest', 'PostsController@store');
@@ -55,8 +58,8 @@ Route::get('/about', 'NoticesController@index');
 Route::get('/ServiceTest', 'PostsController@index');
 Route::get('/gallery', 'ArticlesController@index');
 Route::get('/feedback', 'FeedbackController@fed');
-Route::view('/contact', 'main.about');
-Route::view('/contact', 'main.contact');
+//Route::view('/contact', 'main.about');
+//Route::view('/contact', 'main.contact');
 Route::view('/signin', 'main.login');
 
 Route::view('/search', 'PatientManagement.search');
@@ -181,7 +184,7 @@ Route::get('/create_per', function(){
     return view('create_per');
 });
 
-Route::post('/insert', 'PersonalRecordsController@add0'); 
+Route::post('/insert', 'PersonalRecordsController@add0');
 
 Route::get('/update_per/{id}', 'PersonalRecordsController@update0');
 Route::post('/edit/{id}', 'PersonalRecordsController@edit0');
@@ -201,7 +204,7 @@ Route::get('/create_treat', function(){
     return view('create_treat');
 });
 
-Route::post('/insert_treatment', 'TreatmentController@add1'); 
+Route::post('/insert_treatment', 'TreatmentController@add1');
 
 Route::put('/update_treat/{id}', 'TreatmentController@update1');
 Route::post('/edit/{id}', 'TreatmentController@edit1');
@@ -211,5 +214,22 @@ Route::get('/read_treat/{id}', 'TreatmentController@read1');
 Route::get('/delete/{id}', 'TreatmentController@delete1');
 
 //3.Prescription
+Route::get('/home_prescription', function(){
+    return view('home_prescription');
+});
 
+Route::get('/home_prescription', 'PrescriptionController@home2');
+
+Route::get('/create_prescription', function(){
+    return view('create_prescription');
+});
+
+Route::post('/insert_prescription', 'PrescriptionController@add2');
+
+Route::put('/update_prescription/{id}', 'PrescriptionController@update2');
+Route::post('/edit/{id}', 'PrescriptionController@edit2');
+
+Route::get('/read_prescription/{id}', 'PrescriptionController@read2');
+
+//Route::get('/Welcome', ['as'=>'Welcome','uses'=>'PagesController@index']);
 

@@ -24,23 +24,9 @@
    
     <link href="{{ asset('css/patDashboard/contactus.css') }}" rel="stylesheet" type="text/css" >
 
-    <!-- Stylesheets for search page-->
-    <link href="{{ asset('css/searchCSS/jquery1.css') }}" rel="stylesheet" type="text/css" >
-    <link href="{{ asset('css/searchCSS/channeling_styles.css') }}" rel="stylesheet" type="text/css" >
-    <link href="{{ asset('css/searchCSS/bootstrap_date.css') }}" rel="stylesheet" type="text/css" >
-    <link href="{{ asset('css/searchCSS/fonts.css') }}" rel="stylesheet" type="text/css" >
-    {{-- <link href="{{ asset('css/searchCSS/bootstrap1.css') }}" rel="stylesheet" type="text/css" > --}}
-
-
+   
      
-         <!-- stylesheets for register page-->
-     
-         {{-- <link href="{{ asset('css/registerCSS/style.css') }}" rel="stylesheet" type="text/css" >
-
-         <link href="{{ asset('css/registerCSS/style.css') }}" rel="stylesheet" type="text/css" > --}}
-         <link href="{{ asset('css/bootstrap.css') }}" rel="stylesheet" type="text/css" >
-         <link href="{{ asset('css/showdoc/style.css') }}" rel="stylesheet" type="text/css" >
-         <link href="{{ asset('css/showdoc/custom.css') }}" rel="stylesheet" type="text/css" >
+      
 
 
    
@@ -54,16 +40,16 @@
 
 </head>
 
-<body  style="background: url(images/searchIMG/doctor.jpg) center center fixed; background-size:cover;">
+<body >
 
    
  
 
 
     <!-- Page Preloder -->
-    {{-- <div id="preloder">
+    <div id="preloder">
         <div class="loader"></div>
-    </div> --}}
+    </div>
 
     <!-- Header section -->
     <header class="header-section">
@@ -102,10 +88,10 @@
 
 
     <!--====== Javascripts & Jquery ======-->
-     {{-- <script defer src="{{ asset('js/main/mainlayout/jquery-3.2.1.min.js') }}"></script> --}}
+     <script defer src="{{ asset('js/main/mainlayout/jquery-3.2.1.min.js') }}"></script>
     <script defer src="{{ asset('js/main/mainlayout/bootstrap.min.js') }}"></script>
-     {{-- <script defer src="{{ asset('js/main/mainlayout/owl.carousel.min.js') }}"></script> --}}
-     {{-- <script defer src="{{ asset('js/main/mainlayout/circle-progress.min.js') }}"></script> --}}
+     <script defer src="{{ asset('js/main/mainlayout/owl.carousel.min.js') }}"></script>
+     <script defer src="{{ asset('js/main/mainlayout/circle-progress.min.js') }}"></script>
     <script defer src="{{ asset('js/main/mainlayout/main.js') }}"></script> 
 
    
