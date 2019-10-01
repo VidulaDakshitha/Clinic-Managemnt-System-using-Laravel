@@ -7,14 +7,14 @@ use Illuminate\Http\Request;
 
 class PrescriptionController extends Controller
 {
-    public function home2(){
+    public function home2(Request $request){
         $prescriptions = Prescription::all();
-        return view('home_prescription',['prescription'=>$prescriptions]);
+        return view('home_prescription',['prescriptions'=>$prescriptions]);
     }
 
     public function add2(Request $request){
         $this->validate($request,[
-            'doctor_id'=>'equired',
+            'doctor_id'=>'required',
             'patient_id' => 'required',
             'description' => 'required'
         ]);
