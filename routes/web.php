@@ -11,11 +11,14 @@
 |
 */
 Route::get('/AdminHome', 'PagesController@adhome');
+Route::get('/contact', 'PagesController@contact');
+Route::post('/contact', 'PagesController@postcontact');
 Route::get('/admin', 'PostsController@admhome')->middleware('auth_admin');
 Route::get('/admin', 'FeedbackController@fedadmin')->middleware('auth_admin');
 Route::get('/ServiceTest', 'PostsController@index');
 Route::get('/AdminServ', 'PostsController@serv');
 Route::get('/gallery', 'PostsController@media');
+Route::get('/welcome', 'SweetAlertDemo@index');
 
 
 // Route::post('/ServiceTest', 'PostsController@store');
@@ -57,8 +60,8 @@ Route::get('/about', 'NoticesController@index');
 Route::get('/ServiceTest', 'PostsController@index');
 Route::get('/gallery', 'ArticlesController@index');
 Route::get('/feedback', 'FeedbackController@fed');
-Route::view('/contact', 'main.about');
-Route::view('/contact', 'main.contact');
+//Route::view('/contact', 'main.about');
+//Route::view('/contact', 'main.contact');
 Route::view('/signin', 'main.login');
 
 Route::view('/search', 'PatientManagement.search');
@@ -177,44 +180,43 @@ Route::get('/home_per', function(){
     return view('home_per');
 });
 
-Route::get('/home_per', 'PersonalRecordsController@home0');
+Route::get('/home_per', 'PersonalRecordsController@index');
 
 Route::get('/create_per', function(){
     return view('create_per');
 });
 
-Route::post('/insert', 'PersonalRecordsController@add0'); 
+Route::post('/insert', 'PersonalRecordsController@add0');
 
-Route::put('/update_per/{id}', 'PersonalRecordsController@update0');
-Route::post('/edit/{id}', 'PersonalRecordsController@edit0');
+Route::get('/update_per/{id}', 'PersonalRecordsController@update0');
+Route::post('/edit_per/{id}', 'PersonalRecordsController@edit0');
 
-Route::get('/read_per/{id}', 'PersonalRecordsController@read0');
+Route::get('/read_per/{id}', 'PersonalRecordsController@show');
 
-Route::get('/delete/{id}', 'PersonalRecordsController@delete0');
+Route::get('/delete_per/{id}', 'PersonalRecordsController@destroy');
 
 
 //2.Treatment Record
+//Route::get('/home_treat', 'TreatmentController@home1');
 Route::get('/home_treat', function(){
     return view('home_treat');
 });
-
-Route::get('/home_treat', 'TreatmentController@home1');
-
+Route::get('/home_treat', 'TreatmentController@index1');
 Route::get('/create_treat', function(){
     return view('create_treat');
 });
 
-Route::post('/insert', 'TreatmentController@add1'); 
+Route::post('/insert_treatment', 'TreatmentController@add1');
 
-Route::put('/update_treat/{id}', 'TreatmentController@update1');
-Route::post('/edit/{id}', 'TreatmentController@edit1');
+Route::get('/update_treat/{id}', 'TreatmentController@update1');
+Route::post('/edit_treat/{id}', 'TreatmentController@edit1');
 
-Route::get('/read_treat/{id}', 'TreatmentController@read1');
+Route::get('/read_treat/{id}', 'TreatmentController@show');
 
-Route::get('/delete/{id}', 'TreatmentController@delete1');
+Route::get('/delete_treat/{id}', 'TreatmentController@destroy');
 
 //3.Prescription
-Route::get('/home_treat', function(){
+Route::get('/home_prescription', function(){
     return view('home_prescription');
 });
 
@@ -224,12 +226,13 @@ Route::get('/create_prescription', function(){
     return view('create_prescription');
 });
 
-Route::post('/insert', 'PrescriptionController@add2'); 
+Route::post('/insert_prescription', 'PrescriptionController@add2');
 
-Route::put('/update_prescription/{id}', 'PrescriptionController@update2');
-Route::post('/edit/{id}', 'PrescriptionController@edit2');
+Route::get('/update_prescription/{id}', 'PrescriptionController@edit2');
+Route::get('/edit_prescription/{id}', 'PrescriptionController@update2');
 
-Route::get('/read_prescription/{id}', 'PrescriptionController@read2');
+Route::get('/read_prescription/{id}', 'PrescriptionController@show');
+Route::get('/delete_prescription/{id}', 'PrescriptionController@destroy');
 
-Route::get('/delete/{id}', 'PrescriptionController@delete2');
+//Route::get('/Welcome', ['as'=>'Welcome','uses'=>'PagesController@index']);
 

@@ -152,3 +152,34 @@
     background: rgb(0,255,124);
 background: linear-gradient(90deg, rgba(0,255,124,1) 0%, rgba(140,255,198,1) 44%, rgba(0,210,254,1) 100%);
 }
+
+.catogory_table_btn
+{
+    width: 30px;
+    margin-left: 90%;
+    margin-bottom: 2%;
+    border: none;
+    border-radius: 30px;
+    background-color: #007bff;
+    color: antiquewhite;
+    height: 30px;
+    box-shadow: 2px 2px 8px 0px #000000b8;
+
+
+}
+
+.catogory_table_btn:hover
+{
+    width: 60px;
+    margin-left: 90%;
+    margin-bottom: 2%;
+    border: none;
+    border-radius: 30px;
+    background-color: #4a00ff;
+    color: antiquewhite;
+    height: 30px;
+    box-shadow: 2px 2px 8px 0px #000000b8;
+
+
+}
+

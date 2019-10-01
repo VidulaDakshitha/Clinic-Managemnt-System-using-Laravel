@@ -11,7 +11,7 @@
 <div class="container">
     <div class="row">
       <div class="col-md-6">
-      <form class="form-horizontal" method="POST" action="{{ url('/insert') }}" enctype="multipart/form-data">
+      <form class="form-horizontal" method="POST" action="{{ url('/home_prescription') }}">
        {{ csrf_field() }}
        @method('PUT')
          <fieldset>
@@ -26,21 +26,21 @@
           
             <div class="form-group">
                 <label>Doctor_ID:</label>
-                <input type="string" class="form-control" id="pid" name="doctor_id" placeholder="Enter Doctor_id" value="<?php echo $prescriptions->doctor_id; ?>">
+                <input type="string" class="form-control" id="pid" name="doctor_id" placeholder="Enter Doctor_id" value="{{$prescription->doctor_id}}">
               </div>
    
            
            <div class="form-group">
              <label>Patient_ID:</label>
-             <input type="string" class="form-control" id="pid" name="patient_id" placeholder="Enter Patient_id" value="<?php echo $prescriptions->patient_id; ?>">
+             <input type="string" class="form-control" id="pid" name="patient_id" placeholder="Enter Patient_id" value="{{$prescription->patient_id}}">
            </div>
 
            <div class="form-group">
                <label>Prescription:</label>
-               <textarea class="form-control" id="Description" name="description" rows="3"><?php echo $prescriptions->description; ?></textarea>
+               <textarea class="form-control" id="Description" name="description" rows="3">{{$prescription->description}}</textarea>
            </div>
 
-           <button type="submit" class="btn btn-primary">Submit</button>
+           <button type="submit" class="btn btn-primary">Update</button>
            <button type="reset" class="btn btn-primary">Cancel</button>
            <a href="{{ url('/home_prescription') }}" class="btn btn-primary">Back</a>
          </fieldset>

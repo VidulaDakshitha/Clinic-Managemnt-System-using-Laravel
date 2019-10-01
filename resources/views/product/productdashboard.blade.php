@@ -49,7 +49,7 @@
                     </div>
                     <div class="form-group">
                         <label>EXP-Date</label>
-                        <input type="date" name="expiry_date" class="form-control" id="expiry_date" required>
+                        <input type="date" name="expiry_date" class="form-control" id="expiry_date" required >
                     </div>
                     <div class="form-group">
                         <label>Brand</label>
@@ -64,8 +64,8 @@
                     <div class="form-group">
                         <select class="form-control" name="type" id="type" required>
                             <option selected="selected">Product Type</option>
-                            <option value="Drug">Drug</option>
-                            <option value="GeneralProduct">General Product</option>
+                            <option value="Drug">medical</option>
+                            <option value="GeneralProduct">general</option>
                         </select>
                     </div>
                 </div>
@@ -117,11 +117,11 @@
                                         <th>ID</th>
                                         <th>name</th>
                                         <th>quantity</th>
-                                        <th>potency</th>
                                         <th>type</th>
                                         <th>brand</th>
                                         <th>Price</th>
                                         <th>EXP_Date</th>
+                                        <th>View</th>
                                         <th>Update</th>
                                         <th>Remove</th>
                                     </tr>
@@ -137,12 +137,18 @@
                                         <td>{{$product->product_id}}</td>
                                         <td>{{$product->name}}</td>
                                         <td>{{$product->quantity}}</td>
-                                        <td>{{$product->potency}}</td>
                                         <td>{{$product->type}}</td>
                                         <td>{{$product->brand}}</td>
                                         <td>{{$product->selling_price}}</td>
                                         <td>{{$product->expiry_date}}</td>
 
+
+                                        <td>
+                                            <form action="/product/{{ $product->product_id}}/show" method="GET">
+                                                @csrf
+                                                <button type="submit" href="" class="btn btn-primary mr-1">View</button>
+                                            </form>
+                                        </td>
 
                                         <td>
                                             <form action="/product/{{ $product->product_id}}/edit" method="GET">
@@ -157,6 +163,7 @@
                                                 <button type="submit" href="" class="btn btn-danger">Remove</button>
                                             </form>
                                         </td>
+                                        
                                     </tr>
 
                                     @endforeach

@@ -7,6 +7,7 @@ use DB;
 use Illuminate\Support\Facades\Auth;
 use App\Patient;
 use App\User;
+use Alert;
 
 class PatientDashboardController extends Controller
 {
@@ -31,6 +32,7 @@ class PatientDashboardController extends Controller
         $final=Auth::user();
 
         $research = DB::table('patients')->where('email', $final->email)->first();
+        
         return view('PatientManagement.patientDashboard',compact('research'));
         //
     }
@@ -133,6 +135,7 @@ class PatientDashboardController extends Controller
         // $post->delete();
         $post2->delete();
 
+        
         return redirect('/');
         //
     }
