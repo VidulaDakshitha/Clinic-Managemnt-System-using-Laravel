@@ -54,5 +54,7 @@
     </div>
 </div>
 
+<a href="{{ url('/create_prescription') }}" class="btn btn-primary">Create</a>
+
 
 @endsection

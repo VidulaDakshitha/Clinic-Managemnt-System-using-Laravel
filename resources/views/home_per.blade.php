@@ -54,6 +54,6 @@
           </table> 
     </div>
 </div>
-
+<a href="{{ url('/create_per') }}" class="btn btn-primary">Create</a>
 
 @endsection

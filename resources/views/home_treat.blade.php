@@ -7,7 +7,7 @@
 
 @section('content')
 
-<div class="container" >
+<div class="container" >    
     <div class="row">
         <legend>Treatment Record</legend>
         
@@ -16,7 +16,7 @@
                  {{ session('info') }}
               </div>
             @endif
-          
+         
         <table class="table table-hover">
             <thead>
               <tr>
@@ -51,6 +51,7 @@
           </table> 
     </div>
 </div>
+<a href="{{ url('/create_treat') }}" class="btn btn-primary">Create</a>
 
 
 @endsection
