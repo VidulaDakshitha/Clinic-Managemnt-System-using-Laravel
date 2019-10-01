@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 
 class TreatmentController extends Controller
 {
-    public function home1(Request $request){
+    public function index1(Request $request){
         $treatment_records = TreatmentRecord::all();
         return view('home_treat',['treatment_records'=>$treatment_records]);
     }
@@ -23,7 +23,7 @@ class TreatmentController extends Controller
         $treatment_records->description = $request->input('description');
     
         $treatment_records->save();
-        return redirect('/home_treat')->with('info','records saved successfully!');
+        return redirect('/home_treat')->with('info','Treatment record saved successfully!');
     }
 
     public function edit1($id)

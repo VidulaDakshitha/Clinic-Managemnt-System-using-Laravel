@@ -196,7 +196,7 @@ Route::get('/delete/{id}', 'PersonalRecordsController@delete0');
 Route::get('/home_treat', function(){
     return view('home_treat');
 });
-
+Route::get('/home_treat', 'TreatmentController@index1');
 Route::get('/create_treat', function(){
     return view('create_treat');
 });
@@ -211,22 +211,5 @@ Route::get('/read_treat/{id}', 'TreatmentController@read1');
 Route::get('/delete/{id}', 'TreatmentController@delete1');
 
 //3.Prescription
-Route::get('/home_treat', function(){
-    return view('home_prescription');
-});
 
-Route::get('/home_prescription', 'PrescriptionController@home2');
-
-Route::get('/create_prescription', function(){
-    return view('create_prescription');
-});
-
-Route::post('/insert_prescription', 'PrescriptionController@add2'); 
-
-Route::put('/update_prescription/{id}', 'PrescriptionController@update2');
-Route::post('/edit/{id}', 'PrescriptionController@edit2');
-
-Route::get('/read_prescription/{id}', 'PrescriptionController@read2');
-
-Route::get('/delete/{id}', 'PrescriptionController@delete2');
 
