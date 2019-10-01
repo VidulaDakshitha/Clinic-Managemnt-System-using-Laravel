@@ -11,7 +11,7 @@
 <div class="container">
     <div class="row">
       <div class="col-md-6">
-      <form class="form-horizontal" method="POST" action="{{ url('/edit_prescription') }}" enctype="multipart/form-data">
+      <form class="form-horizontal" method="POST" action="{{ url('/edit_prescription') }}">
        {{ csrf_field() }}
        @method('PUT')
          <fieldset>
@@ -40,7 +40,7 @@
                <textarea class="form-control" id="Description" name="description" rows="3">{{$prescription->description}}</textarea>
            </div>
 
-           <button type="submit" class="btn btn-primary">Submit</button>
+           <button type="submit" class="btn btn-primary">Update</button>
            <button type="reset" class="btn btn-primary">Cancel</button>
            <a href="{{ url('/home_prescription') }}" class="btn btn-primary">Back</a>
          </fieldset>
