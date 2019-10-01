@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 
 class TreatmentController extends Controller
 {
-    public function home1(){
+    public function home1(Request $request){
         $treatment_records = TreatmentRecord::all();
         return view('home_treat',['treatment_records'=>$treatment_records]);
     }

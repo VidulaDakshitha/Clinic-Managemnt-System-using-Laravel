@@ -183,7 +183,7 @@ Route::get('/create_per', function(){
 
 Route::post('/insert', 'PersonalRecordsController@add0'); 
 
-Route::put('/update_per/{id}', 'PersonalRecordsController@update0');
+Route::get('/update_per/{id}', 'PersonalRecordsController@update0');
 Route::post('/edit/{id}', 'PersonalRecordsController@edit0');
 
 Route::get('/read_per/{id}', 'PersonalRecordsController@read0');
@@ -192,11 +192,10 @@ Route::get('/delete/{id}', 'PersonalRecordsController@delete0');
 
 
 //2.Treatment Record
+//Route::get('/home_treat', 'TreatmentController@home1');
 Route::get('/home_treat', function(){
     return view('home_treat');
 });
-
-Route::get('/home_treat', 'TreatmentController@home1');
 
 Route::get('/create_treat', function(){
     return view('create_treat');
