@@ -15,10 +15,10 @@
                 <li class="nav-item">
                   <a class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true" href="{{ url('home_per') }}">Personal Record</a>
                   <ul>
-                      <li class="dropdown-item active">
+                      <li class="nav-item active">
                       <a class="nav-link" href="{{url('home_per')}}">Home <span class="sr-only">(current)</span></a>
                         </li>
-                        <li class="dropdown-item">
+                        <li class="nav-item">
                           <a class="nav-link" href="{{url('/create_per')}}">Create</a>
                         </li>
                   </ul>

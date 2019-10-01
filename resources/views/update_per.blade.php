@@ -11,8 +11,9 @@
 <div class="container">
     <div class="row">
       <div class="col-md-6">
-      <form class="form-horizontal" method="POST" action="{{ url('/insert') }}" enctype="multipart/form-data">
+      <form class="form-horizontal" method="POST" action="{{ url('/edit_per') }}" >
        {{ csrf_field() }}
+       @method('PUT')
          <fieldset>
            <legend>Personal Record</legend>
             @if (count($errors)>0)
@@ -24,22 +25,22 @@
             @endif
           
             <div class="form-group">
-             Date of advice :<input type="date" class="form-control-file" name="date" value="<?php echo $personal_records->date;?>" required>
+             Date of advice :<input type="date" class="form-control-file" name="date" value="{{$personal_records->date}}" required>
            </div>
            
            <div class="form-group">
              <label>Patient_ID</label>
-             <input type="string" class="form-control" id="pid" name="patient_id" placeholder="Enter Patient_id" value="<?php echo $personal_records->patient_id;?>" >
+             <input type="string" class="form-control" id="pid" name="patient_id" placeholder="Enter Patient_id" value="{{$personal_records->patient_id}}" >
            </div>
 
            <div class="form-group">
              <label>Disease</label>
-             <textarea class="form-control" id="Disease" name="disease" rows="3"><?php echo $personal_records->disease;?></textarea>
+             <textarea class="form-control" id="Disease" name="disease" rows="3"><{{$personal_records->disease}}></textarea>
            </div>
 
            <div class="form-group">
                <label>Description about disease</label>
-               <textarea class="form-control" id="Description" name="description" rows="3"><?php echo $personal_records->description; ?></textarea>
+               <textarea class="form-control" id="Description" name="description" rows="3"><{{$personal_records->description}}></textarea>
            </div>
 
            <button type="submit" class="btn btn-primary">Submit</button>
