@@ -172,7 +172,10 @@ Route::delete('/productdelete/{id}', 'ProductManagementController@destroy');
 Route::post('/store', 'ProductManagementController@store');
 
 
+<<<<<<< HEAD
+=======
 
+>>>>>>> 54882712dce4cdb100b12566875a2c0691d2e177
 //Record Management
 
 //1.Personal Record

@@ -21,7 +21,7 @@
         <footer>
           <ul class="nospace inline pushright">
             <li><a class="btn1" href= "/product" >Product Details</a></li>
-            <li><a class="btn1" href="#">Supplier Details</a></li>
+            <li><a class="btn1" href="/supplier">Supplier Details</a></li>
           </ul>
         </footer>
       </article>
