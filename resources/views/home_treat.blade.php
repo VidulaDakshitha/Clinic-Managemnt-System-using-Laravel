@@ -9,7 +9,7 @@
 
 <div class="container" >
     <div class="row">
-        <legend>Prescription</legend>
+        <legend>Treatment Record</legend>
         
             @if (session('info'))
               <div class="alert alert-success">
