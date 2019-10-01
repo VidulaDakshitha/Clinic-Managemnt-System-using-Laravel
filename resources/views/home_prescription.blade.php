@@ -7,17 +7,25 @@
 
 @section('content')
 
-<div class="container" >
-    <div class="row">
-        <legend>Prescription</legend>
-        
-            @if (session('info'))
-              <div class="alert alert-success">
-                 {{ session('info') }}
-              </div>
-            @endif
-          
-        <table class="table table-hover">
+<div class="container">
+    <div class="content mt-3">
+        <div class="animated fadeIn">
+            <div class="row">
+    
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h1>Prescription</h1>
+                        </div>
+                        <div class="card-body">
+            
+                @if (session('info'))
+                  <div class="alert alert-success">
+                     {{ session('info') }}
+                  </div>
+                @endif
+              
+            <table id="bootstrap-data-table-export" class="table table-striped table-bordered">
             <thead>
               <tr>
                 <th scope="col">ID</th>
@@ -51,10 +59,41 @@
                     
             </tbody>
           </table> 
+        </div>
+      </div>
     </div>
-</div>
+    
+    
+    </div>
+    </div>
+    </div>
+    </div>
 
 <a href="{{ url('/create_prescription') }}" class="btn btn-primary">Create</a>
+<script src={{ url('css/product/vendors/jquery/dist/jquery.min.js') }}></script>
+<script src={{ url('css/product/vendors/popper.js/dist/umd/popper.min.js') }}></script>
+<script src={{ url('css/product/vendors/bootstrap/dist/js/bootstrap.min.js') }}></script>
+<script src={{ url('css/product/assets/js/main.js') }}></script>
+
+
+<script src={{ url('css/product/vendors/datatables.net/js/jquery.dataTables.min.js') }}></script>
+
+<script src={{ url('css/product/vendors/datatables.net-bs4/js/dataTables.bootstrap4.min.js') }}></script>
+
+<script src={{ url('css/product/vendors/datatables.net-buttons/js/dataTables.buttons.min.js') }}></script>
+
+<script src={{ url('css/product/vendors/datatables.net-buttons-bs4/js/buttons.bootstrap4.min.js') }}></script>
+
+<script src={{ url('css/product/vendors/jszip/dist/jszip.min.js') }}></script>
+
+
+<script src={{ url('css/product/vendors/datatables.net-buttons/js/buttons.html5.min.js') }}></script>
+
+<script src={{ url('css/product/vendors/datatables.net-buttons/js/buttons.print.min.js') }}></script>
+
+<script src={{ url('css/product/vendors/datatables.net-buttons/js/buttons.colVis.min.js') }}></script>
+
+<script src={{ url('css/product/assets/js/init-scripts/data-table/datatables-init.js') }}></script>
 
 
 @endsection
