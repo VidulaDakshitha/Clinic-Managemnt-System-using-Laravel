@@ -30,23 +30,26 @@
             </thead>
 
             <tbody>
-                @if(count($personal_records) > 0)
-                  @foreach($personal_records->all() as $personal_record)
-                                      
+                    @if ( count($personal_records) > 0)
+                    @foreach ($personal_records as $personal_record)
+                        
+                    
               <tr class="table-active">
-                <td>{{ $personal_record->record_id }}</td>
-                <td>{{ $personal_record->date }}</td>
-                <td>{{ $personal_record->patient_id }}</td>
-                <td>{{ $personal_record->disease }}</td>
-                <td>{{ $personal_record->description }}</td>
+                <td>{{$personal_record->record_id}}</td>
+                <td>{{$personal_record->date}}</td>
+                <td>{{$personal_record->patient_id}}</td>
+                <td>{{$personal_record->disease}}</td>
+                <td>{{$personal_record->description}}</td>
                 <td>
-                  <a href='{{ url("/read_per/{$personal_records->record_id}") }}' class="label label-primary"> Read </a>|
-                  <a href='{{ url("/update_per/{$personal_records->record_id}") }}' class="label label-success"> Update </a>|
-                  <a href='{{ url("/delete/{$personal_record->record_id}") }}' class="label label-danger"> Delete </a>
+                <a href='{{url('')}}' class="label label-primary"> Read </a>|
+                <a href='{{url('')}}' class="label label-success"> Update </a>|
+                <a href='{{url('')}}' class="label label-danger"> Delete </a>
                 </td>
               </tr>
-                  @endforeach
-               @endif
+                    @endforeach
+                        
+                    @endif
+                
             </tbody>
           </table> 
     </div>
