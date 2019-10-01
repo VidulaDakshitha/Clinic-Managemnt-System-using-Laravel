@@ -40,16 +40,15 @@ class PersonalRecordsController extends Controller
             'description' => 'required'
         ]);
 
-        $data = array(
-            'patient_id' => $request->input('patient_id'),
-            'disease' => $request->input('disease'),
-            'date' => $request->input('date'),
-            'description' => $request->input('description')
-        );
+      
+        $personal_record = PersonalRecord::find($record_id);
+        $personal_recordt->patient_id = $request->patient_id;
+        $personal_record->disease = $request->disease;
+        $personal_record->date = $request->date;
+        $personal_record->description = $request->description;
 
-        PersonalRecord::where('record_id',$record_id)
-        ->update($data);
-        return redirect('/home_per')->with('info','Record saved successfully!');
+        $personal_record->save();
+        return redirect('/home_per')->with('success','Updated');
     }
 
     public function update0($record_id)
