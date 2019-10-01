@@ -11,7 +11,7 @@
 <div class="container">
     <div class="row">
       <div class="col-md-6">
-      <form class="form-horizontal" method="POST" action="{{ url('/edit_prescription') }}">
+      <form class="form-horizontal" method="POST" action="{{ url('/home_prescription') }}">
        {{ csrf_field() }}
        @method('PUT')
          <fieldset>

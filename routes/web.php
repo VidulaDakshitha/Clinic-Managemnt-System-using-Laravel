@@ -226,8 +226,8 @@ Route::get('/create_prescription', function(){
 
 Route::post('/insert_prescription', 'PrescriptionController@add2');
 
-Route::get('/update_prescription/{id}', 'PrescriptionController@update2');
-Route::post('/edit_prescription/{id}', 'PrescriptionController@edit2');
+Route::get('/update_prescription/{id}', 'PrescriptionController@edit2');
+Route::get('/edit_prescription/{id}', 'PrescriptionController@update2');
 
 Route::get('/read_prescription/{id}', 'PrescriptionController@show');
 Route::get('/delete_prescription/{id}', 'PrescriptionController@destroy');
