@@ -14,7 +14,7 @@
        {{ csrf_field() }}
        @method('PUT')
          <fieldset>
-           <legend>Personal Record</legend>
+           <legend>Treatment Record</legend>
             @if (count($errors)>0)
                 @foreach ($errors->all() as $error)
                   <div class="alert alert-danger">
