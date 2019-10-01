@@ -171,6 +171,8 @@ Route::delete('/productdelete/{id}', 'ProductManagementController@destroy');
 
 Route::post('/store', 'ProductManagementController@store');
 
+
+
 //Record Management
 
 //1.Personal Record
@@ -187,11 +189,11 @@ Route::get('/create_per', function(){
 Route::post('/insert', 'PersonalRecordsController@add0');
 
 Route::get('/update_per/{id}', 'PersonalRecordsController@update0');
-Route::post('/edit/{id}', 'PersonalRecordsController@edit0');
+Route::post('/edit_per/{id}', 'PersonalRecordsController@edit0');
 
-Route::get('/read_per/{id}', 'PersonalRecordsController@read0');
+Route::get('/read_per/{id}', 'PersonalRecordsController@show');
 
-Route::get('/delete/{id}', 'PersonalRecordsController@delete0');
+Route::get('/delete_per/{id}', 'PersonalRecordsController@destroy');
 
 
 //2.Treatment Record
@@ -207,7 +209,7 @@ Route::get('/create_treat', function(){
 Route::post('/insert_treatment', 'TreatmentController@add1');
 
 Route::put('/update_treat/{id}', 'TreatmentController@update1');
-Route::post('/edit/{id}', 'TreatmentController@edit1');
+Route::post('/edit_treat/{id}', 'TreatmentController@edit1');
 
 Route::get('/read_treat/{id}', 'TreatmentController@read1');
 
@@ -226,10 +228,11 @@ Route::get('/create_prescription', function(){
 
 Route::post('/insert_prescription', 'PrescriptionController@add2');
 
-Route::put('/update_prescription/{id}', 'PrescriptionController@update2');
-Route::post('/edit/{id}', 'PrescriptionController@edit2');
+Route::get('/update_prescription/{id}', 'PrescriptionController@update2');
+Route::post('/edit_prescription/{id}', 'PrescriptionController@edit2');
 
-Route::get('/read_prescription/{id}', 'PrescriptionController@read2');
+Route::get('/read_prescription/{id}', 'PrescriptionController@show');
+Route::get('/delete_prescription/{id}', 'PrescriptionController@destroy');
 
 //Route::get('/Welcome', ['as'=>'Welcome','uses'=>'PagesController@index']);
 
