@@ -208,12 +208,12 @@ Route::get('/create_treat', function(){
 
 Route::post('/insert_treatment', 'TreatmentController@add1');
 
-Route::put('/update_treat/{id}', 'TreatmentController@update1');
+Route::get('/update_treat/{id}', 'TreatmentController@update1');
 Route::post('/edit_treat/{id}', 'TreatmentController@edit1');
 
-Route::get('/read_treat/{id}', 'TreatmentController@read1');
+Route::get('/read_treat/{id}', 'TreatmentController@show');
 
-Route::get('/delete/{id}', 'TreatmentController@delete1');
+Route::get('/delete_treat/{id}', 'TreatmentController@destroy');
 
 //3.Prescription
 Route::get('/home_prescription', function(){

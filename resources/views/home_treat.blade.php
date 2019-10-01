@@ -38,9 +38,9 @@
               <td>{{$treatment_record->date}}</td>
               <td>{{$treatment_record->description}}</td>
                 <td>
-                  <a href='{{ url("/read_prescription") }}' class="label label-primary"> Read </a>|
-                  <a href='{{ url("/update_prescription") }}' class="label label-success"> Update </a>|
-                  <a href='{{ url("/delete") }}' class="label label-danger"> Delete </a>
+                  <a href='{{ url("/read_treat/{$treatment_record->record_id}") }}' class="label label-primary"> Read </a>|
+                  <a href='{{ url("/update_treat/{$treatment_record->record_id}") }}' class="label label-success"> Update </a>|
+                  <a href='{{ url("/delete_treat/{$treatment_record->record_id}") }}' class="label label-danger"> Delete </a>
                 </td>
               </tr>
               @endforeach
