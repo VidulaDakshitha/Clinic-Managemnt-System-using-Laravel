@@ -6,5 +6,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class TreatmentRecord extends Model
 {
-    //
+    public $timestamps = false;
 }
