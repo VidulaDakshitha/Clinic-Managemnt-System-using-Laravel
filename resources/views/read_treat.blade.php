@@ -9,11 +9,12 @@
 <div class="container">
     <div class="col-md-6">
         <legend>Treatment Record</legend>
-        ID:<p>{{ $treatment_record->record_id }}</p>
-        Date:<p>{{ $treatment_record->date }}</p>
-        Description:<p>{{ $treatment_record->description }}</p>
+        ID:<p>{{$treatment_record->record_id}}</p>
+        Date:<p>{{$treatment_record->date}}</p>
+        Description:<p>{{$treatment_record->description}}</p>
 
     </div>
+    <a href="{{ url('/home_treat') }}" class="btn btn-primary">Back</a>
 </div>
 
 @endsection

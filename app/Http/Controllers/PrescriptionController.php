@@ -7,14 +7,14 @@ use Illuminate\Http\Request;
 
 class PrescriptionController extends Controller
 {
-    public function home2(){
+    public function home2(Request $request){
         $prescriptions = Prescription::all();
-        return view('home_prescription',['prescription'=>$prescriptions]);
+        return view('home_prescription',['prescriptions'=>$prescriptions]);
     }
 
     public function add2(Request $request){
         $this->validate($request,[
-            'doctor_id'=>'equired',
+            'doctor_id'=>'required',
             'patient_id' => 'required',
             'description' => 'required'
         ]);
@@ -28,31 +28,35 @@ class PrescriptionController extends Controller
         return redirect('/home_prescription')->with('info','prescription saved successfully!');
     }
 
-    public function edit2($id)
+    public function update2(Prescription $prescription)
     {
-        $prescriptions = Prescription::findOrFail($id);
-
-        return view('update_prescription', compact('prescriptions'));
+        return view('update_prescription',compact('prescription'));
     }
 
-    public function update2(Request $request, prescription $prescriptions)
+    public function edit2(Request $request, Prescription $prescription)
     {
-        $prescriptions->doctor_id = $request->input('doctor_id');
-        $prescriptions->patient_id = $request->input('patient_id');
-        $prescriptions->description = $request->input('description');
-    
-        $prescriptions->save();
-        return redirect('/home_prescription')->with('info','prescription updated successfully!');
+        $request->validate([
+            'doctor_id' => 'required',
+            'patient_id' => 'required',
+            'description' => 'required'
+        ]);
+  
+        $prescription->update($request->all());
+  
+        return redirect('home_prescription')->with('success','Prescription updated successfully');
     }
 
-    public function read2($id){
-        $prescriptions = Prescription::find($id);
-        return view('read_prescription',['prescriptions'=>$prescriptions]);
+    public function show(Prescription $prescription,$id)
+    {
+        $prescription = Prescription::find($id);
+        return view('read_prescription',compact('prescription'));
     }
 
-    public function delete2($id){
-        Prescription::where('id','$id')
-        ->delete();
-        return redirect('/home_prescription')->with('info','Prescription deleted successfully!');
+    public function destroy(Prescription $prescription)
+    {
+        $prescription->delete();
+  
+        return redirect('/home_prescription')->with('success','Prescription deleted successfully');
     }
+
 }

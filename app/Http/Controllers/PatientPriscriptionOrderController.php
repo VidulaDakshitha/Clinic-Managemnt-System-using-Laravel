@@ -50,12 +50,14 @@ class PatientPriscriptionOrderController extends Controller
         $id=Auth()->id();
 
         $userspricriptions = DB::table('prescriptions')
-                   ->where('prescriptions.patient_id',$id)
-                   ->join('doctors','doctors.doctor_id','prescriptions.doctor_id')
-                  // ->join('products', 'prescriptions.id', '=', 'products.prescription_id')
-                   ->join('products', 'prescriptions.product_id', '=', 'products.product_id')
-                   ->select('products.name','products.product_id','products.selling_price', 'prescriptions.id','doctors.fullname')
-                   ->get();
+        ->where('prescriptions.patient_id',$id)
+        ->join('doctors','doctors.doctor_id','prescriptions.doctor_id')
+        ->join('prescribed_products','prescribed_products.prescription_id','prescriptions.id')
+       // ->join('products', 'prescriptions.id', '=', 'products.prescription_id')
+        ->join('products', 'prescribed_products.product_type_id', '=', 'products.product_id')
+        ->select('products.name','products.product_id','products.selling_price', 'prescriptions.id','doctors.fullname')
+       ->get();
+
 
 
             return view('product_order_system.UserPriscriptionView',['userspricriptions'=>$userspricriptions]);
@@ -74,11 +76,14 @@ class PatientPriscriptionOrderController extends Controller
 
         $userspricriptions = DB::table('prescriptions')
                    ->where('prescriptions.patient_id',$id)
+                   ->join('doctors','doctors.doctor_id','prescriptions.doctor_id')
+                   ->join('prescribed_products','prescribed_products.prescription_id','prescriptions.id')
+       // ->join('products', 'prescriptions.id', '=', 'products.prescription_id')
+                   ->join('products', 'prescribed_products.product_type_id', '=', 'products.product_id')
+                   ->select('products.name','products.product_id','products.selling_price', 'prescriptions.id','doctors.fullname')
                    ->where($searchtype,'like','%'.$searchtxt.'%')
-                   ->join('products', 'prescriptions.id', '=', 'products.prescription_id')
-                    ->select('products.name', 'products.selling_price', 'prescriptions.id','prescriptions.created_at')
-                    ->get();
-                   // dd($userspricriptions);
+                   ->get();
+      // dd($userspricriptions);
 
             return view('product_order_system.UserPriscriptionView',['userspricriptions'=>$userspricriptions]);
 

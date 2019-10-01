@@ -25,7 +25,6 @@ class PaitientOrderDashController extends Controller
     public function indexpaitent(Request $request){
        // $paitent_id=$request->get('user_id);
         $paitent_id=Auth::id();
-
         $orderDetail=DB::table('orders')
                      ->join('order_product','order_product.order_id','=','orders.order_id')
                      ->join('products','products.product_id','=','order_product.product_id')

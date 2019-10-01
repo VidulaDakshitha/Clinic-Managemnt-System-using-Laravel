@@ -11,7 +11,7 @@
 <div class="container">
     <div class="row">
       <div class="col-md-6">
-      <form class="form-horizontal" method="POST" action="{{ url('/insert') }}" enctype="multipart/form-data">
+      <form class="form-horizontal" method="POST" action="{{ url('/insert_prescription') }}" enctype="multipart/form-data">
        {{ csrf_field() }}
          <fieldset>
            <legend>Prescription</legend>

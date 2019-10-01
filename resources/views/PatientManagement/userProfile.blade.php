@@ -2,6 +2,9 @@
 
 @section('content')
 
+
+
+
 <div class="wrapper ">
   <div class="sidebar" data-color="purple" data-background-color="white" data-image="../assets/img/sidebar-1.jpg">
     <!--
@@ -16,6 +19,12 @@
     </div>
     <div class="sidebar-wrapper">
       <ul class="nav">
+          <li class="nav-item  ">
+              <a class="nav-link" href="{{'/'}}">
+                <i class="material-icons">home</i>
+                <p>Home</p>
+              </a>
+            </li>
         <li class="nav-item  ">
           <a class="nav-link" href="{{'/patient'}}">
             <i class="material-icons">dashboard</i>
@@ -23,7 +32,7 @@
           </a>
         </li>
         <li class="nav-item active ">
-          <a class="nav-link" href="./user.html">
+          <a class="nav-link" href="#">
             <i class="material-icons">person</i>
             <p>User Profile</p>
           </a>
@@ -33,14 +42,14 @@
             <i class="material-icons">content_paste</i>
             <p>Table List</p>
           </a>
-        </li>
+        </li> --}}
 
         <li class="nav-item ">
-          <a class="nav-link" href="./map.html">
+          <a class="nav-link" href="/contact">
             <i class="material-icons">location_ons</i>
-            <p>Maps</p>
+            <p>Contact us</p>
           </a>
-        </li> --}}
+        </li>
         <li class="nav-item ">
           <a class="nav-link" href="/feedback">
             <i class="material-icons">notifications</i>
@@ -95,11 +104,15 @@
               </a>
               <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownProfile">
                 <a class="dropdown-item" href="#">Profile</a>
+                <form action="{{ route('logout') }}" method="post">
+                    @csrf
+                    <input class="dropdown-item" type="submit" class="dropdown-item" value="Logout">
+                  </form>
 
            
                 {{-- <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">Log out</a>
-              </div> --}}
+                <a class="dropdown-item" href="#">Log out</a> --}}
+              </div>
             </li>
           </ul>
         </div>
@@ -108,6 +121,7 @@
     <!-- End Navbar -->
     <div class="content">
       <div class="container-fluid">
+       
         <div class="row">
           <div class="col-md-8">
             <div class="card">
@@ -471,6 +485,8 @@
           });
         });
 </script>
+
+
 
 
 @endsection
