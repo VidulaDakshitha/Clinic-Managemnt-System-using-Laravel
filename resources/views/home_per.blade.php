@@ -41,9 +41,9 @@
                 <td>{{$personal_record->disease}}</td>
                 <td>{{$personal_record->description}}</td>
                 <td>
-                <a href='{{url('')}}' class="label label-primary"> Read </a>|
-                <a href='{{url('')}}' class="label label-success"> Update </a>|
-                <a href='{{url('')}}' class="label label-danger"> Delete </a>
+                <a href='{{url("/read_per/{$personal_record->record_id}")}}' class="label label-primary"> Read </a>|
+                <a href='{{url("/update_per/{$personal_record->record_id}")}}' class="label label-success"> Update </a>|
+                <a href='{{url("/delete/{$personal_record->record_id}")}}' class="label label-danger"> Delete </a>
                 </td>
               </tr>
                     @endforeach
