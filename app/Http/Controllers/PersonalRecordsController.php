@@ -56,11 +56,11 @@ class PersonalRecordsController extends Controller
         return view('read_per',compact('personal_record'));
     }
 
-    public function destroy(PersonalRecord $personal_record)
+    public function destroy(PersonalRecord $personal_records)
     {
-        $personal_record->delete();
+        $personal_records->delete();
   
-        return redirect('/home_per')->with('success','Record deleted successfully');
+        return redirect('home_per')->with('success','Record deleted successfully');
     }
 
 }    

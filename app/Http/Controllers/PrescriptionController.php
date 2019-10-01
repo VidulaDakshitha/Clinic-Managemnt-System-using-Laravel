@@ -28,12 +28,13 @@ class PrescriptionController extends Controller
         return redirect('/home_prescription')->with('info','prescription saved successfully!');
     }
 
-    public function update2(Prescription $prescription)
+    public function update2($id)
     {
+        $prescription = Prescription::find($id);
         return view('update_prescription',compact('prescription'));
     }
 
-    public function edit2(Request $request, Prescription $prescription)
+    public function edit2(Request $request, $id)
     {
         $request->validate([
             'doctor_id' => 'required',
@@ -41,9 +42,14 @@ class PrescriptionController extends Controller
             'description' => 'required'
         ]);
   
-        $prescription->update($request->all());
+        $prescription = Prescription::find($id);
+        $prescription->doctor_id = $request->doctor_id;
+        $prescription->patient_id = $request->patient_id;
+        $prescription->description = $request->description;
+
+        $prescription->save();
   
-        return redirect('home_prescription')->with('success','Prescription updated successfully');
+        return redirect('/home_prescription')->with('success','Prescription updated successfully');
     }
 
     public function show(Prescription $prescription,$id)
@@ -52,8 +58,9 @@ class PrescriptionController extends Controller
         return view('read_prescription',compact('prescription'));
     }
 
-    public function destroy(Prescription $prescription)
+    public function destroy(Prescription $prescription,$id)
     {
+        $prescription = Prescription::find($id);
         $prescription->delete();
   
         return redirect('/home_prescription')->with('success','Prescription deleted successfully');
