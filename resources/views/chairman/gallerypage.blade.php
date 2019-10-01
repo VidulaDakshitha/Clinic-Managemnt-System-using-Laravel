@@ -112,8 +112,9 @@
                     <a class="scrollTo" data-scrollTo="photo" href="#"><img src="img/scroll-icon.png" alt=""></a>
                 </div> 
                 @if(!auth::guest())
+                    @if(auth::user()->type=="admin")
                 <a class="btn btn-primary" href="/gallery/create">Add New Photo</a>
-                 
+                @endif
         @endif 
             </div>
         </div>
@@ -152,8 +153,10 @@
         @endif    
     </div>
     @if(!auth::guest())
+        @if(auth::user()->type=="admin")
     <a class="btn btn-primary" href="/admin">Back to Dashboard</a>
-    @endif 
+        @endif 
+    @endif
     </div>
    
 
