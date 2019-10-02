@@ -31,25 +31,25 @@ class PrescriptionController extends Controller
     public function edit2($id)
     {
         $prescription = Prescription::find($id);
-        return view('update_prescription',compact('prescription'));
+
+        return view('update_prescription', compact('prescription'));
     }
 
     public function update2(Request $request, $id)
     {
-        $request->validate([
-            'doctor_id' => 'required',
+        $data = $request->validate([
+            'doctor_id'=>'required',
             'patient_id' => 'required',
             'description' => 'required'
         ]);
-  
+
         $prescription = Prescription::find($id);
-        $prescription->doctor_id = $request->doctor_id;
-        $prescription->patient_id = $request->patient_id;
-        $prescription->description = $request->description;
+        $prescription->doctor_id = $request->input('doctor_id');
+        $prescription->patient_id = $request->input('patient_id');
+        $prescription->description = $request->input('description');
 
         $prescription->save();
-  
-        return redirect('/home_prescription')->with('success','Prescription updated successfully');
+        return redirect('/home_prescription')->with('success','Prescription Updated');
     }
 
     public function show(Prescription $prescription,$id)
