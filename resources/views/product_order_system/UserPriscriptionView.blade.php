@@ -58,7 +58,7 @@
             <table class="table table-sm table-striped table-hover " id="table1" style="border-radius: 10px; ">
                 <thead thead-dark style="border-radius: 10px; ">
                   <tr>
-                    <th scope="col" style="border-radius: 10px; ">Priscription Id</th>
+                    <th scope="col" style="border-radius: 10px; ">Priscription  Id</th>
                     <th scope="col">Doctore name</th>
                     <th scope="col">Medical item name</th>
                     <th scope="col">Unit price</th>
