@@ -40,6 +40,12 @@ class PostsController extends Controller
         return view('main.service', compact('posts'));
     }
 
+    public function adminpost()
+    {
+        $posts = Post::all();
+        return view('chairman.adminpage', compact('posts'));
+    }
+
 
     /**
      * Show the form for creating a new resource.

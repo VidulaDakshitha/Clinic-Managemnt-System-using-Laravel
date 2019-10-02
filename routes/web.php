@@ -14,6 +14,7 @@ Route::get('/AdminHome', 'PagesController@adhome');
 Route::get('/contact', 'PagesController@contact');
 Route::post('/contact', 'PagesController@postcontact');
 Route::get('/admin', 'PostsController@admhome')->middleware('auth_admin');
+Route::get('/admin', 'FeedbackController@fedadmin')->middleware('auth_admin');
 Route::get('/ServiceTest', 'PostsController@index');
 Route::get('/AdminServ', 'PostsController@serv');
 Route::get('/gallery', 'PostsController@media');
@@ -40,7 +41,8 @@ Route::get('/aboutus/create', 'NoticesController@create');
 Route::get('/aboutus/{article}/edit', 'NoticesController@edit');
 Route::delete('/aboutus/{article}', 'NoticesController@destroy');
 
-Route::get('/adminfeedback', 'FeedbackController@index');
+Route::get('/adminfeedback', 'FeedbackController@index')->middleware('auth_admin');
+Route::get('/adminfeedbackreport', 'FeedbackController@fedreport')->middleware('auth_admin');
 
 Route::get('/feedback', 'FeedbackController@fed');
 Route::post('/feedbacktest','FeedbackController@store');
