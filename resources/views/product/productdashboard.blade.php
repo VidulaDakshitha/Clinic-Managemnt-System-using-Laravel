@@ -95,7 +95,7 @@
 <div class="container">
 <form action="{{ url('/exp') }}" method="GET">
         @csrf
-        <button type="submit" href="" class="btn btn-danger mr-1" style="margin-left: 720px;">Manage Expired Products</button>
+        <button type="submit" href="" class="btn btn-danger mr-1" style="margin-left: 694px;">Manage Expired Products</button>
 </form>
 
     
@@ -125,8 +125,8 @@
                                         <th>quantity</th>
                                         <th>type</th>
                                         <th>brand</th>
+                                        <th>Potency</th>
                                         <th>Price</th>
-                                        <th>EXP_Date</th>
                                         <th>View</th>
                                         <th>Update</th>
                                         <th>Remove</th>
@@ -144,8 +144,9 @@
                                         <td>{{$product->quantity}}</td>
                                         <td>{{$product->type}}</td>
                                         <td>{{$product->brand}}</td>
+                                        <td>{{$product->potency}}</td>
                                         <td>{{$product->selling_price}}</td>
-                                        <td>{{$product->expiry_date}}</td>
+                                        
 
 
                                         <td>
