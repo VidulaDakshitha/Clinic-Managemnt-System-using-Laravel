@@ -36,8 +36,20 @@ class FeedbackController extends Controller
      */
     public function index()
     {
-        $feedbacks = Feedback::all();
+        $feedbacks = Feedback::orderBy('feedback_id','desc')->paginate(4);
         return view('chairman.adminfeed', compact('feedbacks'));
+    }
+
+    public function fedreport()
+    {
+        $feedbacks = Feedback::orderBy('feedback_id','desc')->paginate(10);
+        return view('reports.feedbackreport', compact('feedbacks'));
+    }
+
+    public function fedadmin()
+    {
+        $feedbacks = Feedback::orderBy('feedback_id','desc')->paginate(3);
+        return view('chairman.adminpage', compact('feedbacks'));
     }
 
 

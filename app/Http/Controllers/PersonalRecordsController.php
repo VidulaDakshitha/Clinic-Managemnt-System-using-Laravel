@@ -31,44 +31,37 @@ class PersonalRecordsController extends Controller
         return redirect('/home_per')->with('info','Record saved successfully!');
     }
 
-    public function edit0(Request $request , $record_id)
+    public function update0(PersonalRecord $personal_record)
     {
-        $this->validate($request,[
+        return view('update_per',compact('personal_record'));
+    }
+
+    public function edit0(Request $request, PersonalRecord $personal_record)
+    {
+        $request->validate([
             'patient_id' => 'required',
             'disease' => 'required',
             'date' => 'required',
             'description' => 'required'
         ]);
-
-        $data = array(
-            'patient_id' => $request->input('patient_id'),
-            'disease' => $request->input('disease'),
-            'date' => $request->input('date'),
-            'description' => $request->input('description')
-        );
-
-        PersonalRecord::where('record_id',$record_id)
-        ->update($data);
-        return redirect('/home_per')->with('info','Record saved successfully!');
+  
+        $personal_record->update($request->all());
+  
+        return redirect('home_per')->with('success','Personal Record updated successfully');
     }
 
-    public function update0($record_id)
+    public function show(PersonalRecord $personal_record,$id)
     {
-        $personal_records = PersonalRecord::where($record_id);
-        return view('update_per',['personal_records'=>$personal_records]);
-        
+        $personal_records = PersonalRecord::where('record_id',$id);
+        return view('read_per',compact('personal_record'));
     }
 
-    public function read0($record_id){
-        $personal_records = PersonalRecord::where($record_id);
-        return view('read_per',['personal_records'=>$personal_records]);
+    public function destroy($id)
+    {
+        $personal_record = PersonalRecord::where('record_id',$id);
+        $personal_record->delete();
+  
+        return redirect('home_per')->with('success','Record deleted successfully');
     }
 
-    public function delete0($id){
-        PersonalRecord::where('record_id','$id')
-        ->delete();
-        return redirect('/home_per')->with('info','Record deleted successfully!');
-    }
-}
-
-
+}    

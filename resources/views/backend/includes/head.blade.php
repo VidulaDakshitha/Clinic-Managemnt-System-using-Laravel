@@ -13,39 +13,15 @@
             <ul class="navbar-nav ml-auto">
 
                 <li class="nav-item">
-                  <a class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true" href="{{ url('home_per') }}">Personal Record</a>
-                  <ul>
-                      <li class="dropdown-item active">
-                      <a class="nav-link" href="{{url('home_per')}}">Home <span class="sr-only">(current)</span></a>
-                        </li>
-                        <li class="dropdown-item">
-                          <a class="nav-link" href="{{url('/create_per')}}">Create</a>
-                        </li>
-                  </ul>
+                  <a class="nav-link" href="{{ url('home_per') }}">Personal Record</a>
                 </li>
 
                 <li class="nav-item">
-                  <a class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true" href="{{url('/home_treat')}}">Treatment Record</a>
-                  <ul>
-                      <li class="nav-item active">
-                          <a class="nav-link" href="{{url('/home_treat')}}">Home <span class="sr-only"></span></a>
-                        </li>
-                        <li class="nav-item">
-                          <a class="nav-link" href="{{url('/create_treat')}}">Create</a>
-                        </li>
-                  </ul>
+                  <a class="nav-link" href="{{url('/home_treat')}}">Treatment Record</a>
                 </li>
 
                 <li class="nav-item">
-                  <a class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true" href="{{url('/home_prescription')}}">Prescription</a>
-                  <ul>
-                      <li class="nav-item active">
-                          <a class="nav-link" href="{{url('/home_prescription')}}">Home <span class="sr-only"></span></a>
-                        </li>
-                        <li class="nav-item">
-                          <a class="nav-link" href="{{url('/create_prescription')}}">Create</a>
-                        </li>
-                  </ul>
+                  <a class="nav-link" href="{{url('/home_prescription')}}">Prescription</a>
                 </li> 
 
                 @yield('nav-items')

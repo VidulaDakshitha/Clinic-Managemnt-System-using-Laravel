@@ -30,29 +30,40 @@ class PrescriptionController extends Controller
 
     public function edit2($id)
     {
-        $prescriptions = Prescription::findOrFail($id);
-
-        return view('update_prescription', compact('prescriptions'));
+        $prescription = Prescription::find($id);
+        return view('update_prescription',compact('prescription'));
     }
 
-    public function update2(Request $request, prescription $prescriptions)
+    public function update2(Request $request, $id)
     {
-        $prescriptions->doctor_id = $request->input('doctor_id');
-        $prescriptions->patient_id = $request->input('patient_id');
-        $prescriptions->description = $request->input('description');
-    
-        $prescriptions->save();
-        return redirect('/home_prescription')->with('info','prescription updated successfully!');
+        $request->validate([
+            'doctor_id' => 'required',
+            'patient_id' => 'required',
+            'description' => 'required'
+        ]);
+  
+        $prescription = Prescription::find($id);
+        $prescription->doctor_id = $request->doctor_id;
+        $prescription->patient_id = $request->patient_id;
+        $prescription->description = $request->description;
+
+        $prescription->save();
+  
+        return redirect('/home_prescription')->with('success','Prescription updated successfully');
     }
 
-    public function read2($id){
-        $prescriptions = Prescription::find($id);
-        return view('read_prescription',['prescriptions'=>$prescriptions]);
+    public function show(Prescription $prescription,$id)
+    {
+        $prescription = Prescription::find($id);
+        return view('read_prescription',compact('prescription'));
     }
 
-    public function delete2($id){
-        Prescription::where('id','$id')
-        ->delete();
-        return redirect('/home_prescription')->with('info','Prescription deleted successfully!');
+    public function destroy(Prescription $prescription,$id)
+    {
+        $prescription = Prescription::find($id);
+        $prescription->delete();
+  
+        return redirect('/home_prescription')->with('success','Prescription deleted successfully');
     }
+
 }

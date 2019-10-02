@@ -93,24 +93,24 @@ class ShowDoctorController extends Controller
         if($search1=='any doctor' && $search2=='any specialization')
         {
             $posts = Doctor::all();
-             return view('patientManagement.showDoc', compact('posts'));
+             return view('PatientManagement.showDoc', $posts);
         }
         else if($search1=='any doctor'){
 
             $posts=DB::table('doctors')->where('type',$search2)->get();
-        return view('patientManagement.showDoc',compact('posts'));
+        return view('PatientManagement.showDoc',compact('posts'));
 
         }
         else if($search2=='any specialization')
         {
             $posts=DB::table('doctors')->where('fullname',$search1)->get();
-        return view('patientManagement.showDoc',compact('posts'));
+        return view('PatientManagement.showDoc',compact('posts'));
 
         }
         else if($search1!='any doctor' && $search2!='any specialization')
         {
             $posts=DB::table('doctors')->where([['fullname',$search1],['type',$search2]])->get();
-        return view('patientManagement.showDoc',compact('posts'));
+        return view('PatientManagement.showDoc',compact('posts'));
 
         }
 

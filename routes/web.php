@@ -14,6 +14,7 @@ Route::get('/AdminHome', 'PagesController@adhome');
 Route::get('/contact', 'PagesController@contact');
 Route::post('/contact', 'PagesController@postcontact');
 Route::get('/admin', 'PostsController@admhome')->middleware('auth_admin');
+Route::get('/admin', 'FeedbackController@fedadmin')->middleware('auth_admin');
 Route::get('/ServiceTest', 'PostsController@index');
 Route::get('/AdminServ', 'PostsController@serv');
 Route::get('/gallery', 'PostsController@media');
@@ -40,7 +41,8 @@ Route::get('/aboutus/create', 'NoticesController@create');
 Route::get('/aboutus/{article}/edit', 'NoticesController@edit');
 Route::delete('/aboutus/{article}', 'NoticesController@destroy');
 
-Route::get('/adminfeedback', 'FeedbackController@index');
+Route::get('/adminfeedback', 'FeedbackController@index')->middleware('auth_admin');
+Route::get('/adminfeedbackreport', 'FeedbackController@fedreport')->middleware('auth_admin');
 
 Route::get('/feedback', 'FeedbackController@fed');
 Route::post('/feedbacktest','FeedbackController@store');
@@ -71,6 +73,10 @@ Auth::routes();
 
 Route::get('/usermanager', 'UserTypeController@manage');
 Route::resource('supplier', 'SupplierManagerController')->middleware('auth_supp');
+
+Route::resource('/appointments', 'AppointmentController');
+Route::post('manage/doctors/search', 'DoctorManagementController@searchDoctor');
+Route::resource('/manage/doctors', 'DoctorManagementController');
 
 // for patients dashboard
 Route::resource('patient', 'PatientDashboardController');
@@ -187,11 +193,11 @@ Route::get('/create_per', function(){
 Route::post('/insert', 'PersonalRecordsController@add0');
 
 Route::get('/update_per/{id}', 'PersonalRecordsController@update0');
-Route::post('/edit/{id}', 'PersonalRecordsController@edit0');
+Route::post('/edit_per/{id}', 'PersonalRecordsController@edit0');
 
-Route::get('/read_per/{id}', 'PersonalRecordsController@read0');
+Route::get('/read_per/{id}', 'PersonalRecordsController@show');
 
-Route::get('/delete/{id}', 'PersonalRecordsController@delete0');
+Route::get('/delete_per/{id}', 'PersonalRecordsController@destroy');
 
 
 //2.Treatment Record
@@ -199,22 +205,22 @@ Route::get('/delete/{id}', 'PersonalRecordsController@delete0');
 Route::get('/home_treat', function(){
     return view('home_treat');
 });
-
+Route::get('/home_treat', 'TreatmentController@index1');
 Route::get('/create_treat', function(){
     return view('create_treat');
 });
 
 Route::post('/insert_treatment', 'TreatmentController@add1');
 
-Route::put('/update_treat/{id}', 'TreatmentController@update1');
-Route::post('/edit/{id}', 'TreatmentController@edit1');
+Route::get('/update_treat/{id}', 'TreatmentController@update1');
+Route::post('/edit_treat/{id}', 'TreatmentController@edit1');
 
-Route::get('/read_treat/{id}', 'TreatmentController@read1');
+Route::get('/read_treat/{id}', 'TreatmentController@show');
 
-Route::get('/delete/{id}', 'TreatmentController@delete1');
+Route::get('/delete_treat/{id}', 'TreatmentController@destroy');
 
 //3.Prescription
-Route::get('/home_treat', function(){
+Route::get('/home_prescription', function(){
     return view('home_prescription');
 });
 
@@ -226,12 +232,11 @@ Route::get('/create_prescription', function(){
 
 Route::post('/insert_prescription', 'PrescriptionController@add2');
 
-Route::put('/update_prescription/{id}', 'PrescriptionController@update2');
-Route::post('/edit/{id}', 'PrescriptionController@edit2');
+Route::get('/update_prescription/{id}', 'PrescriptionController@edit2');
+Route::get('/edit_prescription/{id}', 'PrescriptionController@update2');
 
-Route::get('/read_prescription/{id}', 'PrescriptionController@read2');
-
-Route::get('/delete/{id}', 'PrescriptionController@delete2');
+Route::get('/read_prescription/{id}', 'PrescriptionController@show');
+Route::get('/delete_prescription/{id}', 'PrescriptionController@destroy');
 
 //Route::get('/Welcome', ['as'=>'Welcome','uses'=>'PagesController@index']);
 

@@ -9,12 +9,13 @@
 <div class="container">
     <div class="col-md-6">
         <legend>Prescription</legend>
-        ID:<p>{{ $prescription->id }}</p>
-        Doc_id:<p>{{ $prescription->doctor_id }}</p>
-        Pid:<p>{{ $prescription->patient_id }}</p>
-        Prescription:<p>{{ $prescription->description }}</p>
+        ID:<p>{{$prescription->id}}</p>
+        Doctor_id:<p>{{$prescription->doctor_id}}</p>
+        Patient_id:<p>{{$prescription->patient_id}}</p>
+        Prescription:<p>{{$prescription->description}}</p>
 
     </div>
+    <a href="{{ url('/home_prescription') }}" class="btn btn-primary">Back</a>
 </div>
 
 @endsection
