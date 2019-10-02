@@ -48,8 +48,9 @@ class TreatmentController extends Controller
         return view('read_treat',compact('treatment_record'));
     }
 
-    public function destroy(TreatmentRecord $treatment_record)
+    public function destroy(TreatmentRecord $treatment_record,$id)
     {
+        $treatment_record = TreatmentRecord::where('record_id',$id);
         $treatment_record->delete();
   
         return redirect('/home_treat')->with('success','Treatment Record deleted successfully');

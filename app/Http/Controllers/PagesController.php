@@ -13,7 +13,7 @@ class PagesController extends Controller
     //
     public function index()
     {
-       // Alert::message('Robots are Working!');
+       Alert::message('Robots are Working!');
         return view('welcome');
     }
 

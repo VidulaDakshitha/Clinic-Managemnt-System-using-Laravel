@@ -11,9 +11,10 @@
 <div class="container">
     <div class="row">
       <div class="col-md-6">
-      <form class="form-horizontal" method="POST" action="{{ url('/edit_prescription') }}">
+      <form class="form-horizontal" method="GET" action="{{ url('/home_prescription') }}">
+      {{ method_field('PUT') }}
        {{ csrf_field() }}
-       @method('PUT')
+      
          <fieldset>
            <legend>Prescription</legend>
             @if (count($errors)>0)

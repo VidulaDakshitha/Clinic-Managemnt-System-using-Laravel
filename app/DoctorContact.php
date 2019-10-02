@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class DoctorContact extends Model
 {
+    public $timestamps =false; 
+    
     // belongs to a single doctor
     public function doctor()
     {

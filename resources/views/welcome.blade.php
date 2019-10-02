@@ -8,6 +8,7 @@
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
+        
 
        
         <style>
@@ -62,7 +63,8 @@
                 margin-bottom: 30px;
             }
         </style>
-        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
+        <script src="js/jquery-3.4.1.js"></script>
+        <script type="text/javascript" src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     </head>
     <body>
      <!--   <div class="flex-center position-ref full-height">
@@ -98,12 +100,12 @@
             </div>
         </div>-->
 
-        <button id="buttona">buton</button>
+        <button id="button-a">buton</button>
 
         <script>
-        $('#buttona').click(function(){
+        $('#button-a').click(function(){
 
-            swal("Hello world");
+            swal("Isaid","Hello world");
         });
         
         </script>

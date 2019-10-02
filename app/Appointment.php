@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Appointment extends Model
 {
+    public $timestamps = false;
     // an appointment is belong to a doctor
     public function doctor()
     {
