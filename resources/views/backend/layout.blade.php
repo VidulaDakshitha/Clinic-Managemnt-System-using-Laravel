@@ -38,8 +38,10 @@
             {{ session('error') }}
         </div>
         @endif
-        {{-- main content of the page --}}
-        @yield('content')
+        <div id="app">
+            {{-- main content of the page --}}
+            @yield('content')
+        </div>
     </div>
 
     <script src="{{ asset('js/app.js') }}"></script>

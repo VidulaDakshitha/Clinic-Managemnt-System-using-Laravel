@@ -73,6 +73,7 @@ Auth::routes();
 
 Route::get('/usermanager', 'UserTypeController@manage');
 Route::resource('supplier', 'SupplierManagerController')->middleware('auth_supp');
+Route::get("/generate-supplier-report",'SupplierManagerController@reports')->middleware('auth_supp');
 
 Route::resource('/appointments', 'AppointmentController');
 Route::post('manage/doctors/search', 'DoctorManagementController@searchDoctor');
@@ -239,4 +240,3 @@ Route::get('/read_prescription/{id}', 'PrescriptionController@show');
 Route::get('/delete_prescription/{id}', 'PrescriptionController@destroy');
 
 //Route::get('/Welcome', ['as'=>'Welcome','uses'=>'PagesController@index']);
-
