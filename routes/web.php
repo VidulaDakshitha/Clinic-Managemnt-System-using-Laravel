@@ -165,11 +165,17 @@ Route::get('/landingpage', 'ProductManagementController@landpage');
 
 Route::get('/product', 'ProductManagementController@index');
 
+Route::get('/exp', 'ProductManagementController@expview');
+
 Route::resource('product', 'ProductManagementController');
 
 Route::delete('/productdelete/{id}', 'ProductManagementController@destroy');
 
+Route::delete('/productdeleteexp/{id}', 'ProductManagementController@destroyexp');
+
 Route::post('/store', 'ProductManagementController@store');
+
+Route::get('/show', 'ProductManagementController@show');
 
 //Record Management
 

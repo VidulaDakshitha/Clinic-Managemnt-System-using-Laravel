@@ -7,14 +7,12 @@
 @section('content')
 
 <div class="container">
-    <h2>Product: {{ $product->name }} details</h2>
-    <hr>
+    <h2>Product: {{ $product->name }}</h2>
     <hr>
 
-        <div class="col-md-9">
-            <h4>{{  $product->image }}</h4>
-        </div>
-    </div>
+        <img src = "/storage/product_images/{{ $product->image}}" width = "200px" height="200px">
+        
+
 
     <div class="row mt-5">
         <div class="col-md-3">
@@ -79,12 +77,12 @@
         </div>
     </div>
     <hr>
-    <hr>
 
-    <form action="/product" method="POST">
+    <form action="/product" method="">
         @csrf
         <button type="submit" href="" class="btn btn-primary mr-1">BACK</button>
     </form>
+    <br><br>
     
 </div>
 @endsection

@@ -29,7 +29,7 @@
     </div>
   
   </div>
-  <br>
+<br><br>
 
   <!-- JAVASCRIPTS -->
   <script src={{ url('css/product/scripts/jquery.min.js') }} ></script>

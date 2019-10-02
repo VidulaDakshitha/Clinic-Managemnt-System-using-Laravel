@@ -93,7 +93,14 @@
 
 
 <div class="container">
-    <h1>Inventory Dashboard</h1>
+<form action="{{ url('/exp') }}" method="GET">
+        @csrf
+        <button type="submit" href="" class="btn btn-danger mr-1" style="margin-left: 720px;">Manage Expired Products</button>
+</form>
+
+    
+
+
     @auth
     <h3> </h3>
     @else
@@ -111,10 +118,9 @@
                             <h1>Stock Description</h1>
                         </div>
                         <div class="card-body">
-                            <table id="bootstrap-data-table-export" class="table table-striped table-bordered">
+                            <table id="bootstrap-data-table-export" class="table table-striped table-bordered" >
                                 <thead>
                                     <tr>
-                                        <th>ID</th>
                                         <th>name</th>
                                         <th>quantity</th>
                                         <th>type</th>
@@ -134,7 +140,6 @@
                                     @foreach($products as $product)
 
                                     <tr>
-                                        <td>{{$product->product_id}}</td>
                                         <td>{{$product->name}}</td>
                                         <td>{{$product->quantity}}</td>
                                         <td>{{$product->type}}</td>
@@ -144,7 +149,7 @@
 
 
                                         <td>
-                                            <form action="/product/{{ $product->product_id}}/show" method="GET">
+                                            <form action="/product/{{ $product->product_id}}" method="GET">
                                                 @csrf
                                                 <button type="submit" href="" class="btn btn-primary mr-1">View</button>
                                             </form>

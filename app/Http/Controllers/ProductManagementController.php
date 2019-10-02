@@ -30,6 +30,15 @@ class ProductManagementController extends Controller
         return view('product.productdashboard', compact('products'));
     }
 
+    public function expview()
+    {
+
+        $products = Product::where('expiry_date', '<=', date('Y-m-d'))->get();
+        
+        return view('product.exp', compact('products'));
+        
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -90,7 +99,7 @@ class ProductManagementController extends Controller
     {
         $product = Product::findOrFail($id);
         
-        return view('product.pview', compact('products'));
+        return view('product.pview', compact('product'));
     }
 
     /**
@@ -142,5 +151,12 @@ class ProductManagementController extends Controller
         $product = Product::findOrFail($id);
         $product->delete();
         return redirect('/product')->with('success','Product deleted Successfully!');
+    }
+
+    public function destroyexp($id)
+    {
+        $product = Product::findOrFail($id);
+        $product->delete();
+        return redirect('/exp')->with('success','Product deleted Successfully!');
     }
 }
