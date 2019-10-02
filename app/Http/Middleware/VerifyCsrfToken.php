@@ -11,7 +11,7 @@ class VerifyCsrfToken extends Middleware
      *
      * @var bool
      */
-    protected $addHttpCookie = true;
+    protected $addHttpCookie = false;
 
     /**
      * The URIs that should be excluded from CSRF verification.
@@ -19,6 +19,12 @@ class VerifyCsrfToken extends Middleware
      * @var array
      */
     protected $except = [
-        //
+        '/appointments',      
+        '/manage/doctors',
+        '/manage/doctors/create',
+        '/manage/doctors/store',
+        '/manage/doctors/update',
+        '/manage/doctors/show',        
+        '/manage/doctors/edit'
     ];
 }

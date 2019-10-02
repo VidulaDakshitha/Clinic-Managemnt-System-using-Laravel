@@ -108,11 +108,14 @@
                             
                         @endif
                     </div>
+                    
                 @endforeach
                 @else
                 <p>No Feedbacks to show</p>
-                @endif    
+                @endif 
+                {{ $feedbacks->links() }}   
             </div>
+            
 
 
 </body>
