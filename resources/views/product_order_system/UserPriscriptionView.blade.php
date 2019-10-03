@@ -56,9 +56,9 @@
           <!--table-->
         <div class="container-fluid">
             <table class="table table-sm table-striped table-hover " id="table1" style="border-radius: 10px; ">
-                <thead thead-dark style="border-radius: 10px; ">
+                <thead thead-dark style="border-radius: 10px; " class="table table-hover"  >
                   <tr>
-                    <th scope="col" style="border-radius: 10px; ">Priscription  git Id</th>
+                    <th scope="col" style="border-radius: 10px; ">Priscription Id</th>
                     <th scope="col">Doctore name</th>
                     <th scope="col">Medical item name</th>
                     <th scope="col">Unit price</th>
@@ -72,8 +72,8 @@
 
                         <tr id="tr.{{$key}}" class="table-info">
 
-                          <th scope="row" >{{$userspricription->id}}</th>
-                          <th>{{$userspricription->fullname}}<td>
+                          <td scope="row" >{{$userspricription->id}}</td>
+                          <td>{{$userspricription->fullname}}<td>
                           <td>{{$userspricription->name}}</td>
                           <td>Rs: {{$userspricription->selling_price}}</td>
                           <td>
