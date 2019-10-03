@@ -10,14 +10,15 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-
-
 Route::get('/AdminHome', 'PagesController@adhome');
+Route::get('/contact', 'PagesController@contact');
+Route::post('/contact', 'PagesController@postcontact');
 Route::get('/admin', 'PostsController@admhome')->middleware('auth_admin');
+Route::get('/admin', 'FeedbackController@fedadmin')->middleware('auth_admin');
 Route::get('/ServiceTest', 'PostsController@index');
 Route::get('/AdminServ', 'PostsController@serv');
 Route::get('/gallery', 'PostsController@media');
+Route::get('/welcome', 'SweetAlertDemo@index');
 
 
 // Route::post('/ServiceTest', 'PostsController@store');
@@ -40,10 +41,12 @@ Route::get('/aboutus/create', 'NoticesController@create');
 Route::get('/aboutus/{article}/edit', 'NoticesController@edit');
 Route::delete('/aboutus/{article}', 'NoticesController@destroy');
 
-Route::get('/adminfeedback', 'FeedbackController@index');
+Route::get('/adminfeedback', 'FeedbackController@index')->middleware('auth_admin');
+Route::get('/adminfeedbackreport', 'FeedbackController@fedreport')->middleware('auth_admin');
 
 Route::get('/feedback', 'FeedbackController@fed');
 Route::post('/feedbacktest','FeedbackController@store');
+Route::delete('/feedback/{feedback}', 'FeedbackController@destroy');
 
 Route::resource('ServiceTest', 'PostsController');
 
@@ -57,8 +60,8 @@ Route::get('/about', 'NoticesController@index');
 Route::get('/ServiceTest', 'PostsController@index');
 Route::get('/gallery', 'ArticlesController@index');
 Route::get('/feedback', 'FeedbackController@fed');
-Route::view('/contact', 'main.about');
-Route::view('/contact', 'main.contact');
+//Route::view('/contact', 'main.about');
+//Route::view('/contact', 'main.contact');
 Route::view('/signin', 'main.login');
 
 Route::view('/search', 'PatientManagement.search');
@@ -70,6 +73,11 @@ Auth::routes();
 
 Route::get('/usermanager', 'UserTypeController@manage');
 Route::resource('supplier', 'SupplierManagerController')->middleware('auth_supp');
+Route::get("/generate-supplier-report",'SupplierManagerController@reports')->middleware('auth_supp');
+
+Route::resource('/appointments', 'AppointmentController');
+Route::post('manage/doctors/search', 'DoctorManagementController@searchDoctor');
+Route::resource('/manage/doctors', 'DoctorManagementController');
 
 // for patients dashboard
 Route::resource('patient', 'PatientDashboardController');
@@ -160,12 +168,81 @@ Route::get('go-to-cart','ShoppingCartController@index');
 
 //Product Management
 
+Route::get('/landingpage', 'ProductManagementController@landpage');
+
 Route::get('/product', 'ProductManagementController@index');
+
+Route::get('/exp', 'ProductManagementController@expview');
 
 Route::resource('product', 'ProductManagementController');
 
 Route::delete('/productdelete/{id}', 'ProductManagementController@destroy');
 
+Route::delete('/productdeleteexp/{id}', 'ProductManagementController@destroyexp');
+
 Route::post('/store', 'ProductManagementController@store');
 
-Route::put('/update/{id}', 'ProductManagementController@update');
+Route::get('/show', 'ProductManagementController@show');
+
+//Record Management
+
+//1.Personal Record
+Route::get('/home_per', function(){
+    return view('home_per');
+});
+
+Route::get('/home_per', 'PersonalRecordsController@index');
+
+Route::get('/create_per', function(){
+    return view('create_per');
+});
+
+Route::post('/insert', 'PersonalRecordsController@add0');
+
+Route::get('/update_per/{id}', 'PersonalRecordsController@update0');
+Route::post('/edit_per/{id}', 'PersonalRecordsController@edit0');
+
+Route::get('/read_per/{id}', 'PersonalRecordsController@show');
+
+Route::get('/delete_per/{id}', 'PersonalRecordsController@destroy');
+
+
+//2.Treatment Record
+//Route::get('/home_treat', 'TreatmentController@home1');
+Route::get('/home_treat', function(){
+    return view('home_treat');
+});
+Route::get('/home_treat', 'TreatmentController@index1');
+Route::get('/create_treat', function(){
+    return view('create_treat');
+});
+
+Route::post('/insert_treatment', 'TreatmentController@add1');
+
+Route::get('/update_treat/{id}', 'TreatmentController@update1');
+Route::post('/edit_treat/{id}', 'TreatmentController@edit1');
+
+Route::get('/read_treat/{id}', 'TreatmentController@show');
+
+Route::get('/delete_treat/{id}', 'TreatmentController@destroy');
+
+//3.Prescription
+Route::get('/home_prescription', function(){
+    return view('home_prescription');
+});
+
+Route::get('/home_prescription', 'PrescriptionController@home2');
+
+Route::get('/create_prescription', function(){
+    return view('create_prescription');
+});
+
+Route::post('/insert_prescription', 'PrescriptionController@add2');
+
+Route::get('/update_prescription/{id}', 'PrescriptionController@edit2');
+Route::get('/edit_prescription/{id}', 'PrescriptionController@update2');
+
+Route::get('/read_prescription/{id}', 'PrescriptionController@show');
+Route::get('/delete_prescription/{id}', 'PrescriptionController@destroy');
+
+//Route::get('/Welcome', ['as'=>'Welcome','uses'=>'PagesController@index']);

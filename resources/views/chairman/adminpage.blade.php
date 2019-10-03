@@ -1,5 +1,8 @@
 <?php
 use App\Patient;
+use App\Order;
+use App\Doctor;
+use App\Feedback;
 ?>
 
 <!DOCTYPE html>
@@ -37,8 +40,8 @@ use App\Patient;
   <div class="subnavbar-inner">
     <div class="container">
       <ul class="mainnav">
-        <li class="active"><a href="/AdHome"><img src="img/adhome.png"/><span>Dashboard</span> </a> </li>
-        <li><a href=""><img src="img/newspaper.png"/><span>Reports</span> </a> </li>
+        <li class="active"><a href="/admin"><img src="img/adhome.png"/><span>Dashboard</span> </a> </li>
+        <li><a href="/adminfeedbackreport"><img src="img/newspaper.png"/><span>Reports</span> </a> </li>
         <li><a href="/gallery"><img src="img/gallery.png"/><span>Gallery</span> </a> </li>
        
         
@@ -98,13 +101,13 @@ use App\Patient;
                     <div class="stat"> <h6>Total Users</h6></i> <span class="value">{{ Patient::count() }}</span> </div>
                     <!-- .stat -->
                     
-                    <div class="stat"><h6>Website visits</h6> <span class="value">423</span> </div>
+                    <div class="stat"><h6>Doctors</h6> <span class="value">{{ Doctor::count() }}</span> </div>
                     <!-- .stat -->
                     
-                    <div class="stat"><h6>Orders</h6><span class="value">922</span> </div>
+                    <div class="stat"><h6>Orders</h6><span class="value">{{ Order::count() }}</span> </div>
                     <!-- .stat -->
                     
-                    <div class="stat"> <h6>Example</h6> <span class="value">255</span> </div>
+                    <div class="stat"> <h6>Feedbacks</h6> <span class="value">{{ Feedback::count() }}</span> </div>
                     <!-- .stat --> 
                   </div>
                 </div>
@@ -128,79 +131,34 @@ use App\Patient;
           <!-- /widget -->
           <div class="widget">
             <div class="widget-header">
-              <h3> Feedbacks</h3>
+              <h3>Recent Feedbacks</h3>
             </div>
             <!-- /widget-header -->
+            @if (count($feedbacks)>0)
+             @foreach ($feedbacks as $feedback)
             <div class="widget-content">
               <ul class="messages_layout">
                 <li class="from_user left"> <a href="#" class="avatar"><img src="img/message_avatar1.png"/></a>
                   <div class="message_wrap"> <span class="arrow"></span>
-                    <div class="info"> <a class="name">John Smith</a> <span class="time">1 hour ago</span>
-                      <div class="options_arrow">
-                        <div class="dropdown pull-right"> <a class="dropdown-toggle " id="dLabel" role="button" data-toggle="dropdown" data-target="#" href="#"> <i class=" icon-caret-down"></i> </a>
-                          <ul class="dropdown-menu " role="menu" aria-labelledby="dLabel">
-                            <li><a href="#"><i class=" icon-share-alt icon-large"></i> Reply</a></li>
-                            <li><a href="#"><i class=" icon-trash icon-large"></i> Delete</a></li>
-                            <li><a href="#"><i class=" icon-share icon-large"></i> Share</a></li>
-                          </ul>
-                        </div>
-                      </div>
+                    <div class="info"> <a class="name">{{ $feedback->name }}</a>
+                      
                     </div>
-                    <div class="text"> As an interesting side note, as a head without a body, I envy the dead. There's one way and only one way to determine if an animal is intelligent. Dissect its brain! Man, I'm sore all over. I feel like I just went ten rounds with mighty Thor. </div>
+                    <div class="text">{{ $feedback->message }}</div>
+                   
                   </div>
                 </li>
-                <li class="by_myself right"> <a href="#" class="avatar"><img src="img/message_avatar2.png"/></a>
-                  <div class="message_wrap"> <span class="arrow"></span>
-                    <div class="info"> <a class="name">Bender (myself) </a> <span class="time">4 hours ago</span>
-                      <div class="options_arrow">
-                        <div class="dropdown pull-right"> <a class="dropdown-toggle " id="dLabel" role="button" data-toggle="dropdown" data-target="#" href="#"> <i class=" icon-caret-down"></i> </a>
-                          <ul class="dropdown-menu " role="menu" aria-labelledby="dLabel">
-                            <li><a href="#"><i class=" icon-share-alt icon-large"></i> Reply</a></li>
-                            <li><a href="#"><i class=" icon-trash icon-large"></i> Delete</a></li>
-                            <li><a href="#"><i class=" icon-share icon-large"></i> Share</a></li>
-                          </ul>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="text"> All I want is to be a monkey of moderate intelligence who wears a suit… that's why I'm transferring to business school! I had more, but you go ahead. Man, I'm sore all over. I feel like I just went ten rounds with mighty Thor. File not found. </div>
-                  </div>
-                </li>
-                <li class="from_user left"> <a href="#" class="avatar"><img src="img/message_avatar1.png"/></a>
-                  <div class="message_wrap"> <span class="arrow"></span>
-                    <div class="info"> <a class="name">Celeste Holm </a> <span class="time">1 Day ago</span>
-                      <div class="options_arrow">
-                        <div class="dropdown pull-right"> <a class="dropdown-toggle " id="dLabel" role="button" data-toggle="dropdown" data-target="#" href="#"> <i class=" icon-caret-down"></i> </a>
-                          <ul class="dropdown-menu " role="menu" aria-labelledby="dLabel">
-                            <li><a href="#"><i class=" icon-share-alt icon-large"></i> Reply</a></li>
-                            <li><a href="#"><i class=" icon-trash icon-large"></i> Delete</a></li>
-                            <li><a href="#"><i class=" icon-share icon-large"></i> Share</a></li>
-                          </ul>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="text"> And I'd do it again! And perhaps a third time! But that would be it. Are you crazy? I can't swallow that. And I'm his friend Jesus. No, I'm Santa Claus! And from now on you're all named Bender Jr. </div>
-                  </div>
-                </li>
-                <li class="from_user left"> <a href="#" class="avatar"><img src="img/message_avatar2.png"/></a>
-                  <div class="message_wrap"> <span class="arrow"></span>
-                    <div class="info"> <a class="name">Mark Jobs </a> <span class="time">2 Days ago</span>
-                      <div class="options_arrow">
-                        <div class="dropdown pull-right"> <a class="dropdown-toggle " id="dLabel" role="button" data-toggle="dropdown" data-target="#" href="#"> <i class=" icon-caret-down"></i> </a>
-                          <ul class="dropdown-menu " role="menu" aria-labelledby="dLabel">
-                            <li><a href="#"><i class=" icon-share-alt icon-large"></i> Reply</a></li>
-                            <li><a href="#"><i class=" icon-trash icon-large"></i> Delete</a></li>
-                            <li><a href="#"><i class=" icon-share icon-large"></i> Share</a></li>
-                          </ul>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="text"> That's the ONLY thing about being a slave. Now, now. Perfectly symmetrical violence never solved anything. Uh, is the puppy mechanical in any way? As an interesting side note, as a head without a body, I envy the dead. </div>
-                  </div>
-                </li>
+                
+                
               </ul>
             </div>
+             @endforeach
+                @else
+                <p>No Feedbacks to show</p>
+            @endif 
             <!-- /widget-content --> 
+            
           </div>
+          
           <!-- /widget --> 
         </div>
         <!-- /span6 -->
@@ -243,26 +201,15 @@ use App\Patient;
                   <tr>
                     <th> Patient ID </th>
                     <th> Name</th>
-                    <th> Age</th>
+                    <th> Email</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <td> Patient </td>
-                    <td> 1</td>
-                    <td>30</td>
-                  </tr>
-                  <tr>
-                    <td> Patient 1 </td>
-                    <td> 1 </td>
-                    <td>29</td>
-                  </tr>
-                  <tr>
-                    <td> Patient </td>
-                    <td> 2 </td>
-                   <td>34</td>
-                  </tr>
                   
+                  <tr>
+                     
+                  </tr>
+                 
                 
                 </tbody>
               </table>
@@ -274,28 +221,7 @@ use App\Patient;
             <div class="widget-header"> 
               <h3> Recent News</h3>
             </div>
-            <!-- /widget-header -->
-            <div class="widget-content">
-              <ul class="news-items">
-                <li>
-                  
-                  <div class="news-item-date"> <span class="news-item-day">29</span> <span class="news-item-month">Aug</span> </div>
-                  <div class="news-item-detail"> 
-                    <p class="news-item-preview"> Example </p>
-                  </div>
-                  
-                </li>
-                <li>
-                  
-                  <div class="news-item-date"> <span class="news-item-day">15</span> <span class="news-item-month">Jun</span> </div>
-                  <div class="news-item-detail"> 
-                    <p class="news-item-preview"> Example 2</p>
-                  </div>
-                  
-                </li>
-                
-              </ul>
-            </div>
+           
             <!-- /widget-content --> 
           </div>
           <!-- /widget -->
@@ -430,12 +356,7 @@ use App\Patient;
               end: new Date(y, m, d+1, 22, 30),
               allDay: false
             },
-            {
-              title: 'EGrappler.com',
-              start: new Date(y, m, 28),
-              end: new Date(y, m, 29),
-              url: 'http://EGrappler.com/'
-            }
+            
           ]
         });
       });

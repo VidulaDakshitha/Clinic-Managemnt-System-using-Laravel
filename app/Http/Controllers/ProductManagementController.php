@@ -19,11 +19,24 @@ class ProductManagementController extends Controller
         $this->middleware('auth_inventory');
     }
 
+    public function landpage()
+    {
+        return view('product.landpage');
+    }
 
     public function index()
     {
         $products = Product::all();
         return view('product.productdashboard', compact('products'));
+    }
+
+    public function expview()
+    {
+
+        $products = Product::where('expiry_date', '<=', date('Y-m-d'))->get();
+        
+        return view('product.exp', compact('products'));
+        
     }
 
     /**
@@ -45,7 +58,7 @@ class ProductManagementController extends Controller
      */
     public function store(Request $request)
     {
-        
+        // dd($path = $request);
         if($request->hasFile('image')){
             $fullFileName = $request->image->getClientOriginalName();
             $file = pathinfo($fullFileName, PATHINFO_FILENAME);
@@ -70,7 +83,7 @@ class ProductManagementController extends Controller
         $addItem->description   = $request->input('description');
         $addItem->type          = $request->input('type');
         $addItem->image         = $fileName;
-        
+
         $addItem->save();
 
         return redirect('/product')->with('success', 'Product added Successfully!' );
@@ -84,7 +97,9 @@ class ProductManagementController extends Controller
      */
     public function show($id)
     {
-        //
+        $product = Product::findOrFail($id);
+        
+        return view('product.pview', compact('product'));
     }
 
     /**
@@ -97,7 +112,7 @@ class ProductManagementController extends Controller
     {
         $product = Product::findOrFail($id);
 
-        return view('product.update', compact('products'));
+        return view('product.update', compact('product'));
     }
 
     /**
@@ -136,5 +151,12 @@ class ProductManagementController extends Controller
         $product = Product::findOrFail($id);
         $product->delete();
         return redirect('/product')->with('success','Product deleted Successfully!');
+    }
+
+    public function destroyexp($id)
+    {
+        $product = Product::findOrFail($id);
+        $product->delete();
+        return redirect('/exp')->with('success','Product deleted Successfully!');
     }
 }

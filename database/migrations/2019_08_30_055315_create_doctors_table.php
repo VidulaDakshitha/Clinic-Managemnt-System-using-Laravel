@@ -18,6 +18,8 @@ class CreateDoctorsTable extends Migration
             $table->string('fullname');
             $table->string('nic');
             $table->string('type');
+            $table->unique('nic');
+            //$table->primary('doctor_id');
         });
 
         // adding dummy entries
@@ -41,7 +43,7 @@ class CreateDoctorsTable extends Migration
         DB::table('doctors')->insert(
             array(
                 'fullname' => 'DR A.M. DEEPAL K. ATTANAYAKE',
-                'nic' => '199207810318',
+                'nic' => '199207810319',
                 'type' => 'Ear Infections Surgeon',
             )
         );

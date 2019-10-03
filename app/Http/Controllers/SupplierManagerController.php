@@ -33,6 +33,12 @@ class SupplierManagerController extends Controller
         return view('backend.supplier.supplierdashboard', compact('suppliers'));
     }
 
+    public function reports()
+    {
+        $suppliers = Supplier::paginate(8);
+        return view('backend.supplier.reports', compact('suppliers'));
+    }
+
     /**
      * Show the form for creating a new resource.
      *

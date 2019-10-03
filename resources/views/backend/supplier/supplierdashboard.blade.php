@@ -34,7 +34,8 @@
             <tr>
                 <th scope="row"> {{ $supplier->supplier_id }}</th>
                 <td><a href="/supplier/{{ $supplier->supplier_id }}">{{ $supplier->name }}</a></td>
-                <td><?php $city = preg_split('/\s+/', $supplier->location); echo $city[max(count($city)-1, 0)]; ?></td>
+                <td><?php $city = preg_split('/\s+/', $supplier->location); echo $city[max(count($city)-1, 0)]; ?>
+                </td>
                 <td>
                     @if (count($supplier->products)>0)
 

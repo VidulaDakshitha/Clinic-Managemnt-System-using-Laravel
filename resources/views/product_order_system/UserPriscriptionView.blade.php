@@ -33,20 +33,15 @@
 
               </div>
 
-              <div class="col-sm-3 my-1">
-
-                    <input type="date" class="form-control" name="searchdate" placeholder="Jane Doe" >
-
-                  </div>
-              <div class="col-sm-3 my-1">
+            <div class="col-sm-3 my-1">
                 <label class="sr-only" for="inlineFormInputGroupUsername">Username</label>
                 <div class="input-group">
                   <select class="custom-select mr-sm-2" name="searchtype">
-                    <option value="prescriptions.id">id</option>
-                    <option value="products.name">Two</option>
-                    <option value="date">Three</option>
+                    <option value="prescriptions.id">prescriptions-id</option>
+                    <option value="products.name">product name</option>
+                    <option value="doctors.fullname">Doctor name</option>
                   </select>
-                </div>
+            </div>
               </div>
               <div class="col-auto my-1">
               </div>
@@ -54,7 +49,7 @@
                 <button type="submit" class="btn btn-primary">Submit</button>
               </div>
             </div>
-          </form>
+        </form>
 
 
 
@@ -63,7 +58,7 @@
             <table class="table table-sm table-striped table-hover " id="table1" style="border-radius: 10px; ">
                 <thead thead-dark style="border-radius: 10px; ">
                   <tr>
-                    <th scope="col" style="border-radius: 10px; ">Priscription Id</th>
+                    <th scope="col" style="border-radius: 10px; ">Priscription  Id</th>
                     <th scope="col">Doctore name</th>
                     <th scope="col">Medical item name</th>
                     <th scope="col">Unit price</th>
@@ -75,7 +70,7 @@
 
                         @foreach ($userspricriptions as $key=> $userspricription)
 
-                        <tr id="tr.{{$key}}">
+                        <tr id="tr.{{$key}}" class="table-info">
 
                           <th scope="row" >{{$userspricription->id}}</th>
                           <th>{{$userspricription->fullname}}<td>

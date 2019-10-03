@@ -49,9 +49,11 @@
 <div class="services">
 
 @if(!auth::guest())
+    @if(auth::user()->type=="admin")
 <a class="btn btn-primary" href="/aboutus/create">
     Create Posts
 </a>
+    @endif
 @endif
 
 
