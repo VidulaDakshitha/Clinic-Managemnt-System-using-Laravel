@@ -76,6 +76,16 @@
             <h4>{{ $product->expiry_date }}</h4>
         </div>
     </div>
+
+    <div class="row mt-5">
+        <div class="col-md-3">
+            <h4>Description:</h4>
+        </div>
+        <div class="col-md-9">
+            <h4>{{ $product->description }}</h4>
+        </div>
+    </div>
+
     <hr>
 
     <form action="/product" method="">

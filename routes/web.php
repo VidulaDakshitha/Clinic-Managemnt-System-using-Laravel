@@ -180,6 +180,10 @@ Route::delete('/productdelete/{id}', 'ProductManagementController@destroy');
 
 Route::post('/store', 'ProductManagementController@store');
 
+Route::get('/exp', 'ProductManagementController@expview');
+
+Route::get("/generate-product-report",'ProductManagementController@reports');
+
 //Record Management
 
 //1.Personal Record

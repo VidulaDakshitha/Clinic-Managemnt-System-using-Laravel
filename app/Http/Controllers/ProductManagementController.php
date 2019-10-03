@@ -39,6 +39,12 @@ class ProductManagementController extends Controller
         
     }
 
+    public function reports()
+    {
+        $products =Product::paginate(10);
+        return view('product.reports', compact('products'));
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -124,6 +130,19 @@ class ProductManagementController extends Controller
      */
     public function update(Request $request, Product $product)
     {
+        if($request->hasFile('image')){
+            $fullFileName = $request->image->getClientOriginalName();
+            $file = pathinfo($fullFileName, PATHINFO_FILENAME);
+            $ext = $request->image->getClientOriginalExtension();
+
+            $fileName = $file.'_'.time().'_'.$ext;
+
+            $path = $request->image->storeAs('public/product_images', $fileName);
+        }
+        else{
+            $fileName = "noimage.jpg";
+        }
+
         $product->name            = $request->name;
         $product->selling_price   = $request->selling_price;
         $product->quantity        = $request->quantity;
@@ -159,4 +178,5 @@ class ProductManagementController extends Controller
         $product->delete();
         return redirect('/exp')->with('success','Product deleted Successfully!');
     }
+
 }
