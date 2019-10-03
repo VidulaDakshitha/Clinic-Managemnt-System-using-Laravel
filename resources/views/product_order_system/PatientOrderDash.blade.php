@@ -11,7 +11,7 @@
 @endsection
 
 @section('js')
-
+<script src="{{ asset('js/app.js') }}"></script>
 @endsection
 
 @section('title', 'Patient Order Dashbord')
@@ -143,8 +143,8 @@
 
             </div>
             <br>
-            <div class="row" style=" background: white;">
-                <div class="col-sm-12">
+            <div class="row" style=" background: white;" id="app">
+                <div class="col-sm-12" id="printContainer">
                     <table class="table table-bordered table-hover table-striped dataTable table-sm " id="dataTable" width="100%" cellspacing="0" role="grid" aria-describedby="dataTable_info" style="width: 100%;">
               <thead>
                 <tr role="row">
@@ -207,7 +207,7 @@
                           <td>{{$orderrow->quantity}} </td>
                           <td>{{$orderrow->total_payment}} </td>
                           <td class="d-flex">
-                                <form action="paitientorderdash/edit" method="POST" target="_blank">
+                                <form action="/paitientorderdash/edit" method="POST" target="_blank">
                                     {{ csrf_field() }}
                                     <input type="text" value="{{$orderrow->order_id}}" name="order_id_send" hidden>
                                       <input type="text" value="{{$orderrow->product_id}}" name="product_id_send" hidden>
@@ -221,8 +221,8 @@
                                 <input type="text" value="{{Auth::id()}}" name="paitent_id_send" hidden>
 
 
-                                  <button type="button" class="btn btn-warning">Print</button>
-                                  <button type="submit" class="btn btn-primary">Edit</button>
+
+                                  <button type="submit" class="btn btn-warning">Edit or Print</button>
                                   </form>
                                   <!--delete order-->
 
@@ -247,6 +247,7 @@
              </tbody>
               </table>
          </div>
+         <Button class="btn btn-warning print_btn" @click.preventDefault="print" style="margin-left: 20px; margin-bottom: 10px;"> Generate report</Button>
         </div>
     </div>
 
@@ -260,14 +261,17 @@
           <p class="h4"> Medical Item Order details </p>
           </a>
     </div>
-    <div class="card-body" >
-          <div class="table-responsive" id="tableplane" style="border-radius: 10px;  background: url('assets/image/order_back.jpg');">
-            <div id="dataTable_wrapper" class="dataTables_wrapper dt-bootstrap4">
-                <div class="row" >
-                    <div class="col-sm-12 col-md-6">
+    <div >
+        <div >
+             <div class="card-body"  >
+               <div >
+               <div class="table-responsive" id="tableplane" style="border-radius: 10px;  background: url('assets/image/order_back.jpg');">
+                 <div id="dataTable_wrapper" class="dataTables_wrapper dt-bootstrap4">
+                   <div class="row" >
+                      <div class="col-sm-12 col-md-6">
                        <!--Add button -->
+                      </div>
                     </div>
-                </div>
                 <div class="col-sm-12 col-md-6">
                     <div id="dataTable_filter" class="dataTables_filter ">
                         <br>
@@ -293,7 +297,7 @@
                                               </select>
                                             </div>
                                             <!--need to add user id-->
-                                            <input type="text" name="paitent_id" value="1" hidden>
+                                            <input type="text" name="paitent_id" value="{{Auth::id()}}" hidden>
                                             <div class="col-auto my-1">
                                               <button type="submit" class="btn btn-primary">Submit</button>
                                             </div>
@@ -301,11 +305,12 @@
 
                                 </form>
                     </div>
-                </div>
             </div>
+          </div>
             <br>
-            <div class="row" style=" background: white;">
-                <div class="col-sm-12">
+
+            <div class="row" style=" background: white;" id="printContainer2">
+                <div class="col-sm-12" id="printContainer_1">
                     <table class="table table-bordered table-sm dataTable" id="dataTable" width="100%" cellspacing="0" role="grid" aria-describedby="dataTable_info" style="width: 100%;">
               <thead>
                 <tr role="row">
@@ -382,8 +387,8 @@
                                   <input type="text" value="{{$medicalitemrow->total_payment}}" name="order_totapayment_send" hidden>
                                   <input type="text" value="1" name="paitent_id_send" hidden>
 
-                              <button type="button" class="btn btn-warning">Print</button>
-                              <button type="submit" class="btn btn-primary">Edit</button>
+
+                              <button type="submit" class="btn btn-warning">Edit and Print</button>
                               </form>
 
                          @if (($medicalitemrow->status)=='waiting')
@@ -400,8 +405,6 @@
                               <button class="btn btn-danger" type = "submit" style="margin-left: 4px; height: 38px;" disabled>Delete</button>
                         @endif
 
-
-
                           </td>
                         </tr>
 
@@ -413,11 +416,13 @@
 
             </tbody>
             </table>
+         </div>
+         <Button class="btn btn-warning print_btn" @click.preventDefault="printx" style="margin-left: 20px; margin-bottom: 10px;"> Generate report</Button>
+    </div>
+    </div>
+               </div>
+             </div>
         </div>
-
-
-
-
 
     </div>
 
