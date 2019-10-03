@@ -26,9 +26,9 @@
         <div class="subnavbar-inner">
           <div class="container">
             <ul class="mainnav">
-              <li class="active"><a href="/admin"><img src="img/adhome.png"/><span>Dashboard</span> </a> </li>
-              <li><a href=""><img src="img/newspaper.png"/><span>Reports</span> </a> </li>
-              <li><a href="/gallery"><img src="img/gallery.png"/><span>Gallery</span> </a> </li>
+              <li><a href="/admin"><img src="img/adhome.png"/><span>Dashboard</span> </a> </li>
+              <li><a href="/adminfeedbackreport"><img src="img/newspaper.png"/><span>Reports</span> </a> </li>
+              <li><a href="/adminchart"><img src="img/adminanalytics.png"/><span>Charts</span> </a> </li>
              
               
                 </ul>

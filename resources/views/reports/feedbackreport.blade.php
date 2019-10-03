@@ -44,7 +44,7 @@
              <table class="table">
                 <thead class="thead-dark">
                     <tr>
-                        <th scope="col">Feedback ID</th>
+                        <th scope="col">Patient ID</th>
                         <th scope="col">Name</th>
                         <th scope="col">Email</th>
                         <th scope="col">Message</th>

@@ -19,6 +19,7 @@ Route::get('/ServiceTest', 'PostsController@index');
 Route::get('/AdminServ', 'PostsController@serv');
 Route::get('/gallery', 'PostsController@media');
 Route::get('/welcome', 'SweetAlertDemo@index');
+Route::get('/adminchart', 'LaravelGoogleGraphController@index');
 
 
 // Route::post('/ServiceTest', 'PostsController@store');
