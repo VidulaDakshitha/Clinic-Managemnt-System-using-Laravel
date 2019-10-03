@@ -128,12 +128,14 @@ Route::get('/shoppingcart', function () {
     return view('product_order_system.ShoppingCart');
 });
 
+
 Route::get('/search-product', 'ProductSearchController@index');
 Route::get('/viewproduct/{id}', 'ProductSearchController@show');
 Route::get('/productshow','ProductViewController@index');
 Route::post('search-product','ProductSearchController@search');
 Route::get('/order-admindash','ProductAdminDashController@index')->middleware('auth');
 Route::post('order-admindash','ProductAdminDashController@search');
+Route::post('/print_order_row','ProductAdminDashController@print_row');
 Route::post('admindash_status','ProductAdminDashController@updatesatus');
 Route::get('/paitientorderdash','PaitientOrderDashController@indexpaitent')->middleware('auth');
 Route::post('/paitientorderdash','PaitientOrderDashController@searchgeneral');
