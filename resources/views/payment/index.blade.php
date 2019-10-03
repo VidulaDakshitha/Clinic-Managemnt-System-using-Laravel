@@ -37,14 +37,14 @@
                         <div class="row">
                             <div class="col-md-3 col-sm-3 col-xs-12">
                                 <div class="logo">
-                                    <h2><a href="#">IHHR</a></h2>
+                                    <h2><a href="#" style = "color:#62a832;">IHHR</a></h2>
                                 </div>
                             </div>
                             <div class="col-md-9 col-sm-9 col-xs-12">
                                 <div class="menu">
                                     <ul class="nav navbar-nav">
-                                        <li class="active"><a href="{{ url('/')}}">HOME</a></li>
-                                        
+                                        <li class="active"><a href="{{ url('/')}}" style = "color:#62a832;">HOME</a></li>
+                                        <li class="active"><a href="{{ url('/payment')}}" style = "color:#62a832;">Cashier Home</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -55,7 +55,12 @@
                                         <h1>Cashier Dashboard</h1>
                                         <p>You are able make online payments for your medicines, medical consume items and doctor appoinments.
                                              As IHHR we have made your operations more simple<br> Thank you!</p>
-                                        <a href="{{ url('payment')}}"><button class="btn btn-primary">Cashier Home</button></a>
+                                             <br>
+                                             <br>
+                                             <br>
+                                             <br>
+                                             <br>
+                                             <br>
                                         
                                 </div>
                             </div>
@@ -113,7 +118,7 @@
                                                 @csrf
                                                 @method('DELETE')
                         
-                                                <button type ="submit" class="btn btn-primary">Delete</button>
+                                                <button type ="submit" class="btn btn-danger">Delete</button>
                         
                                                 </form>
                         
@@ -143,12 +148,10 @@
                                                     <br>
                                                     <br>
                                                     <br>
-                                                    <br>
-                                                    <br>
-                                                    <br>
-                                                    <div class = "submit">
-                                                        <input type="submit" value="Search">
-                                                    </div>
+                                                    
+                                                    
+                                                    <input type="submit" value="Search" class="btn btn-primary">
+                                                    
                                                 </form>
                                             </div>
                                         </div>

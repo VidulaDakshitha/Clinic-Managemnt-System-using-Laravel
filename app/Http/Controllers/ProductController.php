@@ -125,15 +125,13 @@ class ProductController extends Controller
             ->decrement('quantity', $product['qty']);
 
            Session::forget('cart');
-           
-           return redirect('/card')
-           ->with('latsorderid',$latsorderid)
-            ->with('userId',$userId)
-            ->with('totalprderprice',$totalprderprice)
-            ->with('order_placed','Order placed sucsessfuly');
+
+
           // return redirect('/search-product')->with('order_placed','Order placed sucsessfuly');
           return view('payment.paymentCard')->with('userId', $userId)
-                                            ->with('latsorderid',$latsorderid);
+                                              ->with('totalprderprice',$totalprderprice)
+                                              ->with('order_placed','Order placed sucsessfuly')
+                                             ->with('latsorderid',$latsorderid);
 
         }
 
