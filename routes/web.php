@@ -73,7 +73,6 @@ Auth::routes();
 
 Route::get('/usermanager', 'UserTypeController@manage');
 Route::resource('supplier', 'SupplierManagerController')->middleware('auth_supp');
-Route::get("/generate-supplier-report",'SupplierManagerController@reports')->middleware('auth_supp');
 
 Route::resource('/appointments', 'AppointmentController');
 Route::post('manage/doctors/search', 'DoctorManagementController@searchDoctor');
@@ -172,17 +171,11 @@ Route::get('/landingpage', 'ProductManagementController@landpage');
 
 Route::get('/product', 'ProductManagementController@index');
 
-Route::get('/exp', 'ProductManagementController@expview');
-
 Route::resource('product', 'ProductManagementController');
 
 Route::delete('/productdelete/{id}', 'ProductManagementController@destroy');
 
-Route::delete('/productdeleteexp/{id}', 'ProductManagementController@destroyexp');
-
 Route::post('/store', 'ProductManagementController@store');
-
-Route::get('/show', 'ProductManagementController@show');
 
 //Record Management
 
@@ -246,3 +239,4 @@ Route::get('/read_prescription/{id}', 'PrescriptionController@show');
 Route::get('/delete_prescription/{id}', 'PrescriptionController@destroy');
 
 //Route::get('/Welcome', ['as'=>'Welcome','uses'=>'PagesController@index']);
+
