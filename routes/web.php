@@ -128,12 +128,14 @@ Route::get('/shoppingcart', function () {
     return view('product_order_system.ShoppingCart');
 });
 
+
 Route::get('/search-product', 'ProductSearchController@index');
 Route::get('/viewproduct/{id}', 'ProductSearchController@show');
 Route::get('/productshow','ProductViewController@index');
 Route::post('search-product','ProductSearchController@search');
 Route::get('/order-admindash','ProductAdminDashController@index')->middleware('auth');
 Route::post('order-admindash','ProductAdminDashController@search');
+Route::post('/print_order_row','ProductAdminDashController@print_row');
 Route::post('admindash_status','ProductAdminDashController@updatesatus');
 Route::get('/paitientorderdash','PaitientOrderDashController@indexpaitent')->middleware('auth');
 Route::post('/paitientorderdash','PaitientOrderDashController@searchgeneral');
@@ -172,17 +174,11 @@ Route::get('/landingpage', 'ProductManagementController@landpage');
 
 Route::get('/product', 'ProductManagementController@index');
 
-Route::get('/exp', 'ProductManagementController@expview');
-
 Route::resource('product', 'ProductManagementController');
 
 Route::delete('/productdelete/{id}', 'ProductManagementController@destroy');
 
-Route::delete('/productdeleteexp/{id}', 'ProductManagementController@destroyexp');
-
 Route::post('/store', 'ProductManagementController@store');
-
-Route::get('/show', 'ProductManagementController@show');
 
 //Record Management
 
@@ -246,3 +242,4 @@ Route::get('/read_prescription/{id}', 'PrescriptionController@show');
 Route::get('/delete_prescription/{id}', 'PrescriptionController@destroy');
 
 //Route::get('/Welcome', ['as'=>'Welcome','uses'=>'PagesController@index']);
+

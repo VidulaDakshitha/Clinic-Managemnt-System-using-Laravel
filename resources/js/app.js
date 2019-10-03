@@ -54,6 +54,22 @@ const app = new Vue({
     methods: {
         print() {
             this.$htmlToPaper("printContainer");
+        },
+        print_row() {
+            this.$htmlToPaper("printContainer_row");
+        }
+    }
+});
+
+
+const app_roe = new Vue({
+    el: "#app_row",
+    data: {
+        isHidden: false
+    },
+    methods: {
+        print_row() {
+            this.$htmlToPaper("printContainer_row");
         }
     }
 });

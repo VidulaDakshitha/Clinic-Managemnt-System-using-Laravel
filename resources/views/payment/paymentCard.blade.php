@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -37,17 +38,13 @@
                         <div class="row">
                             <div class="col-md-3 col-sm-3 col-xs-12">
                                 <div class="logo">
-                                    <h2><a href="#">IHHR</a></h2>
+                                    <h2><a href="#" style = "color:#62a832;">IHHR</a></h2>
                                 </div>
                             </div>
                             <div class="col-md-9 col-sm-9 col-xs-12">
                                 <div class="menu">
                                     <ul class="nav navbar-nav">
-                                        <li class="active"><a href="{{ url('paymentHome')}}">HOME</a></li>
-                                        <li><a href="#">Features</a></li>
-                                        <li><a href="#">Pricing</a></li>
-                                        <li><a href="#">Team</a></li>
-                                        <li><a href="#">Contact</a></li>
+                                        <li class="active"><a href="{{ url('paymentHome')}}" style = "color:#62a832;">HOME</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -93,6 +90,10 @@
                                 <form action="{{ route('card.store')}}" method="POST">
                                 @csrf
                                         <div class="first">
+                                        <input type="text" name="patientID" placeholder="Patient ID" value="{{$userId}}" title = "Patient id should start from P and with 3 digits number" required >
+                                        </div>
+                                        <div class="last">
+                                        <input type="text" name="orderID" value="{{$latsorderid}}" placeholder="Order or Appointment ID" required>
                                             <input type="text" name="patientID" placeholder="Patient ID" pattern=" " value={{$userId}} title = "Patient id should start from P and with 3 digits number" required readonly>
                                         </div>
                                         <div class="last">

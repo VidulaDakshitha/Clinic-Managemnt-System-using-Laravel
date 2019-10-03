@@ -7,10 +7,11 @@
 <style type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.css "></style>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.bundle.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
-
+<script src="{{asset('js/app.js') }}"></script>
 <link rel="stylesheet" href="{{ asset('css/order_system_css/orderStylesheet.css') }}">
 @endsection
 <script src="{{ asset('js/order_management_script.js') }}"></script>
+
 @section('js')
 
 @endsection
@@ -30,6 +31,7 @@
               <div class="col-sm-3 my-1">
 
                 <input type="text" class="form-control" name="searchtext" placeholder="Jane Doe" required>
+                <a href="" @click.preventDefault="printpriscription" target="_blank" class="btn btn-danger">print</a>
 
               </div>
 
@@ -54,9 +56,11 @@
 
 
           <!--table-->
-        <div class="container-fluid">
+        <div class="container-fluid" id="app">
+         <div id="printContainer">
             <table class="table table-sm table-striped table-hover " id="table1" style="border-radius: 10px; ">
-                <thead thead-dark style="border-radius: 10px; ">
+                 <div id="printContainer">
+                      <thead thead-dark style="border-radius: 10px; " class="table table-hover"  >
                   <tr>
                     <th scope="col" style="border-radius: 10px; ">Priscription Id</th>
                     <th scope="col">Doctore name</th>
@@ -72,10 +76,11 @@
 
                         <tr id="tr.{{$key}}" class="table-info">
 
-                          <th scope="row" >{{$userspricription->id}}</th>
-                          <th>{{$userspricription->fullname}}<td>
+                          <td scope="row" >{{$userspricription->id}}</td>
+                          <td>{{$userspricription->fullname}}<td>
                           <td>{{$userspricription->name}}</td>
                           <td>Rs: {{$userspricription->selling_price}}</td>
+
                           <td>
                                 <a href="{{route('product.addToCart',$userspricription->product_id)}}" class="btn btn-outline-success btn-sm active" role="button" aria-pressed="true">Buy this product</a>
                           </td>
@@ -84,14 +89,19 @@
                   @endforeach
 
                 </tbody>
-              </table>
-              <script >
+
+            </div>
+            </table>
+
+             <script >
 
                 window.onload = function(){
                          groupByFirst(document.getElementById('table1'));
                 }
                 </script>
-          </div>
+         </div>
+         <Button class="btn btn-primary" @click.preventDefault="print">Test Print</Button>
+       </div>
 
 
 
