@@ -39,7 +39,7 @@ class PersonalRecordsController extends Controller
     public function edit0(Request $request, PersonalRecord $personal_record)
     {
         $request->validate([
-            'patient_id' => 'required',
+            'patient_id' => 'required|numeric|max:6',
             'disease' => 'required',
             'date' => 'required',
             'description' => 'required'
