@@ -38,17 +38,13 @@
                         <div class="row">
                             <div class="col-md-3 col-sm-3 col-xs-12">
                                 <div class="logo">
-                                    <h2><a href="#">IHHR</a></h2>
+                                    <h2><a href="#" style = "color:#62a832;">IHHR</a></h2>
                                 </div>
                             </div>
                             <div class="col-md-9 col-sm-9 col-xs-12">
                                 <div class="menu">
                                     <ul class="nav navbar-nav">
-                                        <li class="active"><a href="{{ url('paymentHome')}}">HOME</a></li>
-                                        <li><a href="#">Features</a></li>
-                                        <li><a href="#">Pricing</a></li>
-                                        <li><a href="#">Team</a></li>
-                                        <li><a href="#">Contact</a></li>
+                                        <li class="active"><a href="{{ url('paymentHome')}}" style = "color:#62a832;">HOME</a></li>
                                     </ul>
                                 </div>
                             </div>

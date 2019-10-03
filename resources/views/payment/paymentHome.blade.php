@@ -37,17 +37,15 @@
                         <div class="row">
                             <div class="col-md-3 col-sm-3 col-xs-12">
                                 <div class="logo">
-                                    <h2><a href="#">IHHR</a></h2>
+                                    <h2><a href="#" style = "color:#62a832;">IHHR</a></h2>
                                 </div>
                             </div>
                             <div class="col-md-9 col-sm-9 col-xs-12">
                                 <div class="menu">
                                     <ul class="nav navbar-nav">
-                                    <li class="active"><a href="{{url('/')}}">Home</a></li>
-                                        <li><a href="#">Payments</a></li>
-                                        <li><a href="#">Dashboard</a></li>  
-                                        <li><a href="#">Team</a></li>
-                                        <li><a href="#">Contact</a></li>
+                                    <li class="active"><a href="{{url('/')}}" style = "color:#62a832;">Home</a></li>
+                                        <li><a href="#" style = "color:#62a832;">Payments</a></li>
+                                        <li><a href="#" style = "color:#62a832;">Dashboard</a></li>  
                                     </ul>
                                 </div>
                             </div>
@@ -58,8 +56,11 @@
                                     <h1>Make online payment</h1>
                                     <p>You are able make online payments for your medicines, medical consume items and doctor appoinments.
                                          As IHHR we have made your operations more simple<br> Thank you!</p>
-                                    <button>Terms & condition</button>
-                                    <button>About Refund</button>
+                                    <br>
+                                    <br>
+                                    <br>
+                                    <br>
+                                    <br>
                                 </div>
                             </div>
                         </div>
