@@ -54,16 +54,18 @@
                 <option value="GeneralProduct">General Product</option>
             </select>
         </div>
-</div>
-<div class="form-group">
-    <label for="image">Image</label>
-    <input type="file" class="form-control-file" name="image" id="image" value="{{ $product->image }}">
-</div>
-<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-<input type="submit" value="Update Product" name="registerbtn" class="btn btn-primary">
-</div>
 
-</form>
+        <div class="form-group">
+            <label for="image">Image</label>
+            <input type="file" class="form-control-file" name="image" id="image" value="{{ $product->image }}">
+        </div>
+        <hr>
+        
+        <button type="button" href={{url('/product')}} class="btn btn-secondary mr-1">Cancel</button>
+
+        <button type="submit" class="btn btn-primary">Update Product</button>
+        <br><br>
+    </form>
 
 </div>
 @endsection
