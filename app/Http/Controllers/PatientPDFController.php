@@ -63,20 +63,18 @@ class PatientPDFController extends Controller
         {
             $output .= '
             
-        <tr>
-            <td>'.$patient->patient_id.'</td>
-            <td>'.$patient->fullname.'</td>
-            <td>'.$patient->gender.'</td>
-            <td>'.$patient->dob.'</td>
-            <td>'.$patient->nic.'</td>
-            <td>'.$patient->address1.'</td>
-            <td>'.$patient->address2.'</td>
-            <td>'.$patient->city.'</td>
-            <td>'.$patient->phone.'</td>
-            <td>'.$patient->email.'</td>
-        </tr>
-            
-            
+                    <tr>
+                        <td>'.$patient->patient_id.'</td>
+                        <td>'.$patient->fullname.'</td>
+                        <td>'.$patient->gender.'</td>
+                        <td>'.$patient->dob.'</td>
+                        <td>'.$patient->nic.'</td>
+                        <td>'.$patient->address1.'</td>
+                        <td>'.$patient->address2.'</td>
+                        <td>'.$patient->city.'</td>
+                        <td>'.$patient->phone.'</td>
+                        <td>'.$patient->email.'</td>
+                    </tr>
             ';
         }
 
