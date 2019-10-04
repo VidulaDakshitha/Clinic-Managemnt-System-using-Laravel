@@ -29,7 +29,7 @@
            
            <div class="form-group">
              <label>Patient_ID</label>
-             <input type="string" class="form-control" id="pid" name="patient_id" placeholder="Enter Patient_id">
+             <input type="number" class="form-control" id="pid" name="patient_id" placeholder="Enter Patient_id">
            </div>
 
            <div class="form-group">

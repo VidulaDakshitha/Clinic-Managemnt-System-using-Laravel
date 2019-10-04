@@ -13,7 +13,7 @@ import VueHtmlToPaper from "vue-html-to-paper";
 const options = {
     name: "Supplier Report",
     specs: ["fullscreen=no", "titlebar=yes", "scrollbars=yes"],
-    styles: ["css/app.css"]
+    styles: ["css/app.css","css/order_system_css/orderStylesheet.css"]
 };
 
 Vue.use(VueHtmlToPaper, options);
@@ -55,5 +55,7 @@ const app = new Vue({
         print() {
             this.$htmlToPaper("printContainer");
         }
+
     }
 });
+

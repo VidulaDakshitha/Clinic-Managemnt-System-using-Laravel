@@ -187,3 +187,7 @@ function generalItemChart(generalorder_rady,generalorder_shiped,generalorder_wai
 
 
   }
+
+
+
+ 

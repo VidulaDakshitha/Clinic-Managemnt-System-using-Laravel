@@ -83,8 +83,9 @@ class PaymentController extends Controller
     {
         $patientID = $request->get('patientID');
         $payments = payment::latest()->where('patientID', 'like', '%'.$patientID.'%')->paginate(10);
+        $cards = card::latest()->paginate(10);
 
-        return view('payment.index',compact('payments'))
+        return view('payment.index',compact('payments', 'cards'))
                 ->with('i', (request() -> input ('page', 1)-1)*10);
     }
 
