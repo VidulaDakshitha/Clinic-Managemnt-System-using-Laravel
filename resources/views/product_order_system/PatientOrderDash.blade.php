@@ -156,7 +156,7 @@
                     <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending" style="width: 115px;">Type</th>
                     <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending" style="width: 71px;">Quntity</th>
                     <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Start date: activate to sort column ascending" style="width: 141px;">Total</th>
-                    <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Start date: activate to sort column ascending" style="width: 181px;">Action</th>
+                    <th class="sorting noprint" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Start date: activate to sort column ascending" style="width: 181px;">Action</th>
 
                 </tr>
               </thead>
@@ -206,7 +206,7 @@
                           <td>{{$orderrow->type}} </td>
                           <td>{{$orderrow->quantity}} </td>
                           <td>{{$orderrow->total_payment}} </td>
-                          <td class="d-flex">
+                          <td class="d-flex noprint">
                                 <form action="/paitientorderdash/edit" method="POST" target="_blank">
                                     {{ csrf_field() }}
                                     <input type="text" value="{{$orderrow->order_id}}" name="order_id_send" hidden>
@@ -287,7 +287,6 @@
                                                 <option value="orders.order_id">Order id</option>
                                                 <option value="products.name">Product name</option>
                                                 <option value="order_product.product_id">Product id</option>
-                                                <option value="orders.date">Date</option>
                                                 <option value="orders.status">Status</option>
                                               </select>
                                     </div>
@@ -303,11 +302,13 @@
         </div>
             <br>
 
-        <div class="row" style=" background: white;" id="printContainer2">
-            <div class="col-sm-12" id="printContainer_1">
+        <div class="row" style=" background: white;">
+              <div class="col-sm-12">
+              <div id="printContainer2">
                     <table class="table table-bordered table-sm dataTable" id="dataTable" width="100%" cellspacing="0" role="grid" aria-describedby="dataTable_info" style="width: 100%;">
                         <thead>
-                            <tr role="row">
+
+                            <tr role="row" >
                                 <th class="sorting_asc" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending" style="width: 109px;">Order id</th>
                                 <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 105px;">Product id</th>
                                 <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Salary: activate to sort column ascending" style="width: 115px;">Name</th>
@@ -316,8 +317,9 @@
                                 <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending" style="width: 80px;">Status</th>
                                 <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending" style="width: 71px;">quantity</th>
                                 <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending" style="width: 71px;">total_payment</th>
-                                <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Start date: activate to sort column ascending" style="width: 181px;">Action</th>
-                                </tr>
+                                <th class="sorting noprint" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Start date: activate to sort column ascending" style="width: 181px;">Action</th>
+                               </tr>
+
                          </thead>
                          <tbody>
                                    <!--loop is start-->
@@ -340,23 +342,24 @@
                                   <td>{{$medicalitemrow->name}} </td>
                                   <td>{{$medicalitemrow->type}} </td>
                                   <td>{{$medicalitemrow->date}} </td>
+                            </div>
                           @if (($medicalitemrow->status)=='waiting')
                                  <td>
-                                    <div class="badge btn-warning text-wrap" style="width: 6rem;">
+                                    <div class="badge btn-warning text-wrap " style="width: 6rem;">
                                      {{$medicalitemrow->status}}
                                      </div>
                                   </td>
                             @else
                                @if (($medicalitemrow->status)=='ready')
                                    <td>
-                                      <div class="badge btn-primary text-wrap" style="width: 6rem;">
+                                      <div class="badge btn-primary text-wrap " style="width: 6rem;">
                                          {{$medicalitemrow->status}}
                                       </div>
                                    </td>
                             @else
                                @if (($medicalitemrow->status)=='shiped')
                                  <td>
-                                     <div class="badge btn-success text-wrap" style="width: 6rem;">
+                                     <div class="badge btn-success text-wrap " style="width: 6rem;">
                                           {{$medicalitemrow->status}}
                                      </div>
                                  </td>
@@ -366,7 +369,8 @@
 
                           <td>{{$medicalitemrow->quantity}} </td>
                           <td>{{$medicalitemrow->total_payment}} </td>
-                          <td class="d-flex">
+                                </div>
+                          <td class="d-flex noprint" >
                               <form action="paitientorderdash/edit" method="POST" target="_blank">
                                 {{ csrf_field() }}
                                 <input type="text" value="{{$medicalitemrow->order_id}}" name="order_id_send" hidden>
@@ -409,7 +413,7 @@
              </div>
 
              </div>
-        </div>
+
     </div>
 
     <script type="text/javascript">
