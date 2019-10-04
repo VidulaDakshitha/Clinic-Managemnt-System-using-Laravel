@@ -32,6 +32,14 @@ class PaymentReportController extends Controller
      return $payment_data;
     }
 
+    public function get_card_data()
+    {
+     $payment_data = DB::table('cards')
+         ->limit(30)
+         ->get();
+     return $payment_data;
+    }
+
     public function search_payment_data($patientID)
     {
      $payment_data = payment::latest()->where('patientID', 'like', '%'.$patientID.'%')->paginate(10);
@@ -53,6 +61,12 @@ class PaymentReportController extends Controller
     {
         $pdf = \App::make('dompdf.wrapper');
         $pdf -> loadHTML($this->payment_details_to_html());
+        return $pdf->stream();
+    }
+    public function pdf_card()
+    {
+        $pdf = \App::make('dompdf.wrapper');
+        $pdf -> loadHTML($this->card_details_to_html());
         return $pdf->stream();
     }
 
@@ -98,6 +112,41 @@ class PaymentReportController extends Controller
         return $output;
     }
 
+    public function card_details_to_html()
+    {
+        $payment_data = $this->get_card_data();
+        $output = '
+        <h3 align="center">Card Payment Details</h3>
+                <table>
+                    <tr>
+                    <th width = "50px"><b>No.</b></th>
+                    <th width = "100px">Patient ID</th>
+                    <th width = "100px">Order ID</th>
+                    <th width = "200px">Card Number</th>
+                    <th width = "150px">Bank</th>
+                    <th width = "200px">Card Type</th>
+                    
+                    </tr>
+                    <br>
+        ';
+                        
+        foreach ($payment_data as $payment) 
+        {
+            $output .= '
+                <tr>
+                    <td><b>'.$payment -> id.'</b></td>
+                    <td>'.$payment->patientID.'</td>
+                    <td>'.$payment->orderID.'</td>
+                    <td>'.$payment->cardNum.'</td>
+                    <td>'.$payment->bank.'</td>
+                    <td>'.$payment->cardType.'</td>
+                </tr>
+            ';
+        }
+        
+        $output .= '</table>';
+        return $output;
+    }
     
     public function payment_search_to_html($patientID)
     {
