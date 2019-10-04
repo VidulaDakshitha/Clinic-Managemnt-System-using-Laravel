@@ -252,3 +252,4 @@ Route::get('/delete_prescription/{id}', 'PrescriptionController@destroy');
 
 Route::get('patient_pdf','PatientPDFController@index');
 Route::get('/patient_pdf/pdf','PatientPDFController@pdf');
+Route::get('/pdfuser','PatientPDFController@pdf_profile');
