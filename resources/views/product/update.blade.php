@@ -2,7 +2,7 @@
 
 @section('title', 'Product Management')
 
-@include('product.nav')
+@include('product.nav1')
 
 @section('content')
 <div class="container">
@@ -57,11 +57,11 @@
 
         <div class="form-group">
             <label for="image">Image</label>
-            <input type="file" class="form-control-file" name="image" id="image" value="{{ $product->image }}">
+            <input type="file" class="form-control-file" name="image" id="image" value="{{ $product->image }}" required>
         </div>
         <hr>
         
-        <button type="button" href={{url('/product')}} class="btn btn-secondary mr-1">Cancel</button>
+        <a type="button" href={{url('/product')}} class="btn btn-secondary mr-1">Cancel</a>
 
         <button type="submit" class="btn btn-primary">Update Product</button>
         <br><br>
