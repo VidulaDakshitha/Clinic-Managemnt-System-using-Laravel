@@ -72,8 +72,9 @@ Route::view('/show', 'PatientManagement.showDoc');
 Auth::routes();
 
 Route::get('/usermanager', 'UserTypeController@manage');
-Route::resource('supplier', 'SupplierManagerController')->middleware('auth_supp');
+Route::resource('supplier', 'SupplierManagerController');
 Route::get("/generate-supplier-report",'SupplierManagerController@reports')->middleware('auth_supp');
+Route::get("/supplier-settings",'SupplierManagerController@settings')->middleware('auth_supp');
 
 Route::resource('/appointments', 'AppointmentController');
 Route::post('manage/doctors/search', 'DoctorManagementController@searchDoctor');
@@ -110,6 +111,8 @@ Route::resource('payment', 'PaymentController');
 
 Route::get('/preport', 'PaymentReportController@pdf');
 Route::get('/preport_search', 'PaymentReportController@pdf_search');
+Route::get('/preport_card', 'PaymentReportController@pdf_card');
+Route::get('/demoCreate', 'PaymentController@demo');
 Route::get('/card', 'CardController@index');
 Route::resource('card', 'CardController');
 Route::get('/slip', 'BankSlipController@index');
@@ -209,6 +212,8 @@ Route::get('/read_per/{id}', 'PersonalRecordsController@show');
 
 Route::get('/delete_per/{id}', 'PersonalRecordsController@destroy');
 
+Route::get("/report_per",'PersonalRecordsController@reports');
+
 
 //2.Treatment Record
 //Route::get('/home_treat', 'TreatmentController@home1');
@@ -229,6 +234,8 @@ Route::get('/read_treat/{id}', 'TreatmentController@show');
 
 Route::get('/delete_treat/{id}', 'TreatmentController@destroy');
 
+Route::get("/report_treat",'TreatmentController@reports');
+
 //3.Prescription
 Route::get('/home_prescription', function(){
     return view('home_prescription');
@@ -248,8 +255,10 @@ Route::get('/edit_prescription/{id}', 'PrescriptionController@update2');
 Route::get('/read_prescription/{id}', 'PrescriptionController@show');
 Route::get('/delete_prescription/{id}', 'PrescriptionController@destroy');
 
+Route::get("/report_prescription",'PrescriptionController@reports');
+
 //Route::get('/Welcome', ['as'=>'Welcome','uses'=>'PagesController@index']);
 
 Route::get('patient_pdf','PatientPDFController@index');
-Route::get('/patient_pdf/pdf','PatientPDFController@pdf');
 Route::get('/pdfuser','PatientPDFController@pdf_profile');
+Route::get('/patient_pdf/pdf','PatientPDFController@pdf');

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Auth;
 use App\Supplier;
 use App\SupplierContact;
 use App\SupplierEmail;
@@ -19,6 +20,7 @@ class SupplierManagerController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+        $this->middleware('auth_supp', ['except'=>['index', 'show']]);
     }
 
     /**
@@ -30,13 +32,24 @@ class SupplierManagerController extends Controller
     {
         //
         $suppliers = Supplier::paginate(8);
-        return view('backend.supplier.supplierdashboard', compact('suppliers'));
+        if(Auth::user()->type == 'supplier_manager')return view('backend.supplier.supplierdashboard', compact('suppliers'));
+        else if(Auth::user()->type == 'inventory_manager') return view('backend.supplier.viewonlydashboard', compact('suppliers'));
+        else {
+            Auth::logout();
+            return redirect('/login')->with(["error"=>"Access Denied!, Please login with proper credentials."]);
+        }
     }
 
     public function reports()
     {
         $suppliers = Supplier::paginate(8);
         return view('backend.supplier.reports', compact('suppliers'));
+    }
+
+    public function settings()
+    {
+        $user = Auth::user();
+        return view('backend.supplier.settings', compact('user'));
     }
 
     /**
