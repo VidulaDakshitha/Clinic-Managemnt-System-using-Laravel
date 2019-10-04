@@ -7,14 +7,16 @@
 <style type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.css "></style>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.bundle.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
+<script src="https://unpkg.com/vue-html-to-paper/build/vue-html-to-paper.js"></script>
 <script src="{{ asset('js/order_management_script.js') }}"></script>
+
 
 
 <link rel="stylesheet" href="{{ asset('css/order_system_css/orderStylesheet.css') }}">
 @endsection
 
 @section('js')
-
+<script src="{{ asset('js/app.js') }}"></script>
 @endsection
 
 @section('content')
@@ -162,7 +164,7 @@
   style="padding: 15px;margin: 15px;border-radius: 10px;box-shadow: 0 0 9px 0px #b1aeae;">
   <div class="card-header">
     <i class="fas fa-table"></i>
-    <a href="admindash">
+    <a href="order-admindash">
       <p class="h4"> Order details </p>
     </a>
   </div>
@@ -177,7 +179,7 @@
         <div class="col-sm-12 col-md-6">
           <div id="dataTable_filter" class="dataTables_filter ">
             <br>
-            <form action="admindash" method="POST">
+            <form action="order-admindash" method="POST">
               {{ csrf_field() }}
               <div class="form-row align-items-center">
                 <div class="col-auto my-1">
@@ -203,15 +205,17 @@
                 <div class="col-auto my-1">
                   <button type="submit" class="btn btn-primary">Submit</button>
                 </div>
-              </div>
+
 
             </form>
+
+          </div>
           </div>
         </div>
       </div>
       <br>
-      <div class="row">
-        <div class="col-sm-12">
+      <div class="row" id="app">
+        <div class="col-sm-12"  id="printContainer">
           <table class="table table-bordered table-sm table-hover dataTable" id="dataTable" width="100%" cellspacing="0"
             role="grid" aria-describedby="dataTable_info" style="width: 100%;">
             <thead>
@@ -231,8 +235,7 @@
                   aria-label="Age: activate to sort column ascending" style="width: 71px;">Payamet</th>
                 <th class="table-active sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1"
                   aria-label="Start date: activate to sort column ascending" style="width: 151px;">Status</th>
-                <th class=" table-active sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1"
-                  aria-label="Start date: activate to sort column ascending" style="width: 141px;">Action</th>
+
 
               </tr>
             </thead>
@@ -246,18 +249,33 @@
                 <td>Nothing to show</td>
                 <td>Nothing to show</td>
                 <td>Nothing to show</td>
-                <td>Nothing to show</td>
-                @else
 
+                @else
+                <h3>Order Dashbord</h3>
+                <p id="demo"></p>
+
+                <br>
                 @foreach ($order as $key=> $orderrow)
 
+             <div id="printContainer_row">
+
                 <tr role="row" class="odd">
-                  <td class="sorting_1">{{$orderrow->order_id}}</td>
-                  <td>{{$orderrow->patient_id}}</td>
+                  <td class="sorting_1" >{{$orderrow->order_id}}</td>
+                  <td >{{$orderrow->patient_id}}</td>
                   <td>{{$orderrow->product_id}}</td>
                   <td>{{$orderrow->date}}</td>
                   <td>{{$orderrow->quantity}}</td>
                   <td>{{$orderrow->total_payment}}</td>
+
+                  <input id="order_id" value="{{$orderrow->order_id}}" hidden>
+                  <input id="product_id" value="{{$orderrow->product_id}}" hidden>
+                  <input id="product_date" value="{{$orderrow->date}}" hidden>
+                  <input id="product_quantity" value="{{$orderrow->quantity}}" hidden>
+                  <input id="product_total_payment" value="{{$orderrow->total_payment}}" hidden>
+
+
+             </form>
+                </div>
                   @if (($orderrow->status)=='shiped')
                   <td>
                     <div class="badge badge-success text-wrap" style="width: 6rem;">
@@ -290,13 +308,10 @@
                   </td>
                   @endif
 
+                  <div>
 
-                  <td>
-                    <button type="button" class="btn btn-warning">Print</button>
-
-                  </td>
                 </tr>
-
+                <div>
                 @endforeach
 
                 @endif
@@ -305,7 +320,15 @@
 
             </tbody>
           </table>
+          <script>
+                var d = new Date();
+                document.getElementById("demo").innerHTML = d;
+        </script>
+
         </div>
+        <div class="col-auto my-1">
+            <Button class="btn btn-warning print_btn" @click.preventDefault="print"> Generate report</Button>
+
       </div>
     </div>
   </div>

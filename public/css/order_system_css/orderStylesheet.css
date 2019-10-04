@@ -183,3 +183,15 @@ background: linear-gradient(90deg, rgba(0,255,124,1) 0%, rgba(140,255,198,1) 44%
 
 }
 
+.print_btn:hover
+{
+width: 160px;
+background-color: darkorange;
+}
+
+
+@media print{
+    .noprint{
+        display:none;
+    }
+ }

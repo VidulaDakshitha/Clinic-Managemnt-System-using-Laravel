@@ -2,7 +2,7 @@
 
 @section('title', 'Product Management')
 
-@include('product.nav')
+@include('product.nav1')
 
 <link rel="stylesheet" href={{ url('css/product/vendors/datatables.net-buttons-bs4/css/buttons.bootstrap4.min.css') }}>
 
@@ -11,7 +11,7 @@
 @section('content')
 
 <div class="container">
-    <h1>Inventory Dashboard</h1>
+
     @auth
     <h3> </h3>
     @else
@@ -26,7 +26,7 @@
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-header">
-                            <h1>Expiring Products</h1>
+                            <h1>Expired Products</h1>
                         </div>
                         <div class="card-body">
                             <table id="bootstrap-data-table-export" class="table table-striped table-bordered">
@@ -38,7 +38,6 @@
                                         <th>brand</th>
                                         <th>Price</th>
                                         <th>EXP_Date</th>
-                                        <th>View</th>
                                         <th>Remove</th>
                                     </tr>
                                 </thead>
@@ -57,15 +56,7 @@
                                         <td>{{$product->type}}</td>
                                         <td>{{$product->brand}}</td>
                                         <td>{{$product->selling_price}}</td>
-                                        <td>{{$product->expiry_date}}</td>
-
-
-                                        <td>
-                                            <form action="/product/{{ $product->product_id}}" method="GET">
-                                                @csrf
-                                                <button type="submit" href="" class="btn btn-primary mr-1">View</button>
-                                            </form>
-                                        </td>
+                                        <td style = "color: red">{{$product->expiry_date}}</td>
 
                                         <td>
                                             <form action="/productdeleteexp/{{$product->product_id}}" method="POST">
