@@ -72,7 +72,7 @@ Route::view('/show', 'PatientManagement.showDoc');
 Auth::routes();
 
 Route::get('/usermanager', 'UserTypeController@manage');
-Route::resource('supplier', 'SupplierManagerController')->middleware('auth_supp');
+Route::resource('supplier', 'SupplierManagerController');
 Route::get("/generate-supplier-report",'SupplierManagerController@reports')->middleware('auth_supp');
 
 Route::resource('/appointments', 'AppointmentController');
@@ -210,6 +210,8 @@ Route::get('/read_per/{id}', 'PersonalRecordsController@show');
 
 Route::get('/delete_per/{id}', 'PersonalRecordsController@destroy');
 
+Route::get("/report_per",'PersonalRecordsController@reports');
+
 
 //2.Treatment Record
 //Route::get('/home_treat', 'TreatmentController@home1');
@@ -230,6 +232,8 @@ Route::get('/read_treat/{id}', 'TreatmentController@show');
 
 Route::get('/delete_treat/{id}', 'TreatmentController@destroy');
 
+Route::get("/report_treat",'TreatmentController@reports');
+
 //3.Prescription
 Route::get('/home_prescription', function(){
     return view('home_prescription');
@@ -248,6 +252,8 @@ Route::get('/edit_prescription/{id}', 'PrescriptionController@update2');
 
 Route::get('/read_prescription/{id}', 'PrescriptionController@show');
 Route::get('/delete_prescription/{id}', 'PrescriptionController@destroy');
+
+Route::get("/report_prescription",'PrescriptionController@reports');
 
 //Route::get('/Welcome', ['as'=>'Welcome','uses'=>'PagesController@index']);
 

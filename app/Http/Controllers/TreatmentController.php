@@ -56,4 +56,10 @@ class TreatmentController extends Controller
         return redirect('/home_treat')->with('success','Treatment Record deleted successfully');
     }
 
+    public function reports()
+    {
+        $treatment_records =TreatmentRecord::paginate(10);
+        return view('report_treat', compact('treatment_records'));
+    }
+
 }
