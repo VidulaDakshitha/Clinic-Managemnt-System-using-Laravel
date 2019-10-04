@@ -41,6 +41,10 @@
     @endif
  </div>
 
+     {{-- pdf start --}}
+     <div id="printContainer">
+            <h1>Feedback Report</h1>
+
              <table class="table">
                 <thead class="thead-dark">
                     <tr>
@@ -68,7 +72,12 @@
                 </tbody>
             </table>
 
+        </div>
+        {{-- pdf end --}}
+
             {{ $feedbacks->links() }}
+
+            <Button class="btn btn-primary" @click.preventDefault="print">Print</Button>
             
         </div>
 

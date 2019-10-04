@@ -27,7 +27,7 @@
           <div class="container">
             <ul class="mainnav">
               <li><a href="/admin"><img src="img/adhome.png"/><span>Dashboard</span> </a> </li>
-              <li><a href="/adminfeedbackreport"><img src="img/newspaper.png"/><span>Reports</span> </a> </li>
+              <li><a href="/adminfeedbackreport"><img src="img/newspaper.png"/><span>Feedback Report</span> </a> </li>
               <li><a href="/adminchart"><img src="img/adminanalytics.png"/><span>Charts</span> </a> </li>
              
               

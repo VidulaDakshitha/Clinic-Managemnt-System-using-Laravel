@@ -42,7 +42,7 @@ class FeedbackController extends Controller
 
     public function fedreport()
     {
-        $feedbacks = Feedback::orderBy('feedback_id','desc')->paginate(10);
+        $feedbacks = Feedback::orderBy('feedback_id','desc')->paginate(8);
         return view('reports.feedbackreport', compact('feedbacks'));
     }
 
