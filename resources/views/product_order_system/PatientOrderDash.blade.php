@@ -95,12 +95,12 @@
             </div>
         <div class="card-header">
 
-          <a href="paitientorderdash">
+          <a href="/paitientorderdash">
           <p class="h4"> General Order details </p>
           </a>
     </div>
     <div class="card-body">
-          <div class="table-responsive" id="tableplane" style="border-radius: 10px; background: url('assets/image/order_back.jpg');" >
+          <div class="table-responsive" id="tableplane" style="border-radius: 10px; background: url('/assets/image/order_back.jpg');" >
             <div id="dataTable_wrapper" class="dataTables_wrapper dt-bootstrap4">
 
                 <div class="row" >
@@ -111,7 +111,7 @@
                 <div class="col-sm-12 col-md-6">
                     <div id="dataTable_filter" class="dataTables_filter ">
                         <br>
-                            <form action="paitientorderdash" method="POST">
+                            <form action="paitientorderdash/general" method="POST">
                                     {{ csrf_field() }}
                                     <div class="form-row align-items-center">
                                             <div class="col-auto my-1">
@@ -260,7 +260,7 @@
               </table>
          </div>
 
-         <Button class="btn btn-success print_btn" onclick="printJS({printable: 'printJS-form', type: 'html', header: 'General Order Dashbord',css:['css/app.css','css/order_system_css/orderStylesheet.css'],ignoreElements:['noprint','nocell']
+         <Button class="btn btn-success print_btn" onclick="printJS({printable: 'printJS-form', type: 'html', header: 'General Order Dashbord',css:['/css/app.css','css/order_system_css/orderStylesheet.css'],ignoreElements:['noprint','nocell']
  })" style="margin-left: 20px; margin-bottom: 10px;"> Generate report</Button>
 
 
@@ -273,14 +273,14 @@
 
 <div class="p-3 mb-2 bg-success rounded-top text-white paitent_titebar" > <h6> </h6></div>
     <div class="card-header">
-          <a href="paitientorderdash">
+          <a href="/paitientorderdash">
           <p class="h4"> Medical Item Order details </p>
           </a>
     </div>
     <div >
         <div >
              <div class="card-body"  >
-                 <div class="table-responsive" id="tableplane" style="border-radius: 10px;  background: url('assets/image/order_back.jpg');">
+                 <div class="table-responsive" id="tableplane" style="border-radius: 10px;  background: url('/assets/image/order_back.jpg');">
                     <div id="dataTable_wrapper" class="dataTables_wrapper dt-bootstrap4">
                         <div class="row" >
                             <div class="col-sm-12 col-md-6">
@@ -290,7 +290,7 @@
                      <div class="col-sm-12 col-md-6">
                  <div id="dataTable_filter" class="dataTables_filter ">
                         <br>
-                    <form action="paitientorderdash" method="POST">
+                    <form action="paitientorderdash/medical" method="POST">
                                     {{ csrf_field() }}
                         <div class="form-row align-items-center">
                                 <div class="col-auto my-1">
@@ -459,7 +459,7 @@
 
     </div>
     </div>
-    <Button class="btn btn-success print_btn" onclick="printJS({printable: 'printContainer-2', type: 'html', header: 'Medical Order Dashbord',css:['css/app.css','css/order_system_css/orderStylesheet.css'],ignoreElements:['noprint-m','nocell-m']
+    <Button class="btn btn-success print_btn" onclick="printJS({printable: 'printContainer-2', type: 'html', header: 'Medical Order Dashbord',css:['/css/app.css','css/order_system_css/orderStylesheet.css'],ignoreElements:['noprint-m','nocell-m']
 })" style="margin-left: 20px; margin-bottom: 10px;"> Generate report</Button>
 
 
