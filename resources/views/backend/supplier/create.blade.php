@@ -7,7 +7,6 @@
 @section('js')
 <script src="https://cdn.jsdelivr.net/npm/jquery@2.2.4/dist/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.4/dist/umd/popper.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/jquery-match-height@0.7.2/dist/jquery.matchHeight.min.js"></script>
 <script src="{{ asset('js/backend/supplier/main.js') }}"></script>
 <script src="{{ asset('js/backend/supplier/lib/chosen/chosen.jquery.min.js') }}"></script>
@@ -25,7 +24,6 @@
 
 @section('styles')
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.0/normalize.min.css">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lykmapipo/themify-icons@0.1.2/css/themify-icons.css">
 <link rel="stylesheet"
@@ -47,81 +45,82 @@
         <div class="form-row">
             <div class="form-group col-md-4">
                 <label for="inpuSupName">Supplier Name</label>
-                <input type="text" class="form-control" id="inpuSupName" placeholder="Supplier Name" required
-                    name="name">
+                <input type="text" class="form-control" id="inpuSupName" placeholder="Supplier Name"
+                    v-model="supplierCreateForm.name" required name="name">
             </div>
             <div class="form-group col-md-4">
                 <label for="inpuSupEmail">Supplier Email</label>
                 <input type="email" class="form-control" id="inpuSupEmail" placeholder="Supplier Email" required
-                    name="email">
+                    name="email" v-model="supplierCreateForm.email">
             </div>
             <div class="form-group col-md-4">
                 <label for="inpuSupContact">Contact Number</label>
                 <input type="text" class="form-control" id="inpuSupContact" placeholder="Contact Number" required
-                    name="contact_number" maxlength="10">
+                    v-model="supplierCreateForm.contactNumber" name="contact_number" maxlength="10">
             </div>
         </div>
         <div class="form-group">
             <label for="inputAddress">Address</label>
             <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St" name="address"
-                required>
+                v-model="supplierCreateForm.address1" required>
         </div>
         <div class="form-group">
             <label for="inputAddress2">Address 2</label>
             <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor"
-                name="address2">
+                v-model="supplierCreateForm.address2" name="address2">
         </div>
         <div class="form-row">
             <div class="form-group col-md-8">
                 <label for="inputCity">City</label>
-                <input type="text" class="form-control" id="inputCity" placeholder="Colombo" name="city" required>
+                <input type="text" class="form-control" id="inputCity" placeholder="Colombo" name="city"
+                    v-model="supplierCreateForm.city" required>
             </div>
             <div class="form-group col-md-4">
                 <label for="inputZip">Postal Code</label>
-                <input type="text" class="form-control" id="inputZip" placeholder="61120" name="postal_code" required>
+                <input type="text" class="form-control" id="inputZip" placeholder="61120" name="postal_code"
+                    v-model="supplierCreateForm.postalCode" required>
             </div>
         </div>
 
         <hr>
 
-        {{-- <div class="form-row">
-            <div class="form-group col-md-12">
-                <label for="inputProduct">Product</label>
-                <select id="inputProduct" class="form-control" name="product" required
-                    data-placeholder="Choose a product..." multiple class="standardSelect">
+        <div class="card mb-5">
+            <div class="card-header">
+                <strong class="card-title">Products</strong>
+            </div>
+
+
+
+            <div class="card-body">
+                <select id="inputProduct" name="product[]" required data-placeholder="Choose a product..."
+                    class="standardSelect" multiple>
+
                     @if (count($products)>0)
+
                     @foreach ($products as $product)
-                    <option>{{ $product->type }}</option>
-        @endforeach
-        @else
-        <option>No Product Types</option>
-        @endif
-        </select>
-</div>
-</div> --}}
 
-<div class="card mb-5">
-    <div class="card-header">
-        <strong class="card-title">Products</strong>
-    </div>
-    <div class="card-body">
-        <select id="inputProduct" name="product[]" required data-placeholder="Choose a product..."
-            class="standardSelect" multiple>
-            @if (count($products)>0)
-            @foreach ($products as $product)
-            <option>{{ $product->type }}</option>
-            @endforeach
-            @else
-            <option>No Product Types</option>
-            @endif
-        </select>
+                    <option value="{{ $loop->iteration }}"
+                        v-on:="supplierCreateForm.selected[{{ $loop->iteration-1 }}] = '{{ $product->type }}'">
+                        {{ $product->type }}</option>
 
-    </div>
-</div>
+                    @endforeach
+
+                    @else
+                    <option>No Product Types</option>
+                    @endif
+                </select>
+
+            </div>
+        </div>
 
 
-<button type="submit" class="btn btn-primary">Add New Supplier</button>
-</form>
+        <button type="submit" class="btn btn-primary">Add New Supplier</button>
+        <button type="button" @click.preventDefault="addSupplierFormCreateData" class="btn btn-info"
+            style="color: white;">
+            Add Demo
+            Data
+        </button>
+    </form>
 
 </div>
 @endsection

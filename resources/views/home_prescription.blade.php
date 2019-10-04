@@ -70,6 +70,7 @@
     </div>
 
 <a href="{{ url('/create_prescription') }}" class="btn btn-primary">Create</a>
+<a href="{{ url('/report_prescription') }}" class="btn btn-primary">Generate Report</a>
 <script src={{ url('css/product/vendors/jquery/dist/jquery.min.js') }}></script>
 <script src={{ url('css/product/vendors/popper.js/dist/umd/popper.min.js') }}></script>
 <script src={{ url('css/product/vendors/bootstrap/dist/js/bootstrap.min.js') }}></script>

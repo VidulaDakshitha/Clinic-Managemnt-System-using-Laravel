@@ -187,7 +187,14 @@
                                 <div class="another-text">
                                         <h3>CARD PAYMENTS</h3>
                                 </div>
-                            
+
+                                <a href="{{ url('/preport_card')}}" style="margin-left: 300px;"><button class="btn btn-danger">GENERATE REPORT</button></a>
+                                
+                                <br>
+                                <br>
+                                <br>
+                                
+
                                 <table>
                                         <tr>
                                             <th width = "50px"><b>No.</b></th>
@@ -222,3 +229,4 @@
     
 </body>
 </html>
+

@@ -4,6 +4,13 @@
     background-position: center center;
 }
 
+
+@media print{
+    .noprint{
+        display:none;
+    }
+ }
+
 .searchBar{
 
     padding-top: 60px;
@@ -188,3 +195,5 @@ background: linear-gradient(90deg, rgba(0,255,124,1) 0%, rgba(140,255,198,1) 44%
 width: 160px;
 background-color: darkorange;
 }
+
+

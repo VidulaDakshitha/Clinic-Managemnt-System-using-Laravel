@@ -58,7 +58,7 @@
 
   <!-- Search bar -->
   <a href="search-product">
-    <h2 class="display-4 text-center" style="text-decoration: none; color: black;">Search Product</h2>
+    <h2 class="display-4 text-center" style="text-decoration: none; color: black;">Search Products</h2>
   </a>
   <div class="searchBar">
     <form action="search-product" method="POST">

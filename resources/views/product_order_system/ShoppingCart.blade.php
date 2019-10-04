@@ -142,7 +142,7 @@
 
                                         </form>
 
-                                        @if($product['qty']!=0)
+                                        @if($totalQuntity!=0)
                                         <a href="{{route('product-chek-out')}}" class="btn btn-primary">Check out</a>
                                         @else
                                         <div class="alert alert-warning" role="alert">

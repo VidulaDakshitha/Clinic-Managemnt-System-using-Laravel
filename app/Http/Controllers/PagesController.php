@@ -7,10 +7,17 @@ use App\Http\Requests;
 use Alert;
 use Mail;
 use Session;
+use App\Contact;
 
 class PagesController extends Controller
 {
     //
+
+    public function __construct()
+    {
+        $this->middleware('auth', ['except' => ['show']]);
+    }
+
     public function index()
     {
        Alert::message('Robots are Working!');
@@ -55,6 +62,18 @@ class PagesController extends Controller
             $message->to('viduladakshitha@gmail.com');
             $message->subject($data['phone']);
         });
+
+        if((auth()->user())!=null)
+        {
+        $contact = new Contact();
+        $contact->patient_id = auth()->user()->id;
+        $contact->name = $request->name;
+        $contact->email = $request->email;
+        $contact->phone=$request->phone;
+        $contact->message = $request->message;
+        $contact->save();
+        }
+
         return redirect('/contact')->with('success',' Your message was received successfully..We will get back to you soon');
       
     }

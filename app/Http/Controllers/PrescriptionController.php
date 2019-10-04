@@ -37,7 +37,7 @@ class PrescriptionController extends Controller
 
     public function update2(Request $request, $id)
     {
-        $data = $request->validate([
+        $this->validate([
             'doctor_id'=>'required',
             'patient_id' => 'required',
             'description' => 'required'
@@ -66,4 +66,9 @@ class PrescriptionController extends Controller
         return redirect('/home_prescription')->with('success','Prescription deleted successfully');
     }
 
+    public function reports()
+    {
+        $prescriptions =Prescription::paginate(10);
+        return view('report_prescription', compact('prescriptions'));
+    }
 }

@@ -126,6 +126,7 @@ class ProductController extends Controller
 
            Session::forget('cart');
 
+           
 
           // return redirect('/search-product')->with('order_placed','Order placed sucsessfuly');
           return view('payment.paymentCard')->with('userId', $userId)

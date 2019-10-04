@@ -426,4 +426,16 @@ class PaitientOrderDashController extends Controller
        //need to return money and need to send order id to kvin
 
     }
+
+    public function printreport($repot){
+
+        return view('product_order_system.product_order_reports.PaitentOrderRepot');
+    }
+
+
+
+
+
+
+
 }

@@ -13,7 +13,7 @@ import VueHtmlToPaper from "vue-html-to-paper";
 const options = {
     name: "Supplier Report",
     specs: ["fullscreen=no", "titlebar=yes", "scrollbars=yes"],
-    styles: ["css/app.css","css/order_system_css/orderStylesheet.css"]
+    styles: ["css/app.css", "css/order_system_css/orderStylesheet.css"]
 };
 
 Vue.use(VueHtmlToPaper, options);
@@ -30,15 +30,10 @@ Vue.use(VueHtmlToPaper);
  * Eg. ./components/ExampleComponent.vue -> <example-component></example-component>
  */
 
-// const files = require.context('./', true, /\.vue$/i)
-// files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
-
 // Vue.component(
-//     "follow-button",
-//     require("./components/FollowButton.vue").default
+//     "demo-button-create",
+//     require("./supplier-components/DemoButtonCreate.vue").default
 // );
-
-// Vue.component("print-com", require("./components/HomePage.vue").default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -48,14 +43,36 @@ Vue.use(VueHtmlToPaper);
 
 const app = new Vue({
     el: "#app",
+
     data: {
-        isHidden: false
+        supplierCreateForm: {
+            name: "",
+            email: "",
+            contactNumber: "",
+            address1: "",
+            address2: "",
+            city: "",
+            postalCode: "",
+            selected: []
+        }
     },
     methods: {
         print() {
             this.$htmlToPaper("printContainer");
-        }
+        },
 
+        addSupplierFormCreateData() {
+            this.supplierCreateForm.name = "New Supplier Name";
+            this.supplierCreateForm.email = "newsupplier@newsupplier.com";
+            this.supplierCreateForm.contactNumber = "0112353450";
+            this.supplierCreateForm.address1 =
+                "St. Michael's Road, Kollupitiya";
+            this.supplierCreateForm.address2 = "Colombo 07";
+            this.supplierCreateForm.city = "Colombo";
+            this.supplierCreateForm.postalCode = "61170";
+            // this.supplierCreateForm.selected = [];
+        }
     }
 });
+
 

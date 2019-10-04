@@ -95,8 +95,6 @@
         @csrf
         <button type="submit" href="" class="btn btn-primary mr-1">BACK</button>
     </form>
-    <br>
-    <Button class="btn btn-primary" @click.preventDefault="print">Print Report</Button>
     <br><br>
     
 </div>

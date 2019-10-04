@@ -30,8 +30,8 @@
             <div class="form-row align-items-center">
               <div class="col-sm-3 my-1">
 
-                <input type="text" class="form-control" name="searchtext" placeholder="Jane Doe" required>
-                <a href="" @click.preventDefault="printpriscription" target="_blank" class="btn btn-danger">print</a>
+                <input type="text" class="form-control" name="searchtext" placeholder="type hear..." required>
+
 
               </div>
 
@@ -100,7 +100,7 @@
                 }
                 </script>
          </div>
-         <Button class="btn btn-primary" @click.preventDefault="print">Test Print</Button>
+
        </div>
 
 
