@@ -260,4 +260,5 @@ Route::get("/report_prescription",'PrescriptionController@reports');
 //Route::get('/Welcome', ['as'=>'Welcome','uses'=>'PagesController@index']);
 
 Route::get('patient_pdf','PatientPDFController@index');
+Route::get('/pdfuser','PatientPDFController@pdf_profile');
 Route::get('/patient_pdf/pdf','PatientPDFController@pdf');

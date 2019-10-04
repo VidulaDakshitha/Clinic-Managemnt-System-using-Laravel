@@ -3,11 +3,19 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use DB;
 use PDF;
+use App\Patient;
+use App\User;
+
 
 class PatientPDFController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
 
     function index()
     {
@@ -81,4 +89,99 @@ class PatientPDFController extends Controller
         ';
         return $output;
     }
+
+    //table 2
+
+    public function search_user()
+    {
+        $final=Auth::user();
+        
+        $result = DB::table('patients')->where('email', $final->email)->first();
+        return $result;
+    }
+
+    public function pdf_profile()
+    {
+           
+        $pdf = \App::make('dompdf.wrapper');
+        $pdf -> loadHTML($this->user_profile_to_html());
+        return $pdf->stream();
+    }
+
+    public function user_profile_to_html()
+    {
+        $patient_data = $this->search_user();
+        $output = '
+        <img src="images/main/mainlayout/logo_dark_long.png" alt="">
+        <hr>
+        <h2 align="center" style="style="color:#201D1E;">Account Information of '.$patient_data->fullname.'</h2>
+
+        <table>
+        <tr>
+        <td style="padding-right:100px;padding-top:.5em;padding-bottom:.5em;font-weight: bold">Patient reference ID</td>
+        <td>'.$patient_data->patient_id.'</td>
+        </tr>
+
+        <tr>
+        <td style="padding-right:100px;padding-top:.5em;padding-bottom:.5em;font-weight: bold">Full name</td>
+        <td>'.$patient_data->fullname.'</td>
+        </tr>
+
+        <tr>
+        <td style="padding-right:100px;padding-top:.5em;padding-bottom:.5em;font-weight: bold">Gender</td>
+        <td>'.$patient_data->gender.'</td>
+        </tr>
+
+        <tr>
+        <td style="padding-right:100px;padding-top:.5em;padding-bottom:.5em;font-weight: bold">Date of Birth</td>
+        <td>'.$patient_data->dob.'</td>
+        </tr>
+
+        <tr>
+        <td style="padding-right:100px;padding-top:.5em;padding-bottom:.5em;font-weight: bold">National Identity Number</td>
+        <td>'.$patient_data->nic.'</td>
+        </tr>
+
+        <tr>
+        <td style="padding-right:100px;padding-top:.5em;font-weight: bold">Full address</td>
+        <td>'.$patient_data->address1.'</td>
+        </tr>
+
+        <tr>
+        <td></td>
+        <td>'.$patient_data->address2.'</td>
+        </tr>
+
+        <tr>
+        <td></td>
+        <td>'.$patient_data->city.'</td>
+        </tr>
+
+        <tr>
+        <td></td>
+        <td style="padding-bottom:.5em;">Sri Lanka</td>
+        </tr>
+
+        <tr>
+        <td style="padding-right:100px;padding-top:.5em;padding-bottom:.5em;font-weight: bold">Phone Number</td>
+        <td>'.$patient_data->phone.'</td>
+        </tr>
+
+        <tr>
+        <td style="padding-right:100px;padding-top:.5em;padding-bottom:.5em;font-weight: bold">Email Address</td>
+        <td>'.$patient_data->email.'</td>
+        </tr>
+
+
+        </table>
+        <hr>
+        <p><i>**This is a system generated report and does not require a signature<i></p>
+        <p><em>**This report can be used as a source of proof</em></p>
+              
+        ';
+                        
+        
+        return $output;
+    }
+
 }
