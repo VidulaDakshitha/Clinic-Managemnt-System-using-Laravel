@@ -108,6 +108,9 @@ Route::get('/paymentSearch', function () {
 Route::get('/detail', 'CardController@show');
 Route::get('/search1', 'PaymentController@search');
 Route::resource('payment', 'PaymentController');
+
+Route::get('/preport', 'PaymentReportController@pdf');
+Route::get('/preport_search', 'PaymentReportController@pdf_search');
 Route::get('/card', 'CardController@index');
 Route::resource('card', 'CardController');
 Route::get('/slip', 'BankSlipController@index');
@@ -129,12 +132,14 @@ Route::get('/shoppingcart', function () {
     return view('product_order_system.ShoppingCart');
 });
 
+
 Route::get('/search-product', 'ProductSearchController@index');
 Route::get('/viewproduct/{id}', 'ProductSearchController@show');
 Route::get('/productshow','ProductViewController@index');
 Route::post('search-product','ProductSearchController@search');
 Route::get('/order-admindash','ProductAdminDashController@index')->middleware('auth');
 Route::post('order-admindash','ProductAdminDashController@search');
+Route::post('/print_order_row','ProductAdminDashController@print_row');
 Route::post('admindash_status','ProductAdminDashController@updatesatus');
 Route::get('/paitientorderdash','PaitientOrderDashController@indexpaitent')->middleware('auth');
 Route::post('/paitientorderdash','PaitientOrderDashController@searchgeneral');
@@ -178,6 +183,10 @@ Route::resource('product', 'ProductManagementController');
 Route::delete('/productdelete/{id}', 'ProductManagementController@destroy');
 
 Route::post('/store', 'ProductManagementController@store');
+
+Route::get('/exp', 'ProductManagementController@expview');
+
+Route::get("/generate-product-report",'ProductManagementController@reports');
 
 //Record Management
 

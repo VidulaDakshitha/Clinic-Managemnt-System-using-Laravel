@@ -2,7 +2,7 @@
 
 @section('title', 'Product Management')
 
-@include('product.nav')
+@include('product.nav1')
 
 <link rel="stylesheet" href={{ url('css/product/vendors/datatables.net-buttons-bs4/css/buttons.bootstrap4.min.css') }}>
 
@@ -70,8 +70,8 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="image">Image</label>
-                    <input type="file" class="form-control-file" name="image" id="image">
+                    <label for="image" style="margin-left: 15px;">Image</label>
+                    <input type="file" class="form-control-file" style="margin-left: 15px;" name="image" id="image">
                 </div>
 
                 <div class="modal-footer">
@@ -93,12 +93,6 @@
 
 
 <div class="container">
-<form action="{{ url('/exp') }}" method="GET">
-        @csrf
-        <button type="submit" href="" class="btn btn-danger mr-1" style="margin-left: 694px;">Manage Expired Products</button>
-</form>
-
-    
 
 
     @auth
@@ -116,6 +110,13 @@
                     <div class="card">
                         <div class="card-header">
                             <h1>Stock Description</h1>
+                            <button type="submit" href="" class="btn btn-primary mr-1" data-toggle="modal" data-target="#addproduct" style="margin-left: 500px;margin-top: -45px;">Add New Product</button>
+                        
+                            <form action="/exp" method="GET">
+                                @csrf
+                                <button type="submit" href="" class="btn btn-danger mr-1" style="margin-left: 650px;margin-top: -45px;">Manage Expired Products</button>
+                            </form>
+
                         </div>
                         <div class="card-body">
                             <table id="bootstrap-data-table-export" class="table table-striped table-bordered" >
