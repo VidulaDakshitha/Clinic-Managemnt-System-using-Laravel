@@ -40,6 +40,9 @@ class PatientPDFController extends Controller
         $output='
         <h3 align="center>Registered Patients</h3>
         <table>
+         <h3>Registered Patients</h3>
+       <table>
+
         <tr>
             <th>patientID</th>
             <th>Full name</th>
