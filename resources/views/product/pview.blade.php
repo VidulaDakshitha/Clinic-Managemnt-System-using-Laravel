@@ -1,12 +1,15 @@
+<?php  $styles=['css/main/login/login.css']; ?>
+
 @extends('backend.layout')
 
 @section('title', 'Product Management')
 
-@include('product.nav')
+@include('product.nav1')
 
 @section('content')
 
-<div class="container">
+<div class="container" id = "app">
+<div id="printContainer">
     <h2>Product: {{ $product->name }}</h2>
     <hr>
 
@@ -76,12 +79,24 @@
             <h4>{{ $product->expiry_date }}</h4>
         </div>
     </div>
+
+    <div class="row mt-5">
+        <div class="col-md-3">
+            <h3>Description:</h3>
+        </div>
+        <div class="col-md-9">
+            <h4>{{ $product->description }}</h4>
+        </div>
+    </div>
+</div>
     <hr>
 
     <form action="/product" method="">
         @csrf
         <button type="submit" href="" class="btn btn-primary mr-1">BACK</button>
     </form>
+    <br>
+    <Button class="btn btn-primary" @click.preventDefault="print">Print Report</Button>
     <br><br>
     
 </div>

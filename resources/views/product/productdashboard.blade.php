@@ -112,10 +112,10 @@
                             <h1>Stock Description</h1>
                             <button type="submit" href="" class="btn btn-primary mr-1" data-toggle="modal" data-target="#addproduct" style="margin-left: 500px;margin-top: -45px;">Add New Product</button>
                         
-                            <form action="{{ url('/exp') }}" method="GET">
+                            <form action="/exp" method="GET">
                                 @csrf
                                 <button type="submit" href="" class="btn btn-danger mr-1" style="margin-left: 650px;margin-top: -45px;">Manage Expired Products</button>
-                        </form>
+                            </form>
 
                         </div>
                         <div class="card-body">

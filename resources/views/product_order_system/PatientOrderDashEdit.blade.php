@@ -10,6 +10,7 @@
 @endsection
 
 @section('js')
+<script src="{{ asset('js/app.js') }}"></script>
 <script src="{{ asset('js/order_management_script.js') }}"></script>
 @endsection
 
@@ -20,9 +21,11 @@
 
 <h1 class="display-4 text-center">Edit Orders</h1>
 
-        <div class=" container d-flex product-view-style" style="margin-top: 100px; ">
-                <form  action="updateorder" method="POST"  >
+        <div class=" container d-flex product-view-style" style="margin-top: 100px; " id="app">
+        <div id="printContainer">
+            <form  action="updateorder" method="POST"  >
                     {{ csrf_field() }}
+                    <div >
                         <div class=" form-row">
                           <div class="form-group col-md-6">
                             <label for="inputEmail4">Order ID</label>
@@ -87,12 +90,15 @@
                                         You can't update this order!
                                   </div>
                                   <button type="submit" class="btn btn-primary " disabled>Update</button>
+
                         @endif
                         <button type="submit" class="btn btn-danger" onclick="closeWin()" >Cancel</button>
 
 
-                </form>
 
+                </form>
+                <a class="btn btn-warning"  @click.preventDefault="print" >Print </a>
+        </div>
 
 
 
