@@ -44,6 +44,10 @@ Route::delete('/aboutus/{article}', 'NoticesController@destroy');
 
 Route::get('/adminfeedback', 'FeedbackController@index')->middleware('auth_admin');
 Route::get('/adminfeedbackreport', 'FeedbackController@fedreport')->middleware('auth_admin');
+Route::get('/fedsearch','FeedbackController@search');
+Route::get('/feedback_pdf', 'FeedbackPDFController@index');
+Route::get('/feedback_pdf/pdf', 'FeedbackPDFController@pdf');
+Route::get('/fedreport_search', 'FeedbackPDFController@pdf_fedsearch');
 
 Route::get('/feedback', 'FeedbackController@fed');
 Route::post('/feedbacktest','FeedbackController@store');

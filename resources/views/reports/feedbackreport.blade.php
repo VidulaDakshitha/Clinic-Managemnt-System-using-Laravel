@@ -45,6 +45,18 @@
      <div id="printContainer">
             <h1>Feedback Report</h1>
 
+            <div class="col-md-4 p-3">
+                <form action="/fedsearch" method="get">
+                    <div class="input-group">
+                        <input type="search" name="search" class="form-control">
+                        <span class="input-group-prepend">
+                            <button type="submit" class="btn btn-primary">Search</button>
+                        </span>
+                    </div>
+                </form>
+            </div>
+            
+
              <table class="table">
                 <thead class="thead-dark">
                     <tr>

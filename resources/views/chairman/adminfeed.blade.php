@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>Dashboard</title>
+<title>Manage Feedbacks</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <link href="{{ asset('css/chairhome/bootstrap.adminn.css') }}" rel="stylesheet">
@@ -27,7 +27,7 @@
           <div class="container">
             <ul class="mainnav">
               <li><a href="/admin"><img src="img/adhome.png"/><span>Dashboard</span> </a> </li>
-              <li><a href="/adminfeedbackreport"><img src="img/newspaper.png"/><span>Feedback Report</span> </a> </li>
+              <li><a href="/feedback_pdf"><img src="img/newspaper.png"/><span>Feedbacks</span> </a> </li>
               <li><a href="/adminchart"><img src="img/adminanalytics.png"/><span>Charts</span> </a> </li>
              
               
