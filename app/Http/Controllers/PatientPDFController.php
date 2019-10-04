@@ -38,10 +38,10 @@ class PatientPDFController extends Controller
         $patient_data=$this->get_patient_data();
 
         $output='
-         <h3 align="center>Registered Patients</h3>
-       <table>
+        <h3 align="center>Registered Patients</h3>
+        <table>
         <tr>
-            <th >patientID</th>
+            <th>patientID</th>
             <th>Full name</th>
             <th>Gender</th>
             <th>DOB</th>
@@ -54,28 +54,24 @@ class PatientPDFController extends Controller
         
         
         </tr>
-        
-        
-        
         ';
 
         foreach ($patient_data as $patient)
         {
             $output .= '
             
-            <tr>
-
-<td>'.$patient->patient_id.'</td>
-<td>'.$patient->fullname.'</td>
-<td>'.$patient->gender.'</td>
-<td>'.$patient->dob.'</td>
-<td>'.$patient->nic.'</td>
-<td>'.$patient->address1.'</td>
-<td>'.$patient->address2.'</td>
-<td>'.$patient->city.'</td>
-<td>'.$patient->phone.'</td>
-<td>'.$patient->email.'</td>
-    </tr>
+        <tr>
+            <td>'.$patient->patient_id.'</td>
+            <td>'.$patient->fullname.'</td>
+            <td>'.$patient->gender.'</td>
+            <td>'.$patient->dob.'</td>
+            <td>'.$patient->nic.'</td>
+            <td>'.$patient->address1.'</td>
+            <td>'.$patient->address2.'</td>
+            <td>'.$patient->city.'</td>
+            <td>'.$patient->phone.'</td>
+            <td>'.$patient->email.'</td>
+        </tr>
             
             
             ';
