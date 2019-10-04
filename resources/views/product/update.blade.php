@@ -60,8 +60,8 @@
             <input type="file" class="form-control-file" name="image" id="image" value="{{ $product->image }}" required>
         </div>
         <hr>
-        
-        <a type="button" href={{url('/product')}} class="btn btn-secondary mr-1">Cancel</a>
+
+        <a href="/product" class="btn btn-secondary mr-1">Cancel</a>
 
         <button type="submit" class="btn btn-primary">Update Product</button>
         <br><br>
