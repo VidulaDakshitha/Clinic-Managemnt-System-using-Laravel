@@ -50,9 +50,9 @@ class PersonalRecordsController extends Controller
         return redirect('home_per')->with('success','Personal Record updated successfully');
     }
 
-    public function show(PersonalRecord $personal_record,$id)
+    public function show(PersonalRecord $personal_record)
     {
-        $personal_records = PersonalRecord::where('record_id',$id);
+        
         return view('read_per',compact('personal_record'));
     }
 
@@ -62,6 +62,12 @@ class PersonalRecordsController extends Controller
         $personal_record->delete();
   
         return redirect('home_per')->with('success','Record deleted successfully');
+    }
+
+    public function reports()
+    {
+        $personal_records =PersonalRecord::paginate(10);
+        return view('report_per', compact('personal_records'));
     }
 
 }    
