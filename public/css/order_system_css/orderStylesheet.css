@@ -4,6 +4,13 @@
     background-position: center center;
 }
 
+
+@media print{
+    .noprint{
+        display:none;
+    }
+ }
+
 .searchBar{
 
     padding-top: 60px;
@@ -190,8 +197,3 @@ background-color: darkorange;
 }
 
 
-@media print{
-    .noprint{
-        display:none;
-    }
- }

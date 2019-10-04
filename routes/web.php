@@ -134,6 +134,9 @@ Route::get('/shoppingcart', function () {
     return view('product_order_system.ShoppingCart');
 });
 
+Route::get('/paitient-order-report/{data}','PaitientOrderDashController@printreport');
+
+
 
 Route::get('/search-product', 'ProductSearchController@index');
 Route::get('/viewproduct/{id}', 'ProductSearchController@show');
@@ -149,6 +152,7 @@ Route::post('/paitientorderdash','PaitientOrderDashController@searchmedical');
 Route::post('paitientorderdash/edit','PaitientOrderDashController@showedit');
 Route::post('paitientorderdash/updateorder','PaitientOrderDashController@updates');
 Route::resource('paitintorder','PaitientOrderDashController');
+
 
 Route::get('/user-prescriptions','PatientPriscriptionOrderController@show')->middleware('auth');
 Route::post('/user-prescriptions','PatientPriscriptionOrderController@search');

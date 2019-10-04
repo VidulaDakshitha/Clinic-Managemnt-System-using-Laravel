@@ -30,7 +30,7 @@
             <div class="form-row align-items-center">
               <div class="col-sm-3 my-1">
 
-                <input type="text" class="form-control" name="searchtext" placeholder="Jane Doe" required>
+                <input type="text" class="form-control" name="searchtext" placeholder="type hear..." required>
 
 
               </div>
