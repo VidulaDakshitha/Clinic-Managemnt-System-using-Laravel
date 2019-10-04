@@ -37,7 +37,7 @@ class PrescriptionController extends Controller
 
     public function update2(Request $request, $id)
     {
-        $data = $request->validate([
+        $this->validate([
             'doctor_id'=>'required',
             'patient_id' => 'required',
             'description' => 'required'
