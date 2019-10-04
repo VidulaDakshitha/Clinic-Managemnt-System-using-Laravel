@@ -72,7 +72,7 @@ Route::view('/show', 'PatientManagement.showDoc');
 Auth::routes();
 
 Route::get('/usermanager', 'UserTypeController@manage');
-Route::resource('supplier', 'SupplierManagerController')->middleware('auth_supp');
+Route::resource('supplier', 'SupplierManagerController');
 Route::get("/generate-supplier-report",'SupplierManagerController@reports')->middleware('auth_supp');
 
 Route::resource('/appointments', 'AppointmentController');
