@@ -66,4 +66,9 @@ class PrescriptionController extends Controller
         return redirect('/home_prescription')->with('success','Prescription deleted successfully');
     }
 
+    public function reports()
+    {
+        $prescriptions =Prescription::paginate(10);
+        return view('report_prescription', compact('prescriptions'));
+    }
 }
