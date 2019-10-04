@@ -29,7 +29,7 @@
     <link href="{{ asset('css/searchCSS/channeling_styles.css') }}" rel="stylesheet" type="text/css" >
     <link href="{{ asset('css/searchCSS/bootstrap_date.css') }}" rel="stylesheet" type="text/css" >
     <link href="{{ asset('css/searchCSS/fonts.css') }}" rel="stylesheet" type="text/css" >
-    {{-- <link href="{{ asset('css/searchCSS/bootstrap1.css') }}" rel="stylesheet" type="text/css" > --}}
+    <link href="{{ asset('css/searchCSS/bootstrap1.css') }}" rel="stylesheet" type="text/css" >
 
 
      

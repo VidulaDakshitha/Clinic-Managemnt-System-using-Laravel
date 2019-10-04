@@ -246,3 +246,6 @@ Route::get('/read_prescription/{id}', 'PrescriptionController@show');
 Route::get('/delete_prescription/{id}', 'PrescriptionController@destroy');
 
 //Route::get('/Welcome', ['as'=>'Welcome','uses'=>'PagesController@index']);
+
+Route::get('patient_pdf','PatientPDFController@index');
+Route::get('/patient_pdf/pdf','PatientPDFController@pdf');
