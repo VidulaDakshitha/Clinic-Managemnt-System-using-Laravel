@@ -46,6 +46,12 @@ class SupplierManagerController extends Controller
         return view('backend.supplier.reports', compact('suppliers'));
     }
 
+    public function settings()
+    {
+        $user = Auth::user();
+        return view('backend.supplier.settings', compact('user'));
+    }
+
     /**
      * Show the form for creating a new resource.
      *

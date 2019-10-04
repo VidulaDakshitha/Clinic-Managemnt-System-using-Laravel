@@ -2,7 +2,7 @@
 
 @section('title', 'Product Management')
 
-@include('product.nav')
+@include('product.nav1')
 
 @section('content')
 <div class="container">
@@ -60,8 +60,8 @@
             <input type="file" class="form-control-file" name="image" id="image" value="{{ $product->image }}">
         </div>
         <hr>
-        
-        <button type="button" href={{url('/product')}} class="btn btn-secondary mr-1">Cancel</button>
+
+        <a href="/product" class="btn btn-secondary mr-1">Cancel</a>
 
         <button type="submit" class="btn btn-primary">Update Product</button>
         <br><br>
