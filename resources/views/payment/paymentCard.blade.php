@@ -90,14 +90,12 @@
                                 <form action="{{ route('card.store')}}" method="POST">
                                 @csrf
                                         <div class="first">
-                                        <input type="text" name="patientID" placeholder="Patient ID" value="{{$userId}}" title = "Patient id should start from P and with 3 digits number" required >
+                                            <label>Patient ID</label>
+                                            <input type="text" name="patientID" value={{$userId}} readonly>
                                         </div>
                                         <div class="last">
-                                        <input type="text" name="orderID" value="{{$latsorderid}}" placeholder="Order or Appointment ID" required>
-                                            <input type="text" name="patientID" placeholder="Patient ID" pattern=" " value={{$userId}} title = "Patient id should start from P and with 3 digits number" required readonly>
-                                        </div>
-                                        <div class="last">
-                                            <input type="text" name="orderID" value={{$latsorderid}} placeholder="Order or Appointment ID" required readonly>
+                                            <label>Order ID</label>
+                                            <input type="text" name="orderID" value={{$latsorderid}} readonly>
                                         </div>
                                         <div class="first">
                                             <input type="text" name="cardNum" placeholder="Card Number" pattern="[0-9]{4} *[0-9]{4} *[0-9]{4} *[0-9]{4}" title="ERROR: Card number should contain 16 numbers" required >

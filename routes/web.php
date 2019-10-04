@@ -107,6 +107,9 @@ Route::get('/paymentSearch', function () {
 Route::get('/detail', 'CardController@show');
 Route::get('/search1', 'PaymentController@search');
 Route::resource('payment', 'PaymentController');
+
+Route::get('/preport', 'PaymentReportController@pdf');
+Route::get('/preport_search', 'PaymentReportController@pdf_search');
 Route::get('/card', 'CardController@index');
 Route::resource('card', 'CardController');
 Route::get('/slip', 'BankSlipController@index');

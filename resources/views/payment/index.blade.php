@@ -80,6 +80,7 @@
         
                              
                                 <a href="{{ route('payment.create')}}" style="margin-left: 300px;"><button class="btn btn-primary">ADD PAYMENT</button></a>
+                                <a href="{{ url('/preport')}}" style="margin-left: 300px;"><button class="btn btn-danger">GENERATE REPORT</button></a>
                                 <br>
                                 <br>
                                 
@@ -132,27 +133,50 @@
                        
                 </section>
 
+                <br>
+                <br>
                 <section class="contact" style = "margin-top:-100px;">
                         <div class="container">
-                                <div class="col-md-12">
-                                        <div class="another-text">
-                                                <h3>SEARCH PAYMENTS</h3>
-                                        </div>
-                                </div>
                             <div class="col-md-8 col-sm-12">
                                 <div class="contact-form" style = "margin-top:10px";>   
 
                                         <form action="/search1" method="GET">
+                                            <h3>SEARCH PAYMENTS</h3>
+                                            <br>
+                                            <br>
                                                 @csrf
                                                     <input type="text" name="patientID" placeholder="Patient ID">
                                                     <br>
                                                     <br>
-                                                    <br>
                                                     
+                                                    
+                                                   
                                                     
                                                     <input type="submit" value="Search" class="btn btn-primary">
+                                                   
                                                     
-                                                </form>
+                                        </form>
+                                        <br>
+                                        <br>
+                                        <br>
+                                        <br>
+                                        <form action="/preport_search" method="GET">
+                                            <h3>REPORT ACCORDING TO PATIENT ID</h3>
+                                            <br>
+                                            <br>
+                                            @csrf
+                                                <input type="text" name="patientID" placeholder="Patient ID">
+                                                <br>
+                                                <br>
+                                                
+                                                
+                                               
+                                                
+                                                <a href="" ><button class="btn btn-danger">GENERATE REPORT</button></a>
+                                               
+                                                
+                                    </form>
+                                       
                                             </div>
                                         </div>
                                     </div>
