@@ -256,7 +256,6 @@
 
 <div class="p-3 mb-2 bg-success rounded-top text-white paitent_titebar" > <h6> </h6></div>
     <div class="card-header">
-
           <a href="paitientorderdash">
           <p class="h4"> Medical Item Order details </p>
           </a>
@@ -264,29 +263,25 @@
     <div >
         <div >
              <div class="card-body"  >
-               <div >
-               <div class="table-responsive" id="tableplane" style="border-radius: 10px;  background: url('assets/image/order_back.jpg');">
-                 <div id="dataTable_wrapper" class="dataTables_wrapper dt-bootstrap4">
-                   <div class="row" >
-                      <div class="col-sm-12 col-md-6">
+                 <div class="table-responsive" id="tableplane" style="border-radius: 10px;  background: url('assets/image/order_back.jpg');">
+                    <div id="dataTable_wrapper" class="dataTables_wrapper dt-bootstrap4">
+                        <div class="row" >
+                            <div class="col-sm-12 col-md-6">
                        <!--Add button -->
-                      </div>
-                    </div>
-                <div class="col-sm-12 col-md-6">
-                    <div id="dataTable_filter" class="dataTables_filter ">
+                             </div>
+                         </div>
+                     <div class="col-sm-12 col-md-6">
+                 <div id="dataTable_filter" class="dataTables_filter ">
                         <br>
-                            <form action="paitientorderdash" method="POST">
+                    <form action="paitientorderdash" method="POST">
                                     {{ csrf_field() }}
-                                    <div class="form-row align-items-center">
-                                            <div class="col-auto my-1">
-                                                    <div class="custom-control custom-checkbox mr-sm-2">
-
-                                                          <input type="search" name="dashsearchtxt" class="form-control mx-sm-3" required>
-
-                                                    </div>
-                                            </div>
-
-                                            <div class="col-auto my-1">
+                        <div class="form-row align-items-center">
+                                <div class="col-auto my-1">
+                                    <div class="custom-control custom-checkbox mr-sm-2">
+                                            <input type="search" name="dashsearchtxt" class="form-control mx-sm-3" required>
+                                    </div>
+                                 </div>
+                                     <div class="col-auto my-1">
                                               <label class="mr-sm-2 sr-only" for="inlineFormCustomSelect">Preference</label>
                                               <select class="custom-select mr-sm-2" name="dashsearchtype">
                                                 <option value="orders.order_id">Order id</option>
@@ -295,65 +290,62 @@
                                                 <option value="orders.date">Date</option>
                                                 <option value="orders.status">Status</option>
                                               </select>
-                                            </div>
-                                            <!--need to add user id-->
+                                    </div>
+                                                                                <!--need to add user id-->
                                             <input type="text" name="paitent_id" value="{{Auth::id()}}" hidden>
-                                            <div class="col-auto my-1">
+                                    <div class="col-auto my-1">
                                               <button type="submit" class="btn btn-primary">Submit</button>
-                                            </div>
-                                        </div>
-
-                                </form>
-                    </div>
+                                    </div>
+                        </div>
+                    </form>
+                </div>
             </div>
-          </div>
+        </div>
             <br>
 
-            <div class="row" style=" background: white;" id="printContainer2">
-                <div class="col-sm-12" id="printContainer_1">
+        <div class="row" style=" background: white;" id="printContainer2">
+            <div class="col-sm-12" id="printContainer_1">
                     <table class="table table-bordered table-sm dataTable" id="dataTable" width="100%" cellspacing="0" role="grid" aria-describedby="dataTable_info" style="width: 100%;">
-              <thead>
-                <tr role="row">
-                    <th class="sorting_asc" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending" style="width: 109px;">Order id</th>
-                    <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 105px;">Product id</th>
-                    <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Salary: activate to sort column ascending" style="width: 115px;">Name</th>
-                    <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending" style="width: 115px;">Type</th>
-                    <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending" style="width: 115px;">Date</th>
-                    <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending" style="width: 80px;">Status</th>
-                    <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending" style="width: 71px;">quantity</th>
-                    <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending" style="width: 71px;">total_payment</th>
-                    <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Start date: activate to sort column ascending" style="width: 181px;">Action</th>
+                        <thead>
+                            <tr role="row">
+                                <th class="sorting_asc" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending" style="width: 109px;">Order id</th>
+                                <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 105px;">Product id</th>
+                                <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Salary: activate to sort column ascending" style="width: 115px;">Name</th>
+                                <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending" style="width: 115px;">Type</th>
+                                <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending" style="width: 115px;">Date</th>
+                                <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending" style="width: 80px;">Status</th>
+                                <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending" style="width: 71px;">quantity</th>
+                                <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending" style="width: 71px;">total_payment</th>
+                                <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Start date: activate to sort column ascending" style="width: 181px;">Action</th>
+                                </tr>
+                         </thead>
+                         <tbody>
+                                   <!--loop is start-->
+                         @if (count($medicalorder)<1)
+                                <td class="sorting_1">Nothing to show</td>
+                                 <td >Nothing to show</td>
+                                 <td >Nothing to show</td>
+                                 <td >Nothing to show</td>
+                                 <td >Nothing to show</td>
+                                 <td >Nothing to show</td>
+                                 <td >Nothing to show</td>
+                                 <td >Nothing to show</td>
+                         @else
 
-                </tr>
-              </thead>
+                            @foreach ($medicalorder as $key=> $medicalitemrow)
 
-              <tbody>
-                <!--loop is start-->
-                @if (count($medicalorder)<1)
-                      <td class="sorting_1">Nothing to show</td>
-                         <td >Nothing to show</td>
-                         <td >Nothing to show</td>
-                         <td >Nothing to show</td>
-                         <td >Nothing to show</td>
-                         <td >Nothing to show</td>
-                         <td >Nothing to show</td>
-                         <td >Nothing to show</td>
-              @else
-
-                   @foreach ($medicalorder as $key=> $medicalitemrow)
-
-                        <tr role="row" class="odd">
-                          <td class="sorting_1">{{$medicalitemrow->order_id}}</td>
-                          <td>{{$medicalitemrow->product_id}} </td>
-                          <td>{{$medicalitemrow->name}} </td>
-                          <td>{{$medicalitemrow->type}} </td>
-                          <td>{{$medicalitemrow->date}} </td>
+                            <tr role="row" class="odd">
+                                  <td class="sorting_1">{{$medicalitemrow->order_id}}</td>
+                                  <td>{{$medicalitemrow->product_id}} </td>
+                                  <td>{{$medicalitemrow->name}} </td>
+                                  <td>{{$medicalitemrow->type}} </td>
+                                  <td>{{$medicalitemrow->date}} </td>
                           @if (($medicalitemrow->status)=='waiting')
-                             <td>
-                                <div class="badge btn-warning text-wrap" style="width: 6rem;">
+                                 <td>
+                                    <div class="badge btn-warning text-wrap" style="width: 6rem;">
                                      {{$medicalitemrow->status}}
-                                 </div>
-                              </td>
+                                     </div>
+                                  </td>
                             @else
                                @if (($medicalitemrow->status)=='ready')
                                    <td>
@@ -364,9 +356,9 @@
                             @else
                                @if (($medicalitemrow->status)=='shiped')
                                  <td>
-                                      <div class="badge btn-success text-wrap" style="width: 6rem;">
+                                     <div class="badge btn-success text-wrap" style="width: 6rem;">
                                           {{$medicalitemrow->status}}
-                                      </div>
+                                     </div>
                                  </td>
                                 @endif
                               @endif
@@ -408,23 +400,37 @@
                           </td>
                         </tr>
 
-                   @endforeach
+                           @endforeach
 
-            @endif
+                           @endif
 
+                         </tbody>
+                     </table>
+             </div>
 
-
-            </tbody>
-            </table>
-         </div>
-         <Button class="btn btn-warning print_btn" @click.preventDefault="printx" style="margin-left: 20px; margin-bottom: 10px;"> Generate report</Button>
-    </div>
-    </div>
-               </div>
              </div>
         </div>
+    </div>
+
+    <script type="text/javascript">
+        function printme(){
+
+
+
+
+         var printContents = document.getElementById('printContainer2').innerHTML;
+         var originalContents = document.body.innerHTML;
+         document.body.innerHTML = printContents;
+         window.print();
+         document.body.innerHTML = originalContents;
+        }
+
+    </script>
 
     </div>
+    </div>
+        <a type="button"target="_blank" class="btn btn-warning print_btn" onclick="printme()"> Generate report </a>
+
 
 
 @endsection

@@ -21,7 +21,7 @@
 
 <h1 class="display-4 text-center">Edit Orders</h1>
 
-        <div class=" container d-flex product-view-style" style="margin-top: 100px; " id="app">
+    <div class=" container d-flex product-view-style" style="margin-top: 100px; " id="app">
         <div id="printContainer">
             <form  action="updateorder" method="POST"  >
                     {{ csrf_field() }}
@@ -58,13 +58,13 @@
                             @if (($paitint_order[6])=='waiting')
 
                                   <label for="inputZip">Quntity</label>
-                          <input type="number" class="form-control"  min="1" value="{{$paitint_order[7]}}" name="newquntity"  >
+                                  <input type="number" class="form-control"  min="1" value="{{$paitint_order[7]}}" name="newquntity"  >
 
 
                             @else
 
                                    <label for="inputZip">Quntity</label>
-                               <input type="number" class="form-control" min="1"   value="{{$paitint_order[7]}}" name="quntity" disabled >
+                                   <input type="number" class="form-control" min="1"   value="{{$paitint_order[7]}}" name="quntity" disabled >
 
                             @endif
 
@@ -80,7 +80,7 @@
                           <!--pass old--qunrirt-->
                           <input type="text" name="oldquntity" value="{{$paitint_order[7]}}" hidden>
 
-                        </div>
+                    </div>
 
 
                         @if (($paitint_order[6])=='waiting')
@@ -94,13 +94,9 @@
                         @endif
                         <button type="submit" class="btn btn-danger" onclick="closeWin()" >Cancel</button>
 
-
-
-                </form>
-                <a class="btn btn-warning"  @click.preventDefault="print" >Print </a>
-        </div>
-
-
+            </form>
 
         </div>
+        <a class="btn btn-warning"  @click.preventDefault="print" >Print</a>
+    </div>
 @endsection
