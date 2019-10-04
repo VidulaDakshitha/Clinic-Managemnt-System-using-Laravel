@@ -49,7 +49,7 @@
                     </div>
                     <div class="form-group">
                         <label>EXP-Date</label>
-                        <input type="date" name="expiry_date" class="form-control" id="expiry_date" required >
+                        <input type="date" name="expiry_date" class="form-control" id="expiry_date" required>
                     </div>
                     <div class="form-group">
                         <label>Brand</label>
@@ -110,16 +110,19 @@
                     <div class="card">
                         <div class="card-header">
                             <h1>Stock Description</h1>
-                            <button type="submit" href="" class="btn btn-primary mr-1" data-toggle="modal" data-target="#addproduct" style="margin-left: 500px;margin-top: -45px;">Add New Product</button>
-                        
+                            <button type="submit" href="" class="btn btn-primary mr-1" data-toggle="modal"
+                                data-target="#addproduct" style="margin-left: 500px;margin-top: -45px;">Add New
+                                Product</button>
+
                             <form action="/exp" method="GET">
                                 @csrf
-                                <button type="submit" href="" class="btn btn-danger mr-1" style="margin-left: 650px;margin-top: -45px;">Manage Expired Products</button>
+                                <button type="submit" href="" class="btn btn-danger mr-1"
+                                    style="margin-left: 650px;margin-top: -45px;">Manage Expired Products</button>
                             </form>
 
                         </div>
                         <div class="card-body">
-                            <table id="bootstrap-data-table-export" class="table table-striped table-bordered" >
+                            <table id="bootstrap-data-table-export" class="table table-striped table-bordered">
                                 <thead>
                                     <tr>
                                         <th>name</th>
@@ -147,7 +150,7 @@
                                         <td>{{$product->brand}}</td>
                                         <td>{{$product->potency}}</td>
                                         <td>{{$product->selling_price}}</td>
-                                        
+
 
 
                                         <td>
@@ -158,10 +161,8 @@
                                         </td>
 
                                         <td>
-                                            <form action="/product/{{ $product->product_id}}/edit" method="GET">
-                                                @csrf
-                                                <button type="submit" href="" class="btn btn-primary mr-1">Edit</button>
-                                            </form>
+                                            <a href="/product/{{ $product->product_id}}/edit"
+                                                class="btn btn-primary mr-1">Edit</a>
                                         </td>
                                         <td>
                                             <form action="/productdelete/{{$product->product_id}}" method="POST">
@@ -170,7 +171,7 @@
                                                 <button type="submit" href="" class="btn btn-danger">Remove</button>
                                             </form>
                                         </td>
-                                        
+
                                     </tr>
 
                                     @endforeach
