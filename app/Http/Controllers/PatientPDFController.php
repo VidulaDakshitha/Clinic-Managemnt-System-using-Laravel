@@ -38,7 +38,7 @@ class PatientPDFController extends Controller
         $patient_data=$this->get_patient_data();
 
         $output='
-         <h3 align="center>Registered Patients</h3>
+         <h3>Registered Patients</h3>
        <table>
         <tr>
             <th >patientID</th>
