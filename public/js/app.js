@@ -49183,7 +49183,7 @@ window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.
 var options = {
   name: "Supplier Report",
   specs: ["fullscreen=no", "titlebar=yes", "scrollbars=yes"],
-  styles: ["css/app.css"]
+  styles: ["css/app.css", "css/order_system_css/orderStylesheet.css"]
 };
 Vue.use(vue_html_to_paper__WEBPACK_IMPORTED_MODULE_0___default.a, options); // or, using the defaults with no stylesheet
 
