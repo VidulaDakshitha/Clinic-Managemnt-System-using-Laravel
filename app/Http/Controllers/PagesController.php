@@ -15,7 +15,7 @@ class PagesController extends Controller
 
     public function __construct()
     {
-        $this->middleware('auth', ['except' => ['show']]);
+        $this->middleware('auth', ['except' => ['contact2','postcontact2','show']]);
     }
 
     public function index()
@@ -76,6 +76,35 @@ class PagesController extends Controller
 
         return redirect('/contact')->with('success',' Your message was received successfully..We will get back to you soon');
       
+    }
+
+    public function postcontact2(Request $request)
+    {
+        $this->validate($request,['email'=>'required|email',
+        'message=>min:10','phone=>min:10']);
+
+        $data=array(
+            'name'=>$request->name,
+             'email' =>$request->email,
+             'phone'=>$request->phone,
+             'bodymessage'=>$request->message
+    
+        );
+
+        Mail::send('emails.contact',$data,function($message)use($data){
+
+            $message->from($data['email']);
+            $message->to('viduladakshitha@gmail.com');
+            $message->subject($data['phone']);
+        });
+
+        return redirect('/contact2')->with('success',' Your message was received successfully..We will get back to you soon');
+      
+    }
+
+    public function contact2()
+    {
+        return view('PatientManagement.contactus2');
     }
 
 

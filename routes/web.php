@@ -20,6 +20,8 @@ Route::get('/AdminServ', 'PostsController@serv');
 Route::get('/gallery', 'PostsController@media');
 Route::get('/welcome', 'SweetAlertDemo@index');
 Route::get('/adminchart', 'LaravelGoogleGraphController@index');
+Route::get('/contact2', 'PagesController@contact2');
+Route::post('/contact2', 'PagesController@postcontact2');
 
 
 // Route::post('/ServiceTest', 'PostsController@store');
