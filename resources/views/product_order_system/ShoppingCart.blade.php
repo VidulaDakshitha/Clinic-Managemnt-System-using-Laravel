@@ -51,7 +51,7 @@
                                                 <td>{{$product['item']['product_id']}}</td>
                                                 <td>
 
-                                                        <img src="{{ asset('product_images/'.$product['item']['image']) }}"
+                                                        <img src="{{ asset('/storage/product_images/'.$product['item']['image']) }}"
                                                                 class="product_image" alt=""
                                                                 style="width: 50px; height: 80px; box-shadow: 0px 0px 0 5px #f0f0f0;">
                                                         <h6>{{$product['item']['name']}}</h6>

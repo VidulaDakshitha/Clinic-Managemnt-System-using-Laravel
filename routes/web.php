@@ -139,9 +139,6 @@ Route::get('/shoppingcart', function () {
     return view('product_order_system.ShoppingCart');
 });
 
-Route::get('/paitient-order-report/{data}','PaitientOrderDashController@printreport');
-
-
 
 Route::get('/search-product', 'ProductSearchController@index');
 Route::get('/viewproduct/{id}', 'ProductSearchController@show');
@@ -157,7 +154,6 @@ Route::post('/paitientorderdash/medical','PaitientOrderDashController@searchmedi
 Route::post('paitientorderdash/edit','PaitientOrderDashController@showedit');
 Route::post('paitientorderdash/updateorder','PaitientOrderDashController@updates');
 Route::resource('paitintorder','PaitientOrderDashController');
-
 
 Route::get('/user-prescriptions','PatientPriscriptionOrderController@show')->middleware('auth');
 Route::post('/user-prescriptions','PatientPriscriptionOrderController@search');
@@ -199,6 +195,8 @@ Route::get('/exp', 'ProductManagementController@expview');
 
 Route::get("/generate-product-report",'ProductManagementController@reports');
 
+Route::get("/reportsearch",'ProductManagementController@search');
+
 //Record Management
 
 //1.Personal Record
@@ -215,10 +213,11 @@ Route::get('/create_per', function(){
 Route::post('/insert', 'PersonalRecordsController@add0');
 
 Route::get('/update_per/{id}', 'PersonalRecordsController@update0');
-Route::post('/edit_per/{id}', 'PersonalRecordsController@edit0');
+Route::get('/edit_per/{id}', 'PersonalRecordsController@edit0');
 
 Route::get('/read_per/{id}', 'PersonalRecordsController@show');
 
+Route::get('/read_personal/{id}', 'PersonalRecordsController@read');
 Route::get('/delete_per/{id}', 'PersonalRecordsController@destroy');
 
 Route::get("/report_per",'PersonalRecordsController@reports');
@@ -237,9 +236,10 @@ Route::get('/create_treat', function(){
 Route::post('/insert_treatment', 'TreatmentController@add1');
 
 Route::get('/update_treat/{id}', 'TreatmentController@update1');
-Route::post('/edit_treat/{id}', 'TreatmentController@edit1');
+Route::get('/edit_treat/{id}', 'TreatmentController@edit1');
 
 Route::get('/read_treat/{id}', 'TreatmentController@show');
+Route::get('/read_treatment/{id}', 'TreatmentController@read');
 
 Route::get('/delete_treat/{id}', 'TreatmentController@destroy');
 
@@ -263,6 +263,7 @@ Route::get('/edit_prescription/{id}', 'PrescriptionController@update2');
 
 Route::get('/read_prescription/{id}', 'PrescriptionController@show');
 Route::get('/delete_prescription/{id}', 'PrescriptionController@destroy');
+
 
 Route::get("/report_prescription",'PrescriptionController@reports');
 

@@ -147,7 +147,7 @@ class PaymentController extends Controller
 
     public function demo()
     {
-        $Array = ["P001", "Doctor Visited", "1000", "10/06/2019"];
+        $Array = ["01", "Doctor Visited", "1000", "10/06/2019"];
         return view('payment.create', compact('Array'));
     }    
 }

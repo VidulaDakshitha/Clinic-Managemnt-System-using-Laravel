@@ -20,8 +20,10 @@
 
 
 
-<div class="container-fluid" style="width: 80%;">
-    <div class="p-3 mb-2 bg-primary rounded-top text-white"> <h6>{{auth()->user()->name}} 's medical priscriptions</h6>
+<div class="container-fluid" style="width: 80%; background-image: linear-gradient(to left bottom, #f8ffff, #defffd, #c6fff4, #b1ffe6, #a2ffd2);
+">
+    <div class="p-3 mb-2 bg-primary rounded-top text-white" style="background-image: linear-gradient(to left bottom, #c8ff49, #9ef863, #76ef7a, #4de48e, #1ad89e);">
+         <h6>{{auth()->user()->name}} 's medical priscriptions</h6>
    </div>
         <!--Search-->
 

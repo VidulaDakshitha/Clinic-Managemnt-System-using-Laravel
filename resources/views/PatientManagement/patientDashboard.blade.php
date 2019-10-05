@@ -143,7 +143,7 @@
               </div>
             </div>
 
-            <a href="#">
+            <a href="/read_personal/{{$research->patient_id}}">
             <div class="col-lg-3 col-md-6 col-sm-6">
               <div class="card card-stats">
                 <div class="card-header card-header-success card-header-icon">
@@ -161,7 +161,7 @@
               </div>
             </div>
             
-            <a href="#">
+            <a href="/read_treatment/{{$research->patient_id}}">
             <div class="col-lg-3 col-md-6 col-sm-6">
               <div class="card card-stats">
                 <div class="card-header card-header-danger card-header-icon">
@@ -726,17 +726,12 @@
 
 
                 $.ajax({
-
-                  //refer userProfileController
-                 
                     type: 'POST',
                     url: "{{url('/userdelete')}}/" + id,                   
                     data: {_token:CSRF_TOKEN,"_method": 'DELETE'}, 
                     dataType: 'JSON',
                     success: function (results) {
-
                          if (results.success === true) {
-                           window.location.href = "{{url('/')}}";
                              swal("Done!", results.message, "success");
                          } else {
                            swal("Error!", results.message, "error");
@@ -744,6 +739,7 @@
                      }
                 });
 
+                window.location.href = "/";
             } else {
                 e.dismiss;
             }

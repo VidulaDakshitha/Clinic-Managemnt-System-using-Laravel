@@ -55,8 +55,9 @@
                                         <h1>Make online payment</h1>
                                         <p>You are able make online payments for your medicines, medical consume items and doctor appoinments.
                                              As IHHR we have made your operations more simple<br> Thank you!</p>
-                                        <button>Terms & condition</button>
-                                        <button>About Refund</button>
+                                        <br>
+                                        <br>
+                                        <br>
                                 </div>
                             </div>
                         </div>
@@ -98,19 +99,19 @@
                                             <input type="text" name="orderID" value={{$latsorderid}} readonly>
                                         </div>
                                         <div class="first">
-                                            <input type="text" name="cardNum" placeholder="Card Number" pattern="[0-9]{4} *[0-9]{4} *[0-9]{4} *[0-9]{4}" title="ERROR: Card number should contain 16 numbers" required >
+                                            <input type="text" id = "cardNum" name="cardNum" placeholder="Card Number" pattern="[0-9]{4} *[0-9]{4} *[0-9]{4} *[0-9]{4}" title="ERROR: Card number should contain 16 numbers" required >
                                         </div>
                                         <div class="last">
-                                            <input type="text" name="bank" placeholder="Bank" required>
+                                            <input type="text" id = "bank" name="bank" placeholder="Bank" required>
                                         </div>
                                         <br>
                                         <br>
                                         <br>
                                         <div class="first">
-                                            <input type="text" name="serialNum" placeholder="Serial 3-digits(xxx)" pattern="[0-9]{3}" title="ERROR: Card serial should contain 3 numbers only" required>
+                                            <input type="text" id = "serialNum" name="serialNum" placeholder="Serial 3-digits(xxx)" pattern="[0-9]{3}" title="ERROR: Card serial should contain 3 numbers only" required>
                                         </div>
                                         <div class="last">
-                                            <input type="text" name="cardType" placeholder="Card Type(VISA or MASTER)" required>
+                                            <input type="text" id = "cardType" name="cardType" placeholder="Card Type(VISA or MASTER)" pattern = "(VISA)||(MASTER)" required>
                                         </div>
 
                                         <br>
@@ -123,7 +124,18 @@
                                             </div>
                                             <div class="submit">
                                                 <input type="submit" value="PAY">
+                                                <button onclick="myFunction()" class = "btn btn-primary">Demo</button>
                                             </div>
+                                            
+
+                                            <script>
+                                                function myFunction() {
+                                                document.getElementById("cardNum").value = "1234123412341234";
+                                                document.getElementById("bank").value = "HNB";
+                                                document.getElementById("serialNum").value = "123";
+                                                document.getElementById("cardType").value = "VISA";
+                                                }
+                                            </script>
                                         </div>
                                     </form>
                                 </div>

@@ -2,18 +2,34 @@
 
 @extends('backend.layout')
 
-@section('title', 'Product Manager')
+@section('title', '')
 
 @include('product.nav1')
 
 
 @section('content')
 <div class="container" id="app">
+
+        <form action = "/reportsearch" method = "get" style="margin-right: 650px;">
+            <div class = "input-group">
+                <input type = "search" name = "search" placeholder="Search for product" class="form-control">
+                <span class = "input-group-prepend">
+                    <button type="submit" class="btn btn-primary">Search</button>
+                </span>
+            </div>
+        </form>
+
+        <br>
+        <br>
+
     {{-- pdf start --}}
     <div id="printContainer">
+
+            <img style="width: 400px;" src="{{ asset('images/main/mainlayout/logo_dark_long.png') }}" alt="">
+        <hr> 
         <h1>Inventory Dashboard</h1>
         @auth
-        <h3>Monthly Stock List</h3>
+        <h3>Stock Report</h3>
         
         @else
         <h3>Not Logged In</h3>
@@ -73,6 +89,8 @@
     {{-- pdf end --}}
     {{ $products->links() }}
 
-    <Button class="btn btn-primary" @click.preventDefault="print">Print Report</Button>
+    <input type="image" value="submit" @click.preventDefault="print" src={{url('/images/product/submit1.png')}} alt="submit Button" width = "100px" height="40px" style="border: 0" >
 </div>
+<br><br>
+
 @endsection
