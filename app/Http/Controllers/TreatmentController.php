@@ -26,19 +26,25 @@ class TreatmentController extends Controller
         return redirect('/home_treat')->with('info','Treatment record saved successfully!');
     }
 
-    public function update1(TreatmentRecord $treatment_record)
+    public function update1($id)
     {
+        $treatment_record = TreatmentRecord::where('record_id',$id)->first();
         return view('update_treat',compact('treatment_record'));
     }
 
-    public function edit1(Request $request, TreatmentRecord $treatment_record)
+    public function edit1(Request $request,$id)
     {
         $request->validate([
             'date' => 'required',
             'description' => 'required'
         ]);
-  
-        $$treatment_record->update($request->all());
+        
+        $treatment_record = TreatmentRecord::where('record_id',$id)->first();
+       
+        $treatment_records->date = $request->input('date');
+        $treatment_records->description = $request->input('description');
+    
+        $treatment_records->save();
   
         return redirect('home_treat')->with('success','Treatment updated successfully');
     }
