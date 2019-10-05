@@ -31,12 +31,13 @@ class PersonalRecordsController extends Controller
         return redirect('/home_per')->with('info','Record saved successfully!');
     }
 
-    public function update0(PersonalRecord $personal_record)
+    public function update0($id)
     {
+        $personal_record = PersonalRecord::where('record_id',$id)->first();
         return view('update_per',compact('personal_record'));
     }
 
-    public function edit0(Request $request, PersonalRecord $personal_record)
+    public function edit0(Request $request,$id)
     {
         $request->validate([
             'patient_id' => 'required|numeric|max:6',
@@ -45,8 +46,13 @@ class PersonalRecordsController extends Controller
             'description' => 'required'
         ]);
   
-        $personal_record->update($request->all());
-  
+        $personal_record = PersonalRecord::where('record_id',$id)->first();
+        $personal_record->patient_id = $request->input('patient_id');
+        $personal_record->disease = $request->input('disease');
+        $personal_record->date = $request->input('date');
+        $personal_record->description = $request->input('description');
+    
+        $personal_record->save();
         return redirect('home_per')->with('success','Personal Record updated successfully');
     }
 

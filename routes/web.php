@@ -206,7 +206,7 @@ Route::get('/create_per', function(){
 Route::post('/insert', 'PersonalRecordsController@add0');
 
 Route::get('/update_per/{id}', 'PersonalRecordsController@update0');
-Route::post('/edit_per/{id}', 'PersonalRecordsController@edit0');
+Route::get('/edit_per/{id}', 'PersonalRecordsController@edit0');
 
 Route::get('/read_per/{id}', 'PersonalRecordsController@show');
 
@@ -229,7 +229,7 @@ Route::get('/create_treat', function(){
 Route::post('/insert_treatment', 'TreatmentController@add1');
 
 Route::get('/update_treat/{id}', 'TreatmentController@update1');
-Route::post('/edit_treat/{id}', 'TreatmentController@edit1');
+Route::get('/edit_treat/{id}', 'TreatmentController@edit1');
 
 Route::get('/read_treat/{id}', 'TreatmentController@show');
 Route::get('/read_treatment/{id}', 'TreatmentController@read');
