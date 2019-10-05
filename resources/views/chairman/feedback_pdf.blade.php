@@ -134,6 +134,7 @@
       </tr>
      </thead>
      <tbody>
+     @if (count($feedback_data)>0)
      @foreach($feedback_data as $feedback)
       <tr>
             <th scope="row"> {{ $feedback->patient_id }}</th>
@@ -142,6 +143,9 @@
             <td>{{ $feedback->message }}</td>
       </tr>
      @endforeach
+     @else
+                <p>No Feedbacks to show</p>
+                @endif 
      </tbody>
     </table>
    </div>
