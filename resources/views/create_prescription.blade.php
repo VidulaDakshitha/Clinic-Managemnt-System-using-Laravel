@@ -25,7 +25,7 @@
           
             <div class="form-group">
                 <label>Doctor_ID:</label>
-                <input type="string" class="form-control" id="pid" name="doctor_id" placeholder="Enter Doctor_id">
+                <input type="string" class="form-control" id="did" name="doctor_id" placeholder="Enter Doctor_id">
               </div>
    
            
@@ -44,6 +44,15 @@
            <a href="{{ url('/home_prescription') }}" class="btn btn-primary">Back</a>
          </fieldset>
        </form>
+       <button type="button" onclick="myFunction()" class="btn-btn-primary">Demo</button>
+       <script>
+         function myFunction(){
+         document.getElementById("did").value = "7";
+         document.getElementById("pid").value = "5";
+         document.getElementById("Description").value = "Needs concern";
+         }
+
+       </script>
       </div>
     </div>
   </div>

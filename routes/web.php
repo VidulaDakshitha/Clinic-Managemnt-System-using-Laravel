@@ -216,8 +216,8 @@ Route::get('/update_per/{id}', 'PersonalRecordsController@update0');
 Route::get('/edit_per/{id}', 'PersonalRecordsController@edit0');
 
 Route::get('/read_per/{id}', 'PersonalRecordsController@show');
-
 Route::get('/read_personal/{id}', 'PersonalRecordsController@read');
+
 Route::get('/delete_per/{id}', 'PersonalRecordsController@destroy');
 
 Route::get("/report_per",'PersonalRecordsController@reports');

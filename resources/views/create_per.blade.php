@@ -24,7 +24,7 @@
             @endif
           
             <div class="form-group">
-             Date of advice :<input type="date" class="form-control-file" name="date" value="" required>
+             Date of advice :<input id="d" type="date" class="form-control-file" name="date" value="" required>
            </div>
            
            <div class="form-group">
@@ -47,6 +47,17 @@
            <a href="{{ url('/home_per') }}" class="btn btn-primary">Back</a>
          </fieldset>
        </form>
+
+       <button type="button" onclick="myFunction()" class="btn-btn-primary">Demo</button>
+       <script>
+         function myFunction(){
+         document.getElementById("d").value = "2019-10-16";
+         document.getElementById("pid").value = "5";
+         document.getElementById("Disease").value = "Ulcer";
+         document.getElementById("Description").value = "Long time problem";
+         }
+
+       </script>
       </div>
     </div>
   </div>

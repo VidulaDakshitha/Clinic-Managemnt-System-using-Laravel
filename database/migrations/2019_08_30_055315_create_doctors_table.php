@@ -43,10 +43,20 @@ class CreateDoctorsTable extends Migration
         DB::table('doctors')->insert(
             array(
                 'fullname' => 'DR A.M. DEEPAL K. ATTANAYAKE',
-                'nic' => '199207810319',
+                'nic' => '199207810316',
                 'type' => 'Ear Infections Surgeon',
             )
         );
+
+        DB::table('doctors')->insert(
+            array(
+                'fullname' => 'DR(MRS) A.R.J.P. NIYAS',
+                'nic' => '199207810315',
+                'type' => 'Cardio Surgeon',
+            )
+        );
+
+
     }
 
     /**
