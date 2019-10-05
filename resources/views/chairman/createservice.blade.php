@@ -14,7 +14,7 @@
 
         <div class="form-group">
             <label for="description">Description</label>
-            <textarea name="description" maxlength="100" id="description" class="form-control"
+            <textarea name="description" maxlength="48" id="description" class="form-control"
                 placeholder="Description"></textarea>
         </div>
 
@@ -27,5 +27,16 @@
             <input type="submit" value="Submit" class="btn btn-primary">
         </div>
     </form>
+
+    <button type="button" onclick="myFunction()" class="btn btn-primary">Demo</button>
+
+    <script>
+        function myFunction() {
+            document.getElementById("title").value = "New Service";
+            document.getElementById("description").value = "A description about Service";
+        }
+    
+    </script>
+
 </div>
 @endsection

@@ -19,6 +19,7 @@ Route::get('/ServiceTest', 'PostsController@index');
 Route::get('/AdminServ', 'PostsController@serv');
 Route::get('/gallery', 'PostsController@media');
 Route::get('/welcome', 'SweetAlertDemo@index');
+Route::get('/adminchart', 'LaravelGoogleGraphController@index')->middleware('auth_admin');
 
 
 // Route::post('/ServiceTest', 'PostsController@store');
@@ -43,6 +44,10 @@ Route::delete('/aboutus/{article}', 'NoticesController@destroy');
 
 Route::get('/adminfeedback', 'FeedbackController@index')->middleware('auth_admin');
 Route::get('/adminfeedbackreport', 'FeedbackController@fedreport')->middleware('auth_admin');
+Route::get('/fedsearch','FeedbackController@search');
+Route::get('/feedback_pdf', 'FeedbackPDFController@index')->middleware('auth_admin');
+Route::get('/feedback_pdf/pdf', 'FeedbackPDFController@pdf');
+Route::get('/fedreport_search', 'FeedbackPDFController@pdf_fedsearch');
 
 Route::get('/feedback', 'FeedbackController@fed');
 Route::post('/feedbacktest','FeedbackController@store');

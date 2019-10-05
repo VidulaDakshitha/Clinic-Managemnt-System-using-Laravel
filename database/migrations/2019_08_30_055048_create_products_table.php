@@ -40,7 +40,7 @@ class CreateProductsTable extends Migration
                     'type' => 'medical',
                     'brand'=>'S.B.L',
                     'description'=>'S.B.L Ache Drops',
-                    'image' => 'Ache-Nil-SBL_1570261063_png'
+                    'image' => 'Ache-Nil-SBL_1570261063.png'
                 )
             );
 
@@ -56,7 +56,7 @@ class CreateProductsTable extends Migration
                     'type' => 'medical',
                     'brand'=>'Glucorect',
                     'description'=>'Glucorect Adel-18 Remedy Drops',
-                    'image' => 'adel-18-glucorect_1570261177_jpg'
+                    'image' => 'adel-18-glucorect_1570261177.jpg'
                 )
             );
 
@@ -72,7 +72,7 @@ class CreateProductsTable extends Migration
                     'type' => 'general',
                     'brand'=>'S.B.L',
                     'description'=>'Arnica Montana Fortified Hair Oil for hair growth',
-                    'image' => 'Arnica-montana-Fortified_1570261236_jpg'
+                    'image' => 'Arnica-montana-Fortified_1570261236.jpg'
                 )
             );
 
@@ -88,7 +88,7 @@ class CreateProductsTable extends Migration
                     'type' => 'general',
                     'brand'=>'S.B.L',
                     'description'=>'Arnica Montana Hair Oil for dandruff',
-                    'image' => 'Arnica-Montana-Oil_1570261280_jpg'
+                    'image' => 'Arnica-Montana-Oil_1570261280.jpg'
                 )
             );
 
@@ -104,7 +104,7 @@ class CreateProductsTable extends Migration
                     'type' => 'general',
                     'brand'=>'S.B.L',
                     'description'=>'S.B.L Arnica Montana Shampoo',
-                    'image' => 'Arnica-Montana-Shampoo_1570261372_jpg'
+                    'image' => 'Arnica-Montana-Shampoo_1570261372.jpg'
                 )
             );
 
@@ -120,7 +120,7 @@ class CreateProductsTable extends Migration
                     'type' => 'general',
                     'brand'=>'S.B.L',
                     'description'=>'S.B.L Arnica Oinement for skin care',
-                    'image' => 'Arnica-Oinement_1570261467_jpg'
+                    'image' => 'Arnica-Oinement_1570261467.jpg'
                 )
             );
 
@@ -136,7 +136,7 @@ class CreateProductsTable extends Migration
                     'type' => 'medical',
                     'brand'=>'S.B.L',
                     'description'=>'S.B.L Blood Purifier Remedy',
-                    'image' => 'Haemoglow_1570273704_jpg'
+                    'image' => 'Haemoglow_1570273704.jpg'
                 )
             );
 
@@ -152,7 +152,7 @@ class CreateProductsTable extends Migration
                     'type' => 'medical',
                     'brand'=>'Dr.Reckeweg',
                     'description'=>'Dr.Reckeweg R-10 Remedy',
-                    'image' => 'R10-dr.Reckeweg_1570273778_jpg'
+                    'image' => 'R10-dr.Reckeweg_1570273778.jpg'
                 )
             );
 
@@ -168,7 +168,7 @@ class CreateProductsTable extends Migration
                     'type' => 'medical',
                     'brand'=>'Dr.Reckeweg',
                     'description'=>'Dr.Reckeweg R-16 Remedy',
-                    'image' => 'R16-dr.Reckeweg_1570273831_jpg'
+                    'image' => 'R16-dr.Reckeweg_1570273831.jpg'
                 )
             );
 
@@ -184,7 +184,7 @@ class CreateProductsTable extends Migration
                     'type' => 'medical',
                     'brand'=>'S.B.L',
                     'description'=>'Drops-No5 for Cervical pain',
-                    'image' => 'Drops-No5_1570273956_jpg'
+                    'image' => 'Drops-No5_1570273956.jpg'
                 )
             );
 
@@ -200,7 +200,7 @@ class CreateProductsTable extends Migration
                     'type' => 'general',
                     'brand'=>'S.B.L',
                     'description'=>'Calendula Oinement for skin',
-                    'image' => 'Calendula-Oinement_1570274052_jpg'
+                    'image' => 'Calendula-Oinement_1570274052.jpg'
                 )
             );
 

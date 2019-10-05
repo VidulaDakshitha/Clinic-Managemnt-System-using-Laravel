@@ -34,8 +34,10 @@
           <div class="container">
             <ul class="mainnav">
               <li><a href="/admin"><img src="img/adhome.png"/><span>Dashboard</span> </a> </li>
-              <li class="active"><a href="/feedback_pdf"><img src="img/newspaper.png"/><span>Feedbacks</span> </a> </li>
-              <li><a href="/adminchart"><img src="img/adminanalytics.png"/><span>Charts</span> </a> </li>
+              <li><a href="/gallery"><img src="img/gallery.png">
+                <span>Gallery</span> </a>  </li>
+              <li><a href="/ServiceTest"><img src="img/24-hours.png"/><span>Services</span> </a> </li>
+              <li><a href="/aboutus"><img src="img/about-us.png"/><span>About Us</span> </a> </li>
              
               
                 </ul>
@@ -81,25 +83,41 @@
    
    
    <div class="row">
+
+      
     
     
 
         <form action="/fedreport_search" method="GET">
             <h1 align="center">Feedbacks</h1>
+
+            
+
             <br>
             <br>
             @csrf
-                <input type="text" name="patient_id" placeholder="Patient ID">
+                <input type="text" name="patient_id" placeholder="Generate report for Patient ID">
                 <br>
                 <br>
                 
                 
                
                 
-                <a href="" ><button class="btn btn-danger">GENERATE REPORT</button></a>
+                <a href="" ><button class="btn btn-danger">GENERATE FEEDBACK REPORT</button></a>
                
                 
     </form>
+
+    <div>
+        <form action="/fedsearch" method="get">
+            <div class="input-group">
+                <input type="search" name="search" placeholder="Search for a Patient ID" class="form-control">
+                <span class="input-group-prepend">
+                    <button type="submit" class="btn btn-primary">Search</button>
+                </span>
+            </div>
+        </form>
+    </div>
 
     
     
@@ -116,6 +134,7 @@
       </tr>
      </thead>
      <tbody>
+     @if (count($feedback_data)>0)
      @foreach($feedback_data as $feedback)
       <tr>
             <th scope="row"> {{ $feedback->patient_id }}</th>
@@ -124,6 +143,9 @@
             <td>{{ $feedback->message }}</td>
       </tr>
      @endforeach
+     @else
+                <p>No Feedbacks to show</p>
+                @endif 
      </tbody>
     </table>
    </div>
