@@ -41,8 +41,8 @@ use App\Feedback;
     <div class="container">
       <ul class="mainnav">
         <li class="active"><a href="/admin"><img src="img/adhome.png"/><span>Dashboard</span> </a> </li>
-        <li><a href="/adminfeedbackreport"><img src="img/newspaper.png"/><span>Reports</span> </a> </li>
-        <li><a href="/gallery"><img src="img/gallery.png"/><span>Gallery</span> </a> </li>
+        <li><a href="/feedback_pdf"><img src="img/newspaper.png"/><span>Feedbacks</span> </a> </li>
+        <li><a href="/adminchart"><img src="img/adminanalytics.png"/><span>Charts</span> </a> </li>
        
         
           </ul>
@@ -138,7 +138,7 @@ use App\Feedback;
              @foreach ($feedbacks as $feedback)
             <div class="widget-content">
               <ul class="messages_layout">
-                <li class="from_user left"> <a href="#" class="avatar"><img src="img/message_avatar1.png"/></a>
+                <li class="from_user left"> <a href="#" class="avatar"><img src="img/adminuser.png"/></a>
                   <div class="message_wrap"> <span class="arrow"></span>
                     <div class="info"> <a class="name">{{ $feedback->name }}</a>
                       
@@ -171,16 +171,18 @@ use App\Feedback;
             <div class="widget-content">
               <div class="shortcuts"> <a href="/aboutus" class="shortcut"><img src="img/about-us.png"></i><span
                                         class="shortcut-label">About Us</span> </a><a href="/gallery" class="shortcut"><img src="img/gallery.png">
-                                             <span class="shortcut-label">Gallery</span> </a><a href="/order-admindash" class="shortcut"><img src="img/newspaper.png"> <span class="shortcut-label">Orders</span> </a><a href="/adminfeedback" class="shortcut"><img src="img/opinion.png"><span class="shortcut-label">Feedbacks</span> </a><a href="/ServiceTest" class="shortcut"><img src="img/24-hours.png"><span
-                                                class="shortcut-label">Services</span> </a><a href="{{url('patient_pdf/pdf')}}" class="shortcut"><img src="img/newspaper.png"> <span class="shortcut-label">User Report</span> </a> </div>
+                                             <span class="shortcut-label">Gallery</span> </a><a href="/order-admindash" class="shortcut"><img src="img/newspaper.png"> <span class="shortcut-label">Orders</span> </a><a href="/adminfeedback" class="shortcut"><img src="img/opinion.png"><span class="shortcut-label">Manage Feedbacks</span> </a><a href="/ServiceTest" class="shortcut"><img src="img/24-hours.png"><span
+                                                class="shortcut-label">Services</span> </a> </div>
               <!-- /shortcuts --> 
             </div>
             <!-- /widget-content --> 
           </div>
+
+         
           <!-- /widget -->
           <div class="widget">
             <div class="widget-header"> 
-              <h3> Order History</h3>
+              <h3><a href="/adminchart"> Click here to view charts</a></h3>
             </div>
             <!-- /widget-header -->
             <div class="widget-content">
@@ -190,37 +192,9 @@ use App\Feedback;
             <!-- /widget-content --> 
           </div>
           <!-- /widget -->
-          <div class="widget widget-table action-table">
-            <div class="widget-header"> 
-              <h3>Users</h3>
-            </div>
-            <!-- /widget-header -->
-            <div class="widget-content">
-              <table class="table table-striped table-bordered">
-                <thead>
-                  <tr>
-                    <th> Patient ID </th>
-                    <th> Name</th>
-                    <th> Email</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  
-                  <tr>
-                     
-                  </tr>
-                 
-                
-                </tbody>
-              </table>
-            </div>
-            <!-- /widget-content --> 
-          </div>
+         
           <!-- /widget --> 
-          <div class="widget widget-nopad">
-            <div class="widget-header"> 
-              <h3> Recent News</h3>
-            </div>
+          
            
             <!-- /widget-content --> 
           </div>

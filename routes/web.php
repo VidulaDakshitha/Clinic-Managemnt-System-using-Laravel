@@ -19,6 +19,7 @@ Route::get('/ServiceTest', 'PostsController@index');
 Route::get('/AdminServ', 'PostsController@serv');
 Route::get('/gallery', 'PostsController@media');
 Route::get('/welcome', 'SweetAlertDemo@index');
+Route::get('/adminchart', 'LaravelGoogleGraphController@index');
 
 
 // Route::post('/ServiceTest', 'PostsController@store');
@@ -43,6 +44,10 @@ Route::delete('/aboutus/{article}', 'NoticesController@destroy');
 
 Route::get('/adminfeedback', 'FeedbackController@index')->middleware('auth_admin');
 Route::get('/adminfeedbackreport', 'FeedbackController@fedreport')->middleware('auth_admin');
+Route::get('/fedsearch','FeedbackController@search');
+Route::get('/feedback_pdf', 'FeedbackPDFController@index');
+Route::get('/feedback_pdf/pdf', 'FeedbackPDFController@pdf');
+Route::get('/fedreport_search', 'FeedbackPDFController@pdf_fedsearch');
 
 Route::get('/feedback', 'FeedbackController@fed');
 Route::post('/feedbacktest','FeedbackController@store');
@@ -112,6 +117,7 @@ Route::resource('payment', 'PaymentController');
 Route::get('/preport', 'PaymentReportController@pdf');
 Route::get('/preport_search', 'PaymentReportController@pdf_search');
 Route::get('/preport_card', 'PaymentReportController@pdf_card');
+Route::get('/demoCreate', 'PaymentController@demo');
 Route::get('/card', 'CardController@index');
 Route::resource('card', 'CardController');
 Route::get('/slip', 'BankSlipController@index');
@@ -133,6 +139,9 @@ Route::get('/shoppingcart', function () {
     return view('product_order_system.ShoppingCart');
 });
 
+Route::get('/paitient-order-report/{data}','PaitientOrderDashController@printreport');
+
+
 
 Route::get('/search-product', 'ProductSearchController@index');
 Route::get('/viewproduct/{id}', 'ProductSearchController@show');
@@ -143,11 +152,12 @@ Route::post('order-admindash','ProductAdminDashController@search');
 Route::post('/print_order_row','ProductAdminDashController@print_row');
 Route::post('admindash_status','ProductAdminDashController@updatesatus');
 Route::get('/paitientorderdash','PaitientOrderDashController@indexpaitent')->middleware('auth');
-Route::post('/paitientorderdash','PaitientOrderDashController@searchgeneral');
-Route::post('/paitientorderdash','PaitientOrderDashController@searchmedical');
+Route::post('/paitientorderdash/general','PaitientOrderDashController@searchgeneral');
+Route::post('/paitientorderdash/medical','PaitientOrderDashController@searchmedical');
 Route::post('paitientorderdash/edit','PaitientOrderDashController@showedit');
 Route::post('paitientorderdash/updateorder','PaitientOrderDashController@updates');
 Route::resource('paitintorder','PaitientOrderDashController');
+
 
 Route::get('/user-prescriptions','PatientPriscriptionOrderController@show')->middleware('auth');
 Route::post('/user-prescriptions','PatientPriscriptionOrderController@search');
@@ -259,4 +269,5 @@ Route::get("/report_prescription",'PrescriptionController@reports');
 //Route::get('/Welcome', ['as'=>'Welcome','uses'=>'PagesController@index']);
 
 Route::get('patient_pdf','PatientPDFController@index');
+Route::get('/pdfuser','PatientPDFController@pdf_profile');
 Route::get('/patient_pdf/pdf','PatientPDFController@pdf');

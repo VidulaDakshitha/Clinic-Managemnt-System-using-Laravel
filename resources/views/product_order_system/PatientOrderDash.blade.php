@@ -6,12 +6,14 @@
 <style type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.css "></style>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.bundle.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
+<link rel="stylesheet" href="  https://printjs-4de6.kxcdn.com/print.min.css">
 <script src="{{ asset('js/order_management_script.js') }}"></script>
 <link rel="stylesheet" href="{{ asset('css/order_system_css/orderStylesheet.css') }}">
 @endsection
 
 @section('js')
 <script src="{{ asset('js/app.js') }}"></script>
+<script src="  https://printjs-4de6.kxcdn.com/print.min.js"></script>
 @endsection
 
 @section('title', 'Patient Order Dashbord')
@@ -93,12 +95,12 @@
             </div>
         <div class="card-header">
 
-          <a href="paitientorderdash">
+          <a href="/paitientorderdash">
           <p class="h4"> General Order details </p>
           </a>
     </div>
     <div class="card-body">
-          <div class="table-responsive" id="tableplane" style="border-radius: 10px; background: url('assets/image/order_back.jpg');" >
+          <div class="table-responsive" id="tableplane" style="border-radius: 10px; background: url('/assets/image/order_back.jpg');" >
             <div id="dataTable_wrapper" class="dataTables_wrapper dt-bootstrap4">
 
                 <div class="row" >
@@ -109,7 +111,7 @@
                 <div class="col-sm-12 col-md-6">
                     <div id="dataTable_filter" class="dataTables_filter ">
                         <br>
-                            <form action="paitientorderdash" method="POST">
+                            <form action="paitientorderdash/general" method="POST">
                                     {{ csrf_field() }}
                                     <div class="form-row align-items-center">
                                             <div class="col-auto my-1">
@@ -143,8 +145,18 @@
 
             </div>
             <br>
-            <div class="row" style=" background: white;" id="app">
-                <div class="col-sm-12" id="printContainer">
+            <div class="row" style=" background: white;" >
+                <div class="col-sm-12" id="printJS-form">
+                    <br>
+
+                    <p id="general_item">
+                            <script>
+                                    var d = new Date();
+                                    document.getElementById("general_item").innerHTML = d;
+
+                            </script>
+
+
                     <table class="table table-bordered table-hover table-striped dataTable table-sm " id="dataTable" width="100%" cellspacing="0" role="grid" aria-describedby="dataTable_info" style="width: 100%;">
               <thead>
                 <tr role="row">
@@ -156,7 +168,7 @@
                     <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending" style="width: 115px;">Type</th>
                     <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending" style="width: 71px;">Quntity</th>
                     <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Start date: activate to sort column ascending" style="width: 141px;">Total</th>
-                    <th class="sorting noprint" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Start date: activate to sort column ascending" style="width: 181px;">Action</th>
+                    <th class="sorting " id="noprint" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Start date: activate to sort column ascending" style="width: 181px;">Action</th>
 
                 </tr>
               </thead>
@@ -206,7 +218,7 @@
                           <td>{{$orderrow->type}} </td>
                           <td>{{$orderrow->quantity}} </td>
                           <td>{{$orderrow->total_payment}} </td>
-                          <td class="d-flex noprint">
+                          <td class="noprint d-flex " id="nocell">
                                 <form action="/paitientorderdash/edit" method="POST" target="_blank">
                                     {{ csrf_field() }}
                                     <input type="text" value="{{$orderrow->order_id}}" name="order_id_send" hidden>
@@ -222,7 +234,7 @@
 
 
 
-                                  <button type="submit" class="btn btn-warning">Edit or Print</button>
+                                  <button type="submit" class="btn btn-warning noprint">Edit or Print</button>
                                   </form>
                                   <!--delete order-->
 
@@ -232,13 +244,13 @@
                                                      @csrf
                                                      @method('DELETE')
                                                        <input type="text" value="{{$orderrow->quantity}}" name="deleteqty" hidden>
-                                                       <button class="btn btn-danger btn-round" type = "submit" style="margin-left: 4px;" onclick="conformfunction()">Cancel Order</button>
+                                                       <button class="btn btn-danger btn-round noprint" type = "submit" style="margin-left: 4px;" onclick="conformfunction()">Cancel Order</button>
 
 
 
                                                  </form>
                                               @else
-                                              <button class="btn btn-danger" type = "submit" style="margin-left: 4px; height: 38px;" disabled>Cancel order</button>
+                                              <button class="btn btn-danger noprint" type = "submit" style="margin-left: 4px; height: 38px;" disabled>Cancel order</button>
                                             @endif
                           </td>
                         </tr>
@@ -247,7 +259,12 @@
              </tbody>
               </table>
          </div>
-         <Button class="btn btn-warning print_btn" @click.preventDefault="print" style="margin-left: 20px; margin-bottom: 10px;"> Generate report</Button>
+
+         <Button class="btn btn-success print_btn" onclick="printJS({printable: 'printJS-form', type: 'html', header: 'General Order Dashbord',css:['/css/app.css','css/order_system_css/orderStylesheet.css'],ignoreElements:['noprint','nocell']
+ })" style="margin-left: 20px; margin-bottom: 10px;"> Generate report</Button>
+
+
+         </button>
         </div>
     </div>
 
@@ -256,14 +273,14 @@
 
 <div class="p-3 mb-2 bg-success rounded-top text-white paitent_titebar" > <h6> </h6></div>
     <div class="card-header">
-          <a href="paitientorderdash">
+          <a href="/paitientorderdash">
           <p class="h4"> Medical Item Order details </p>
           </a>
     </div>
     <div >
         <div >
              <div class="card-body"  >
-                 <div class="table-responsive" id="tableplane" style="border-radius: 10px;  background: url('assets/image/order_back.jpg');">
+                 <div class="table-responsive" id="tableplane" style="border-radius: 10px;  background: url('/assets/image/order_back.jpg');">
                     <div id="dataTable_wrapper" class="dataTables_wrapper dt-bootstrap4">
                         <div class="row" >
                             <div class="col-sm-12 col-md-6">
@@ -273,7 +290,7 @@
                      <div class="col-sm-12 col-md-6">
                  <div id="dataTable_filter" class="dataTables_filter ">
                         <br>
-                    <form action="paitientorderdash" method="POST">
+                    <form action="paitientorderdash/medical" method="POST">
                                     {{ csrf_field() }}
                         <div class="form-row align-items-center">
                                 <div class="col-auto my-1">
@@ -303,8 +320,18 @@
             <br>
 
         <div class="row" style=" background: white;">
-              <div class="col-sm-12">
-              <div id="printContainer2">
+              <div class="col-sm-12" id="app-2">
+
+               <div id="printContainer-2">
+                    <br>
+                    <h4>Medical items order</h4>
+                    <p id="medical_item">
+
+                            <script>
+                                    var dm = new Date();
+
+                                    document.getElementById("medical_item").innerHTML = dm;
+                            </script>
                     <table class="table table-bordered table-sm dataTable" id="dataTable" width="100%" cellspacing="0" role="grid" aria-describedby="dataTable_info" style="width: 100%;">
                         <thead>
 
@@ -317,7 +344,7 @@
                                 <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending" style="width: 80px;">Status</th>
                                 <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending" style="width: 71px;">quantity</th>
                                 <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending" style="width: 71px;">total_payment</th>
-                                <th class="sorting noprint" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Start date: activate to sort column ascending" style="width: 181px;">Action</th>
+                                <th id="noprint-m" class="sorting noprint" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Start date: activate to sort column ascending" style="width: 181px;">Action</th>
                                </tr>
 
                          </thead>
@@ -370,7 +397,7 @@
                           <td>{{$medicalitemrow->quantity}} </td>
                           <td>{{$medicalitemrow->total_payment}} </td>
                                 </div>
-                          <td class="d-flex noprint" >
+                          <td id="nocell-m" class="d-flex noprint" >
                               <form action="paitientorderdash/edit" method="POST" target="_blank">
                                 {{ csrf_field() }}
                                 <input type="text" value="{{$medicalitemrow->order_id}}" name="order_id_send" hidden>
@@ -384,7 +411,7 @@
                                   <input type="text" value="1" name="paitent_id_send" hidden>
 
 
-                              <button type="submit" class="btn btn-warning">Edit and Print</button>
+                              <button type="submit" class="btn btn-warning noprint">Edit and Print</button>
                               </form>
 
                          @if (($medicalitemrow->status)=='waiting')
@@ -393,12 +420,12 @@
                                     @csrf
                                     @method('DELETE')
                                     <input type="text" value="{{$medicalitemrow->quantity}}" name="deleteqty" hidden>
-                                    <button class="btn btn-danger btn-round" type = "submit" style="margin-left: 4px;" onclick="conformfunction()">Cancel Order</button>
+                                    <button class="btn btn-danger btn-round noprint" type = "submit" style="margin-left: 4px;" onclick="conformfunction()">Cancel Order</button>
 
                               </form>
 
                         @else
-                              <button class="btn btn-danger" type = "submit" style="margin-left: 4px; height: 38px;" disabled>Delete</button>
+                              <button class="btn btn-danger noprint" type = "submit" style="margin-left: 4px; height: 38px;" disabled>Delete</button>
                         @endif
 
                           </td>
@@ -410,9 +437,8 @@
 
                          </tbody>
                      </table>
-             </div>
-
-             </div>
+                  </div>
+              </div>
 
     </div>
 
@@ -433,7 +459,9 @@
 
     </div>
     </div>
-        <a type="button"target="_blank" class="btn btn-warning print_btn" onclick="printme()"> Generate report </a>
+    <Button class="btn btn-success print_btn" onclick="printJS({printable: 'printContainer-2', type: 'html', header: 'Medical Order Dashbord',css:['/css/app.css','css/order_system_css/orderStylesheet.css'],ignoreElements:['noprint-m','nocell-m']
+})" style="margin-left: 20px; margin-bottom: 10px;"> Generate report</Button>
+
 
 
 

@@ -57,7 +57,7 @@
 
         <div class="form-group">
             <label for="image">Image</label>
-            <input type="file" class="form-control-file" name="image" id="image" value="{{ $product->image }}">
+            <input type="file" class="form-control-file" name="image" id="image" value="{{ $product->image }}" required>
         </div>
         <hr>
 
