@@ -19,9 +19,7 @@ Route::get('/ServiceTest', 'PostsController@index');
 Route::get('/AdminServ', 'PostsController@serv');
 Route::get('/gallery', 'PostsController@media');
 Route::get('/welcome', 'SweetAlertDemo@index');
-Route::get('/adminchart', 'LaravelGoogleGraphController@index');
-Route::get('/contact2', 'PagesController@contact2');
-Route::post('/contact2', 'PagesController@postcontact2');
+Route::get('/adminchart', 'LaravelGoogleGraphController@index')->middleware('auth_admin');
 
 
 // Route::post('/ServiceTest', 'PostsController@store');
@@ -47,7 +45,7 @@ Route::delete('/aboutus/{article}', 'NoticesController@destroy');
 Route::get('/adminfeedback', 'FeedbackController@index')->middleware('auth_admin');
 Route::get('/adminfeedbackreport', 'FeedbackController@fedreport')->middleware('auth_admin');
 Route::get('/fedsearch','FeedbackController@search');
-Route::get('/feedback_pdf', 'FeedbackPDFController@index');
+Route::get('/feedback_pdf', 'FeedbackPDFController@index')->middleware('auth_admin');
 Route::get('/feedback_pdf/pdf', 'FeedbackPDFController@pdf');
 Route::get('/fedreport_search', 'FeedbackPDFController@pdf_fedsearch');
 
@@ -141,9 +139,6 @@ Route::get('/shoppingcart', function () {
     return view('product_order_system.ShoppingCart');
 });
 
-Route::get('/paitient-order-report/{data}','PaitientOrderDashController@printreport');
-
-
 
 Route::get('/search-product', 'ProductSearchController@index');
 Route::get('/viewproduct/{id}', 'ProductSearchController@show');
@@ -159,7 +154,6 @@ Route::post('/paitientorderdash/medical','PaitientOrderDashController@searchmedi
 Route::post('paitientorderdash/edit','PaitientOrderDashController@showedit');
 Route::post('paitientorderdash/updateorder','PaitientOrderDashController@updates');
 Route::resource('paitintorder','PaitientOrderDashController');
-
 
 Route::get('/user-prescriptions','PatientPriscriptionOrderController@show')->middleware('auth');
 Route::post('/user-prescriptions','PatientPriscriptionOrderController@search');
@@ -201,6 +195,8 @@ Route::get('/exp', 'ProductManagementController@expview');
 
 Route::get("/generate-product-report",'ProductManagementController@reports');
 
+Route::get("/reportsearch",'ProductManagementController@search');
+
 //Record Management
 
 //1.Personal Record
@@ -217,13 +213,16 @@ Route::get('/create_per', function(){
 Route::post('/insert', 'PersonalRecordsController@add0');
 
 Route::get('/update_per/{id}', 'PersonalRecordsController@update0');
-Route::post('/edit_per/{id}', 'PersonalRecordsController@edit0');
+Route::get('/edit_per/{id}', 'PersonalRecordsController@edit0');
 
 Route::get('/read_per/{id}', 'PersonalRecordsController@show');
 
+Route::get('/read_personal/{id}', 'PersonalRecordsController@read');
 Route::get('/delete_per/{id}', 'PersonalRecordsController@destroy');
 
 Route::get("/report_per",'PersonalRecordsController@reports');
+
+Route::get("/searchrecords",'PersonalRecordsController@search');
 
 
 //2.Treatment Record
@@ -239,13 +238,15 @@ Route::get('/create_treat', function(){
 Route::post('/insert_treatment', 'TreatmentController@add1');
 
 Route::get('/update_treat/{id}', 'TreatmentController@update1');
-Route::post('/edit_treat/{id}', 'TreatmentController@edit1');
+Route::get('/edit_treat/{id}', 'TreatmentController@edit1');
 
 Route::get('/read_treat/{id}', 'TreatmentController@show');
+Route::get('/read_treatment/{id}', 'TreatmentController@read');
 
 Route::get('/delete_treat/{id}', 'TreatmentController@destroy');
 
 Route::get("/report_treat",'TreatmentController@reports');
+Route::get("/searchtreat",'TreatmentController@search');
 
 //3.Prescription
 Route::get('/home_prescription', function(){
@@ -266,7 +267,9 @@ Route::get('/edit_prescription/{id}', 'PrescriptionController@update2');
 Route::get('/read_prescription/{id}', 'PrescriptionController@show');
 Route::get('/delete_prescription/{id}', 'PrescriptionController@destroy');
 
+
 Route::get("/report_prescription",'PrescriptionController@reports');
+Route::get("/searchpre",'PrescriptionController@search');
 
 //Route::get('/Welcome', ['as'=>'Welcome','uses'=>'PagesController@index']);
 

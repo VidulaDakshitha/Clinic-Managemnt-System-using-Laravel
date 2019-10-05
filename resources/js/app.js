@@ -30,10 +30,10 @@ Vue.use(VueHtmlToPaper);
  * Eg. ./components/ExampleComponent.vue -> <example-component></example-component>
  */
 
-// Vue.component(
-//     "demo-button-create",
-//     require("./supplier-components/DemoButtonCreate.vue").default
-// );
+Vue.component(
+    "search-component",
+    require("./supplier/SearchComponent.vue").default
+);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -74,5 +74,3 @@ const app = new Vue({
         }
     }
 });
-
-

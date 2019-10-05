@@ -27,8 +27,10 @@
           <div class="container">
             <ul class="mainnav">
               <li><a href="/admin"><img src="img/adhome.png"/><span>Dashboard</span> </a> </li>
-              <li><a href="/feedback_pdf"><img src="img/newspaper.png"/><span>Feedbacks</span> </a> </li>
-              <li><a href="/adminchart"><img src="img/adminanalytics.png"/><span>Charts</span> </a> </li>
+              <li><a href="/gallery"><img src="img/gallery.png">
+                <span>Gallery</span> </a>  </li>
+              <li><a href="/ServiceTest"><img src="img/24-hours.png"/><span>Services</span> </a> </li>
+              <li><a href="/aboutus"><img src="img/about-us.png"/><span>About Us</span> </a> </li>
              
               
                 </ul>

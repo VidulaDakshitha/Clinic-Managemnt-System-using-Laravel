@@ -8,6 +8,14 @@
 
 @section('content')
 <div class="container" id="app">
+        <form action = "/searchtreat" method = "get" style="margin-left: 700px;">
+            <div class = "input-group">
+                <input type = "search" name = "search" placeholder="Search records" class="form-control">
+                <span class = "input-group-prepend">
+                    <button type="submit" class="btn btn-primary">Search</button>
+                </span>
+            </div>
+        </form>
     {{-- pdf start --}}
     <div id="printContainer">
         <h1>Treatment Record report</h1>
