@@ -29,7 +29,7 @@
             <div class = "row">
                 <div>
                     <strong>Patient ID: </strong>
-                <input type="text" name = "patientID" value="{{$payment->patientID}}" pattern = "(P)[0-9]{3}" title = "Patient id should start from P and with 3 digits number" style = "margin-left:5px">
+                <input type="text" name = "patientID" value="{{$payment->patientID}}" style = "margin-left:5px" required>
                 </div>
                 <div style = "margin-left:10px">
                         <strong>Payment For: </strong>

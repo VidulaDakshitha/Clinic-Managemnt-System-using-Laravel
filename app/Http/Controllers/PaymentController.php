@@ -42,7 +42,9 @@ class PaymentController extends Controller
      */
     public function create()
     {
-        return view('payment.create');
+        $Array = ["", "", "", ""];
+        return view('payment.create', compact('Array'));
+        
     }
 
     /**
@@ -142,4 +144,10 @@ class PaymentController extends Controller
         return redirect()->route('payment.index')
                 ->with('success', 'Payment deleted successfully');
     }
+
+    public function demo()
+    {
+        $Array = ["01", "Doctor Visited", "1000", "10/06/2019"];
+        return view('payment.create', compact('Array'));
+    }    
 }

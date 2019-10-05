@@ -28,22 +28,22 @@
                             <div class = "row">
                                 <div>
                                     <strong>Patient ID: </strong>
-                                    <input type="text" name = "patientID" placeholder="Patient ID" pattern = "(P)[0-9]{3}" title = "Patient id should start from P and with 3 digits number" style = "margin-left:5px" required>
+                                    <input type="text" name = "patientID" placeholder="Patient ID" value = "{{$Array[0]}}" style = "margin-left:5px" required>
                                     <br>
                                 </div>
                                 <div style = "margin-left:10px">
                                         <strong>  Payment For: </strong>
-                                        <input type="text" name = "paymentFor" placeholder="Payment For" required>
+                                        <input type="text" name = "paymentFor" placeholder="Payment For" value = "{{$Array[1]}}" required>
                                         <br>
                                 </div>
                                 <div style = "margin-left:10px">
                                         <strong>  Amount: </strong>
-                                        <input type="text" name = "amount" placeholder="Amount" pattern ="[0-9]{2,}" title = "Only number values" required>
+                                        <input type="text" name = "amount" placeholder="Amount" pattern ="[0-9]{2,}" title = "Only number values" value = "{{$Array[2]}}" required>
                                         <br>
                                 </div>
                                 <div style = "margin-left:10px">
                                     <strong>  Date: </strong>
-                                    <input type="date" name ="date" required>
+                                    <input type="date" name ="date" value = "{{$Array[3]}}" required>
                                     <br>
                                 </div>
                                 
@@ -53,6 +53,7 @@
                                         <br>
                                         <br>
                                 <a href="{{ route('payment.index')}}" class="btn btn-primary" role="button">Back</a>
+                                <a href="{{ url('/demoCreate')}}" class="btn btn-primary" role="button">Demo</a>
 
                                 <button type="submit" class="btn btn-primary">Submit</button>
 

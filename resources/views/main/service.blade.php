@@ -1,6 +1,6 @@
 @extends('main.layout.mainlayout')
 
-@section('title', 'About Us')
+@section('title', 'Our Services')
 
 @section('styles')
 <link href="{{ asset('css/serv/adminserv.css') }}" rel="stylesheet">

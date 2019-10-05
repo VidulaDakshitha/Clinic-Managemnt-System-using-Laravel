@@ -41,10 +41,26 @@
     @endif
  </div>
 
+     {{-- pdf start --}}
+     <div id="printContainer">
+            <h1>Feedback Report</h1>
+
+            <div class="col-md-4 p-3">
+                <form action="/fedsearch" method="get">
+                    <div class="input-group">
+                        <input type="search" name="search" class="form-control">
+                        <span class="input-group-prepend">
+                            <button type="submit" class="btn btn-primary">Search</button>
+                        </span>
+                    </div>
+                </form>
+            </div>
+            
+
              <table class="table">
                 <thead class="thead-dark">
                     <tr>
-                        <th scope="col">Feedback ID</th>
+                        <th scope="col">Patient ID</th>
                         <th scope="col">Name</th>
                         <th scope="col">Email</th>
                         <th scope="col">Message</th>
@@ -68,7 +84,12 @@
                 </tbody>
             </table>
 
+        </div>
+        {{-- pdf end --}}
+
             {{ $feedbacks->links() }}
+
+            <Button class="btn btn-primary" @click.preventDefault="print">Print</Button>
             
         </div>
 
