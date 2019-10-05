@@ -163,7 +163,7 @@
 <div class="card mb-3" id="tablebackground"
   style="padding: 15px;margin: 15px;border-radius: 10px;box-shadow: 0 0 9px 0px #b1aeae;">
   <div class="card-header">
-    <i class="fas fa-table"></i>
+
     <a href="order-admindash">
       <p class="h4"> Order details </p>
     </a>
@@ -284,8 +284,9 @@
                   </td>
                   @else
                   <td>
-                    <form action="admindash_status" method="POST">
-                      <div class="input-group">
+
+                    <form action="admindash_status" method="POST" class="form-inline">
+                      <div class="input-group mb-2">
                             @if (($orderrow->status)=='waiting')
                         <div class="badge badge-primary text-wrap" style="width: 6rem;">
                           <p> {{$orderrow->status}} </p>
@@ -305,6 +306,7 @@
                         <button type="submit" type="button" class="btn btn-primary">Update</button>
                       </div>
                     </form>
+
                   </td>
                   @endif
 
