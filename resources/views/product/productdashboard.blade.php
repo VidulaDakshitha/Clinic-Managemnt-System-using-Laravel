@@ -44,7 +44,7 @@
                     </div>
                     <div class="form-group">
                         <label>Potency</label>
-                        <input type="number" name="potency" class="form-control" placeholder="Enter Potency" min="1"
+                        <input type="number" name="potency" class="form-control" placeholder="Enter Potency" min="0"
                             max="90" id="potency">
                     </div>
                     <div class="form-group">
@@ -64,8 +64,8 @@
                     <div class="form-group">
                         <select class="form-control" name="type" id="type" required>
                             <option selected="selected">Product Type</option>
-                            <option value="Drug">medical</option>
-                            <option value="GeneralProduct">general</option>
+                            <option value="medical">medical</option>
+                            <option value="general">general</option>
                         </select>
                     </div>
                 </div>
@@ -77,6 +77,8 @@
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
                     <input type="submit" value="Add Product" name="registerbtn" class="btn btn-primary">
+
+                    <input type="submit" value="Demo" name="registerbtn" class="btn btn-primary">
                 </div>
 
 

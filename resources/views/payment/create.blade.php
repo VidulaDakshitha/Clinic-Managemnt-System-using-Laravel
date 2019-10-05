@@ -28,7 +28,7 @@
                             <div class = "row">
                                 <div>
                                     <strong>Patient ID: </strong>
-                                    <input type="text" name = "patientID" placeholder="Patient ID" value = "{{$Array[0]}}" pattern = "(P)[0-9]{3}" title = "Patient id should start from P and with 3 digits number" style = "margin-left:5px" required>
+                                    <input type="text" name = "patientID" placeholder="Patient ID" value = "{{$Array[0]}}" style = "margin-left:5px" required>
                                     <br>
                                 </div>
                                 <div style = "margin-left:10px">

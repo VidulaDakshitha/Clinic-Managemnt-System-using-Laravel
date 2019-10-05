@@ -2,7 +2,7 @@
 
 @extends('backend.layout')
 
-@section('title', 'Product Manager')
+@section('title', '')
 
 @include('product.nav1')
 
@@ -13,7 +13,7 @@
     <div id="printContainer">
         <h1>Inventory Dashboard</h1>
         @auth
-        <h3>Monthly Stock List</h3>
+        <h3>Monthly Stock Report</h3>
         
         @else
         <h3>Not Logged In</h3>
@@ -75,4 +75,5 @@
 
     <Button class="btn btn-primary" @click.preventDefault="print">Print Report</Button>
 </div>
+<br><br>
 @endsection

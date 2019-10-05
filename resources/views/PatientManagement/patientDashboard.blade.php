@@ -726,17 +726,12 @@
 
 
                 $.ajax({
-
-                  //refer userProfileController
-                 
                     type: 'POST',
                     url: "{{url('/userdelete')}}/" + id,                   
                     data: {_token:CSRF_TOKEN,"_method": 'DELETE'}, 
                     dataType: 'JSON',
                     success: function (results) {
-
                          if (results.success === true) {
-                           window.location.href = "{{url('/')}}";
                              swal("Done!", results.message, "success");
                          } else {
                            swal("Error!", results.message, "error");
@@ -744,6 +739,7 @@
                      }
                 });
 
+                window.location.href = "/";
             } else {
                 e.dismiss;
             }
