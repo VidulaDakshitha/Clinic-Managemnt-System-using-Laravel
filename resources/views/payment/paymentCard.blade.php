@@ -124,10 +124,16 @@
                                             </div>
                                             <div class="submit">
                                                 <input type="submit" value="PAY">
-                                                <button onclick="myFunction()" class = "btn btn-primary">Demo</button>
+                                                
                                             </div>
                                             
+                                            
+                                        </div>
+                                    </form>
 
+                                    <button onclick="myFunction()" class = "btn btn-primary">Demo</button>
+
+                                    
                                             <script>
                                                 function myFunction() {
                                                 document.getElementById("cardNum").value = "1234123412341234";
@@ -136,8 +142,6 @@
                                                 document.getElementById("cardType").value = "VISA";
                                                 }
                                             </script>
-                                        </div>
-                                    </form>
                                 </div>
                             </div>
                         </div>

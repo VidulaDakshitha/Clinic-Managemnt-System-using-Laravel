@@ -8,7 +8,7 @@
     <div class="container1">
         <div class="booking-content">
             <div class="booking-image">
-                <img class="booking-img img1" src="images/registerIMG/form-img.jpg" alt="Booking Image">
+                <a onclick="myFunction()" ><img class="booking-img img1" src="images/registerIMG/form-img.jpg" alt="Booking Image"></a>
             </div>
             <div class="booking-form">
                     
@@ -70,12 +70,12 @@
                     </div>
 
                     <div class="form-group form-input">
-                        <input type="number" class ="inputa" name="phone-number" id="phone-number " value="" required />
-                        <label for="phone-number" class="form-label">Phone Number [eg:- +9477xxxxxxx</label>
+                        <input type="number" class ="inputa" name="phone-number" id="phone-number" value="" required />
+                        <label for="phone-number" class="form-label">Phone Number [eg:- 77xxxxxxx</label>
                     </div>
 
                     <div class="form-group form-input">
-                        <input type="email"  id="email " class ="inputa @error('email') is-invalid @enderror"
+                        <input type="email"  id="email" class ="inputa @error('email') is-invalid @enderror"
                         name="email" value="{{ old('email') }}" required autocomplete="email"/>
                         <label for="email" class="form-label">Email</label>
 
@@ -135,6 +135,23 @@
     </div>
 
 </div>
+
+<script>
+        function myFunction() {
+        document.getElementById("name").value = "Vidula";
+         document.getElementById("dob").value = "1998-03-18";
+         document.getElementById("Nic").value = "985641722V";
+         document.getElementById("Address1").value = "Daham Mawatha";
+         document.getElementById("Address2").value = "Kaldemulla";
+         document.getElementById("City").value = "Moratuwa";
+         document.getElementById("phone-number").value = "779819207";
+         document.getElementById("email").value = "viduladakshitha@gmail.com";
+         document.getElementById("Username").value = "vidula";
+         document.getElementById("password").value = "123456789";
+         document.getElementById("password-confirm").value = "123456789";
+        }
+    </script>
+
 
 
 
