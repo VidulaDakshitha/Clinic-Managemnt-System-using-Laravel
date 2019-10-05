@@ -84,7 +84,7 @@ class ProductManagementController extends Controller
             $file = pathinfo($fullFileName, PATHINFO_FILENAME);
             $ext = $request->image->getClientOriginalExtension();
 
-            $fileName = $file.'_'.time().'_'.$ext;
+            $fileName = $file.'_'.time().'.'.$ext;
 
             $path = $request->image->storeAs('public/product_images', $fileName);
         }
@@ -118,7 +118,7 @@ class ProductManagementController extends Controller
     public function show($id)
     {
         $product = Product::findOrFail($id);
-        
+
         return view('product.pview', compact('product'));
     }
 
@@ -149,7 +149,7 @@ class ProductManagementController extends Controller
             $file = pathinfo($fullFileName, PATHINFO_FILENAME);
             $ext = $request->image->getClientOriginalExtension();
 
-            $fileName = $file.'_'.time().'_'.$ext;
+            $fileName = $file.'_'.time().'.'.$ext;
 
             $path = $request->image->storeAs('public/product_images', $fileName);
         }

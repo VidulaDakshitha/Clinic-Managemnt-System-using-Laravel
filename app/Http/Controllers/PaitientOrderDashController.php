@@ -240,7 +240,7 @@ class PaitientOrderDashController extends Controller
 
 
     public function searchmedical(Request $request){
-
+//oder
         $keyword=$request->get('dashsearchtxt');
         $type=$request->get('dashsearchtype');
         $paitent_id=$request->get('paitent_id');

@@ -42,7 +42,7 @@ class SupplierManagerController extends Controller
 
     public function reports()
     {
-        $suppliers = Supplier::paginate(8);
+        $suppliers = Supplier::all();
         return view('backend.supplier.reports', compact('suppliers'));
     }
 

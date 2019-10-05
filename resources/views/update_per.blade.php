@@ -11,7 +11,7 @@
 <div class="container">
     <div class="row">
       <div class="col-md-6">
-      <form class="form-horizontal" method="POST" action="{{ url('/edit_per') }}" >
+      <form class="form-horizontal" method="GET" action="{{ url('/home_per') }}" >
        {{ csrf_field() }}
        @method('PUT')
          <fieldset>
