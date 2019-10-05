@@ -115,7 +115,7 @@
       @foreach ($product as $key=> $productrow)
       <a href="viewproduct/{{$productrow->product_id}}" target="_blank">
         <div class="card">
-          <img src="/product_images/{{$productrow->image}}" class="card-img-top" alt="...">
+          <img src="/storage/app/public/product_images/{{$productrow->image}}" class="card-img-top" alt="...">
           <div class="card-body" style="color: #302f2f;">
             <h5 class="card-title" id="prodcut-name">{{$productrow->name}}</h5>
             <h3 class="card-title" id="prodcut-price">Rs : <strong> {{$productrow->selling_price}}</strong></h3>
