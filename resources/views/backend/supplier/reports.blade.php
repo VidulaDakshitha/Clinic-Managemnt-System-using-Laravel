@@ -10,6 +10,8 @@
 
 @section('content')
 <div class="container" id="app">
+    <search-component></search-component>
+
     {{-- pdf start --}}
     <div id="printContainer">
         <h1>Supplier Dashboard(Protected Area)</h1>
@@ -60,7 +62,7 @@
         </table>
     </div>
     {{-- pdf end --}}
-    {{ $suppliers->links() }}
+    {{-- {{ $suppliers->links() }} --}}
 
     <Button class="btn btn-primary" @click.preventDefault="print">Test Print</Button>
 </div>
