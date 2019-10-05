@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Feedback;
 use Illuminate\Http\Request;
+use DB;
 
 class FeedbackController extends Controller
 {
@@ -36,8 +37,20 @@ class FeedbackController extends Controller
      */
     public function index()
     {
-        $feedbacks = Feedback::all();
+        $feedbacks = Feedback::orderBy('feedback_id','desc')->paginate(4);
         return view('chairman.adminfeed', compact('feedbacks'));
+    }
+
+    public function fedreport()
+    {
+        $feedbacks = Feedback::orderBy('feedback_id','desc')->paginate(8);
+        return view('reports.feedbackreport', compact('feedbacks'));
+    }
+
+    public function fedadmin()
+    {
+        $feedbacks = Feedback::orderBy('feedback_id','desc')->paginate(3);
+        return view('chairman.adminpage', compact('feedbacks'));
     }
 
 
@@ -49,6 +62,13 @@ class FeedbackController extends Controller
     public function create()
     {
         return view('chairman.creategallery');
+    }
+
+    public function search(Request $request)
+    {
+        $search = $request->get('search');
+        $feedback_data = DB::table('feedback')->where('patient_id','like', '%'.$search.'%')->paginate(50);
+        return view('chairman.feedback_pdf', ['feedback_data' => $feedback_data]);
     }
 
     public function media()

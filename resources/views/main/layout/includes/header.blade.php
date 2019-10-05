@@ -15,7 +15,7 @@
         <li class="{{ (Request::is('search-product') ? 'active' : '') }}"><a href="/search-product">Shop</a></li>
         <li class="{{ (Request::is('ServiceTest') ? 'active' : '') }}"><a href="/ServiceTest">Services</a></li>
         <li class="{{ (Request::is('gallery') ? 'active' : '') }}"><a href="/gallery">Gallery</a></li>
-        <li class="{{ (Request::is('feedback') ? 'active' : '') }}"><a href="/feedback">Contact</a></li>
+        <li class="{{ (Request::is('contact') ? 'active' : '') }}"><a href="/contact2">Contact</a></li>
         <!-- <li><a href="elements.html"><i class="flaticon-020-decay"></i></a></li> -->
         @auth
         <li class="dashboard-style"><a href="/login">Dashboard</a></li>

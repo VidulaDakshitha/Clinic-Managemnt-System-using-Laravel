@@ -54,6 +54,7 @@ function groupByFirst(table) {
       var button = cell.appendChild(document.createElement('button'));
       button.className = 'toggleButton';
       button.textContent = '+';
+      button.setAttribute("class","catogory_table_btn");
       button.addEventListener('click', toggleHidden, false);
       return button;
     }
@@ -186,3 +187,7 @@ function generalItemChart(generalorder_rady,generalorder_shiped,generalorder_wai
 
 
   }
+
+
+
+ 

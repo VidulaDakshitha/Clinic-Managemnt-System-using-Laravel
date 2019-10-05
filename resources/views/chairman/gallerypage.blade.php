@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-       
+       <title>Gallery</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -60,7 +60,7 @@
                     <li class="{{ (Request::is('search-product') ? 'active' : '') }}"><a href="/search-product">Shop</a></li>
                     <li class="{{ (Request::is('ServiceTest') ? 'active' : '') }}"><a href="/ServiceTest">Services</a></li>
                     <li class="{{ (Request::is('gallery') ? 'active' : '') }}"><a href="/gallery">Gallery</a></li>
-                    <li class="{{ (Request::is('feedback') ? 'active' : '') }}"><a href="/feedback">Contact</a></li>
+                    <li class="{{ (Request::is('feedback') ? 'active' : '') }}"><a href="/contact">Contact</a></li>
 					@auth
 					<li class="dashboard-style"><a href="/login">Dashboard</a></li>
 					<li class="logout-style"><a class="logout-style" href="{{ route('logout') }}" onclick="event.preventDefault();
@@ -106,14 +106,15 @@
         <div class="video-content">
             <div class="inner">
               <h1>Gallery</h1>
-              <p>Get to know us more</p>
+              <p>Get to know about our clinic more</p>
               <p>Check out these photos</p>
                 <div class="scroll-icon">
                     <a class="scrollTo" data-scrollTo="photo" href="#"><img src="img/scroll-icon.png" alt=""></a>
                 </div> 
                 @if(!auth::guest())
+                    @if(auth::user()->type=="admin")
                 <a class="btn btn-primary" href="/gallery/create">Add New Photo</a>
-                 
+                @endif
         @endif 
             </div>
         </div>
@@ -152,8 +153,10 @@
         @endif    
     </div>
     @if(!auth::guest())
-    <a class="btn btn-primary" href="/AdHome">Back to Dashboard</a>
-    @endif 
+        @if(auth::user()->type=="admin")
+    <a class="btn btn-primary" href="/admin">Back to Dashboard</a>
+        @endif 
+    @endif
     </div>
    
 

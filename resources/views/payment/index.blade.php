@@ -37,14 +37,14 @@
                         <div class="row">
                             <div class="col-md-3 col-sm-3 col-xs-12">
                                 <div class="logo">
-                                    <h2><a href="#">IHHR</a></h2>
+                                    <h2><a href="#" style = "color:#62a832;">IHHR</a></h2>
                                 </div>
                             </div>
                             <div class="col-md-9 col-sm-9 col-xs-12">
                                 <div class="menu">
                                     <ul class="nav navbar-nav">
-                                        <li class="active"><a href="{{ url('/')}}">HOME</a></li>
-                                        
+                                        <li class="active"><a href="{{ url('/')}}" style = "color:#62a832;">HOME</a></li>
+                                        <li class="active"><a href="{{ url('/payment')}}" style = "color:#62a832;">Cashier Home</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -55,7 +55,12 @@
                                         <h1>Cashier Dashboard</h1>
                                         <p>You are able make online payments for your medicines, medical consume items and doctor appoinments.
                                              As IHHR we have made your operations more simple<br> Thank you!</p>
-                                        <a href="{{ url('payment')}}"><button class="btn btn-primary">Cashier Home</button></a>
+                                             <br>
+                                             <br>
+                                             <br>
+                                             <br>
+                                             <br>
+                                             <br>
                                         
                                 </div>
                             </div>
@@ -75,6 +80,7 @@
         
                              
                                 <a href="{{ route('payment.create')}}" style="margin-left: 300px;"><button class="btn btn-primary">ADD PAYMENT</button></a>
+                                <a href="{{ url('/preport')}}" style="margin-left: 300px;"><button class="btn btn-danger">GENERATE REPORT</button></a>
                                 <br>
                                 <br>
                                 
@@ -113,7 +119,7 @@
                                                 @csrf
                                                 @method('DELETE')
                         
-                                                <button type ="submit" class="btn btn-primary">Delete</button>
+                                                <button type ="submit" class="btn btn-danger">Delete</button>
                         
                                                 </form>
                         
@@ -127,24 +133,50 @@
                        
                 </section>
 
+                <br>
+                <br>
                 <section class="contact" style = "margin-top:-100px;">
                         <div class="container">
-                                <div class="col-md-12">
-                                        <div class="another-text">
-                                                <h3>SEARCH PAYMENTS</h3>
-                                        </div>
-                                </div>
                             <div class="col-md-8 col-sm-12">
                                 <div class="contact-form" style = "margin-top:10px";>   
 
                                         <form action="/search1" method="GET">
+                                            <h3>SEARCH PAYMENTS</h3>
+                                            <br>
+                                            <br>
                                                 @csrf
                                                     <input type="text" name="patientID" placeholder="Patient ID">
-
-                                                    <div class = "submit">
-                                                        <input type="submit" value="Search">
-                                                    </div>
-                                                </form>
+                                                    <br>
+                                                    <br>
+                                                    
+                                                    
+                                                   
+                                                    
+                                                    <input type="submit" value="Search" class="btn btn-primary">
+                                                   
+                                                    
+                                        </form>
+                                        <br>
+                                        <br>
+                                        <br>
+                                        <br>
+                                        <form action="/preport_search" method="GET">
+                                            <h3>REPORT ACCORDING TO PATIENT ID</h3>
+                                            <br>
+                                            <br>
+                                            @csrf
+                                                <input type="text" name="patientID" placeholder="Patient ID">
+                                                <br>
+                                                <br>
+                                                
+                                                
+                                               
+                                                
+                                                <a href="" ><button class="btn btn-danger">GENERATE REPORT</button></a>
+                                               
+                                                
+                                    </form>
+                                       
                                             </div>
                                         </div>
                                     </div>
@@ -155,7 +187,14 @@
                                 <div class="another-text">
                                         <h3>CARD PAYMENTS</h3>
                                 </div>
-                            
+
+                                <a href="{{ url('/preport_card')}}" style="margin-left: 300px;"><button class="btn btn-danger">GENERATE REPORT</button></a>
+                                
+                                <br>
+                                <br>
+                                <br>
+                                
+
                                 <table>
                                         <tr>
                                             <th width = "50px"><b>No.</b></th>
@@ -190,3 +229,4 @@
     
 </body>
 </html>
+

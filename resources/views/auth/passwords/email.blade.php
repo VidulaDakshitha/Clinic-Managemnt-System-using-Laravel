@@ -62,6 +62,11 @@
 
 @section('content')
 <div class="container">
+    @if (session('status'))
+    <div class="alert alert-success" role="alert">
+        {{ session('status') }}
+    </div>
+    @endif
     <div class="row">
         <div class="col-md-6">
             <img class="d-none d-md-block" src="{{ asset('images/main/login/welcome_image.jpg') }}" alt="">

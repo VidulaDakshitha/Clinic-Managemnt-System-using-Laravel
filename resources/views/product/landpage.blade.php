@@ -21,7 +21,7 @@
         <footer>
           <ul class="nospace inline pushright">
             <li><a class="btn1" href= "/product" >Product Details</a></li>
-            <li><a class="btn1" href="#">Supplier Details</a></li>
+            <li><a class="btn1" href="/supplier">Supplier Details</a></li>
           </ul>
         </footer>
       </article>
@@ -29,27 +29,8 @@
     </div>
   
   </div>
-  <br><br><br>
-  <div class="wrapper row3">
-    <main class="hoc container clear"> 
-  
-  
-      <ul class="nospace group blocks">
-        <li class="one_quarter first bgded overlay" style="background-image:url('images/product/a.png');"><a class="btn1 medium" href="/aboutus">About Us</a><br>
-        </li>
-        <li class="one_quarter bgded overlay" style="background-image:url('images/product/g.png');"><a class="btn1 medium" href="/gallery">Gallery</a><br>
-        </li>
-        <li class="one_quarter bgded overlay" style="background-image:url('images/product/c.png');"><a class="btn1 medium" href="/contact">Contact Us</a><br>
-        </li>
-        <li class="one_quarter bgded overlay" style="background-image:url('images/product/s.png');"><a class="btn1 medium" href="ServiceTest">Services</a><br>
-        </li>
-      </ul>
-      
-      <div class="clear"></div>
-    </main>
-    
-  </div>
-  <br><br><br>
+<br><br>
+
   <!-- JAVASCRIPTS -->
   <script src={{ url('css/product/scripts/jquery.min.js') }} ></script>
  

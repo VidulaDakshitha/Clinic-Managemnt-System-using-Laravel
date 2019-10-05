@@ -10,29 +10,6 @@
 @endsection
 
 @section('content')
-<div class="container">
-    
-    
-        @if(count($errors)>0)
-            @foreach ($errors->all() as $error)
-                <div class="alert alert-danger">
-                    {{ $error }}
-                </div>
-            @endforeach
-        @endif
-
-        @if(session('success'))
-            <div class="alert alert-success">
-                {{ session('success') }}
-            </div>
-        @endif
-
-        @if(session('error'))
-            <div class="alert alert-danger">
-                {{ session('error') }}
-            </div>
-        @endif
-     </div>
 
 
 
@@ -49,9 +26,11 @@
 <div class="services">
 
 @if(!auth::guest())
+    @if(auth::user()->type=="admin")
 <a class="btn btn-primary" href="/aboutus/create">
     Create Posts
 </a>
+    @endif
 @endif
 
 

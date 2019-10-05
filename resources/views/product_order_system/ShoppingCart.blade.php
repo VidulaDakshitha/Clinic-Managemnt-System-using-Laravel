@@ -51,7 +51,7 @@
                                                 <td>{{$product['item']['product_id']}}</td>
                                                 <td>
 
-                                                        <img src="{{ asset('product_images/'.$product['item']['image']) }}"
+                                                        <img src="{{ asset('/storage/product_images/'.$product['item']['image']) }}"
                                                                 class="product_image" alt=""
                                                                 style="width: 50px; height: 80px; box-shadow: 0px 0px 0 5px #f0f0f0;">
                                                         <h6>{{$product['item']['name']}}</h6>
@@ -119,10 +119,11 @@
                                         <br>
                                         <div class="row">
                                                 <div class="col">
-                                                        <h6>Delevery to</h6>
+                                                        <h6 class="font-weight-bold"> Delevery to : </span></h6>
                                                 </div>
                                                 <div class="col">
-                                                        <h6>{{ Auth::user()->name}} address </h6>
+                                                        <h6>{{$address}} address </h6>
+
                                                 </div>
                                         </div>
                                         <br>
@@ -141,7 +142,7 @@
 
                                         </form>
 
-                                        @if($product['qty']!=0)
+                                        @if($totalQuntity!=0)
                                         <a href="{{route('product-chek-out')}}" class="btn btn-primary">Check out</a>
                                         @else
                                         <div class="alert alert-warning" role="alert">

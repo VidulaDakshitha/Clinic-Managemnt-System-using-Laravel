@@ -23,7 +23,7 @@ class CreateSupplierContactsTable extends Migration
             DB::table('supplier_contacts')->insert(
                 array(
                     'supplier_id' => $i+1,
-                    'contact_number' => '+94 11 '.($i).'23132'.$i,
+                    'contact_number' => '011'.($i).'23132'.$i,
                 )
             );
         }

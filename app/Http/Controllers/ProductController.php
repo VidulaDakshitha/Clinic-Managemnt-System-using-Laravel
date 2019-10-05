@@ -35,10 +35,21 @@ class ProductController extends Controller
          return redirect('/search-product');
 
         }else{
+        $getuser_email= Auth::user()->email;
+
+        $user_address= DB::table('patients')
+                        ->select('address1')
+                        ->where('email',$getuser_email)->get();
+
+           $address=(string)$user_address[0]->address1;
+         //  dd(gettype($user_address));
+
         $oldCart=Session::get('cart');
         $cart=new Cart($oldCart);
          // dd($cart->items);
-        return view('product_order_system.ShoppingCart',['products'=>$cart->items,'totalPrice'=>$cart->totalPrice,'totalQuntity'=>$cart->totalQty]);
+
+        return view('product_order_system.ShoppingCart',['products'=>$cart->items,'totalPrice'=>$cart->totalPrice,'totalQuntity'=>$cart->totalQty])
+        ->with('address',$address);
 
      }
     }
@@ -114,9 +125,14 @@ class ProductController extends Controller
             ->decrement('quantity', $product['qty']);
 
            Session::forget('cart');
+
+           
+
           // return redirect('/search-product')->with('order_placed','Order placed sucsessfuly');
           return view('payment.paymentCard')->with('userId', $userId)
-                                            ->with('latsorderid',$latsorderid);
+                                              ->with('totalprderprice',$totalprderprice)
+                                              ->with('order_placed','Order placed sucsessfuly')
+                                             ->with('latsorderid',$latsorderid);
 
         }
 

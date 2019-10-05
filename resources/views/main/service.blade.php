@@ -1,6 +1,6 @@
 @extends('main.layout.mainlayout')
 
-@section('title', 'About Us')
+@section('title', 'Our Services')
 
 @section('styles')
 <link href="{{ asset('css/serv/adminserv.css') }}" rel="stylesheet">
@@ -11,33 +11,15 @@
 @endsection
 
 @section('content')
-<div class="container">
-    @if(count($errors)>0)
-        @foreach ($errors->all() as $error)
-            <div class="alert alert-danger">
-                {{ $error }}
-            </div>
-        @endforeach
-    @endif
 
-    @if(session('success'))
-        <div class="alert alert-success">
-            {{ session('success') }}
-        </div>
-    @endif
-
-    @if(session('error'))
-        <div class="alert alert-danger">
-            {{ session('error') }}
-        </div>
-    @endif
- </div>
 
 <div class="services">
 @if(!auth::guest())
+    @if(auth::user()->type=="admin")
 <a class="btn btn-primary" href="/ServiceTest/create">
 Add new services
 </a>
+    @endif
 @endif
 <h1>Our Services</h1>
 </div>  

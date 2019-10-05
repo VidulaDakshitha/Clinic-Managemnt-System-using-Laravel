@@ -34,12 +34,15 @@
             <tr>
                 <th scope="row"> {{ $supplier->supplier_id }}</th>
                 <td><a href="/supplier/{{ $supplier->supplier_id }}">{{ $supplier->name }}</a></td>
-                <td><?php $city = preg_split('/\s+/', $supplier->location); echo $city[max(count($city)-1, 0)]; ?></td>
+                <td><?php $city = preg_split('/\s+/', $supplier->location); echo $city[max(count($city)-1, 0)]; ?>
+                </td>
                 <td>
                     @if (count($supplier->products)>0)
 
                     @foreach ($supplier->products as $product)
-                    <p>{{ $product->name }}</p>
+                    <a href="/supplier/product/{{ $product->product_id }}">
+                        <p>{{ $product->name }}</p>
+                    </a>
                     @endforeach
 
                     @else
@@ -51,7 +54,7 @@
                     <form action="/supplier/{{ $supplier->supplier_id }}" method="POST">
                         @csrf
                         @method('DELETE')
-                        <button type="submit" href="" class="btn btn-danger">Remove</button>
+                        <button type="submit" class="btn btn-danger">Remove</button>
                     </form>
                 </td>
             </tr>

@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -37,17 +38,13 @@
                         <div class="row">
                             <div class="col-md-3 col-sm-3 col-xs-12">
                                 <div class="logo">
-                                    <h2><a href="#">IHHR</a></h2>
+                                    <h2><a href="#" style = "color:#62a832;">IHHR</a></h2>
                                 </div>
                             </div>
                             <div class="col-md-9 col-sm-9 col-xs-12">
                                 <div class="menu">
                                     <ul class="nav navbar-nav">
-                                        <li class="active"><a href="{{ url('paymentHome')}}">HOME</a></li>
-                                        <li><a href="#">Features</a></li>
-                                        <li><a href="#">Pricing</a></li>
-                                        <li><a href="#">Team</a></li>
-                                        <li><a href="#">Contact</a></li>
+                                        <li class="active"><a href="{{ url('paymentHome')}}" style = "color:#62a832;">HOME</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -58,8 +55,9 @@
                                         <h1>Make online payment</h1>
                                         <p>You are able make online payments for your medicines, medical consume items and doctor appoinments.
                                              As IHHR we have made your operations more simple<br> Thank you!</p>
-                                        <button>Terms & condition</button>
-                                        <button>About Refund</button>
+                                        <br>
+                                        <br>
+                                        <br>
                                 </div>
                             </div>
                         </div>
@@ -93,25 +91,27 @@
                                 <form action="{{ route('card.store')}}" method="POST">
                                 @csrf
                                         <div class="first">
-                                            <input type="text" name="patientID" placeholder="Patient ID" pattern=" " value={{$userId}} title = "Patient id should start from P and with 3 digits number" required readonly>
+                                            <label>Patient ID</label>
+                                            <input type="text" name="patientID" value={{$userId}} readonly>
                                         </div>
                                         <div class="last">
-                                            <input type="text" name="orderID" value={{$latsorderid}} placeholder="Order or Appointment ID" required readonly>
+                                            <label>Order ID</label>
+                                            <input type="text" name="orderID" value={{$latsorderid}} readonly>
                                         </div>
                                         <div class="first">
-                                            <input type="text" name="cardNum" placeholder="Card Number" pattern="[0-9]{4} *[0-9]{4} *[0-9]{4} *[0-9]{4}" title="ERROR: Card number should contain 16 numbers" required >
+                                            <input type="text" id = "cardNum" name="cardNum" placeholder="Card Number" pattern="[0-9]{4} *[0-9]{4} *[0-9]{4} *[0-9]{4}" title="ERROR: Card number should contain 16 numbers" required >
                                         </div>
                                         <div class="last">
-                                            <input type="text" name="bank" placeholder="Bank" required>
+                                            <input type="text" id = "bank" name="bank" placeholder="Bank" required>
                                         </div>
                                         <br>
                                         <br>
                                         <br>
                                         <div class="first">
-                                            <input type="text" name="serialNum" placeholder="Serial 3-digits(xxx)" pattern="[0-9]{3}" title="ERROR: Card serial should contain 3 numbers only" required>
+                                            <input type="text" id = "serialNum" name="serialNum" placeholder="Serial 3-digits(xxx)" pattern="[0-9]{3}" title="ERROR: Card serial should contain 3 numbers only" required>
                                         </div>
                                         <div class="last">
-                                            <input type="text" name="cardType" placeholder="Card Type(VISA or MASTER)" required>
+                                            <input type="text" id = "cardType" name="cardType" placeholder="Card Type(VISA or MASTER)" pattern = "(VISA)||(MASTER)" required>
                                         </div>
 
                                         <br>
@@ -124,9 +124,24 @@
                                             </div>
                                             <div class="submit">
                                                 <input type="submit" value="PAY">
+                                                
                                             </div>
+                                            
+                                            
                                         </div>
                                     </form>
+
+                                    <button onclick="myFunction()" class = "btn btn-primary">Demo</button>
+
+                                    
+                                            <script>
+                                                function myFunction() {
+                                                document.getElementById("cardNum").value = "1234123412341234";
+                                                document.getElementById("bank").value = "HNB";
+                                                document.getElementById("serialNum").value = "123";
+                                                document.getElementById("cardType").value = "VISA";
+                                                }
+                                            </script>
                                 </div>
                             </div>
                         </div>

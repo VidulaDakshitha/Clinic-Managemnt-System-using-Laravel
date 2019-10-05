@@ -25,7 +25,6 @@ class PaitientOrderDashController extends Controller
     public function indexpaitent(Request $request){
        // $paitent_id=$request->get('user_id);
         $paitent_id=Auth::id();
-
         $orderDetail=DB::table('orders')
                      ->join('order_product','order_product.order_id','=','orders.order_id')
                      ->join('products','products.product_id','=','order_product.product_id')
@@ -241,7 +240,7 @@ class PaitientOrderDashController extends Controller
 
 
     public function searchmedical(Request $request){
-
+//oder
         $keyword=$request->get('dashsearchtxt');
         $type=$request->get('dashsearchtype');
         $paitent_id=$request->get('paitent_id');
@@ -427,4 +426,16 @@ class PaitientOrderDashController extends Controller
        //need to return money and need to send order id to kvin
 
     }
+
+    public function printreport($repot){
+
+        return view('product_order_system.product_order_reports.PaitentOrderRepot');
+    }
+
+
+
+
+
+
+
 }

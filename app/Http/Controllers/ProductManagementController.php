@@ -30,6 +30,34 @@ class ProductManagementController extends Controller
         return view('product.productdashboard', compact('products'));
     }
 
+    public function expview()
+    {
+
+        $products = Product::where('expiry_date', '<=', date('Y-m-d'))->get();
+
+        return view('product.exp', compact('products'));
+        
+        
+        
+    }
+
+    public function reports()
+    {
+        $products =Product::paginate(10);
+        return view('product.reports', compact('products'));
+    }
+
+    public function search(Request $request)
+    {
+        $search = $request->get('search');
+        $products = DB::table('products')->where('type','like', '%'.$search.'%')
+                                         ->orwhere('brand','like','%'.$search.'%')
+                                         ->orwhere('quantity','like','%'.$search.'%')
+                                         ->orwhere('name','like','%'.$search.'%')
+                                         ->orwhere('potency','like','%'.$search.'%')->paginate(10);
+        return view('product.reports', ['products' => $products]);
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -49,13 +77,14 @@ class ProductManagementController extends Controller
      */
     public function store(Request $request)
     {
-
+        
+        // dd($path = $request);
         if($request->hasFile('image')){
             $fullFileName = $request->image->getClientOriginalName();
             $file = pathinfo($fullFileName, PATHINFO_FILENAME);
             $ext = $request->image->getClientOriginalExtension();
 
-            $fileName = $file.'_'.time().'_'.$ext;
+            $fileName = $file.'_'.time().'.'.$ext;
 
             $path = $request->image->storeAs('public/product_images', $fileName);
         }
@@ -88,7 +117,9 @@ class ProductManagementController extends Controller
      */
     public function show($id)
     {
-        //
+        $product = Product::findOrFail($id);
+
+        return view('product.pview', compact('product'));
     }
 
     /**
@@ -101,7 +132,7 @@ class ProductManagementController extends Controller
     {
         $product = Product::findOrFail($id);
 
-        return view('product.update', compact('products'));
+        return view('product.update', compact('product'));
     }
 
     /**
@@ -113,6 +144,19 @@ class ProductManagementController extends Controller
      */
     public function update(Request $request, Product $product)
     {
+        if($request->hasFile('image')){
+            $fullFileName = $request->image->getClientOriginalName();
+            $file = pathinfo($fullFileName, PATHINFO_FILENAME);
+            $ext = $request->image->getClientOriginalExtension();
+
+            $fileName = $file.'_'.time().'.'.$ext;
+
+            $path = $request->image->storeAs('public/product_images', $fileName);
+        }
+        else{
+            $fileName = "noimage.jpg";
+        }
+
         $product->name            = $request->name;
         $product->selling_price   = $request->selling_price;
         $product->quantity        = $request->quantity;
@@ -141,4 +185,12 @@ class ProductManagementController extends Controller
         $product->delete();
         return redirect('/product')->with('success','Product deleted Successfully!');
     }
+
+    public function destroyexp($id)
+    {
+        $product = Product::findOrFail($id);
+        $product->delete();
+        return redirect('/exp')->with('success','Product deleted Successfully!');
+    }
+
 }

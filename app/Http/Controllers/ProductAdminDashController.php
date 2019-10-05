@@ -39,7 +39,10 @@ class ProductAdminDashController extends Controller
 
         $order= DB::table('orders')
                 ->join('order_product','order_product.order_id','=','orders.order_id')
-                ->select('orders.order_id','orders.patient_id','orders.date','orders.status','orders.total_payment','order_product.product_id','order_product.product_id','order_product.quantity')
+                ->join('products','products.product_id','=','order_product.product_id')
+                ->join('users','users.id','=','orders.patient_id')
+                ->join('patients','patients.email','=','users.email')
+                ->select('orders.order_id','orders.patient_id','patients.fullname' ,'orders.date','orders.status','orders.total_payment','order_product.product_id','order_product.product_id','order_product.quantity','products.name')
                 ->get();
 
 
@@ -80,8 +83,11 @@ class ProductAdminDashController extends Controller
 
 
         $order= DB::table('orders')
-                ->join('order_product','order_product.order_id','=','orders.order_id')
-                ->select('orders.order_id','orders.patient_id','orders.date','orders.status','orders.total_payment','order_product.product_id','order_product.product_id','order_product.quantity')
+        ->join('order_product','order_product.order_id','=','orders.order_id')
+        ->join('products','products.product_id','=','order_product.product_id')
+        ->join('users','users.id','=','orders.patient_id')
+        ->join('patients','patients.email','=','users.email')
+        ->select('orders.order_id','orders.patient_id','patients.fullname' ,'orders.date','orders.status','orders.total_payment','order_product.product_id','order_product.product_id','order_product.quantity','products.name')
                 ->where($type,'like','%'.$keyword.'%')
                 ->get();
 
@@ -174,6 +180,21 @@ class ProductAdminDashController extends Controller
     }
 
 
+    public function print_row(Request $request){
+        $order_id=$request->get('order_id');
+        $product_id=$request->get('product_id');
+        $product_date=$request->get('product_date');
+        $product_quantity=$request->get('product_quantity');
+        $product_total_payment=$request->get('product_total_payment');
+
+        dd("dfdgd");
+        return view('product_order_system.OrderRowPrint')
+        ->with("order_id",$order_id)
+        ->with("product_id",$product_id)
+        ->with("product_date",$product_date)
+        ->with("product_quantity",$product_quantity)
+        ->with("product_total_payment",$product_total_payment);
+    }
 
 
     /**

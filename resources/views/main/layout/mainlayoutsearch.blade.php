@@ -21,14 +21,15 @@
     <link rel="stylesheet" href="{{ asset('css/main/mainlayout/owl.carousel.css') }}" />
     <link rel="stylesheet" href="{{ asset('css/main/mainlayout/style.css') }}" />
     <link rel="stylesheet" href="{{ asset('css/main/mainlayout/animate.css') }}" />
-
+   
+    <link href="{{ asset('css/patDashboard/contactus.css') }}" rel="stylesheet" type="text/css" >
 
     <!-- Stylesheets for search page-->
     <link href="{{ asset('css/searchCSS/jquery1.css') }}" rel="stylesheet" type="text/css" >
     <link href="{{ asset('css/searchCSS/channeling_styles.css') }}" rel="stylesheet" type="text/css" >
     <link href="{{ asset('css/searchCSS/bootstrap_date.css') }}" rel="stylesheet" type="text/css" >
     <link href="{{ asset('css/searchCSS/fonts.css') }}" rel="stylesheet" type="text/css" >
-    {{-- <link href="{{ asset('css/searchCSS/bootstrap1.css') }}" rel="stylesheet" type="text/css" > --}}
+    <link href="{{ asset('css/searchCSS/bootstrap1.css') }}" rel="stylesheet" type="text/css" >
 
 
      

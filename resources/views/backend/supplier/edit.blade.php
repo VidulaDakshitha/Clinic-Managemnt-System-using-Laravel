@@ -8,7 +8,6 @@
 @section('js')
 <script src="https://cdn.jsdelivr.net/npm/jquery@2.2.4/dist/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.4/dist/umd/popper.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/jquery-match-height@0.7.2/dist/jquery.matchHeight.min.js"></script>
 <script src="{{ asset('js/backend/supplier/main.js') }}"></script>
 <script src="{{ asset('js/backend/supplier/lib/chosen/chosen.jquery.min.js') }}"></script>
@@ -26,7 +25,6 @@
 
 @section('styles')
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.0/normalize.min.css">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lykmapipo/themify-icons@0.1.2/css/themify-icons.css">
 <link rel="stylesheet"
@@ -113,10 +111,10 @@
             class="standardSelect" required>
             @if (count($products)>0)
             @foreach ($supplier->products as $product)
-            <option selected>{{ $product->type }}</option>
+            <option selected>{{ $product->name }}</option>
             @endforeach
             @foreach ($products as $product)
-            <option>{{ $product->type }}</option>
+            <option>{{ $product->name }}</option>
             @endforeach
             @else
             <option>No Product Types</option>

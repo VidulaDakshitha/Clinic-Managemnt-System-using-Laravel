@@ -8,8 +8,9 @@
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
+        
 
-        <!-- Styles -->
+       
         <style>
             html, body {
                 background-color: #fff;
@@ -62,9 +63,11 @@
                 margin-bottom: 30px;
             }
         </style>
+        <script src="js/jquery-3.4.1.js"></script>
+        <script type="text/javascript" src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     </head>
     <body>
-        <div class="flex-center position-ref full-height">
+     <!--   <div class="flex-center position-ref full-height">
             @if (Route::has('login'))
                 <div class="top-right links">
                     @auth
@@ -85,6 +88,7 @@
                 </div>
 
                 <div class="links">
+                        @include('sweet::alert')
                     <a href="https://laravel.com/docs">Docs</a>
                     <a href="https://laracasts.com">Laracasts</a>
                     <a href="https://laravel-news.com">News</a>
@@ -94,6 +98,17 @@
                     <a href="https://github.com/laravel/laravel">GitHub</a>
                 </div>
             </div>
-        </div>
+        </div>-->
+
+        <button id="button-a">buton</button>
+
+        <script>
+        $('#button-a').click(function(){
+
+            swal("Isaid","Hello world");
+        });
+        
+        </script>
+    
     </body>
 </html>

@@ -15,20 +15,70 @@ class CreateSuppliersTable extends Migration
     {
         Schema::create('suppliers', function (Blueprint $table) {
             $table->bigIncrements('supplier_id');
-            // $table->unsignedBigInteger('product_id');
             $table->string('name');
             $table->string('location');
         });
 
-        for($i=0; $i<10; $i++){
-            DB::table('suppliers')->insert(
-                array(
-                    // 'product_id' => $i+1,
-                    'name' => 'Supplier '.$i,
-                    'location' => 'Colombo '.$i,
-                )
-            );
-        }
+        DB::table('suppliers')->insert(
+            array(
+                'name' => 'New England Pharmacy',
+                'location' => '652 Michael\'s Rd Colombo',
+            )
+        );
+        DB::table('suppliers')->insert(
+            array(
+                'name' => 'Oceana Pharmacy',
+                'location' => '854 St Jude\'s Rd Negombo',
+            )
+        );
+        DB::table('suppliers')->insert(
+            array(
+                'name' => 'Wellawatta Pharmaceutical Suppliers',
+                'location' => '211 St. Mary\'s Rd Wellawatta, Colombo',
+            )
+        );
+        DB::table('suppliers')->insert(
+            array(
+                'name' => 'Khomba Soap Producers',
+                'location' => '2145 Main Road Kandy',
+            )
+        );
+        DB::table('suppliers')->insert(
+            array(
+                'name' => 'Aloe Vera Gel Company',
+                'location' => '124 Rex Dias Rd Chilaw',
+            )
+        );
+        DB::table('suppliers')->insert(
+            array(
+                'name' => 'Pharmaceutical Importers',
+                'location' => '111 Kochchikade Colombo',
+            )
+        );
+        DB::table('suppliers')->insert(
+            array(
+                'name' => 'Major Bandage Producers',
+                'location' => '632 St. Luke\'s Rd Katunayake',
+            )
+        );
+        DB::table('suppliers')->insert(
+            array(
+                'name' => 'Roger Medical Supplies',
+                'location' => '485 Main Rd Borella',
+            )
+        );
+        DB::table('suppliers')->insert(
+            array(
+                'name' => 'Marsh Drug Store',
+                'location' => '652 Michael\'s Rd Galle',
+            )
+        );
+        DB::table('suppliers')->insert(
+            array(
+                'name' => 'Keystone Pharmacy',
+                'location' => '546 William\'s Rd Negombo',
+            )
+        );
     }
 
     /**

@@ -73,6 +73,7 @@ class CreateUsersTable extends Migration
                 'type' => 'patient',
             )
         );
+
     }
 
     /**
