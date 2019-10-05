@@ -34,9 +34,9 @@ class ProductManagementController extends Controller
     {
 
         $products = Product::where('expiry_date', '<=', date('Y-m-d'))->get();
-        
+
         return view('product.exp', compact('products'));
-        
+
     }
 
     public function reports()
@@ -104,7 +104,7 @@ class ProductManagementController extends Controller
     public function show($id)
     {
         $product = Product::findOrFail($id);
-        
+
         return view('product.pview', compact('product'));
     }
 
