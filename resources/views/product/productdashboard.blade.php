@@ -49,7 +49,7 @@
                     </div>
                     <div class="form-group">
                         <label>EXP-Date</label>
-                        <input type="date" name="expiry_date" class="form-control" id="expiry_date" required>
+                        <input type="date" name="expiry_date" class="form-control" id="expiry_date" required pattern = "(?:20)[0-9]{2}-(?:(?:0[1-9]|1[0-2])-(?:0[1-9]|1[0-9]|2[0-9])|(?:(?!02)(?:0[1-9]|1[0-2])-(?:30))|(?:(?:0[13578]|1[02])-31)")>
                     </div>
                     <div class="form-group">
                         <label>Brand</label>
@@ -78,7 +78,23 @@
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
                     <input type="submit" value="Add Product" name="registerbtn" class="btn btn-primary">
 
-                    <input type="submit" value="Demo" name="registerbtn" class="btn btn-primary">
+                    <button type="button" onclick="myFunction()" class = "btn btn-primary">Demo</button>
+
+                    <script>
+                            function myFunction() {
+                            document.getElementById("name").value = "Silk Stay Soap";
+                            document.getElementById("selling_price").value = "400.00";
+                            document.getElementById("quantity").value = "30";
+                            document.getElementById("potency").value = "0";
+                            document.getElementById("expiry_date").value = "2020-10-13";
+                            document.getElementById("brand").value = "S.B.L";
+                            document.getElementById("description").value = "Fairness Homoeopathic Soap";
+                            document.getElementById("type").value = "general";
+                            document.getElementById("image").value = " ";
+
+                        }
+                    </script>
+
                 </div>
 
 
@@ -113,13 +129,12 @@
                         <div class="card-header">
                             <h1>Stock Description</h1>
                             <button type="submit" href="" class="btn btn-primary mr-1" data-toggle="modal"
-                                data-target="#addproduct" style="margin-left: 500px;margin-top: -45px;">Add New
-                                Product</button>
+                                data-target="#addproduct" style="margin-left: 550px;margin-top: -45px;">Add NewProduct</button>
 
                             <form action="/exp" method="GET">
                                 @csrf
                                 <button type="submit" href="" class="btn btn-danger mr-1"
-                                    style="margin-left: 650px;margin-top: -45px;">Manage Expired Products</button>
+                                    style="margin-left: 700px;margin-top: -45px;">Expired Products</button>
                             </form>
 
                         </div>
@@ -133,9 +148,9 @@
                                         <th>brand</th>
                                         <th>Potency</th>
                                         <th>Price</th>
-                                        <th>View</th>
-                                        <th>Update</th>
-                                        <th>Remove</th>
+                                        <th> </th>
+                                        <th> </th>
+                                        <th> </th>
                                     </tr>
                                 </thead>
 
@@ -145,15 +160,15 @@
 
                                     @foreach($products as $product)
 
+                                    @if($product->expiry_date <= date('Y-m-d'))
+
                                     <tr>
-                                        <td>{{$product->name}}</td>
-                                        <td>{{$product->quantity}}</td>
-                                        <td>{{$product->type}}</td>
-                                        <td>{{$product->brand}}</td>
-                                        <td>{{$product->potency}}</td>
-                                        <td>{{$product->selling_price}}</td>
-
-
+                                        <td style = "color: red">{{$product->name}}</td>
+                                        <td style = "color: red">{{$product->quantity}}</td>
+                                        <td style = "color: red">{{$product->type}}</td>
+                                        <td style = "color: red">{{$product->brand}}</td>
+                                        <td style = "color: red">{{$product->potency}}</td>
+                                        <td style = "color: red">{{$product->selling_price}}</td>
 
                                         <td>
                                             <form action="/product/{{ $product->product_id}}" method="GET">
@@ -176,6 +191,37 @@
 
                                     </tr>
 
+                                    @else
+
+                                    <tr>
+                                            <td>{{$product->name}}</td>
+                                            <td>{{$product->quantity}}</td>
+                                            <td>{{$product->type}}</td>
+                                            <td>{{$product->brand}}</td>
+                                            <td>{{$product->potency}}</td>
+                                            <td>{{$product->selling_price}}</td>
+    
+                                            <td>
+                                                <form action="/product/{{ $product->product_id}}" method="GET">
+                                                    @csrf
+                                                    <button type="submit" href="" class="btn btn-primary mr-1">View</button>
+                                                </form>
+                                            </td>
+    
+                                            <td>
+                                                <a href="/product/{{ $product->product_id}}/edit"
+                                                    class="btn btn-primary mr-1">Edit</a>
+                                            </td>
+                                            <td>
+                                                <form action="/productdelete/{{$product->product_id}}" method="POST">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit" href="" class="btn btn-danger">Remove</button>
+                                                </form>
+                                            </td>
+    
+                                        </tr>
+                                    @endif
                                     @endforeach
                                     @endif
                                 </tbody>
@@ -183,13 +229,10 @@
                         </div>
                     </div>
                 </div>
-
-
             </div>
         </div><!-- .animated -->
     </div><!-- .content -->
 </div>
-
 
 <script src={{ url('css/product/vendors/jquery/dist/jquery.min.js') }}></script>
 <script src={{ url('css/product/vendors/popper.js/dist/umd/popper.min.js') }}></script>

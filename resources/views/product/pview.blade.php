@@ -10,7 +10,17 @@
 
 <div class="container" id = "app">
 <div id="printContainer">
-    <h2>Product: {{ $product->name }}</h2>
+    
+    @if($product->expiry_date <= date('Y-m-d'))
+        <h2 style = "color: red">WARNING!<h2>
+        <h2 style = "color: red">Product: {{ $product->name }} is Expired!</h2>
+    
+    @else
+
+        <h2>Product: {{ $product->name }}</h2>
+
+    @endif
+    
     <hr>
 
         <img src = "/storage/product_images/{{ $product->image}}" width = "200px" height="200px">

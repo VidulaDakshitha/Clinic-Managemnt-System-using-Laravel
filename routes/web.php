@@ -199,6 +199,8 @@ Route::get('/exp', 'ProductManagementController@expview');
 
 Route::get("/generate-product-report",'ProductManagementController@reports');
 
+Route::get("/reportsearch",'ProductManagementController@search');
+
 //Record Management
 
 //1.Personal Record
