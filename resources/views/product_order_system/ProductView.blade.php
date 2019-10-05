@@ -31,7 +31,7 @@
             <div class="col-5">
                 <div>
                     <!--Product image-->
-                     <img  src="../product_images/{{$product['image']}}" class="product_image" alt="" style="width: 100%;
+                     <img  src="../storage/product_images/{{$product['image']}}" class="product_image" alt="" style="width: 100%;
                      box-shadow: 0px 0px 0 5px #f0f0f0;">
 
                 </div>
