@@ -56,6 +56,12 @@ class PersonalRecordsController extends Controller
         return view('read_per',compact('personal_record'));
     }
 
+    public function read(PersonalRecord $personal_record)
+    {
+        
+        return view('read_personal',compact('personal_record'));
+    }
+
     public function destroy($id)
     {
         $personal_record = PersonalRecord::where('record_id',$id);
