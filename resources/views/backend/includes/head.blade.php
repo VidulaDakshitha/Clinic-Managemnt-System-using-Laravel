@@ -33,7 +33,7 @@
                       {{ Auth::user()->name }}
                   </a>
                   <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                      <a class="dropdown-item" href="/supplier-settings">Settings</a>
+                  
                       <div class="dropdown-divider"></div>
                       <form action="{{ route('logout') }}" method="post">
                           @csrf

@@ -61,7 +61,7 @@ class TreatmentController extends Controller
     {
         $treatment_record = TreatmentRecord::where('record_id',$id)
                                                         ->first();
-        return view('read_treat',compact('treatment_record'));
+        return view('read_treatment',compact('treatment_record'));
     }
 
     public function destroy(TreatmentRecord $treatment_record,$id)

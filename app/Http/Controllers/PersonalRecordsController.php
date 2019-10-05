@@ -65,10 +65,13 @@ class PersonalRecordsController extends Controller
 
     public function read($id)
     {
-        
-        $personal_record = PersonalRecord::where('record_id',$id)
+        $personal_records = PersonalRecord::where('record-id',$id)
+                                            ->with('date')
+                                            ->with('patient_id')
+                                            ->with('disease')
+                                            ->with('description')
                                             ->first();
-        return view('read_per',compact('personal_record'));
+        return view('read_personal',compact('personal_record'));
     }
 
     public function destroy($id)
