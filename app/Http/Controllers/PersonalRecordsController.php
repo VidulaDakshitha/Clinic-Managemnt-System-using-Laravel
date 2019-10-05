@@ -50,15 +50,18 @@ class PersonalRecordsController extends Controller
         return redirect('home_per')->with('success','Personal Record updated successfully');
     }
 
-    public function show(PersonalRecord $personal_record)
+    public function show($id)
     {
-        
+        $personal_record = PersonalRecord::where('record_id',$id)
+                                            ->first();
         return view('read_per',compact('personal_record'));
     }
 
-    public function read(PersonalRecord $personal_record)
+    public function read($id)
     {
         
+        $personal_record = PersonalRecord::where('record_id',$id)
+                                            ->first();
         return view('read_personal',compact('personal_record'));
     }
 

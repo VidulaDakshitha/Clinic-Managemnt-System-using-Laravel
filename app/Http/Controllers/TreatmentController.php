@@ -43,14 +43,18 @@ class TreatmentController extends Controller
         return redirect('home_treat')->with('success','Treatment updated successfully');
     }
 
-    public function show(TreatmentRecord $treatment_record)
+    public function show($id)
     {
+        $treatment_record = TreatmentRecord::where('record_id',$id)
+                                                       ->first();
         return view('read_treat',compact('treatment_record'));
     }
 
-    public function read(TreatmentRecord $treatment_record)
+    public function read($id)
     {
-        return view('read_treatment',compact('treatment_record'));
+        $treatment_record = TreatmentRecord::where('record_id',$id)
+                                                        ->first();
+        return view('read_treat',compact('treatment_record'));
     }
 
     public function destroy(TreatmentRecord $treatment_record,$id)
