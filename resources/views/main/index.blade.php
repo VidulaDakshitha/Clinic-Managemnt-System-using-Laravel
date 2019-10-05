@@ -236,6 +236,19 @@
     </div>
     <div class="testimonials-warp">
         <div class="testimonials-slider owl-carousel">
+            @if (count($feedbacks)>0)
+            @foreach ($feedbacks as $feedback)
+            <div class="testimonial-item">
+                <div class="ts-content">
+                    <div class="quta">“</div>
+                    <p>{{ $feedback->message }}</p>
+                    <h6>{{ $feedback->name }}</h6>
+                    <span>Patient</span>
+                </div>
+                {{-- <div class="author-pic set-bg" data-setbg="img/review/1.jpg"></div> --}}
+            </div>
+            @endforeach
+            @else
             <div class="testimonial-item">
                 <div class="ts-content">
                     <div class="quta">“</div>
@@ -277,6 +290,7 @@
                 </div>
                 {{-- <div class="author-pic set-bg" data-setbg="img/review/2.jpg"></div> --}}
             </div>
+            @endif
         </div>
     </div>
 </section>

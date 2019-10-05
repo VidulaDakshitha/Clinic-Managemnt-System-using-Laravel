@@ -16,9 +16,9 @@
 <div class="container">
     <h3>Settings</h3>
 
-    <form action="/supplier" method="POST">
+    <form action="/supplier/update-details" method="POST" autocomplete="off">
         @csrf
-
+        <input autocomplete="false" name="testhidden" type="text" style="display:none;">
         <div class="form-row">
             <div class="form-group col-md-12">
                 <label for="inpuSupName">Name</label>
@@ -41,7 +41,20 @@
             </div>
         </div>
 
-
+        <div class="form-row">
+            <div class="form-group col-md-12">
+                <label for="inpuCurrentPassword">Current Password</label>
+                <input type="password" class="form-control" id="inpuCurrentPassword" placeholder="Current Password"
+                    required name="currentPassword" autocomplete="new-password" value="">
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-12">
+                <label for="inpuNewPassword">New Password</label>
+                <input type="password" class="form-control" id="inpuNewPassword" placeholder="New Password" required
+                    name="newPassword" autocomplete="new-password" value="">
+            </div>
+        </div>
 
         <hr>
 

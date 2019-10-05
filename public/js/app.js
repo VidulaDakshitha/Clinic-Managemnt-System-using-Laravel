@@ -1895,6 +1895,16 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   mounted: function mounted() {
     var _this = this;
@@ -1912,7 +1922,9 @@ __webpack_require__.r(__webpack_exports__);
       title: "Suppliers",
       searchQuery: "",
       column: "",
-      suppliers: []
+      suppliers: [],
+      showLogo: false,
+      date: ""
     };
   },
   watch: {
@@ -1926,10 +1938,20 @@ __webpack_require__.r(__webpack_exports__);
       this.search();
     },
     print: function print() {
-      this.$htmlToPaper("printContainer");
+      var _this2 = this;
+
+      this.showLogo = true;
+      this.date = new Date();
+      setTimeout(function () {
+        console.log("object");
+
+        _this2.$htmlToPaper("printContainer");
+
+        _this2.showLogo = false;
+      }, 500);
     },
     search: function search() {
-      var _this2 = this;
+      var _this3 = this;
 
       if (this.searchQuery.length > 0) {
         var words = this.searchQuery.trim().split(" ");
@@ -1939,14 +1961,14 @@ __webpack_require__.r(__webpack_exports__);
           // check if the word "in" contains in the query
           words.forEach(function (element) {
             if (element.toLowerCase() === "in" || element.toLowerCase() === "from") {
-              _this2.column = "location";
+              _this3.column = "location";
               query = words[words.length - 1];
-              _this2.title = "Suppliers that are located in " + query + " area";
+              _this3.title = "Suppliers that are located in " + query + " area";
               return;
             } else if (element.toLowerCase() === "sells" || element.toLowerCase() === "sell" || element.toLowerCase() === "supply" || element.toLowerCase() === "supplies" || element.toLowerCase() === "produce" || element.toLowerCase() === "produces") {
-              _this2.column = "products";
+              _this3.column = "products";
               query = words[words.length - 1];
-              _this2.title = "Suppliers that supply " + query;
+              _this3.title = "Suppliers that supply " + query;
               return;
             }
           });
@@ -1960,7 +1982,7 @@ __webpack_require__.r(__webpack_exports__);
             column: this.column
           }
         }).then(function (response) {
-          _this2.suppliers = response.data;
+          _this3.suppliers = response.data;
         })["catch"](function (error) {});
       } else {
         axios.get("/api/search", {
@@ -1968,7 +1990,7 @@ __webpack_require__.r(__webpack_exports__);
             keywords: "all"
           }
         }).then(function (response) {
-          _this2.suppliers = response.data;
+          _this3.suppliers = response.data;
         });
       }
     }
@@ -37362,9 +37384,21 @@ var render = function() {
           "div",
           [
             _c("div", { attrs: { id: "printContainer" } }, [
-              _c("h2", { staticClass: "mb-4" }, [
-                _vm._v(_vm._s(_vm.title) + " report")
-              ]),
+              _vm.showLogo
+                ? _c("div", [
+                    _c("div", { staticClass: "row" }, [
+                      _vm._m(0),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "col-md-2" }, [
+                        _vm._v(_vm._s(_vm.date))
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c("hr")
+                  ])
+                : _vm._e(),
+              _vm._v(" "),
+              _c("h2", { staticClass: "mb-4" }, [_vm._v(_vm._s(_vm.title))]),
               _vm._v(" "),
               _c("table", { staticClass: "table" }, [
                 _c("col", { attrs: { width: "20%" } }),
@@ -37375,7 +37409,7 @@ var render = function() {
                 _vm._v(" "),
                 _c("col", { attrs: { width: "20%" } }),
                 _vm._v(" "),
-                _vm._m(0),
+                _vm._m(1),
                 _vm._v(" "),
                 _c(
                   "tbody",
@@ -37385,15 +37419,7 @@ var render = function() {
                         _vm._v(_vm._s(supplier.supplier_id))
                       ]),
                       _vm._v(" "),
-                      _c("td", [
-                        _c(
-                          "a",
-                          {
-                            attrs: { href: "/supplier/" + supplier.supplier_id }
-                          },
-                          [_vm._v(_vm._s(supplier.name))]
-                        )
-                      ]),
+                      _c("td", [_c("p", [_vm._v(_vm._s(supplier.name))])]),
                       _vm._v(" "),
                       _c("td", [_vm._v(_vm._s(supplier.location))]),
                       _vm._v(" "),
@@ -37425,6 +37451,16 @@ var render = function() {
   ])
 }
 var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-md-10" }, [
+      _c("img", {
+        attrs: { src: "/images/main/mainlayout/logo_dark_long.png" }
+      })
+    ])
+  },
   function() {
     var _vm = this
     var _h = _vm.$createElement

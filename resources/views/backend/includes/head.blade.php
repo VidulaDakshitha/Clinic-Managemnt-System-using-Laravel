@@ -13,36 +13,36 @@
             <ul class="navbar-nav ml-auto">
 
                 <li class="nav-item">
-                  <a class="nav-link" href="{{ url('home_per') }}">Personal Record</a>
+                    <a class="nav-link" href="{{ url('home_per') }}">Personal Record</a>
                 </li>
 
                 <li class="nav-item">
-                  <a class="nav-link" href="{{url('/home_treat')}}">Treatment Record</a>
+                    <a class="nav-link" href="{{url('/home_treat')}}">Treatment Record</a>
                 </li>
 
                 <li class="nav-item">
-                  <a class="nav-link" href="{{url('/home_prescription')}}">Prescription</a>
-                </li> 
+                    <a class="nav-link" href="{{url('/home_prescription')}}">Prescription</a>
+                </li>
 
                 @yield('nav-items')
 
-        
+
                 <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                      data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      {{ Auth::user()->name }}
-                  </a>
-                  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  
-                      <div class="dropdown-divider"></div>
-                      <form action="{{ route('logout') }}" method="post">
-                          @csrf
-                          <input type="submit" class="dropdown-item" value="Logout">
-                      </form>
-                  </div>
-              </li>
-                            
-                       
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        {{ Auth::user()->name }}
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+
+                        <div class="dropdown-divider"></div>
+                        <form action="{{ route('logout') }}" method="post">
+                            @csrf
+                            <input type="submit" class="dropdown-item" value="Logout">
+                        </form>
+                    </div>
+                </li>
+
+
             </ul>
         </div>
     </div>

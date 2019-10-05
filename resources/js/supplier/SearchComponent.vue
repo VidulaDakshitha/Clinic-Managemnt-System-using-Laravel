@@ -20,8 +20,18 @@
     <hr />
     <h3 v-if="suppliers.length === 0">No results found for "{{ searchQuery }}"</h3>
     <div v-if="suppliers.length > 0">
+      <!-- printing content -->
       <div id="printContainer">
-        <h2 class="mb-4">{{ title }} report</h2>
+        <div v-if="showLogo">
+          <div class="row">
+            <div class="col-md-10">
+              <img src="/images/main/mainlayout/logo_dark_long.png" />
+            </div>
+            <div class="col-md-2">{{ date }}</div>
+          </div>
+          <hr />
+        </div>
+        <h2 class="mb-4">{{ title }}</h2>
 
         <table class="table">
           <col width="20%" />
@@ -40,7 +50,7 @@
             <tr v-for="supplier in suppliers" :key="supplier.supplier_id">
               <th scope="row">{{ supplier.supplier_id }}</th>
               <td>
-                <a :href="`/supplier/${supplier.supplier_id}`">{{ supplier.name }}</a>
+                <p>{{ supplier.name }}</p>
               </td>
               <td>{{ supplier.location }}</td>
               <td>
@@ -67,7 +77,9 @@ export default {
       title: "Suppliers",
       searchQuery: "",
       column: "",
-      suppliers: []
+      suppliers: [],
+      showLogo: false,
+      date: ""
     };
   },
   watch: {
@@ -81,7 +93,13 @@ export default {
       this.search();
     },
     print() {
-      this.$htmlToPaper("printContainer");
+      this.showLogo = true;
+      this.date = new Date();
+      setTimeout(() => {
+        console.log("object");
+        this.$htmlToPaper("printContainer");
+        this.showLogo = false;
+      }, 500);
     },
     search() {
       if (this.searchQuery.length > 0) {

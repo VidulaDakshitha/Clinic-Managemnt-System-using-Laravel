@@ -59,8 +59,11 @@ Route::get('/Services', 'ServicesController@index')->name('Services');
 
 Auth::routes();
 
-
-Route::view('/', 'main.index');
+use \App\Feedback;
+Route::get('/', function(){
+    $feedbacks = Feedback::all();
+    return view('main.index', compact('feedbacks'));
+});
 Route::get('/about', 'NoticesController@index');
 Route::get('/ServiceTest', 'PostsController@index');
 Route::get('/gallery', 'ArticlesController@index');
@@ -82,6 +85,8 @@ Route::get("/generate-supplier-report",'SupplierManagerController@reports')->mid
 Route::get("/supplier-settings",'SupplierManagerController@settings')->middleware('auth_supp');
 Route::get("/api/search", 'SupplierManagerController@search');
 Route::get("/report-pdf", "SupplierManagerController@generatepdf");
+Route::get('/supplier/product/{id}',"SupplierManagerController@product");
+Route::post('/supplier/update-details', "SupplierManagerController@supplierdetails");
 
 Route::resource('/appointments', 'AppointmentController');
 Route::post('manage/doctors/search', 'DoctorManagementController@searchDoctor');

@@ -11,12 +11,5 @@
 @section('content')
 <div class="container" id="app">
     <search-component></search-component>
-
-    {{-- pdf start --}}
-
-    {{-- pdf end --}}
-    {{-- {{ $suppliers->links() }} --}}
-
-
 </div>
 @endsection

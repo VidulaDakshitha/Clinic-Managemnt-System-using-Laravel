@@ -24,7 +24,7 @@ class CreateSupplierEmailsTable extends Migration
             DB::table('supplier_emails')->insert(
                 array(
                     'supplier_id' => $i+1,
-                    'email' => 'supp '.($i+1).'@sup.com',
+                    'email' => 'supp'.($i+1).'@sup.com',
                 )
             );
         }

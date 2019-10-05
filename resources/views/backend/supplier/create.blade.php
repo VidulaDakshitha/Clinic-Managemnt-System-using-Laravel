@@ -92,13 +92,13 @@
 
 
             <div class="card-body">
-                <select id="inputProduct" name="product[]" required data-placeholder="Choose a product..."
+                <select id="inputProduct" name="product[]" required data-placeholder="Choose products..."
                     class="standardSelect" multiple>
 
                     @if (count($products)>0)
 
                     @foreach ($products as $product)
-                    <option>{{ $product->type }}</option>
+                    <option>{{ $product->name }}</option>
                     @endforeach
 
                     @else

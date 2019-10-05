@@ -4,12 +4,14 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Auth;
 use App\Supplier;
+use App\User;
 use App\SupplierContact;
 use App\SupplierEmail;
 use App\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-
+use Dompdf\Dompdf;
+use Illuminate\Support\Facades\Hash;
 class SupplierManagerController extends Controller
 {
     /**
@@ -42,9 +44,6 @@ class SupplierManagerController extends Controller
 
     public function reports()
     {
-        // $result = Supplier::with(['products','suppliercontacts'])->first();
-        // dd($result);
-
         $suppliers = Supplier::all();
         return view('backend.supplier.reports', compact('suppliers'));
     }
@@ -55,20 +54,27 @@ class SupplierManagerController extends Controller
         return view('backend.supplier.settings', compact('user'));
     }
 
+    public function product($id)
+    {
+        $product = Product::findOrFail($id);
+
+        return view('backend.supplier.product', compact('product'));
+    }
     // search for a supplier
     public function search(Request $request)
     {
         if($request->keywords === "all"){
             $result = Supplier::with(['products'])->get();
         }
-        else if($request->keywords === "all"){
-            
-        }
         else{
             
             if($request->column === "products"){
                 $result = Supplier::with(['products'])->whereHas("products", function($q)use($request){
                      $q->where("name", "LIKE", "%$request->keywords%");})->get();            
+            }
+            else if($request->column === "and"){
+                $result = Supplier::with(['products'])->whereHas("products", function($q)use($request){
+                    $q->where("name", "LIKE", "%$request->keywordProduct%");})->where("location","LIKE", "%$request->keywordLocaton%")->get();      
             }else {
                 $result = Supplier::where($request->column, 'LIKE', "%$request->keywords%")->with(['products'])->get();
             }
@@ -86,12 +92,6 @@ class SupplierManagerController extends Controller
     {
         $products = Product::all();
         return view('backend.supplier.create', compact('products'));
-    }
-
-
-    public function generatepdf()
-    {
-        
     }
 
     /**
@@ -120,7 +120,7 @@ class SupplierManagerController extends Controller
                               
        if($supplier->save()){
            foreach($request->product as $prod){
-            $product = DB::table('products')->where('type', $prod)->first();  
+            $product = DB::table('products')->where('name', $prod)->first();  
             $supplier->products()->attach($product->product_id);
            }
        }
@@ -162,7 +162,7 @@ class SupplierManagerController extends Controller
         foreach ($supplier->products as $selected_key => $selected_product) {
             
             foreach ($products as $key => $product) {
-                if($selected_product->type == $product->type){
+                if($selected_product->name == $product->name){
                     unset($products[$key]);
                 }
             }
@@ -196,7 +196,7 @@ class SupplierManagerController extends Controller
         $supplier->products()->detach();
         
         foreach($request->product as $prod){
-            $product = DB::table('products')->where('type', $prod)->first();  
+            $product = DB::table('products')->where('name', $prod)->first();  
             $supplier->products()->attach($product->product_id);
         }
        }
@@ -224,5 +224,28 @@ class SupplierManagerController extends Controller
         //
         $supplier->delete();
         return redirect('/supplier')->with('success','Successfully deleted supplier');
+    }
+
+    public function supplierdetails(Request $request)
+    {
+        $data = $request->validate([
+            'name' => 'required|max:255',
+            'email' => 'required|email',
+            'currentPassword' => 'required',
+            'newPassword' => 'required'
+        ]);
+
+        if(Hash::check($request->currentPassword,Auth::user()->password)) {
+            
+            $user = User::find(Auth::user()->id);
+            $user->name = $request->name;
+            $user->email = $request->email;
+            $user->password = bcrypt($request->newPassword);
+            $user->save();
+            return redirect()->back()->with(['success' => 'User information changed successfully...']);
+        } else {
+            return redirect()->back()->with(['error' => 'Password did not match...']);
+        }
+
     }
 }

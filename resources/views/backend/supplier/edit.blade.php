@@ -111,10 +111,10 @@
             class="standardSelect" required>
             @if (count($products)>0)
             @foreach ($supplier->products as $product)
-            <option selected>{{ $product->type }}</option>
+            <option selected>{{ $product->name }}</option>
             @endforeach
             @foreach ($products as $product)
-            <option>{{ $product->type }}</option>
+            <option>{{ $product->name }}</option>
             @endforeach
             @else
             <option>No Product Types</option>

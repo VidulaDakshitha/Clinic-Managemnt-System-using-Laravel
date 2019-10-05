@@ -40,7 +40,9 @@
                     @if (count($supplier->products)>0)
 
                     @foreach ($supplier->products as $product)
-                    <p>{{ $product->name }}</p>
+                    <a href="/supplier/product/{{ $product->product_id }}">
+                        <p>{{ $product->name }}</p>
+                    </a>
                     @endforeach
 
                     @else
@@ -52,7 +54,7 @@
                     <form action="/supplier/{{ $supplier->supplier_id }}" method="POST">
                         @csrf
                         @method('DELETE')
-                        <button type="submit" href="" class="btn btn-danger">Remove</button>
+                        <button type="submit" class="btn btn-danger">Remove</button>
                     </form>
                 </td>
             </tr>
