@@ -20,7 +20,7 @@ class SupplierManagerController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
-        $this->middleware('auth_supp', ['except'=>['index', 'show']]);
+        $this->middleware('auth_supp');
     }
 
     /**
@@ -42,6 +42,9 @@ class SupplierManagerController extends Controller
 
     public function reports()
     {
+        // $result = Supplier::with(['products','suppliercontacts'])->first();
+        // dd($result);
+
         $suppliers = Supplier::all();
         return view('backend.supplier.reports', compact('suppliers'));
     }
@@ -50,6 +53,25 @@ class SupplierManagerController extends Controller
     {
         $user = Auth::user();
         return view('backend.supplier.settings', compact('user'));
+    }
+
+    // search for a supplier
+    public function search(Request $request)
+    {
+        if($request->keywords === "all"){
+            $result = Supplier::with(['products'])->get();
+        }
+        else{
+
+            if($request->column === "products"){
+                $result = Supplier::with(['products'])->whereHas("products", function($q)use($request){
+                     $q->where("name", "LIKE", "%$request->keywords%");})->get();            
+            }else {
+                $result = Supplier::where($request->column, 'LIKE', "%$request->keywords%")->with(['products'])->get();
+            }
+        }
+        //$result = Supplier::all();
+        return response()->json($result);
     }
 
     /**

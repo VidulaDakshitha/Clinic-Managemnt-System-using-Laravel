@@ -98,11 +98,7 @@
                     @if (count($products)>0)
 
                     @foreach ($products as $product)
-
-                    <option value="{{ $loop->iteration }}"
-                        v-on:="supplierCreateForm.selected[{{ $loop->iteration-1 }}] = '{{ $product->type }}'">
-                        {{ $product->type }}</option>
-
+                    <option>{{ $product->type }}</option>
                     @endforeach
 
                     @else
