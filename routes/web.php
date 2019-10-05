@@ -210,6 +210,7 @@ Route::post('/edit_per/{id}', 'PersonalRecordsController@edit0');
 
 Route::get('/read_per/{id}', 'PersonalRecordsController@show');
 
+Route::get('/read_personal/{id}', 'PersonalRecordsController@read');
 Route::get('/delete_per/{id}', 'PersonalRecordsController@destroy');
 
 Route::get("/report_per",'PersonalRecordsController@reports');
@@ -231,6 +232,7 @@ Route::get('/update_treat/{id}', 'TreatmentController@update1');
 Route::post('/edit_treat/{id}', 'TreatmentController@edit1');
 
 Route::get('/read_treat/{id}', 'TreatmentController@show');
+Route::get('/read_treatment/{id}', 'TreatmentController@read');
 
 Route::get('/delete_treat/{id}', 'TreatmentController@destroy');
 
@@ -254,6 +256,7 @@ Route::get('/edit_prescription/{id}', 'PrescriptionController@update2');
 
 Route::get('/read_prescription/{id}', 'PrescriptionController@show');
 Route::get('/delete_prescription/{id}', 'PrescriptionController@destroy');
+
 
 Route::get("/report_prescription",'PrescriptionController@reports');
 

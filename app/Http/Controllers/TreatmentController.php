@@ -48,6 +48,11 @@ class TreatmentController extends Controller
         return view('read_treat',compact('treatment_record'));
     }
 
+    public function read(TreatmentRecord $treatment_record)
+    {
+        return view('read_treatment',compact('treatment_record'));
+    }
+
     public function destroy(TreatmentRecord $treatment_record,$id)
     {
         $treatment_record = TreatmentRecord::where('record_id',$id);
