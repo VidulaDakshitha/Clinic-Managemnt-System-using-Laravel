@@ -1,8 +1,8 @@
 <template>
   <div>
-    <form action :onsubmit="search">
+    <form action :onsubmit="onSubmit">
       <div class="form-group" title="You can use natural language to search information">
-        <label for="searchInput" class="ml-1">Search</label>
+        <label for="searchInput" class="ml-1">Search suppliers</label>
         <div class="row m-1">
           <input
             type="text"
@@ -11,43 +11,46 @@
             id="searchInput"
             placeholder="Search using natural language"
           />
-          <div class="col-md-3 p-0 pl-2">
-            <button @click="search" class="btn btn-primary col-12">Search</button>
+          <div class="col-md-3 p-0 pl-md-2">
+            <button @click="onSubmit" class="btn btn-primary col-12 mt-1 mt-md-0">Search</button>
           </div>
         </div>
       </div>
     </form>
     <hr />
+    <h3 v-if="suppliers.length === 0">No results found for "{{ searchQuery }}"</h3>
+    <div v-if="suppliers.length > 0">
+      <div id="printContainer">
+        <h2 class="mb-4">{{ title }} report</h2>
 
-    <div id="printContainer">
-      <h1 class="mb-4">{{ title }} report</h1>
-
-      <table class="table">
-        <col width="20%" />
-        <col width="20%" />
-        <col width="40%" />
-        <col width="20%" />
-        <thead class="thead-dark">
-          <tr>
-            <th scope="col">Supplier ID</th>
-            <th scope="col">Name</th>
-            <th scope="col">Location</th>
-            <th scope="col">Products</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr v-for="supplier in suppliers" :key="supplier.supplier_id">
-            <th scope="row">{{ supplier.supplier_id }}</th>
-            <td>
-              <a :href="`/supplier/${supplier.supplier_id}`">{{ supplier.name }}</a>
-            </td>
-            <td>{{ supplier.location }}</td>
-            <td>
-              <p v-for="product in supplier.products" :key="product.product_id">{{ product.name }}</p>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+        <table class="table">
+          <col width="20%" />
+          <col width="20%" />
+          <col width="40%" />
+          <col width="20%" />
+          <thead class="thead-dark">
+            <tr>
+              <th scope="col">Supplier ID</th>
+              <th scope="col">Name</th>
+              <th scope="col">Location</th>
+              <th scope="col">Products</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr v-for="supplier in suppliers" :key="supplier.supplier_id">
+              <th scope="row">{{ supplier.supplier_id }}</th>
+              <td>
+                <a :href="`/supplier/${supplier.supplier_id}`">{{ supplier.name }}</a>
+              </td>
+              <td>{{ supplier.location }}</td>
+              <td>
+                <p v-for="product in supplier.products" :key="product.product_id">{{ product.name }}</p>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <Button class="btn btn-primary" v-on:click="print">Generate Report</Button>
     </div>
   </div>
 </template>
@@ -60,21 +63,40 @@ export default {
     });
   },
   data() {
-    return { title: "Suppliers", searchQuery: "", column: "", suppliers: [] };
+    return {
+      title: "Suppliers",
+      searchQuery: "",
+      column: "",
+      suppliers: []
+    };
+  },
+  watch: {
+    searchQuery(after, before) {
+      this.search();
+    }
   },
   methods: {
-    search(e) {
+    onSubmit(e) {
       e.preventDefault();
+      this.search();
+    },
+    print() {
+      this.$htmlToPaper("printContainer");
+    },
+    search() {
       if (this.searchQuery.length > 0) {
         let words = this.searchQuery.trim().split(" ");
         let query = this.searchQuery;
         if (words.length > 1) {
           // check if the word "in" contains in the query
           words.forEach(element => {
-            if (element.toLowerCase() === "in") {
+            if (
+              element.toLowerCase() === "in" ||
+              element.toLowerCase() === "from"
+            ) {
               this.column = "location";
               query = words[words.length - 1];
-              this.title = "Suppliers that are located in " + query;
+              this.title = "Suppliers that are located in " + query + " area";
               return;
             } else if (
               element.toLowerCase() === "sells" ||
@@ -87,10 +109,14 @@ export default {
               this.column = "products";
               query = words[words.length - 1];
               this.title = "Suppliers that supply " + query;
+
               return;
             }
           });
+        } else {
+          this.column = "name";
         }
+
         axios
           .get("/api/search", {
             params: { keywords: query, column: this.column }

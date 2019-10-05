@@ -17,6 +17,6 @@
     {{-- pdf end --}}
     {{-- {{ $suppliers->links() }} --}}
 
-    <Button class="btn btn-primary" @click.preventDefault="print">Generate Report</Button>
+
 </div>
 @endsection

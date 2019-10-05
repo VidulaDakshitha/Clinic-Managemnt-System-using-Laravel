@@ -1892,6 +1892,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   mounted: function mounted() {
     var _this = this;
@@ -1912,11 +1915,21 @@ __webpack_require__.r(__webpack_exports__);
       suppliers: []
     };
   },
+  watch: {
+    searchQuery: function searchQuery(after, before) {
+      this.search();
+    }
+  },
   methods: {
-    search: function search(e) {
-      var _this2 = this;
-
+    onSubmit: function onSubmit(e) {
       e.preventDefault();
+      this.search();
+    },
+    print: function print() {
+      this.$htmlToPaper("printContainer");
+    },
+    search: function search() {
+      var _this2 = this;
 
       if (this.searchQuery.length > 0) {
         var words = this.searchQuery.trim().split(" ");
@@ -1925,10 +1938,10 @@ __webpack_require__.r(__webpack_exports__);
         if (words.length > 1) {
           // check if the word "in" contains in the query
           words.forEach(function (element) {
-            if (element.toLowerCase() === "in") {
+            if (element.toLowerCase() === "in" || element.toLowerCase() === "from") {
               _this2.column = "location";
               query = words[words.length - 1];
-              _this2.title = "Suppliers that are located in " + query;
+              _this2.title = "Suppliers that are located in " + query + " area";
               return;
             } else if (element.toLowerCase() === "sells" || element.toLowerCase() === "sell" || element.toLowerCase() === "supply" || element.toLowerCase() === "supplies" || element.toLowerCase() === "produce" || element.toLowerCase() === "produces") {
               _this2.column = "products";
@@ -1937,6 +1950,8 @@ __webpack_require__.r(__webpack_exports__);
               return;
             }
           });
+        } else {
+          this.column = "name";
         }
 
         axios.get("/api/search", {
@@ -37280,7 +37295,7 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _c("form", { attrs: { action: "", onsubmit: _vm.search } }, [
+    _c("form", { attrs: { action: "", onsubmit: _vm.onSubmit } }, [
       _c(
         "div",
         {
@@ -37289,7 +37304,7 @@ var render = function() {
         },
         [
           _c("label", { staticClass: "ml-1", attrs: { for: "searchInput" } }, [
-            _vm._v("Search")
+            _vm._v("Search suppliers")
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "row m-1" }, [
@@ -37319,12 +37334,12 @@ var render = function() {
               }
             }),
             _vm._v(" "),
-            _c("div", { staticClass: "col-md-3 p-0 pl-2" }, [
+            _c("div", { staticClass: "col-md-3 p-0 pl-md-2" }, [
               _c(
                 "button",
                 {
-                  staticClass: "btn btn-primary col-12",
-                  on: { click: _vm.search }
+                  staticClass: "btn btn-primary col-12 mt-1 mt-md-0",
+                  on: { click: _vm.onSubmit }
                 },
                 [_vm._v("Search")]
               )
@@ -37336,55 +37351,77 @@ var render = function() {
     _vm._v(" "),
     _c("hr"),
     _vm._v(" "),
-    _c("div", { attrs: { id: "printContainer" } }, [
-      _c("h1", { staticClass: "mb-4" }, [
-        _vm._v(_vm._s(_vm.title) + " report")
-      ]),
-      _vm._v(" "),
-      _c("table", { staticClass: "table" }, [
-        _c("col", { attrs: { width: "20%" } }),
-        _vm._v(" "),
-        _c("col", { attrs: { width: "20%" } }),
-        _vm._v(" "),
-        _c("col", { attrs: { width: "40%" } }),
-        _vm._v(" "),
-        _c("col", { attrs: { width: "20%" } }),
-        _vm._v(" "),
-        _vm._m(0),
-        _vm._v(" "),
-        _c(
-          "tbody",
-          _vm._l(_vm.suppliers, function(supplier) {
-            return _c("tr", { key: supplier.supplier_id }, [
-              _c("th", { attrs: { scope: "row" } }, [
-                _vm._v(_vm._s(supplier.supplier_id))
+    _vm.suppliers.length === 0
+      ? _c("h3", [
+          _vm._v('No results found for "' + _vm._s(_vm.searchQuery) + '"')
+        ])
+      : _vm._e(),
+    _vm._v(" "),
+    _vm.suppliers.length > 0
+      ? _c(
+          "div",
+          [
+            _c("div", { attrs: { id: "printContainer" } }, [
+              _c("h2", { staticClass: "mb-4" }, [
+                _vm._v(_vm._s(_vm.title) + " report")
               ]),
               _vm._v(" "),
-              _c("td", [
+              _c("table", { staticClass: "table" }, [
+                _c("col", { attrs: { width: "20%" } }),
+                _vm._v(" "),
+                _c("col", { attrs: { width: "20%" } }),
+                _vm._v(" "),
+                _c("col", { attrs: { width: "40%" } }),
+                _vm._v(" "),
+                _c("col", { attrs: { width: "20%" } }),
+                _vm._v(" "),
+                _vm._m(0),
+                _vm._v(" "),
                 _c(
-                  "a",
-                  { attrs: { href: "/supplier/" + supplier.supplier_id } },
-                  [_vm._v(_vm._s(supplier.name))]
+                  "tbody",
+                  _vm._l(_vm.suppliers, function(supplier) {
+                    return _c("tr", { key: supplier.supplier_id }, [
+                      _c("th", { attrs: { scope: "row" } }, [
+                        _vm._v(_vm._s(supplier.supplier_id))
+                      ]),
+                      _vm._v(" "),
+                      _c("td", [
+                        _c(
+                          "a",
+                          {
+                            attrs: { href: "/supplier/" + supplier.supplier_id }
+                          },
+                          [_vm._v(_vm._s(supplier.name))]
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c("td", [_vm._v(_vm._s(supplier.location))]),
+                      _vm._v(" "),
+                      _c(
+                        "td",
+                        _vm._l(supplier.products, function(product) {
+                          return _c("p", { key: product.product_id }, [
+                            _vm._v(_vm._s(product.name))
+                          ])
+                        }),
+                        0
+                      )
+                    ])
+                  }),
+                  0
                 )
-              ]),
-              _vm._v(" "),
-              _c("td", [_vm._v(_vm._s(supplier.location))]),
-              _vm._v(" "),
-              _c(
-                "td",
-                _vm._l(supplier.products, function(product) {
-                  return _c("p", { key: product.product_id }, [
-                    _vm._v(_vm._s(product.name))
-                  ])
-                }),
-                0
-              )
-            ])
-          }),
-          0
+              ])
+            ]),
+            _vm._v(" "),
+            _c(
+              "Button",
+              { staticClass: "btn btn-primary", on: { click: _vm.print } },
+              [_vm._v("Generate Report")]
+            )
+          ],
+          1
         )
-      ])
-    ])
+      : _vm._e()
   ])
 }
 var staticRenderFns = [

@@ -81,6 +81,7 @@ Route::resource('supplier', 'SupplierManagerController');
 Route::get("/generate-supplier-report",'SupplierManagerController@reports')->middleware('auth_supp');
 Route::get("/supplier-settings",'SupplierManagerController@settings')->middleware('auth_supp');
 Route::get("/api/search", 'SupplierManagerController@search');
+Route::get("/report-pdf", "SupplierManagerController@generatepdf");
 
 Route::resource('/appointments', 'AppointmentController');
 Route::post('manage/doctors/search', 'DoctorManagementController@searchDoctor');

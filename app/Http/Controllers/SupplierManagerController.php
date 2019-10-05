@@ -61,8 +61,11 @@ class SupplierManagerController extends Controller
         if($request->keywords === "all"){
             $result = Supplier::with(['products'])->get();
         }
+        else if($request->keywords === "all"){
+            
+        }
         else{
-
+            
             if($request->column === "products"){
                 $result = Supplier::with(['products'])->whereHas("products", function($q)use($request){
                      $q->where("name", "LIKE", "%$request->keywords%");})->get();            
@@ -83,6 +86,12 @@ class SupplierManagerController extends Controller
     {
         $products = Product::all();
         return view('backend.supplier.create', compact('products'));
+    }
+
+
+    public function generatepdf()
+    {
+        
     }
 
     /**
