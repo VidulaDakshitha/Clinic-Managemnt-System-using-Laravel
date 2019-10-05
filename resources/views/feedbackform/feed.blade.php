@@ -2,6 +2,7 @@
 
 @section('content')
 <div class="container">
+    <h1>Feedback</h1>
 <form class="form" action="/feedbacktest" method="POST" enctype="multipart/form-data">
 		
     @csrf
@@ -18,7 +19,7 @@
         
         <div class="form-group">
             <label for="message">Message</label>
-            <textarea name="message" maxlength="200" id="message" class="form-control" placeholder="message"></textarea>
+            <textarea name="message" maxlength="100" id="message" class="form-control" placeholder="message"></textarea>
         </div>
       
 

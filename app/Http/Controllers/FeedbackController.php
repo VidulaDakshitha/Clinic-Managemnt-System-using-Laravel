@@ -67,7 +67,7 @@ class FeedbackController extends Controller
     public function search(Request $request)
     {
         $search = $request->get('search');
-        $feedback_data = DB::table('feedback')->where('patient_id','like', '%'.$search.'%')->paginate(5);
+        $feedback_data = DB::table('feedback')->where('patient_id','like', '%'.$search.'%')->paginate(50);
         return view('chairman.feedback_pdf', ['feedback_data' => $feedback_data]);
     }
 

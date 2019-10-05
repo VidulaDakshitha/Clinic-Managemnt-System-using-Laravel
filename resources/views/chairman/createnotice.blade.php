@@ -27,5 +27,15 @@
             <input type="submit" value="Submit" class="btn btn-primary">
         </div>
     </form>
+
+    <button type="button" onclick="myFunction()" class="btn btn-primary">Demo</button>
+
+    <script>
+        function myFunction() {
+            document.getElementById("title").value = "New About Us Photo";
+            document.getElementById("description").value = "A description";
+        }
+    
+    </script>
 </div>
 @endsection

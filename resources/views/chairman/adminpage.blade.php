@@ -41,8 +41,10 @@ use App\Feedback;
     <div class="container">
       <ul class="mainnav">
         <li class="active"><a href="/admin"><img src="img/adhome.png"/><span>Dashboard</span> </a> </li>
-        <li><a href="/feedback_pdf"><img src="img/newspaper.png"/><span>Feedbacks</span> </a> </li>
-        <li><a href="/adminchart"><img src="img/adminanalytics.png"/><span>Charts</span> </a> </li>
+        <li><a href="/gallery"><img src="img/gallery.png">
+          <span>Gallery</span> </a>  </li>
+        <li><a href="/ServiceTest"><img src="img/24-hours.png"/><span>Services</span> </a> </li>
+        <li><a href="/aboutus"><img src="img/about-us.png"/><span>About Us</span> </a> </li>
        
         
           </ul>
@@ -119,7 +121,7 @@ use App\Feedback;
           <!-- /widget -->
           <div class="widget widget-nopad">
             <div class="widget-header">
-              <h3> Recent News</h3>
+              <h3> Calendar</h3>
             </div>
             <!-- /widget-header -->
             <div class="widget-content">
@@ -171,8 +173,9 @@ use App\Feedback;
             <div class="widget-content">
               <div class="shortcuts"> <a href="/aboutus" class="shortcut"><img src="img/about-us.png"></i><span
                                         class="shortcut-label">About Us</span> </a><a href="/gallery" class="shortcut"><img src="img/gallery.png">
-                                             <span class="shortcut-label">Gallery</span> </a><a href="/order-admindash" class="shortcut"><img src="img/newspaper.png"> <span class="shortcut-label">Orders</span> </a><a href="/adminfeedback" class="shortcut"><img src="img/opinion.png"><span class="shortcut-label">Manage Feedbacks</span> </a><a href="/ServiceTest" class="shortcut"><img src="img/24-hours.png"><span
-                                                class="shortcut-label">Services</span> </a> </div>
+                                             <span class="shortcut-label">Gallery</span> </a><a href="/order-admindash" class="shortcut"><img src="img/adminshopping.png"> <span class="shortcut-label">Orders</span> </a><a href="/adminfeedback" class="shortcut"><img src="img/opinion.png"><span class="shortcut-label">Manage Feedbacks</span> </a><a href="/home_per" class="shortcut"><img src="img/24-hours.png"><span
+                                                class="shortcut-label">Records</span> </a><a href="/adminchart" class="shortcut"><img src="img/newspaper.png"></i><span
+                                                  class="shortcut-label">Charts</span> </a><a href="/feedback_pdf" class="shortcut"><img src="img/newspaper.png"> <span class="shortcut-label">Feedback Report</span> </a> </div>
               <!-- /shortcuts --> 
             </div>
             <!-- /widget-content --> 
