@@ -1,4 +1,4 @@
-@extends('backend.l')
+@extends('backend.layout')
 @section('title', 'Record Management')
   
 <link rel="stylesheet" href={{ url('css/product/vendors/datatables.net-buttons-bs4/css/buttons.bootstrap4.min.css') }}>
@@ -16,7 +16,7 @@
           Disease:<p>{{$personal_record->disease}}</p>
           Description about disease:<p>{{$personal_record->description}}</p>
     </div>
-    <a href="{{ url('/patient') }}" class="btn btn-primary">Back</a>
+    <a href="/patient" class="btn btn-primary">Back</a>
 </div>
 
 @endsection

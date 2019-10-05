@@ -5,6 +5,7 @@ use App\TreatmentRecord;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
+
 class TreatmentController extends Controller
 {
     public function index1(Request $request){
@@ -77,4 +78,13 @@ class TreatmentController extends Controller
         return view('report_treat', compact('treatment_records'));
     }
 
+    public function search(Request $request)
+    {
+    $search = $request->get('search');
+    $treatment_records = DB::table('treatment_records')->where('record_id','like', '%'.$search.'%')
+                                     ->orwhere('date','like','%'.$search.'%')
+                                     ->orwhere('description','like','%'.$search.'%')
+                                     ->paginate(10);
+    return view('report_treat', ['treatment_records' => $treatment_records]);
+    }
 }

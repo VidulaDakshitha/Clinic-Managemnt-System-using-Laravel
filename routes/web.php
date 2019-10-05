@@ -19,6 +19,7 @@ Route::get('/ServiceTest', 'PostsController@index');
 Route::get('/AdminServ', 'PostsController@serv');
 Route::get('/gallery', 'PostsController@media');
 Route::get('/welcome', 'SweetAlertDemo@index');
+Route::get('/adminchart', 'LaravelGoogleGraphController@index')->middleware('auth_admin');
 
 
 // Route::post('/ServiceTest', 'PostsController@store');
@@ -43,6 +44,10 @@ Route::delete('/aboutus/{article}', 'NoticesController@destroy');
 
 Route::get('/adminfeedback', 'FeedbackController@index')->middleware('auth_admin');
 Route::get('/adminfeedbackreport', 'FeedbackController@fedreport')->middleware('auth_admin');
+Route::get('/fedsearch','FeedbackController@search');
+Route::get('/feedback_pdf', 'FeedbackPDFController@index')->middleware('auth_admin');
+Route::get('/feedback_pdf/pdf', 'FeedbackPDFController@pdf');
+Route::get('/fedreport_search', 'FeedbackPDFController@pdf_fedsearch');
 
 Route::get('/feedback', 'FeedbackController@fed');
 Route::post('/feedbacktest','FeedbackController@store');
@@ -217,6 +222,8 @@ Route::get('/delete_per/{id}', 'PersonalRecordsController@destroy');
 
 Route::get("/report_per",'PersonalRecordsController@reports');
 
+Route::get("/searchrecords",'PersonalRecordsController@search');
+
 
 //2.Treatment Record
 //Route::get('/home_treat', 'TreatmentController@home1');
@@ -239,6 +246,7 @@ Route::get('/read_treatment/{id}', 'TreatmentController@read');
 Route::get('/delete_treat/{id}', 'TreatmentController@destroy');
 
 Route::get("/report_treat",'TreatmentController@reports');
+Route::get("/searchtreat",'TreatmentController@search');
 
 //3.Prescription
 Route::get('/home_prescription', function(){
@@ -261,6 +269,7 @@ Route::get('/delete_prescription/{id}', 'PrescriptionController@destroy');
 
 
 Route::get("/report_prescription",'PrescriptionController@reports');
+Route::get("/searchpre",'PrescriptionController@search');
 
 //Route::get('/Welcome', ['as'=>'Welcome','uses'=>'PagesController@index']);
 
