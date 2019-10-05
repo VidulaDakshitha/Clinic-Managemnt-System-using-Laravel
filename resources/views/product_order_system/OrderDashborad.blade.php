@@ -196,7 +196,9 @@
                   <select class="custom-select mr-sm-2" name="dashsearchtype">
                     <option value="orders.order_id">Order id</option>
                     <option value="orders.patient_id">Patient id</option>
+                    <option value="patients.fullname">User name</option>
                     <option value="order_product.product_id">Product id</option>
+                    <option value="products.name">Product name</option>
                     <option value="orders.date">Date</option>
                     <option value="orders.status">Status</option>
                   </select>
@@ -217,7 +219,7 @@
       <div class="row" id="app">
         <div class="col-sm-12"  id="printContainer">
           <table class="table table-bordered table-sm table-hover dataTable" id="dataTable" width="100%" cellspacing="0"
-            role="grid" aria-describedby="dataTable_info" style="width: 100%;">
+            role="grid" aria-describedby="dataTable_info" style="width: 100%; size:15px;">
             <thead>
               <tr role="row">
                 <th class="table-active sorting_asc" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1"
@@ -225,6 +227,10 @@
                   Order id</th>
                 <th class="table-active sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1"
                   aria-label="Position: activate to sort column ascending" style="width: 105px;">Patient id</th>
+                  <th class="table-active sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1"
+                  aria-label="Position: activate to sort column ascending" style="width: 105px;">Patient name</th>
+                  <th class="table-active sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1"
+                  aria-label="Position: activate to sort column ascending" style="width: 105px;">Product Name</th>
                 <th class="table-active sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1"
                   aria-label="Salary: activate to sort column ascending" style="width: 115px;">Product id</th>
                 <th class="table-active sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1"
@@ -249,6 +255,9 @@
                 <td>Nothing to show</td>
                 <td>Nothing to show</td>
                 <td>Nothing to show</td>
+                <td>Nothing to show</td>
+                <td>Nothing to show</td>
+
 
                 @else
                 <h3>Order Dashbord</h3>
@@ -262,7 +271,10 @@
                 <tr role="row" class="odd">
                   <td class="sorting_1" >{{$orderrow->order_id}}</td>
                   <td >{{$orderrow->patient_id}}</td>
+                  <td >{{$orderrow->fullname}}</td>
+                  <td>{{$orderrow->name}}</td>
                   <td>{{$orderrow->product_id}}</td>
+
                   <td>{{$orderrow->date}}</td>
                   <td>{{$orderrow->quantity}}</td>
                   <td>{{$orderrow->total_payment}}</td>
