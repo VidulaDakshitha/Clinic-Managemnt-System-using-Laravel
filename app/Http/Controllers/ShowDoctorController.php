@@ -93,7 +93,7 @@ class ShowDoctorController extends Controller
         if($search1=='any doctor' && $search2=='any specialization')
         {
             $posts = Doctor::all();
-             return view('PatientManagement.showDoc', $posts);
+             return view('PatientManagement.showDoc',compact('posts'));
         }
         else if($search1=='any doctor'){
 
