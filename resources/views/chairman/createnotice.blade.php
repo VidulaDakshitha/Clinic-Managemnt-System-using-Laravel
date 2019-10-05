@@ -14,7 +14,7 @@
 
         <div class="form-group">
             <label for="description">Description</label>
-            <textarea name="description" maxlength="250" id="description" class="form-control"
+            <textarea name="description" maxlength="60" id="description" class="form-control"
                 placeholder="Description"></textarea>
         </div>
 

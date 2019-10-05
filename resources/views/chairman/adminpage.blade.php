@@ -174,8 +174,9 @@ use App\Feedback;
               <div class="shortcuts"> <a href="/aboutus" class="shortcut"><img src="img/about-us.png"></i><span
                                         class="shortcut-label">About Us</span> </a><a href="/gallery" class="shortcut"><img src="img/gallery.png">
                                              <span class="shortcut-label">Gallery</span> </a><a href="/order-admindash" class="shortcut"><img src="img/adminshopping.png"> <span class="shortcut-label">Orders</span> </a><a href="/adminfeedback" class="shortcut"><img src="img/opinion.png"><span class="shortcut-label">Manage Feedbacks</span> </a><a href="/home_per" class="shortcut"><img src="img/24-hours.png"><span
-                                                class="shortcut-label">Records</span> </a><a href="/adminchart" class="shortcut"><img src="img/newspaper.png"></i><span
-                                                  class="shortcut-label">Charts</span> </a><a href="/feedback_pdf" class="shortcut"><img src="img/newspaper.png"> <span class="shortcut-label">Feedback Report</span> </a> </div>
+                                                class="shortcut-label">Records</span> </a><a href="/adminchart" class="shortcut"><img src="img/adminanalytics.png"></i><span
+                                                  class="shortcut-label">Charts</span> </a><a href="/feedback_pdf" class="shortcut"><img src="img/newspaper.png"> <span class="shortcut-label">Feedback Report</span> </a>  <a href="/patient_pdf/pdf" class="shortcut"><img src="img/newspaper.png"></i><span
+                                                    class="shortcut-label">User Report</span> </a></div>
               <!-- /shortcuts --> 
             </div>
             <!-- /widget-content --> 
