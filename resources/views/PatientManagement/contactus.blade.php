@@ -12,10 +12,10 @@
   <div class="border"></div>
                 <form class="contact-form" action="{{url('contact')}}" method="post">
                     {{ csrf_field() }}
-    <input type="text" class="contact-form-text" placeholder="Your name" name="name">
-    <input type="email" class="contact-form-text" placeholder="Your email" name="email">
-    <input type="text" class="contact-form-text" placeholder="Your phone" name="phone">
-    <textarea class="contact-form-text" placeholder="Your message" name="message"></textarea>
+    <input type="text" class="contact-form-text" placeholder="Your name" id="name" name="name">
+    <input type="email" class="contact-form-text" placeholder="Your email" id="email" name="email">
+    <input type="text" class="contact-form-text" placeholder="Your phone" id="phone" name="phone">
+    <textarea class="contact-form-text" placeholder="Your message" id="message" name="message"></textarea>
     <input type="submit" class="contact-form-btn" value="Send">
   </form></div>
 
@@ -48,7 +48,7 @@
                                    
                                     <a href=""><i class="fa fa-facebook"></i></a>
                                     <a href=""><i class="fa fa-twitter"></i></a>
-                                    <a href=""><i class="fa fa-linkedin"></i></a>
+                                    <a onclick="myFunction()"><i class="fa fa-linkedin"></i></a>
                                 <div></td>
                         </tr>
                        
@@ -64,5 +64,13 @@
 </div>
 </div>
 </div>
+<script>
+        function myFunction() {
+        document.getElementById("name").value = "Vidula Dantanarayana";
+        document.getElementById("email").value = "viduladakshitha@gmail.com";
+        document.getElementById("phone").value = "0779819207";
+        document.getElementById("message").value = "This is a sample test message for demo purposs";
+        }
+    </script>
 
 @endsection
