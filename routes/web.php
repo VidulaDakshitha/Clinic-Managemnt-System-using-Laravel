@@ -217,6 +217,8 @@ Route::get('/delete_per/{id}', 'PersonalRecordsController@destroy');
 
 Route::get("/report_per",'PersonalRecordsController@reports');
 
+Route::get("/searchrecords",'PersonalRecordsController@search');
+
 
 //2.Treatment Record
 //Route::get('/home_treat', 'TreatmentController@home1');
@@ -239,6 +241,7 @@ Route::get('/read_treatment/{id}', 'TreatmentController@read');
 Route::get('/delete_treat/{id}', 'TreatmentController@destroy');
 
 Route::get("/report_treat",'TreatmentController@reports');
+Route::get("/searchtreat",'TreatmentController@search');
 
 //3.Prescription
 Route::get('/home_prescription', function(){
@@ -261,6 +264,7 @@ Route::get('/delete_prescription/{id}', 'PrescriptionController@destroy');
 
 
 Route::get("/report_prescription",'PrescriptionController@reports');
+Route::get("/searchpre",'PrescriptionController@search');
 
 //Route::get('/Welcome', ['as'=>'Welcome','uses'=>'PagesController@index']);
 
