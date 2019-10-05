@@ -36,13 +36,26 @@ class ProductManagementController extends Controller
         $products = Product::where('expiry_date', '<=', date('Y-m-d'))->get();
 
         return view('product.exp', compact('products'));
-
+        
+        
+        
     }
 
     public function reports()
     {
         $products =Product::paginate(10);
         return view('product.reports', compact('products'));
+    }
+
+    public function search(Request $request)
+    {
+        $search = $request->get('search');
+        $products = DB::table('products')->where('type','like', '%'.$search.'%')
+                                         ->orwhere('brand','like','%'.$search.'%')
+                                         ->orwhere('quantity','like','%'.$search.'%')
+                                         ->orwhere('name','like','%'.$search.'%')
+                                         ->orwhere('potency','like','%'.$search.'%')->paginate(10);
+        return view('product.reports', ['products' => $products]);
     }
 
     /**
@@ -64,6 +77,7 @@ class ProductManagementController extends Controller
      */
     public function store(Request $request)
     {
+        
         // dd($path = $request);
         if($request->hasFile('image')){
             $fullFileName = $request->image->getClientOriginalName();

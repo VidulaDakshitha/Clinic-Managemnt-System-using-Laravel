@@ -26,7 +26,7 @@
                         <input type="text" name="specialization" class=".front-search input" id="spec" placeholder="Any Specialization" onblur="checkSpecializationId()">
                         <input type="hidden" name="specialization_id" id="spec_id" >
 
-                        <input type='text' name="date" class=".front-search input" id='date' placeholder="Any Date" style="bottom: 0;" />
+                        {{-- <input type='text' name="date" class=".front-search input" id='date' placeholder="Any Date" style="bottom: 0;" /> --}}
                         {{-- <input type="hidden" name="_token" value="qCTPw4CxwUEAjwERa2mn2jwkvLgMFbYrW08OwdKw"> --}}
                         <button type="submit">Search</button>
                     </form>  

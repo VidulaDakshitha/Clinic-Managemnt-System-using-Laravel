@@ -1,44 +1,47 @@
+<?php  $styles=['css/main/login/login.css']; ?>
+
 @extends('backend.layout')
 
-@section('title', 'Product Management')
+@section('title', '')
 
 @include('product.nav1')
+
 
 <link rel="stylesheet" href={{ url('css/product/vendors/datatables.net-buttons-bs4/css/buttons.bootstrap4.min.css') }}>
 
 <link rel="stylesheet" href={{ url('css/product/assets/css/style.css') }}>
 
+
 @section('content')
-
-<div class="container">
-
+<div class="container" id="app">
     @auth
     <h3> </h3>
     @else
     <h3>Not Logged In</h3>
     @endauth
 
+ {{-- pdf start --}}
+ <div id="printContainer">
 
-    <div class="content mt-3">
-        <div class="animated fadeIn">
-            <div class="row">
+        <img style="width: 400px;" src="{{ asset('images/main/mainlayout/logo_dark_long.png') }}" alt="">
+    <hr>
+        <h1>Expired Products Report</h1>
+        @auth
+        
+        @else
+        <h3>Not Logged In</h3>
+        @endauth
 
-                <div class="col-md-12">
-                    <div class="card">
-                        <div class="card-header">
-                            <h1>Expired Products</h1>
-                        </div>
-                        <div class="card-body">
-                            <table id="bootstrap-data-table-export" class="table table-striped table-bordered">
-                                <thead>
+
+        <table class="table">
+            <thead class="thead-dark">
                                     <tr>
-                                        <th>name</th>
-                                        <th>quantity</th>
-                                        <th>type</th>
-                                        <th>brand</th>
-                                        <th>Price</th>
-                                        <th>EXP_Date</th>
-                                        <th>Remove</th>
+                                        <th scope="col">name</th>
+                                        <th scope="col">quantity</th>
+                                        <th scope="col">type</th>
+                                        <th scope="col">brand</th>
+                                        <th scope="col">Price</th>
+                                        <th scope="col">EXP_Date</th>
                                     </tr>
                                 </thead>
 
@@ -57,14 +60,6 @@
                                         <td>{{$product->brand}}</td>
                                         <td>{{$product->selling_price}}</td>
                                         <td style = "color: red">{{$product->expiry_date}}</td>
-
-                                        <td>
-                                            <form action="/productdeleteexp/{{$product->product_id}}" method="POST">
-                                                @csrf
-                                                @method('DELETE')
-                                                <button type="submit" href="" class="btn btn-danger">Remove</button>
-                                            </form>
-                                        </td>
                                         
                                     </tr>
 
@@ -74,41 +69,10 @@
                                 </tbody>
                             </table>
                         </div>
+                        {{-- pdf end --}}
+                    
+                        <input type="image" value="submit" @click.preventDefault="print" src={{url('/images/product/submit1.png')}} alt="submit Button" width = "100px" height="40px" style="border: 0" >
                     </div>
-                </div>
-
-
-            </div>
-        </div><!-- .animated -->
-    </div><!-- .content -->
-</div>
-
-
-<script src={{ url('css/product/vendors/jquery/dist/jquery.min.js') }}></script>
-<script src={{ url('css/product/vendors/popper.js/dist/umd/popper.min.js') }}></script>
-<script src={{ url('css/product/vendors/bootstrap/dist/js/bootstrap.min.js') }}></script>
-<script src={{ url('css/product/assets/js/main.js') }}></script>
-
-
-<script src={{ url('css/product/vendors/datatables.net/js/jquery.dataTables.min.js') }}></script>
-
-<script src={{ url('css/product/vendors/datatables.net-bs4/js/dataTables.bootstrap4.min.js') }}></script>
-
-<script src={{ url('css/product/vendors/datatables.net-buttons/js/dataTables.buttons.min.js') }}></script>
-
-<script src={{ url('css/product/vendors/datatables.net-buttons-bs4/js/buttons.bootstrap4.min.js') }}></script>
-
-<script src={{ url('css/product/vendors/jszip/dist/jszip.min.js') }}></script>
-
-
-<script src={{ url('css/product/vendors/datatables.net-buttons/js/buttons.html5.min.js') }}></script>
-
-<script src={{ url('css/product/vendors/datatables.net-buttons/js/buttons.print.min.js') }}></script>
-
-<script src={{ url('css/product/vendors/datatables.net-buttons/js/buttons.colVis.min.js') }}></script>
-
-<script src={{ url('css/product/assets/js/init-scripts/data-table/datatables-init.js') }}></script>
-
-
+                    <br><br>
 
 @endsection

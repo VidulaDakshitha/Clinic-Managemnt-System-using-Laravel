@@ -10,6 +10,11 @@ use PDF;
 
 class FeedbackPDFController extends Controller
 {
+
+    public function __construct()
+    {
+      $this->middleware('auth', ['except' => ['show']]);
+    }
     function index()
     {
      $feedback_data = $this->get_feedback_data();
@@ -19,14 +24,14 @@ class FeedbackPDFController extends Controller
     function get_feedback_data()
     {
      $feedback_data = DB::table('feedback')
-         ->limit(10)
+         ->limit(50)
          ->get();
      return $feedback_data;
     }
 
     public function search_feedback_data($patient_id)
     {
-     $feedback_data = feedback::latest()->where('patient_id', 'like', '%'.$patient_id.'%')->paginate(10);
+     $feedback_data = feedback::latest()->where('patient_id', 'like', '%'.$patient_id.'%')->paginate(50);
      return $feedback_data;
     }
 
@@ -40,7 +45,7 @@ class FeedbackPDFController extends Controller
     public function search(Request $request)
     {
         $search = $request->get('search');
-        $feedback_data = DB::table('feedback')->where('patient_id','like', '%'.$search.'%')->paginate(5);
+        $feedback_data = DB::table('feedback')->where('patient_id','like', '%'.$search.'%')->paginate(50);
         return view('chairman.feedback_pdf', ['feedback_data' => $feedback_data]);
     }
 
@@ -84,6 +89,7 @@ class FeedbackPDFController extends Controller
     {
      $feedback_data = $this->search_feedback_data($patient_id);
      $output = '
+     <img src="images/main/mainlayout/logo_dark_long.png">
      <h3 align="center">Feedback Report</h3>
      <table width="100%" style="border-collapse: collapse; border: 0px;">
       <tr>

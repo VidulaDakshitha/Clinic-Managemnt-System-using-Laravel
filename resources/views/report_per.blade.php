@@ -8,12 +8,20 @@
 
 @section('content')
 <div class="container" id="app">
+
+        <form action = "/searchrecords" method = "get" style="margin-left: 700px;">
+            <div class = "input-group">
+                <input type = "search" name = "search" placeholder="Search records" class="form-control">
+                <span class = "input-group-prepend">
+                    <button type="submit" class="btn btn-primary">Search</button>
+                </span>
+            </div>
+        </form>
+
     {{-- pdf start --}}
     <div id="printContainer">
         <h1>Personal Record report</h1>
        
-
-
         <table class="table">
             <thead class="thead-light">
                 <tr>
@@ -52,4 +60,5 @@
 
     <Button class="btn btn-primary" @click.preventDefault="print">Print Report</Button>
 </div>
+
 @endsection

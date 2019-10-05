@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Prescription;
+use DB;
 
 use Illuminate\Http\Request;
 
@@ -70,5 +71,15 @@ class PrescriptionController extends Controller
     {
         $prescriptions =Prescription::paginate(10);
         return view('report_prescription', compact('prescriptions'));
+    }
+
+    public function search(Request $request)
+    {
+        $search = $request->get('search');
+        $prescriptions = DB::table('prescriptions')->where('id','like', '%'.$search.'%')
+                                         ->orwhere('doctor_id','like','%'.$search.'%')
+                                         ->orwhere('patient_id','like','%'.$search.'%')
+                                         ->paginate(10);
+        return view('report_prescription', ['prescriptions' => $prescriptions]);
     }
 }
