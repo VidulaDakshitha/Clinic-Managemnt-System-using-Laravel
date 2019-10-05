@@ -50,8 +50,8 @@
         <div class="form-group">
             <select class="form-control" name="type" id="type" required value="{{ $product->type }}">
                 <option selected="selected">Product Type</option>
-                <option value="Drug">Drug</option>
-                <option value="GeneralProduct">General Product</option>
+                <option value="medical">medical</option>
+                <option value="general">general</option>
             </select>
         </div>
 
