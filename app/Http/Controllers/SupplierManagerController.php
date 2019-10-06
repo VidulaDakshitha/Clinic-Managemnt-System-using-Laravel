@@ -22,7 +22,7 @@ class SupplierManagerController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
-        $this->middleware('auth_supp');
+        $this->middleware('auth_supp', ["except"=>["index", "show"]]);
     }
 
     /**

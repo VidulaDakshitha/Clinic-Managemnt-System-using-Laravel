@@ -283,3 +283,6 @@ Route::get("/searchpre",'PrescriptionController@search');
 Route::get('patient_pdf','PatientPDFController@index');
 Route::get('/pdfuser','PatientPDFController@pdf_profile');
 Route::get('/patient_pdf/pdf','PatientPDFController@pdf');
+
+Route::get('/contact2', 'PagesController@contact2');
+Route::post('/contact2', 'PagesController@postcontact2');
